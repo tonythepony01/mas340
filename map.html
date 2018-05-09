@@ -38,7 +38,6 @@ $(document).ready(function(){
 			$( "#char" ).animate({left: position.left,top: position.top}, 100, function() {});
 			CurrentLoc = DestLoc;
 		}/* else if ((PathNum[DestLoc]-PathNum[CurrentLoc]) < -1 || (PathNum[DestLoc]-PathNum[CurrentLoc]) >= 1 ) {
-	
 			for (x = 0; x<4;x++) {
 				if (PathList[x].includes(CurrentLoc) && PathList[x].includes(DestLoc)) {
 					for (var key in PathNum) {

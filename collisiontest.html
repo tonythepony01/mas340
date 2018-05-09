@@ -10,59 +10,16 @@
 <script src="Scripts/e-smart-hittest-jquery.js"></script>
 <script>
 $(document).ready(function() { 
- var degree = 0;
- degree += 1;
-var change = {
-  37: {
 
-  },
-
-  38: {
-
-  },
-
-  39: {
- 
-  },
-
-  40: {
-
-  },
-}
-$(document).one("keydown", keyDown)
-
-var going;
-
-function keyDown(e) {
-  console.log("down")
-  $(document).one("keyup", keyup)
-  console.log('"-webkit-transform":"rotate('+angle+'deg)"');
-  var animation = change[e.which];
-  going = setInterval(keepGoing, 1);
-
-  function keepGoing() {
-    $(".player").css(animation)
-	 degree += 1;
-  }
-
-}
-
-function keyup(e) {
-  console.log("up")
-  clearInterval(going)
-  $(document).one("keydown", keyDown)
-}
 
 	$('.player').mousedown(function() {
 		$(this).removeClass("fall");
-
 		$(this).draggable({ revert: "valid", containment: "none" , drag: function() {
-			var hit = $(this).objectHitTest({"object":$(".tunnelbackground"),"transparency":true});
+			var hit = $('.player').objectHitTest({"object": $('#tunnelbackground'),'transparency': true});
 			if(hit) {
 				console.log("hit")
 			};
 		}});
-		
 	}).mouseup(function() {
 		$(this).addClass("fall");
 		var hit = $(".player").objectHitTest({"object":$(".tunnelbackground"),"transparency":true});
@@ -82,11 +39,11 @@ function keyup(e) {
 
 </head>
 <body>
-<img id="tunnelbackground" src="images/tunnel.png">
 <a href="inventory.html">Inventory</a>
 <a href="dialoguetest.html">dialogue</a>
 <a href="map.html">map</a>
 <a href="collisiontest.html">collision</a>
+<img id="tunnelbackground" src="images/tunnel.png">
 <img class="player" src="images/player.png">
 	
 
