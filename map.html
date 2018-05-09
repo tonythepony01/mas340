@@ -11,7 +11,13 @@
 
 $(document).ready(function(){
 	$('#background').addClass('bg3');
-	var CurrentLoc = 'A';
+	if (localStorage.getItem("SavedLoc") != "undefined") {
+		var CurrentLoc = localStorage.getItem("SavedLoc")
+	} else {
+		var CurrentLoc = 'A';
+	}
+	console.log(CurrentLoc)
+	console.log(localStorage.getItem("SavedLoc"))
 	var LocDict = {p1:'A',p2:'C',p3:'D',p4:'B',p5:'E',p6:'F',p7:'G'}; /*Location keys*/
 	var PathList = [['A','B'],['B','A','C','D'],['C','B','G'],['D','B','E','F'],['E','D'],['F','D'],['G','C']]; /*Indicates the locations that can be travelled to from a certain point*/
 	var PathNum = {A:0,B:1,C:2,D:3,E:4,F:5,G:6}; /*Traverse index*/
@@ -37,6 +43,7 @@ $(document).ready(function(){
 		if (PathList[PathNum[CurrentLoc]].includes(DestLoc) == true) {
 			$( "#char" ).animate({left: position.left,top: position.top}, 100, function() {});
 			CurrentLoc = DestLoc;
+			localStorage.setItem("SavedLoc", DestLoc);
 		}/* else if ((PathNum[DestLoc]-PathNum[CurrentLoc]) < -1 || (PathNum[DestLoc]-PathNum[CurrentLoc]) >= 1 ) {
 			for (x = 0; x<4;x++) {
 				if (PathList[x].includes(CurrentLoc) && PathList[x].includes(DestLoc)) {

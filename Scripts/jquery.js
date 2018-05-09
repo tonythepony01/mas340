@@ -1,4 +1,19 @@
-
+function test() {
+			function checkCollision() {
+				var hit = $('.player').objectHitTest({"object": $('#tunnelbackground'),'transparency': true});
+				if(hit) {
+					console.log("hit");
+					$('.player').hide({effect:'explode'});
+					clearInterval(collisionTimer);
+					setTimeout(resetPlayer,1000);
+					}
+			}
+			function resetPlayer() {
+				$('.player').css({top:550,left: 350}).fadeIn();
+				collisionTimer = setInterval(checkCollision, 50);
+			}	
+			var collisionTimer = setInterval(checkCollision, 50);
+}
 function goBack() {
     window.history.back()
 }
@@ -25,43 +40,7 @@ function checkInventory() {
 		$('#itemgrid #inv-rope').show();
 	}
 }
-/* var change = {
-  37: {
-    left: "-=1"
-  },
 
-  38: {
-    top: "-=1"
-  },
-
-  39: {
-    left: "+=1"
-  },
-
-  40: {
-    top: "+=1"
-  },
-}
-
-$(document).one("keydown", keyDown)
-
-var going;
-
-function keyDown(e) {
-  console.log("down")
-  $(document).one("keyup", keyup)
-  var animation = change[e.which];
-  going = setInterval(keepGoing, 1);
-  function keepGoing() {
-    $("#char").css(animation)
-  }
-}
-
-function keyup(e) {
-  console.log("up")
-  clearInterval(going)
-  $(document).one("keydown", keyDown)
-} */
 
 	
 
