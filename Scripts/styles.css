@@ -98,12 +98,12 @@ body {
     }
 } 
 
-#background, .tunnelbackground  {
+#background, #tunnelbackground  {
 	background-color: white;
 	display: block;
 	position: relative;
-margin: auto;
-top: 150px;
+	margin: auto;
+	top: 150px;
 	width: 1000px;
 	height: 600px;
 }
@@ -119,10 +119,8 @@ top: 150px;
 .bg3 {
 	background-image: url('../images/testmapgraphic.jpg') ;
 }
-.tunnelbackground {
-	background-image: url('../images/tunnel.png') ;
+#tunnelbackground {
 	background-color: transparent;
-	overflow:hidden;
 }
 
 #backbutton {
