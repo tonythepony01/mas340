@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>MAS340</title>
+	<script src="Scripts/jquery-3.3.1.js"></script>
+	<link href="Scripts/styles.css" rel="stylesheet">
+	<script src="Scripts/jquery-ui.js"></script>
+	<script src="Scripts/jquery.js"></script>
+<script>
+$(document).ready(function(){
+	setupInventory(); // only required on the first page
+	checkInventory(); // required on every page to check which items have been picked up
+
+	$('.clickable').click(function() {
+		$(this).fadeOut('fast');
+		var itemName = $(this).attr('id');
+		localStorage.setItem(itemName, 'true');
+		checkInventory();
+		$('#next').show();
+	});
+	var progress = 0;
+	var dialogue;
+
+	function eventHandler() {
+		switch (progress) {
+    		case 0:
+        		dialogue = "text1";
+				$('#background').addClass('bg1');
+        		break;
+			case 1:
+				dialogue = "text2"
+				break;
+			case 2:
+				dialogue = "text3"
+				$('#background').addClass('bg2').removeClass('bg1');
+				break;
+			case 3:
+				dialogue = "text4"
+				break;			
+        }
+        progress++;  
+        $('#textbox').html(dialogue); 
+	}
+	$('#nextbutton').click(eventHandler);
+
+});
+</script>
+</head>
+<body>
+<div id="background">
+<a href="inventory.html">Inventory</a>
+<a href="dialoguetest.html">dialogue</a>
+<a href="map.html">map</a>
+<a href="collisiontest.html">collision</a>
+	<div id="inventorybutton"><a class="htmllink" href="inventory.html">Inventory</a></div>
+	<img src="images/knife.png" id="knife" class="clickable">
+	<img src="images/apple.png" id="apple" class="clickable">
+	<img src="images/rope.png" id="rope" class="clickable">
+	<div id="textbox"></div>
+	<div id="nextbutton"></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,126 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>MAS340</title>
+<script src="Scripts/jquery-3.3.1.js"></script>
+<link href="Scripts/styles.css" rel="stylesheet"/>
+<script src="Scripts/jquery.js"></script>
+<script src="Scripts/jquery-ui.js"></script>
+<script>
+
+$(document).ready(function(){
+	$('#background').addClass('bg3');
+	var CurrentLoc = 'A';
+	var LocDict = {p1:'A',p2:'C',p3:'D',p4:'B',p5:'E',p6:'F',p7:'G'}; /*Location keys*/
+	var PathList = [['A','B'],['B','A','C','D'],['C','B','G'],['D','B','E','F'],['E','D'],['F','D'],['G','C']]; /*Indicates the locations that can be travelled to from a certain point*/
+	var PathNum = {A:0,B:1,C:2,D:3,E:4,F:5,G:6}; /*Traverse index*/
+	var TVal = 210; /*Number of hours*/
+	var NTval = [[0,6],[18,24],[36,42],[54,60],[72,78],[90,96],[108,114],[126,132],[144,150],[162,168],[180,186],[198,204]]; /*Night time hours*/
+	var time = [];
+	var isNightTimetoggle = true;
+	function range(start, end) {
+		for (let i = start; i <= end; i++) {
+			time.push(i);
+		}
+		return
+	}
+	for (let a =0; a<11; a++)	{
+		time.push(range(NTval[a][0],NTval[a][1]));
+	}
+	$("#p1,#p2,#p3,#p4,#p5,#p6,#p7").click(function() {
+		var p = $(this);
+		var defLoc = String($(this).attr('id'))
+		var position = p.position();
+		var DestLoc = ''
+		DestLoc = LocDict[defLoc];
+		if (PathList[PathNum[CurrentLoc]].includes(DestLoc) == true) {
+			$( "#char" ).animate({left: position.left,top: position.top}, 100, function() {});
+			CurrentLoc = DestLoc;
+		}/* else if ((PathNum[DestLoc]-PathNum[CurrentLoc]) < -1 || (PathNum[DestLoc]-PathNum[CurrentLoc]) >= 1 ) {
+	
+			for (x = 0; x<4;x++) {
+				if (PathList[x].includes(CurrentLoc) && PathList[x].includes(DestLoc)) {
+					for (var key in PathNum) {
+						if (PathNum.hasOwnProperty(key) && PathList.indexOf(PathList[x]) == PathNum[key]) {
+								for (var key2 in LocDict) {
+									if (LocDict.hasOwnProperty(key2) && key == LocDict[key2]) {
+										p = ('"#'+key2+'"')
+										console.log(key2)
+										position = p.position();
+										$( "#char" ).animate({left: position.left,top: position.top}, 100, function() {});	
+									}
+								}	
+						}
+					}
+				}
+			}
+		} */
+		if (isNightTimetoggle == time.includes(TVal)) {
+			TVal -= 12;
+			/* INSERT NIGHTTIME EVENT HERE*/
+		} else {
+			TVal -= 12;
+			/* INSERT DAYTIME EVENT HERE*/
+		}
+	});
+
+	var c = document.getElementById("myCanvas");
+	var ctx = c.getContext("2d");
+	var locationp1 = $('#p1').position();
+	var locationp2 = $('#p2').position();
+	var locationp3 = $('#p3').position();
+	var locationp4 = $('#p4').position();
+	var locationp5 = $('#p5').position();
+	var locationp6 = $('#p6').position();
+	var locationp7 = $('#p7').position();
+	ctx.beginPath();
+	ctx.moveTo(locationp1.left,locationp1.top);
+	ctx.lineTo(locationp4.left,locationp4.top);
+	ctx.stroke();
+	ctx.beginPath();
+	ctx.moveTo(locationp4.left,locationp4.top);
+	ctx.lineTo(locationp2.left,locationp2.top);
+	ctx.stroke();
+	ctx.beginPath();
+	ctx.moveTo(locationp4.left,locationp4.top);
+	ctx.lineTo(locationp3.left,locationp3.top);
+	ctx.stroke();
+	ctx.beginPath();
+	ctx.moveTo(locationp3.left,locationp3.top);
+	ctx.lineTo(locationp5.left,locationp5.top);
+	ctx.stroke();
+	ctx.beginPath();
+	ctx.moveTo(locationp3.left,locationp3.top);
+	ctx.lineTo(locationp6.left,locationp6.top);
+	ctx.stroke();
+	ctx.beginPath();
+	ctx.moveTo(locationp2.left,locationp2.top);
+	ctx.lineTo(locationp7.left,locationp7.top);
+	ctx.stroke();
+	
+});
+</script>
+
+</head>
+<body>
+<a href="inventory.html">Inventory</a>
+<a href="dialoguetest.html">dialogue</a>
+<a href="map.html">map</a>
+<a href="collisiontest.html">collision</a>
+<div id="background">
+	<div id="inventorybutton"><a class="htmllink" href="inventory.html">Inventory</a></div>
+	<div id="char"></div>
+	<div id="p1"></div>
+	<div id="p2"></div>
+	<div id="p3"></div>
+	<div id="p4"></div>
+	<div id="p5"></div>
+	<div id="p6"></div>
+	<div id="p7"></div>
+	<p id="demo"></p>
+	<canvas id="myCanvas" width="1000" height="600" style="border:1px solid #d3d3d3;">
+	
+</div>
+</body>
+</html>
