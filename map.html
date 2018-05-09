@@ -15,7 +15,7 @@ var defLoc;
 var position;
 var DestLoc;
 
-Object.prototype.getKeyByValue = function( value ) {
+Object.prototype.getKeyByValue = function( value ) { /*will not work with prototype*/
     for( var prop in this ) {
         if( this.hasOwnProperty( prop ) ) {
              if( this[ prop ] === value )
