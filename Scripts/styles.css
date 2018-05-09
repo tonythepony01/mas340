@@ -48,9 +48,6 @@ body {
 	left: 900px;
 }
 
-#player {
-	position: absolute;
-}
 
 #char {
 	width: 100px;
@@ -74,7 +71,8 @@ body {
 
 .player {
     position: absolute;
-	top:300px;
+	top:550px;
+	left: 350px;
 	height: 50px;
 	width: 50px;
 

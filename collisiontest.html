@@ -15,10 +15,20 @@ $(document).ready(function() {
 	$('.player').mousedown(function() {
 		$(this).removeClass("fall");
 		$(this).draggable({ revert: "valid", containment: "none" , drag: function() {
-			var hit = $('.player').objectHitTest({"object": $('#tunnelbackground'),'transparency': true});
-			if(hit) {
-				console.log("hit")
-			};
+			function checkCollision() {
+				var hit = $('.player').objectHitTest({"object": $('#tunnelbackground'),'transparency': true});
+				if(hit) {
+					console.log("hit");
+					$('#player').hide({effect:'explode'});
+					clearInterval(collisionTimer);
+					setTimeout(resetPlayer,1000);
+					}
+			}
+			function resetPlayer() {
+				$('.player').css({top:550,left: 350}).fadeIn();
+				collisionTimer = setInterval(checkCollision, 50);
+			}	
+			var collisionTimer = setInterval(checkCollision, 50);
 		}});
 	}).mouseup(function() {
 		$(this).addClass("fall");
