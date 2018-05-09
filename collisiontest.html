@@ -11,15 +11,12 @@
 <script>
 $(document).ready(function() { 
 
-
-	$('.player').mousedown(function() {
-		$(this).removeClass("fall");
-		$(this).draggable({ revert: "valid", containment: "none" , drag: function() {
+function test() {
 			function checkCollision() {
 				var hit = $('.player').objectHitTest({"object": $('#tunnelbackground'),'transparency': true});
 				if(hit) {
 					console.log("hit");
-					$('#player').hide({effect:'explode'});
+					$('.player').hide({effect:'explode'});
 					clearInterval(collisionTimer);
 					setTimeout(resetPlayer,1000);
 					}
@@ -29,13 +26,15 @@ $(document).ready(function() {
 				collisionTimer = setInterval(checkCollision, 50);
 			}	
 			var collisionTimer = setInterval(checkCollision, 50);
+}
+	$('.player').mousedown(function() {
+		$(this).removeClass("fall");
+		$(this).draggable({ revert: "valid", containment: "none" , drag: function() {
+			test();
 		}});
 	}).mouseup(function() {
 		$(this).addClass("fall");
-		var hit = $(".player").objectHitTest({"object":$(".tunnelbackground"),"transparency":true});
-		if(hit) {
-			console.log("hit2")
-		}
+		test();
 	});
 
 	
