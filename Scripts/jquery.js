@@ -1,3 +1,4 @@
+
 function test() {
 			function checkCollision() {
 				var hit = $('.player').objectHitTest({"object": $('#tunnelbackground'),'transparency': true});
