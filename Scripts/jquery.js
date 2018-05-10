@@ -1,3 +1,11 @@
+
+	function HoverColor() {
+				$("#inventorybutton, #p1,#p2,#p3,#p4,#p5,#p6,#p7").hover(function(){
+			$(this).css('background-color','#e54444');
+		}, function(){
+			$(this).css('background-color','#b40000');
+		});
+	}
 	var time = [];
 	function range(start, end) {	
 		for (let i = start; i <= end; i++) {
@@ -56,12 +64,15 @@ function checkInventory() {
 
 	if( localStorage.getItem('knife') == 'true' ) {
 		$('#itemgrid #inv-knife').show();
+		$('#knife').hide();
 	}
 	if( localStorage.getItem('apple') == 'true' ) {
 		$('#itemgrid #inv-apple').show();
+		$('#apple').hide();
 	}
 	if( localStorage.getItem('rope') == 'true' ) {
 		$('#itemgrid #inv-rope').show();
+		$('#rope').hide();
 	}
 }
 
