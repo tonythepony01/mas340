@@ -15,14 +15,14 @@ $(document).ready(function(){
 	checkInventory(); // required on every page to check which items have been picked up
 		
 	$('.clickable').mousedown(function() {
-		$('#inventorybutton').removeClass('spring');
+		$('#inventorybutton').addClass('spring');
 		$(this).fadeOut('fast');
 		var itemName = $(this).attr('id');
 		localStorage.setItem(itemName, 'true');	
 		checkInventory();
 		$('#next').show();
 	}).mouseup(function() {
-		$('#inventorybutton').addClass('spring');
+		$('#inventorybutton').removeClass('spring');
 	});
 	
 	if (localStorage.getItem('DialogueProgress') != "undefined" && localStorage.getItem('DialogueProgress') != null && localStorage.getItem('DialogueProgress') != 0) {
