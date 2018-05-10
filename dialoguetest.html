@@ -15,9 +15,9 @@ setupInventory()
 	checkInventory(); // required on every page to check which items have been picked up
 
 		$('.clickable').click(function() {
+			console.log($('#inventorybutton').hasClass('spring'))
 			if ($('#inventorybutton').hasClass('spring')) {
 				$('#inventorybutton').removeClass('spring');
-				console.log($('#inventorybutton').hasClass('spring'))
 			}
 			$(this).fadeOut('fast');
 			var itemName = $(this).attr('id');
