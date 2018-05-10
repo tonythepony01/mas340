@@ -97,19 +97,19 @@ body {
     }
 } 
 .spring {
-	-webkit-animation: spring 0.5s ;
-    animation: spring 0.5s ;
+	-webkit-animation: spring 0.4s ;
+    animation: spring 0.4s ;
 }
 
 @-webkit-keyframes spring {
-    0%  {transform: rotate(0deg);}
+    0% {transform: rotate(0deg);}
 	15%	{transform: rotate(10deg);}
     25% {transform: rotate(-10deg);}
 	35%	{transform: rotate(10deg);}
-    45%  {transform: rotate(-10deg);}
+    45% {transform: rotate(-10deg);}
 	55%	{transform: rotate(10deg);}
-	65%  {transform: rotate(-10deg);}
-	75%{transform: rotate(10deg);}
+	65% {transform: rotate(-10deg);}
+	75%	{transform: rotate(10deg);}
 	85%	{transform: rotate(-10deg);}
     100% {transform: rotate(0deg);}
 }
