@@ -25,6 +25,9 @@ $(document).ready(function(){
 		checkInventory();
 		$('#next').show();
 	}).mouseup(function() {
+		if ($('#inventorybutton').hasClass('spring') == false) {
+					$('#inventorybutton').addClass('spring');
+		}
 		$('#inventorybutton').removeClass('spring');
 	});
 	
