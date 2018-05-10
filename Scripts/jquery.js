@@ -1,7 +1,7 @@
 	
 	function clickCheck() {
 		$('.clickable').click(function() {
-			if ($('#inventorybutton').hasClass(spring)) {
+			if ($('#inventorybutton').hasClass('spring')) {
 				$('#inventorybutton').removeClass('spring');
 				console.log($('#inventorybutton').hasClass(spring))
 			}
