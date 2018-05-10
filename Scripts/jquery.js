@@ -1,4 +1,27 @@
-
+	var time = [];
+	function range(start, end) {	
+		for (let i = start; i <= end; i++) {
+				time.push(i);
+			}
+			return
+	}
+		
+	function LocKeyGet(Location) {
+		var LocDict2 = [['p1','A',500,150],['p2','C',250,600],['p4','D',460,450],['p4','B',375,450],['p5','E',575,575],['p6','F',575,325],['p7','G',375,900]]
+		for (let a=0;a<7;a++) {
+				if (Location == LocDict2[a][1]) {
+					result = [LocDict2[a][0],LocDict2[a][2],LocDict2[a][3]]
+					return result
+			}
+		}
+	}
+	
+	function LocExtractorX(Location) {
+			return Location[2]
+	}
+		function LocExtractorY(Location) {
+			return Location[1]
+	}
 function test() {
 			function checkCollision() {
 				var hit = $('.player').objectHitTest({"object": $('#tunnelbackground'),'transparency': true});
