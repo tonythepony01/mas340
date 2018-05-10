@@ -1,6 +1,7 @@
 	
 	function clickCheck() {
 		$('.clickable').click(function() {
+			$('#inventorybutton').removeClass('spring');
 			$(this).fadeOut('fast');
 			var itemName = $(this).attr('id');
 			localStorage.setItem(itemName, 'true');
@@ -73,7 +74,6 @@ function setupInventory() {
 }
 
 function checkInventory() {
-		$('#inventorybutton').removeClass('spring');
 	if( localStorage.getItem('knife') == 'true' ) {
 		$('#itemgrid #inv-knife').show();
 		$('#knife').hide();
