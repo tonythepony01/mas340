@@ -3,7 +3,7 @@
 		$('.clickable').click(function() {
 			if ($('#inventorybutton').hasClass('spring')) {
 				$('#inventorybutton').removeClass('spring');
-				console.log($('#inventorybutton').hasClass(spring))
+				console.log($('#inventorybutton').hasClass('spring'))
 			}
 			$(this).fadeOut('fast');
 			var itemName = $(this).attr('id');
