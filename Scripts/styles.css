@@ -102,9 +102,15 @@ body {
 }
 
 @-webkit-keyframes spring {
-    0%   {transform: rotate(0deg);}
-    25%  {transform: rotate(-20deg);}
-    50%  {transform: rotate(20deg);}
+    0%  {transform: rotate(0deg);}
+	15%	{transform: rotate(10deg);}
+    25% {transform: rotate(-10deg);}
+	35%	{transform: rotate(10deg);}
+    45%  {transform: rotate(-10deg);}
+	55%	{transform: rotate(10deg);}
+	65%  {transform: rotate(-10deg);}
+	75%{transform: rotate(10deg);}
+	85%	{transform: rotate(-10deg);}
     100% {transform: rotate(0deg);}
 }
 
