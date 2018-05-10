@@ -1,13 +1,4 @@
-function clickCheck() {
 
-		$(this).fadeOut('fast');
-		var itemName = $(this).attr('id');
-		localStorage.setItem(itemName, 'true');
-		$('#inventorybutton').addClass('spring');
-		checkInventory();
-		$('#next').show();
-
-}
 	function HoverColor() {
 		$("#inventorybutton, #p1,#p2,#p3,#p4,#p5,#p6,#p7").hover(function(){
 			$(this).css('background-color','#e54444');
