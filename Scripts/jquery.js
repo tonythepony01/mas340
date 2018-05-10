@@ -8,7 +8,6 @@
 			checkInventory();
 			$('#next').show();
 		});
-		$('#inventorybutton').removeClass('spring');
 	}
 
 	function HoverColor() {
@@ -74,7 +73,7 @@ function setupInventory() {
 }
 
 function checkInventory() {
-
+		$('#inventorybutton').removeClass('spring');
 	if( localStorage.getItem('knife') == 'true' ) {
 		$('#itemgrid #inv-knife').show();
 		$('#knife').hide();
