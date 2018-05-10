@@ -3,6 +3,7 @@ function clickCheck() {
 		$(this).fadeOut('fast');
 		var itemName = $(this).attr('id');
 		localStorage.setItem(itemName, 'true');
+		$('#inventorybutton').addClass('spring')
 		checkInventory();
 		$('#next').show();
 	});

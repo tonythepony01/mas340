@@ -96,8 +96,12 @@ body {
         top: 1080px;
     }
 } 
+.spring {
+	-webkit-animation: spring 0.5s ;
+    animation: spring 0.5s ;
+}
 
-@-webkit-keyframes example {
+@-webkit-keyframes spring {
     0%   {transform: rotate(0deg);}
     25%  {transform: rotate(-20deg);}
     50%  {transform: rotate(20deg);}
