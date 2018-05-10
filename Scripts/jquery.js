@@ -1,7 +1,10 @@
 	
 	function clickCheck() {
 		$('.clickable').click(function() {
-			$('#inventorybutton').removeClass('spring');
+			if ($('#inventorybutton').hasClass(spring)) {
+				$('#inventorybutton').removeClass('spring');
+				console.log($('#inventorybutton').hasClass(spring))
+			}
 			$(this).fadeOut('fast');
 			var itemName = $(this).attr('id');
 			localStorage.setItem(itemName, 'true');
