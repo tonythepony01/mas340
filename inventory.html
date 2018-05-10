@@ -11,8 +11,12 @@
 <script>
 $(document).ready(function(){
 	checkInventory(); 
-	$(".items").hover(function(){
+	var itemDesc = {"inv-knife": "Description1","inv-apple":'Description2',"inv-rope":"Description3"};
+	$("#inv-knife, #inv-apple,#inv-rope").hover(function(){
 		$("#descbox").show();
+		attr = String($(this).attr('id'))
+		description = itemDesc[attr]
+		$('#descbox').html(description); 
 	}, function(){
 		$("#descbox").hide();
 	});

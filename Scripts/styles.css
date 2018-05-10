@@ -175,6 +175,16 @@ background-color: #2196F3;
 	padding: 0px;
 }
 
+#descbox {
+	background-color: #2196F3;	
+	position: relative;
+	margin: auto;
+	top: 35px;
+	width: 600px;
+	height: 100px;
+	display: none;
+}
+
 #itemgrid{
 	display: grid;
 	grid-template-columns: auto auto auto auto;
@@ -198,13 +208,5 @@ background-color: #2196F3;
 	display: none;
 }
 
-#descbox {
-	position: relative;
-	margin: auto;
-	top: 35px;
-	background-color: #2196F3;
-	width: 600px;
-	height: 100px;
-	display: none;
-}
+
 
