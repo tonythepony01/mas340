@@ -16,11 +16,11 @@ $(document).ready(function() {
 	$('.player').mousedown(function() {
 		$(this).removeClass("fall");
 		$(this).draggable({ revert: "valid", containment: "none" , drag: function() {
-			test();
+			testColl();
 		}});
 	}).mouseup(function() {
 		$(this).addClass("fall");
-		test();
+		testColl();
 	});
 
 	

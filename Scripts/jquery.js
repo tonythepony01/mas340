@@ -1,7 +1,16 @@
-
+function clickCheck() {
+		$('.clickable').click(function() {
+		$(this).fadeOut('fast');
+		var itemName = $(this).attr('id');
+		localStorage.setItem(itemName, 'true');
+		checkInventory();
+		$('#next').show();
+	});
+}
 	function HoverColor() {
-				$("#inventorybutton, #p1,#p2,#p3,#p4,#p5,#p6,#p7").hover(function(){
+		$("#inventorybutton, #p1,#p2,#p3,#p4,#p5,#p6,#p7").hover(function(){
 			$(this).css('background-color','#e54444');
+			
 		}, function(){
 			$(this).css('background-color','#b40000');
 		});
@@ -25,12 +34,12 @@
 	}
 	
 	function LocExtractorX(Location) {
-			return Location[2]
+		return Location[2]
 	}
-		function LocExtractorY(Location) {
-			return Location[1]
+	function LocExtractorY(Location) {
+		return Location[1]
 	}
-function test() {
+function testColl() {
 			function checkCollision() {
 				var hit = $('.player').objectHitTest({"object": $('#tunnelbackground'),'transparency': true});
 				if(hit) {

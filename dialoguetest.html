@@ -12,14 +12,8 @@
 $(document).ready(function(){
 //Place this function at the beginning of the story, or else the dialogue memory function will not work. it will clear the localstorage on refresh and page changes
 	checkInventory(); // required on every page to check which items have been picked up
+	
 
-	$('.clickable').click(function() {
-		$(this).fadeOut('fast');
-		var itemName = $(this).attr('id');
-		localStorage.setItem(itemName, 'true');
-		checkInventory();
-		$('#next').show();
-	});
 	if (localStorage.getItem('DialogueProgress') != "undefined" && localStorage.getItem('DialogueProgress') != null && localStorage.getItem('DialogueProgress') != 0) {
 		var progress = localStorage.getItem('DialogueProgress') /*Dialogue progress saver*/
 		progress -= 1;
