@@ -7,8 +7,6 @@
 			$('#inventorybutton').addClass('spring');
 			checkInventory();
 			$('#next').show();
-			
-
 		});
 		$('#inventorybutton').removeClass('spring');
 	}
