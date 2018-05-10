@@ -16,7 +16,7 @@ setupInventory()
 
 		$('.clickable').click(function() {
 			console.log($('#inventorybutton').hasClass('spring'))
-			if ($('#inventorybutton').hasClass('spring')) {
+			if ($('#inventorybutton').hasClass('spring') == true) {
 				$('#inventorybutton').removeClass('spring');
 			}
 			$(this).fadeOut('fast');
