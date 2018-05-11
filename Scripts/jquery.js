@@ -44,9 +44,9 @@ function testColl() {
 			}
 			function resetPlayer() {
 				$('.player').css({top:550,left: 350}).fadeIn();
-				collisionTimer = setInterval(checkCollision, 50);
+				collisionTimer = setInterval(checkCollision, 150);
 			}	
-			var collisionTimer = setInterval(checkCollision, 50);
+			var collisionTimer = setInterval(checkCollision, 150);
 }
 function goBack() {
     window.history.back()
