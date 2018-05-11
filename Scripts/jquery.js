@@ -36,11 +36,9 @@ function testColl() {
 			function checkCollision() {
 				var hit = $('.player').objectHitTest({"object": $('#tunnelbackground'),'transparency': true});
 				if(hit) {
-					console.log("hit");
-					$('.player').hide({effect:'explode'});
 					clearInterval(collisionTimer);
 					setTimeout(resetPlayer,1000);
-					}
+				}
 			}
 			function resetPlayer() {
 				$('.player').css({top:550,left: 350}).fadeIn();

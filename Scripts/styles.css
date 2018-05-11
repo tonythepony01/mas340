@@ -81,8 +81,8 @@ body {
 }
 
 .fall {
-    -webkit-animation: bounce 1.5s ;
-    animation: bounce 1.5s ;
+    -webkit-animation: bounce 1s ;
+    animation: bounce 1s ;
 }
 
 @-webkit-keyframes bounce {
