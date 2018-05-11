@@ -16,6 +16,7 @@ $(document).ready(function(){
 	$('.clickable').mousedown(function() {
 		if ($('#inventorybutton').hasClass('spring') == true) {
 			$('#inventorybutton').removeClass('spring');
+			$('#itemGet').removeAttr('style');
 		}		
 	}).mouseup(function() {
 		if ($('#inventorybutton').hasClass('spring') == false) {
@@ -24,8 +25,7 @@ $(document).ready(function(){
 		$(this).fadeOut('fast');
 		localStorage.setItem(itemName, 'true');	
 		var itemName = $(this).attr('id');
-		$('#itemGet').show().animate({top: '15px'}, 200).fadeOut('slow');
-		$('#itemGet').css('top', '30px');
+		$('#itemGet').show().animate({top: '15px'}, 150).fadeOut(200);
 		checkInventory();
 	});
 	

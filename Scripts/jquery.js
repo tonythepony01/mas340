@@ -63,6 +63,7 @@ function setupInventory() {
 }
 
 function checkInventory() {
+
 	if( localStorage.getItem('knife') == 'true' ) {
 		$('#itemgrid #inv-knife').show();
 		$('#knife').hide();
