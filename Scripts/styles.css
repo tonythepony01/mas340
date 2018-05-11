@@ -63,7 +63,7 @@ body {
 	transform: scale(0.50,0.50)
 }
 
-#backbutton a, #inventorybutton a, #title, a:visited {
+#backbutton a, #inventorybutton a, #title, a:visited, #itemGet {
 	color: black;
 	font-size: 1.5em;
 		text-decoration: none;
@@ -97,21 +97,19 @@ body {
     }
 } 
 .spring {
-	-webkit-animation: spring 0.4s ;
-    animation: spring 0.4s ;
+	-webkit-animation: spring 0.25s ;
+    animation: spring 0.25s ;
 }
 
 @-webkit-keyframes spring {
     0% {transform: rotate(0deg);}
-	20%	{transform: rotate(5deg);}
-    30% {transform: rotate(-5deg);}
-	40%	{transform: rotate(5deg);}
-	45% {transform: rotate(-5deg);}
-    50% {transform: rotate(5deg);}
-	55%	{transform: rotate(-5deg);}
-	60% {transform: rotate(5deg);}
-	70%	{transform: rotate(-5deg);}
-	80%	{transform: rotate(5deg);}
+	5%	{transform: rotate(4deg);}
+    10% {transform: rotate(-4deg);}
+	15%	{transform: rotate(4deg);}
+	25% {transform: rotate(-4deg);}
+	40%	{transform: rotate(4deg);}
+	60%	{transform: rotate(-4deg);}
+	80%	{transform: rotate(4deg);}
     100% {transform: rotate(0deg);}
 }
 
@@ -154,11 +152,19 @@ background-color: #b40000;
 position: absolute;
 right: 50px;
 top: 50px;
-width: auto+10px;
+width: auto;
 height: 30px;
 border-radius: 10px;
 padding: 5px;
 background-color: #b40000;
+}
+
+#itemGet {
+position: absolute;
+right: 30px;
+top: 30px;
+color: black;
+display:none;
 }
 
 #nextbutton {
@@ -193,6 +199,8 @@ background-color: #2196F3;
 	left: 100px;
 	padding: 0px;
 }
+
+
 
 #descbox {
 	background-color: #2196F3;	

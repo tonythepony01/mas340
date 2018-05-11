@@ -10,22 +10,22 @@
 	<script src="Scripts/jquery.js"></script>
 <script>
 $(document).ready(function(){
-setupInventory()
+
 //Place this function at the beginning of the story, or else the dialogue memory function will not work. it will clear the localstorage on refresh and page changes
 	checkInventory(); // required on every page to check which items have been picked up
-		
 	$('.clickable').mousedown(function() {
 		if ($('#inventorybutton').hasClass('spring') == true) {
 			$('#inventorybutton').removeClass('spring');
-		}	
-
+		}		
 	}).mouseup(function() {
 		if ($('#inventorybutton').hasClass('spring') == false) {
-					$('#inventorybutton').addClass('spring');
+			$('#inventorybutton').addClass('spring');
 		}
-		$(this).fadeOut('slow');
+		$(this).fadeOut('fast');
 		localStorage.setItem(itemName, 'true');	
 		var itemName = $(this).attr('id');
+		$('#itemGet').show().animate({top: '15px'}, 200).fadeOut('slow');
+		$('#itemGet').css('top', '30px');
 		checkInventory();
 	});
 	
@@ -73,6 +73,7 @@ setupInventory()
 <a href="map.html">map</a>
 <a href="collisiontest.html">collision</a>
 	<div id="inventorybutton"><a class="htmllink" href="inventory.html">Inventory</a></div>
+	<div id="itemGet">+1</div>
 	<img src="images/knife.png" id="knife" class="clickable">
 	<img src="images/apple.png" id="apple" class="clickable">
 	<img src="images/rope.png" id="rope" class="clickable">
