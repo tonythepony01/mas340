@@ -17,19 +17,16 @@ setupInventory()
 	$('.clickable').mousedown(function() {
 		if ($('#inventorybutton').hasClass('spring') == true) {
 			$('#inventorybutton').removeClass('spring');
-		}
-		$('#inventorybutton').addClass('spring');
-		
-		var itemName = $(this).attr('id');
-		localStorage.setItem(itemName, 'true');	
-		checkInventory();
-		$('#next').show();
+		}	
+
 	}).mouseup(function() {
 		if ($('#inventorybutton').hasClass('spring') == false) {
 					$('#inventorybutton').addClass('spring');
 		}
 		$(this).fadeOut('slow');
-		$('#inventorybutton').removeClass('spring');
+		localStorage.setItem(itemName, 'true');	
+		var itemName = $(this).attr('id');
+		checkInventory();
 	});
 	
 	if (localStorage.getItem('DialogueProgress') != "undefined" && localStorage.getItem('DialogueProgress') != null && localStorage.getItem('DialogueProgress') != 0) {
