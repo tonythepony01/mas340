@@ -184,6 +184,7 @@ background-color: #b40000;
 	right: 50px;
 	-webkit-animation: pulsate 2s linear infinite;
 	animation: pulsate 2s linear infinite;
+	display:none;
 }
 
 #itemGet {

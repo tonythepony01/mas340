@@ -99,6 +99,14 @@ function CheckTime() {
 		});
 	}
 }
+
+function EnterCheck(DestLoc) {
+	if (LocKeyGet(DestLoc)[3] == true) {
+		$('#EnterButton').show();
+	} else {
+		$('#EnterButton').hide();
+	}
+}
 function CheckLoc() {
 	if (localStorage.getItem("SavedLoc") != "undefined" && localStorage.getItem("SavedLoc") != null) {
 		CurrentLoc = localStorage.getItem("SavedLoc");
@@ -122,10 +130,10 @@ function CheckLoc() {
 		});
 	}
 	function LocKeyGet(Location) {
-		var LocDict2 = [['p1','A',500,150],['p2','C',250,600],['p4','D',460,450],['p4','B',375,450],['p5','E',575,575],['p6','F',575,325],['p7','G',375,900]]
+		var LocDict2 = [['p1','A',500,150,true],['p2','C',250,600,false],['p4','B',460,450, true],['p4','D',375,450,false],['p5','E',575,575,false],['p6','F',575,325,false],['p7','G',375,900,true]]
 		for (let a=0;a<7;a++) {
 				if (Location == LocDict2[a][1]) {
-					result = [LocDict2[a][0],LocDict2[a][2],LocDict2[a][3]]
+					result = [LocDict2[a][0],LocDict2[a][2],LocDict2[a][3],LocDict2[a][4]]
 					return result
 			}
 		}
