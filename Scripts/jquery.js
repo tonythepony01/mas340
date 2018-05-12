@@ -84,15 +84,19 @@ function CheckTime() {
 		TVal = localStorage.getItem("Time");
 		console.log(TVal);
 		$('#map').css({
-		'filter':'brightness(0.30) saturate(50%) hue-rotate(29deg)',
-		'webkitFilter':'brightness(0.30) saturate(50%) hue-rotate(29deg)',
-	});
+			'filter':'brightness(0.30) saturate(50%) hue-rotate(29deg)',
+			'webkitFilter':'brightness(0.30) saturate(50%) hue-rotate(29deg)',
+					'transition':'all 0.0s ease-out',
+		'-webkit-transition':'all 0.0s ease-out',
+		});
 	} else {
 		TVal = 216;
-			$('#map').css({
-		'filter':'brightness(1) saturate(100%) hue-rotate(0deg)',
-		'webkitFilter':'brightness(1) saturate(100%) hue-rotate(0deg)',
-	});
+		$('#map').css({
+			'filter':'brightness(1) saturate(100%) hue-rotate(0deg)',
+			'webkitFilter':'brightness(1) saturate(100%) hue-rotate(0deg)',
+					'transition':'all 0.0s',
+		'-webkit-transition':'all 0.0s',
+		});
 	}
 }
 function CheckLoc() {
