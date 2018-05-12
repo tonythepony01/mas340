@@ -1,4 +1,21 @@
-
+var TVal = 210;
+var CurrentLoc = 'A';
+function CheckTime() {
+	if (localStorage.getItem("Time") != "undefined" && localStorage.getItem("Time") != null) {
+		TVal = localStorage.getItem("Time");
+	} else {
+		TVal = 210;
+	}
+}
+function CheckLoc() {
+	if (localStorage.getItem("SavedLoc") != "undefined" && localStorage.getItem("SavedLoc") != null) {
+		CurrentLoc = localStorage.getItem("SavedLoc");
+		$( "#char" ).css({left: LocExtractorX(LocKeyGet(CurrentLoc)),top: LocExtractorY(LocKeyGet(CurrentLoc))}, 0, function() {});
+	} else {
+		CurrentLoc = 'A';
+		$('#char').css({top:500,left:150});
+	}
+}
 
 var a = {
     path: [10, 10, 300, 10, 300, 300],
