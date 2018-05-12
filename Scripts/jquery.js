@@ -141,15 +141,15 @@ function setupInventory() {
 function checkInventory() {
 	if( localStorage.getItem('knife') == 'true' ) {
 		$('#itemgrid #inv-knife').show();
-		$('#knife').hide();
+		$('#Knife').hide();
 	}
 	if( localStorage.getItem('apple') == 'true' ) {
 		$('#itemgrid #inv-apple').show();
-		$('#apple').hide();
+		$('#Apple').hide();
 	}
 	if( localStorage.getItem('rope') == 'true' ) {
 		$('#itemgrid #inv-rope').show();
-		$('#rope').hide();
+		$('#Rope').hide();
 	}
 }
 
