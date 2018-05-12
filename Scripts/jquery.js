@@ -1,15 +1,14 @@
 var TVal = 216;
 var CurrentLoc = 'A';
 var time = [];
-var isNightTime = true;
 
 function drawDayLines() {
-								$('#map').css({
-			'filter':'brightness(1) saturate(100%) hue-rotate(0deg)',
-			'webkitFilter':'brightness(1) saturate(100%) hue-rotate(0deg)',
-			'transition':'all 0.2s ease-out',
-			'-webkit-transition':'all 0.2s ease-out',
-		});
+	$('#map').css({
+		'filter':'brightness(1) saturate(100%) hue-rotate(0deg)',
+		'webkitFilter':'brightness(1) saturate(100%) hue-rotate(0deg)',
+		'transition':'all 0.2s ease-out',
+		'-webkit-transition':'all 0.2s ease-out',
+	});
 	var c = document.getElementById("myCanvas");
 	var ctx = c.getContext("2d");
 	var locationp1 = $('#p1').position();
@@ -46,12 +45,12 @@ function drawDayLines() {
 	ctx.stroke();
 }
 function drawNightLines() {
-								$('#map').css({
-			'filter':'brightness(0.30) saturate(50%) hue-rotate(29deg)',
-			'webkitFilter':'brightness(0.30) saturate(50%) hue-rotate(29deg)',
-			'transition':'all 0.2s ease-out',
-			'-webkit-transition':'all 0.2s ease-out',
-		});
+	$('#map').css({
+		'filter':'brightness(0.30) saturate(50%) hue-rotate(29deg)',
+		'webkitFilter':'brightness(0.30) saturate(50%) hue-rotate(29deg)',
+		'transition':'all 0.2s ease-out',
+		'-webkit-transition':'all 0.2s ease-out',
+	});
 	var c = document.getElementById("myCanvas");
 	var ctx = c.getContext("2d");
 	var locationp1 = $('#p1').position();
@@ -84,7 +83,7 @@ function CheckTime() {
 	if (localStorage.getItem("Time") != "undefined" && localStorage.getItem("Time") != null) {
 		TVal = localStorage.getItem("Time");
 	} else {
-		TVal = 210;
+		TVal = 216;
 	}
 }
 function CheckLoc() {
