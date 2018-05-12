@@ -11,8 +11,8 @@
 <script>
 $(document).ready(function(){
 	checkInventory(); 
-	var itemDesc = {"inv-knife": "Description1","inv-apple":'Description2',"inv-rope":"Description3"};
-	$("#inv-knife, #inv-apple,#inv-rope").hover(function(){
+	var itemDesc = {"inv-Knife": "Description1","inv-Apple":'Description2',"inv-Rope":"Description3"};
+	$("#inv-Knife, #inv-Apple,#inv-Rope").hover(function(){
 		$("#descbox").show();
 		attr = String($(this).attr('id'))
 		description = itemDesc[attr]
@@ -29,14 +29,14 @@ $(document).ready(function(){
 	<div id="backbutton"><button onclick="goBack()">Go Back</button></div>
 	<div id="title">Inventory</div>
 	<div id="itemgrid">
-		<div class="items"><img src="images/inv-knife.png" id="inv-knife"></div>
-		<div class="items"><img src="images/inv-apple.png" id="inv-apple"></div>
-		<div class="items"><img src="images/inv-rope.png" id="inv-rope"></div>
-		<div class="items"><img src="images/inv-rope.png" id="inv-rope"></div>
-		<div class="items"><img src="images/inv-rope.png" id="inv-rope"></div>
-		<div class="items"><img src="images/inv-rope.png" id="inv-rope"></div>
-		<div class="items"><img src="images/inv-rope.png" id="inv-rope"></div>
-		<div class="items"><img src="images/inv-rope.png" id="inv-rope"></div>
+		<div class="items"><img src="images/inv-knife.png" id="inv-Knife"></div>
+		<div class="items"><img src="images/inv-apple.png" id="inv-Apple"></div>
+		<div class="items"><img src="images/inv-rope.png" id="inv-Rope"></div>
+		<div class="items"><img src="images/inv-rope.png" id="inv-Rope"></div>
+		<div class="items"><img src="images/inv-rope.png" id="inv-Rope"></div>
+		<div class="items"><img src="images/inv-rope.png" id="inv-Rope"></div>
+		<div class="items"><img src="images/inv-rope.png" id="inv-Rope"></div>
+		<div class="items"><img src="images/inv-rope.png" id="inv-Rope"></div>
 	</div>
 	<div id="descbox"></div>
 	</div>

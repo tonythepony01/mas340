@@ -133,22 +133,22 @@ function setupInventory() {
 	localStorage.clear();
 
 	// SET UP LOCALSTORAGE OBJECTS
-	localStorage.setItem('knife', 'false');
-	localStorage.setItem('apple', 'false');
-	localStorage.setItem('rope', 'false');
+	localStorage.setItem('Knife', 'false');
+	localStorage.setItem('Apple', 'false');
+	localStorage.setItem('Rope', 'false');
 }
 
 function checkInventory() {
-	if( localStorage.getItem('knife') == 'true' ) {
-		$('#itemgrid #inv-knife').show();
+	if( localStorage.getItem('Knife') == 'true' ) {
+		$('#itemgrid #inv-Knife').show();
 		$('#Knife').hide();
 	}
-	if( localStorage.getItem('apple') == 'true' ) {
-		$('#itemgrid #inv-apple').show();
+	if( localStorage.getItem('Apple') == 'true' ) {
+		$('#itemgrid #inv-Apple').show();
 		$('#Apple').hide();
 	}
-	if( localStorage.getItem('rope') == 'true' ) {
-		$('#itemgrid #inv-rope').show();
+	if( localStorage.getItem('Rope') == 'true' ) {
+		$('#itemgrid #inv-Rope').show();
 		$('#Rope').hide();
 	}
 }
