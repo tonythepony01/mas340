@@ -7,6 +7,8 @@ body {
             user-select: none;  
 			overflow: hidden;
 }
+body { background-color: ivory; }
+canvas {border:1px solid red;}
 
 #p1,#p2,#p3,#p4, #p5,#p6,#p7 {
 	width:20px;

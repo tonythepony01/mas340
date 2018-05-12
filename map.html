@@ -23,13 +23,15 @@ $(document).ready(function(){
 	var TVal = 210; /*Number of hours*/
 	var NTval = [[0,6],[18,24],[36,42],[54,60],[72,78],[90,96],[108,114],[126,132],[144,150],[162,168],[180,186],[198,204]]; /*Night time hours*/
 	
-	var isNightTimetoggle = true;
+	var isNightTime = true;
 	if (localStorage.getItem("SavedLoc") != "undefined" && localStorage.getItem("SavedLoc") != null) {
 		var CurrentLoc = localStorage.getItem("SavedLoc");
 		$( "#char" ).css({left: LocExtractorX(LocKeyGet(CurrentLoc)),top: LocExtractorY(LocKeyGet(CurrentLoc))}, 0, function() {});
+		TVal = localStorage.getItem("Time");
 	} else {
 		var CurrentLoc = 'A';
 		$('#char').css({top:500,left:150});
+		TVal = localStorage.getItem("Time");
 	}
 
 	for (let a =0; a<11; a++)	{
@@ -42,11 +44,24 @@ $(document).ready(function(){
 		defLoc = String($(this).attr('id'))
 		position = p.position();
 		DestLoc = LocDict[defLoc];
-		if (PathList[PathNum[CurrentLoc]].includes(DestLoc) == true) {
+		if (isNightTime == time.includes(TVal) && PathList[PathNum[CurrentLoc]].includes(DestLoc) == true) {
+			console.log('Night Time. Time Left: '+TVal)
+			PathList = [['A','B'],['B','A','C'],['C','B'],['D','E','F'],['E','D'],['F','D'],['G']]; 
+			TVal -= 6;
 			$( "#char" ).animate({left: position.left,top: position.top}, 100, function() {});
 			CurrentLoc = DestLoc;
 			localStorage.setItem("SavedLoc", DestLoc);
-		}/* else if ((PathNum[DestLoc]-PathNum[CurrentLoc]) < -1 || (PathNum[DestLoc]-PathNum[CurrentLoc]) >= 1 ) {
+			localStorage.setItem("Time", TVal);
+		} else if (PathList[PathNum[CurrentLoc]].includes(DestLoc) == true) {
+			console.log('Day Time. Time Left: '+TVal)
+			PathList = [['A','B'],['B','A','C','D'],['C','B','G'],['D','B','E','F'],['E','D'],['F','D'],['G','C']];
+			TVal -= 6;
+			$( "#char" ).animate({left: position.left,top: position.top}, 100, function() {});
+			CurrentLoc = DestLoc;
+			localStorage.setItem("SavedLoc", DestLoc);
+			localStorage.setItem("Time", TVal);
+		}
+/* else if ((PathNum[DestLoc]-PathNum[CurrentLoc]) < -1 || (PathNum[DestLoc]-PathNum[CurrentLoc]) >= 1 ) {
 			for (x = 0; x<4;x++) {
 				if (PathList[x].includes(CurrentLoc) && PathList[x].includes(DestLoc)) {
 					for (var key in PathNum) {
@@ -65,13 +80,13 @@ $(document).ready(function(){
 				}
 			}
 		} */
-		if (isNightTimetoggle == time.includes(TVal)) {
+		/* if (isNightTime == time.includes(TVal)) {
 			TVal -= 12;
-			/* INSERT NIGHTTIME EVENT HERE*/
+			//INSERT NIGHTTIME EVENT HERE
 		} else {
 			TVal -= 12;
-			/* INSERT DAYTIME EVENT HERE*/
-		}
+			//INSERT DAYTIME EVENT HERE
+		}*/
 	});
 
 	var c = document.getElementById("myCanvas");

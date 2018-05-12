@@ -1,5 +1,51 @@
 
 
+var a = {
+    path: [10, 10, 300, 10, 300, 300],
+    isVisible: false,
+}
+
+// create an object containing the left-bottom lines
+// the object contains its path points & if it is visible or not
+var b = {
+    path: [10, 10, 10, 300, 300, 300],
+    isVisible: false,
+}
+
+// an array containing all the line-path objects
+var myObjects = [a, b];
+
+// clear the entire canvas 
+// redraw any line-paths that are visible
+function redrawAll(myObjects) {
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    for (var i = 0; i < myObjects.length; i++) {
+        if (myObjects[i].isVisible) {
+            drawLinePath(myObjects[i]);
+        }
+    }
+}
+
+// redraw 1 line-path
+function drawLinePath(theObject) {
+    var points = theObject.path;
+    // save the current untranslated context state
+    context.save();
+
+    // draw lines through each point in the objects path
+    context.translate(0.5, 0.5);
+    context.beginPath();
+    context.setLineDash([2, 10]);
+    context.moveTo(points[0], points[1]);
+    for (var i = 2; i < points.length; i += 2) {
+        context.lineTo(points[i], points[i + 1]);
+    }
+    context.stroke();
+
+    // restore the context to its untranslated state
+    context.restore();
+}
+	
 	function HoverColor() {
 		$("#inventorybutton, #p1,#p2,#p3,#p4,#p5,#p6,#p7").hover(function(){
 			$(this).css('background-color','#e54444');
