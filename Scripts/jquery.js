@@ -82,8 +82,17 @@ function drawNightLines() {
 function CheckTime() {
 	if (localStorage.getItem("Time") != "undefined" && localStorage.getItem("Time") != null) {
 		TVal = localStorage.getItem("Time");
+		console.log(TVal);
+		$('#map').css({
+		'filter':'brightness(0.30) saturate(50%) hue-rotate(29deg)',
+		'webkitFilter':'brightness(0.30) saturate(50%) hue-rotate(29deg)',
+	});
 	} else {
 		TVal = 216;
+			$('#map').css({
+		'filter':'brightness(1) saturate(100%) hue-rotate(0deg)',
+		'webkitFilter':'brightness(1) saturate(100%) hue-rotate(0deg)',
+	});
 	}
 }
 function CheckLoc() {
