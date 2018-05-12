@@ -1,4 +1,6 @@
-var TVal = 210;
+
+
+var TVal = 216;
 var CurrentLoc = 'A';
 function CheckTime() {
 	if (localStorage.getItem("Time") != "undefined" && localStorage.getItem("Time") != null) {
@@ -18,14 +20,14 @@ function CheckLoc() {
 }
 
 var a = {
-    path: [10, 10, 300, 10, 300, 300],
+    path: [100, 100, 100, 100, 100, 200],
     isVisible: false,
 }
 
 // create an object containing the left-bottom lines
 // the object contains its path points & if it is visible or not
 var b = {
-    path: [10, 10, 10, 300, 300, 300],
+    path: [200, 300, 400, 500, 600, 700],
     isVisible: false,
 }
 
@@ -46,38 +48,39 @@ function redrawAll(myObjects) {
 // redraw 1 line-path
 function drawLinePath(theObject) {
     var points = theObject.path;
+	
     // save the current untranslated context state
     context.save();
 
     // draw lines through each point in the objects path
-    context.translate(0.5, 0.5);
     context.beginPath();
-    context.setLineDash([2, 10]);
+    context.setLineDash([5, 15]);
     context.moveTo(points[0], points[1]);
     for (var i = 2; i < points.length; i += 2) {
         context.lineTo(points[i], points[i + 1]);
+		console.log(points[i],points[i + 1])
     }
     context.stroke();
 
     // restore the context to its untranslated state
     context.restore();
 }
-	
+
+	var time = [];
+	function range(start, end) {	
+		for (let i = start; i <= end; i++) {
+			time.push(i);
+		}
+		return
+	}
 	function HoverColor() {
 		$("#inventorybutton, #p1,#p2,#p3,#p4,#p5,#p6,#p7").hover(function(){
 			$(this).css('background-color','#e54444');
-			
 		}, function(){
 			$(this).css('background-color','#b40000');
 		});
 	}
-	var time = [];
-	function range(start, end) {	
-		for (let i = start; i <= end; i++) {
-				time.push(i);
-			}
-			return
-	}
+
 		
 	function LocKeyGet(Location) {
 		var LocDict2 = [['p1','A',500,150],['p2','C',250,600],['p4','D',460,450],['p4','B',375,450],['p5','E',575,575],['p6','F',575,325],['p7','G',375,900]]
@@ -95,21 +98,21 @@ function drawLinePath(theObject) {
 	function LocExtractorY(Location) {
 		return Location[1]
 	}
-function testColl() {
-			function checkCollision() {
-				var hit = $('.player').objectHitTest({"object": $('#tunnelbackground'),'transparency': true});
-				if(hit) {
-					$('.player').hide({effect:'explode'});
-					clearInterval(collisionTimer);
-					setTimeout(resetPlayer,1000);
-					}
-			}
-			function resetPlayer() {
-				$('.player').css({top:550,left: 350}).fadeIn();
-				collisionTimer = setInterval(checkCollision, 150);
-			}	
-			var collisionTimer = setInterval(checkCollision, 150);
-}
+	function testColl() {
+		function checkCollision() {
+			var hit = $('.player').objectHitTest({"object": $('#tunnelbackground'),'transparency': true});
+			if(hit) {
+				$('.player').hide({effect:'explode'});
+				clearInterval(collisionTimer);
+				setTimeout(resetPlayer,1000);
+		}
+	}
+		function resetPlayer() {
+			$('.player').css({top:550,left: 350}).fadeIn();
+			collisionTimer = setInterval(checkCollision, 150);
+		}	
+		var collisionTimer = setInterval(checkCollision, 150);
+	}
 function goBack() {
     window.history.back()
 }
