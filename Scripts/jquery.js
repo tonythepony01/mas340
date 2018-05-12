@@ -1,6 +1,8 @@
 var TVal = 216;
 var CurrentLoc = 'A';
 var time = [];
+
+
 function drawDayLines() {
 	var c = document.getElementById("myCanvas");
 	var ctx = c.getContext("2d");

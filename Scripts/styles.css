@@ -115,7 +115,7 @@ body {
 }
 
 
-#background, #tunnelbackground  {
+#background, #tunnelbackground, #map  {
 	background-color: white;
 	display: block;
 	position: relative;
@@ -123,6 +123,11 @@ body {
 	top: 150px;
 	width: 1000px;
 	height: 600px;
+}
+
+#map {
+	position: absolute;
+	top: 0px;
 }
 
 .bg1 {
@@ -134,8 +139,14 @@ body {
 }
 
 .bg3 {
-	background-image: url('../images/testmapgraphic.jpg') ;
+	background-image: url('../images/testmapgraphic.jpg');
 }
+
+.bg3night {
+	background-image: url('../images/testmapgraphic.jpg');
+    filter: brightness(0.30) saturate(50%) hue-rotate(29deg);
+}
+
 #tunnelbackground {
 	background-color: transparent;
 }
