@@ -64,7 +64,7 @@ body {
 	transform: scale(0.50,0.50)
 }
 
-#backbutton a, #inventorybutton a, #title, a:visited, #itemGet {
+#backbutton a, #inventorybutton a, #title, a:visited, #itemGet, #EnterButton {
 	color: black;
 	font-size: 1.5em;
 		text-decoration: none;
@@ -114,6 +114,18 @@ body {
     100% {transform: rotate(0deg);}
 }
 
+@-webkit-keyframes pulsate {
+ 0% {-webkit-transform: scale(1, 1);}
+ 50% {-webkit-transform: scale(1.05, 1.05); background-color: #ff7070;}
+ 100% {-webkit-transform: scale(1, 1); background-color: #b40000; };
+}
+
+@keyframes pulsate {
+ 0% {transform: scale(1, 1);}
+ 50% {transform: scale(1.05, 1.05); background-color: #ff7070;}
+ 100% {transform: scale(1, 1); background-color: #b40000;};
+}
+
 
 #background, #tunnelbackground, #map  {
 	background-color: white;
@@ -140,12 +152,7 @@ body {
 
 .bg3 {
 	background-image: url('../images/testmapgraphic.jpg');
-}
-
-.bg3night {
-	background-image: url('../images/testmapgraphic.jpg');
-    filter: brightness(0.30) saturate(50%) hue-rotate(29deg);
-	-webkit-filter: brightness(0.30) saturate(50%) hue-rotate(29deg);
+	background-repeat: no-repeat;
 }
 
 #tunnelbackground {
@@ -161,7 +168,7 @@ height: 30px;
 background-color: #b40000;
 }
 
-#inventorybutton {
+#inventorybutton, #EnterButton {
 position: absolute;
 right: 50px;
 top: 50px;
@@ -170,6 +177,13 @@ height: 30px;
 border-radius: 10px;
 padding: 5px;
 background-color: #b40000;
+}
+
+#EnterButton {
+	top: 550px;
+	right: 50px;
+	-webkit-animation: pulsate 2s linear infinite;
+	animation: pulsate 2s linear infinite;
 }
 
 #itemGet {

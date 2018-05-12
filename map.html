@@ -11,30 +11,25 @@
 <script>
 
 $(document).ready(function(){
-
-	drawDayLines()
 	var p;
 	var defLoc;
 	var position;
 	var DestLoc;
-	$('#map').addClass('bg3');
 	var LocDict = {p1:'A',p2:'C',p3:'D',p4:'B',p5:'E',p6:'F',p7:'G'}; /*Location keys*/
 	var PathNum = {A:0,B:1,C:2,D:3,E:4,F:5,G:6}; /*Traverse index*/
 	var PathList = [['A','B'],['B','A','C','D'],['C','B','G'],['D','B','E','F'],['E','D'],['F','D'],['G','C']]; /*Indicates the locations that can be travelled to from a certain point*/
-
 	var NTval = [[0,6],[18,24],[36,42],[54,60],[72,78],[90,96],[108,114],[126,132],[144,150],[162,168],[180,186],[198,204]]; /*Night time hours*/
 	var isNightTime = true;
 	CheckLoc();
 	CheckTime();
+	HoverColor();
+	drawDayLines();
+	$('#map').addClass('bg3');
 	for (let a =0; a<=11; a++)	{
 		time.push(range(NTval[a][0],NTval[a][1]));
 	}
-	HoverColor();
-
 	$("#p1,#p2,#p3,#p4,#p5,#p6,#p7").click(function() {
-		if (TVal <= 0) {
-			console.log('Game has ended')
-		}
+		if (TVal <= 0) {console.log('Game has ended')};
 		p = $(this);
 		defLoc = String($(this).attr('id'))
 		position = p.position();
@@ -57,13 +52,11 @@ $(document).ready(function(){
 			localStorage.setItem("SavedLoc", DestLoc);
 			localStorage.setItem("Time", TVal);
 			drawDayLines();
-		}
-/* else if ((PathNum[DestLoc]-PathNum[CurrentLoc]) < -1 || (PathNum[DestLoc]-PathNum[CurrentLoc]) >= 1 ) {
+		} /* else if ((PathNum[DestLoc]-PathNum[CurrentLoc]) < -1 || (PathNum[DestLoc]-PathNum[CurrentLoc]) >= 1 ) {
 			for (x = 0; x<4;x++) {
 				if (PathList[x].includes(CurrentLoc) && PathList[x].includes(DestLoc)) {
 					for (var key in PathNum) {
 						if (PathNum.hasOwnProperty(key) && PathList.indexOf(PathList[x]) == PathNum[key]) {
-							
 							for (var key2 in LocDict) {
 								if (LocDict.hasOwnProperty(key2) && key == LocDict[key2]) {
 									p = ('"#'+key2+'"')
@@ -77,13 +70,6 @@ $(document).ready(function(){
 				}
 			}
 		} */
-		/* if (isNightTime == time.includes(TVal)) {
-			TVal -= 12;
-			//INSERT NIGHTTIME EVENT HERE
-		} else {
-			TVal -= 12;
-			//INSERT DAYTIME EVENT HERE
-		}*/
 	});
 
 
@@ -100,7 +86,6 @@ $(document).ready(function(){
 <a href="collisiontest.html">collision</a>
 <div id="background">
 	<div id="map"><canvas id="myCanvas" width="1000" height="600" style="border:1px solid #d3d3d3;"></canvas></div>
-	
 	<div id="inventorybutton"><a class="htmllink" href="inventory.html">Inventory</a></div>
 	<div id="char"></div>
 	<div id="p1"></div>
@@ -110,6 +95,7 @@ $(document).ready(function(){
 	<div id="p5"></div>
 	<div id="p6"></div>
 	<div id="p7"></div>
+	<div id='EnterButton'>Enter</div>
 	
 	
 </div>
