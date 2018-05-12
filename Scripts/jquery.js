@@ -81,9 +81,6 @@ function CheckLoc() {
 		$('#char').css({top:500,left:150});
 	}
 }
-
-
-	
 	function range(start, end) {	
 		for (let i = start; i <= end; i++) {
 			time.push(i);
@@ -97,8 +94,6 @@ function CheckLoc() {
 			$(this).css('background-color','#b40000');
 		});
 	}
-
-		
 	function LocKeyGet(Location) {
 		var LocDict2 = [['p1','A',500,150],['p2','C',250,600],['p4','D',460,450],['p4','B',375,450],['p5','E',575,575],['p6','F',575,325],['p7','G',375,900]]
 		for (let a=0;a<7;a++) {
@@ -108,7 +103,6 @@ function CheckLoc() {
 			}
 		}
 	}
-	
 	function LocExtractorX(Location) {
 		return Location[2]
 	}
