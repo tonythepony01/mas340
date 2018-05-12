@@ -26,9 +26,7 @@ $(document).ready(function(){
 	HoverColor();
 	drawDayLines();
 	$('#map').addClass('bg3');
-	for (let a =0; a<=11; a++)	{
-		time.push(range(NTval[a][0],NTval[a][1]));
-	}
+	for (let a =0; a<=11; a++)	{time.push(range(NTval[a][0],NTval[a][1]));}
 	$("#p1,#p2,#p3,#p4,#p5,#p6,#p7").click(function() {
 		if (TVal <= 0) {console.log('Game has ended')};
 		p = $(this);
@@ -74,9 +72,12 @@ $(document).ready(function(){
 			}
 		} */
 	});
-	$('#EnterButton').click(function() {
-	
-	})
+	$('#EnterButton,#ButtonLink').click(function() {
+		if (EnterCheck(DestLoc) == true) {
+			console.log(LocKeyGet(DestLoc)[4])
+			document.getElementById('ButtonLink').setAttribute('href',LocKeyGet(DestLoc)[4])
+		}	
+	});
 
 
 
@@ -100,7 +101,7 @@ $(document).ready(function(){
 	<div id="p5"></div>
 	<div id="p6"></div>
 	<div id="p7"></div>
-	<div id='EnterButton'>Enter</div>
+	<div id='EnterButton'><a id ='ButtonLink' href="">Enter</a></div>
 	
 	
 </div>
