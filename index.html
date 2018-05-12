@@ -10,32 +10,7 @@
 <script src="Scripts/jquery-ui.js"></script>
 <script>
 $(document).ready(function(){
-	canvas = document.getElementById("myCanvas");
-context = canvas.getContext('2d');
 
-// create an object containing the top-right lines
-// the object contains its path points & if it is visible or not
-
-
-// use buttons to set & clear the visibility flags on objects
-// In all cases, clear the entire canvas and redraw any visible objects
-
-$("#reDrowA").on("click", function () {
-    a.isVisible = true;
-    redrawAll(myObjects);
-});
-$("#reDrowB").on("click", function () {
-    b.isVisible = true;
-    redrawAll(myObjects);
-});
-$("#clearA").on("click", function () {
-    a.isVisible = false;
-    redrawAll(myObjects);
-});
-$("#clearB").on("click", function () {
-    b.isVisible = false;
-    redrawAll(myObjects);
-});
 	
 });
 

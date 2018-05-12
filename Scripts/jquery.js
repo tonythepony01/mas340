@@ -1,7 +1,70 @@
-
-
 var TVal = 216;
 var CurrentLoc = 'A';
+var time = [];
+function drawDayLines() {
+	var c = document.getElementById("myCanvas");
+	var ctx = c.getContext("2d");
+	var locationp1 = $('#p1').position();
+	var locationp2 = $('#p2').position();
+	var locationp3 = $('#p3').position();
+	var locationp4 = $('#p4').position();
+	var locationp5 = $('#p5').position();
+	var locationp6 = $('#p6').position();
+	var locationp7 = $('#p7').position();
+	ctx.clearRect(0,0,1000,600);
+	ctx.beginPath();
+	ctx.moveTo(locationp1.left,locationp1.top);
+	ctx.lineTo(locationp4.left,locationp4.top);
+	ctx.stroke();
+	ctx.beginPath();
+	ctx.moveTo(locationp4.left,locationp4.top);
+	ctx.lineTo(locationp2.left,locationp2.top);
+	ctx.stroke();
+	ctx.beginPath();
+	ctx.moveTo(locationp4.left,locationp4.top);
+	ctx.lineTo(locationp3.left,locationp3.top);
+	ctx.stroke();
+	ctx.beginPath();
+	ctx.moveTo(locationp3.left,locationp3.top);
+	ctx.lineTo(locationp5.left,locationp5.top);
+	ctx.stroke();
+	ctx.beginPath();
+	ctx.moveTo(locationp3.left,locationp3.top);
+	ctx.lineTo(locationp6.left,locationp6.top);
+	ctx.stroke();
+	ctx.beginPath();
+	ctx.moveTo(locationp2.left,locationp2.top);
+	ctx.lineTo(locationp7.left,locationp7.top);
+	ctx.stroke();
+}
+function drawNightLines() {
+	var c = document.getElementById("myCanvas");
+	var ctx = c.getContext("2d");
+	var locationp1 = $('#p1').position();
+	var locationp2 = $('#p2').position();
+	var locationp3 = $('#p3').position();
+	var locationp4 = $('#p4').position();
+	var locationp5 = $('#p5').position();
+	var locationp6 = $('#p6').position();
+	var locationp7 = $('#p7').position();
+	ctx.clearRect(0,0,1000,600);
+	ctx.beginPath();
+	ctx.moveTo(locationp1.left,locationp1.top);
+	ctx.lineTo(locationp4.left,locationp4.top);
+	ctx.stroke();
+	ctx.beginPath();
+	ctx.moveTo(locationp4.left,locationp4.top);
+	ctx.lineTo(locationp2.left,locationp2.top);
+	ctx.stroke();
+	ctx.beginPath();
+	ctx.moveTo(locationp3.left,locationp3.top);
+	ctx.lineTo(locationp5.left,locationp5.top);
+	ctx.stroke();
+	ctx.beginPath();
+	ctx.moveTo(locationp3.left,locationp3.top);
+	ctx.lineTo(locationp6.left,locationp6.top);
+	ctx.stroke();
+}
 function CheckTime() {
 	if (localStorage.getItem("Time") != "undefined" && localStorage.getItem("Time") != null) {
 		TVal = localStorage.getItem("Time");
@@ -19,54 +82,8 @@ function CheckLoc() {
 	}
 }
 
-var a = {
-    path: [100, 100, 100, 100, 100, 200],
-    isVisible: false,
-}
 
-// create an object containing the left-bottom lines
-// the object contains its path points & if it is visible or not
-var b = {
-    path: [200, 300, 400, 500, 600, 700],
-    isVisible: false,
-}
-
-// an array containing all the line-path objects
-var myObjects = [a, b];
-
-// clear the entire canvas 
-// redraw any line-paths that are visible
-function redrawAll(myObjects) {
-    context.clearRect(0, 0, canvas.width, canvas.height);
-    for (var i = 0; i < myObjects.length; i++) {
-        if (myObjects[i].isVisible) {
-            drawLinePath(myObjects[i]);
-        }
-    }
-}
-
-// redraw 1 line-path
-function drawLinePath(theObject) {
-    var points = theObject.path;
 	
-    // save the current untranslated context state
-    context.save();
-
-    // draw lines through each point in the objects path
-    context.beginPath();
-    context.setLineDash([5, 15]);
-    context.moveTo(points[0], points[1]);
-    for (var i = 2; i < points.length; i += 2) {
-        context.lineTo(points[i], points[i + 1]);
-		console.log(points[i],points[i + 1])
-    }
-    context.stroke();
-
-    // restore the context to its untranslated state
-    context.restore();
-}
-
-	var time = [];
 	function range(start, end) {	
 		for (let i = start; i <= end; i++) {
 			time.push(i);
