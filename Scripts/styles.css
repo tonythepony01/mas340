@@ -97,12 +97,12 @@ body {
         top: 1080px;
     }
 } 
-.spring {
-	-webkit-animation: spring 0.25s ;
-    animation: spring 0.25s ;
+.jiggle {
+	-webkit-animation: jiggle 0.25s ;
+    animation: jiggle 0.25s ;
 }
 
-@-webkit-keyframes spring {
+@-webkit-keyframes jiggle {
     0% {transform: rotate(0deg);}
 	5%	{transform: rotate(4deg);}
     10% {transform: rotate(-4deg);}
@@ -145,6 +145,7 @@ body {
 .bg3night {
 	background-image: url('../images/testmapgraphic.jpg');
     filter: brightness(0.30) saturate(50%) hue-rotate(29deg);
+	-webkit-filter: brightness(0.30) saturate(50%) hue-rotate(29deg);
 }
 
 #tunnelbackground {
