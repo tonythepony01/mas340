@@ -116,7 +116,7 @@ function EnterCheck(DestLoc, Xcoord, Ycoord) {
 
 function CheckEnter() {
 	var coords = JSON.parse("[" + localStorage.getItem('Enter') + "]");
-	console.log(coords);
+	//console.log(coords);
 	if (localStorage.getItem('Enter') != "undefined" && localStorage.getItem('Enter') != null && coords[0] == true) {
 		$('#EnterButton').css({
 			'left': coords[1],
@@ -125,7 +125,10 @@ function CheckEnter() {
 			'webkitFilter':'brightness(1) saturate(100%)',
 			'animation': 'pulsate 2s linear infinite',
 			'-webkit-animation': 'pulsate 2s linear infinite'
+			
 		}).show();
+					Save = localStorage.getItem('SavedLoc');
+						document.getElementById('ButtonLink').setAttribute('href',LocKeyGet(Save,0,0)[4])
 	} else {
 		$('#EnterButton').hide();
 	}
@@ -134,7 +137,7 @@ function CheckEnter() {
 	function AnimateRotate(){
 		degrees += 150;
 		$('#clockhand').animate({deg: degrees}, {
-			duration: 1000,
+			duration: 500,
 			step: function(deg){
 				$('#clockhand').css({
 					transform: "rotate(" + deg + "deg)"
@@ -144,15 +147,15 @@ function CheckEnter() {
 	} 
 function CheckClock() {
 	if (localStorage.getItem("ClockTime") != "undefined" && localStorage.getItem("ClockTime") != null) {
-		console.log('True');
+		//console.log('True');
 		var degrees = localStorage.getItem('ClockTime');
-		console.log(localStorage.getItem('ClockTime'));
+		//console.log(localStorage.getItem('ClockTime'));
 				$('#clockhand').css({
 					transform: "rotate(" + degrees + "deg)"
 				});
 	} else {
-		console.log('false');
-		console.log(localStorage.getItem('ClockTime'));
+		//console.log('false');
+		//console.log(localStorage.getItem('ClockTime'));
 		var degrees = 0;
 	}
 
@@ -184,7 +187,7 @@ function CheckTime() {
 				'-webkit-transition':'all 0.0s ease-out',
 			});
 			drawNightLines()
-			console.log('includes T');
+			//console.log('includes T');
 
 		} else {
 						$('#map').css({
@@ -194,13 +197,13 @@ function CheckTime() {
 				'-webkit-transition':'all 0.0s ease-out',
 			});
 			drawDayLines();
-			console.log('does not include T'+TVal)
+			//console.log('does not include T'+TVal)
 
 		}
 	} else {
 		drawDayLines();
 		TVal = 216;
-		console.log('false');
+		//console.log('false');
 		$('#map').css({
 			'filter':'brightness(1) saturate(100%) hue-rotate(0deg)',
 			'webkitFilter':'brightness(1) saturate(100%) hue-rotate(0deg)',
