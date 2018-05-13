@@ -18,29 +18,16 @@ $(document).ready(function(){
 	var LocDict = {p1:'A',p2:'C',p3:'D',p4:'B',p5:'E',p6:'F',p7:'G'}; /*Location keys*/
 	var PathNum = {A:0,B:1,C:2,D:3,E:4,F:5,G:6}; /*Traverse index*/
 	var PathList = [['A','B'],['B','A','C','D'],['C','B','G'],['D','B','E','F'],['E','D'],['F','D'],['G','C']]; /*Indicates the locations that can be travelled to from a certain point*/
-	var TVal = 216;
-	var degrees = 0;
+	
+	//var TVal = 216;
 	var NTval = [[0,6],[18,24],[36,42],[54,60],[72,78],[90,96],[108,114],[126,132],[144,150],[162,168],[180,186],[198,204]]; /*Night time hours*/
-	var isNightTime = true;
 	CheckLoc();
 	CheckTime();
 	CheckEnter();
 	HoverColor();
-	drawDayLines();
 	$('#map').addClass('bg3');
-	function AnimateRotate(){
-		degrees += 150;
-		$('#clockhand').animate({deg: degrees}, {
-			duration: 200,
-			step: function(deg){
-				$('#clockhand').css({
-					 transform: "rotate(" + deg + "deg)"
-				});
-				
-			}
-		});
-	} 
-	for (let a =0; a<=11; a++)	{time.push(range(NTval[a][0],NTval[a][1]));}
+	
+
 	$("#p1,#p2,#p3,#p4,#p5,#p6,#p7").click(function() {
 		if (TVal <= 0) {console.log('Game has ended')};
 		p = $(this);
@@ -50,64 +37,31 @@ $(document).ready(function(){
 		if (isNightTime == time.includes(TVal) && PathList[PathNum[CurrentLoc]].includes(DestLoc) == true) {
 			console.log('Night Time. Time Left: '+TVal)
 			PathList = [['A','B'],['B','A','C'],['C','B'],['D','E','F'],['E','D'],['F','D'],['G']]; 
-			TVal -= 5;
+			
 			$( "#char" ).animate({left: position.left,top: position.top}, 200,'swing', function() {});
 			CurrentLoc = DestLoc;
 			EnterCheck(DestLoc,position.left,position.top);
 			localStorage.setItem("SavedLoc", DestLoc);
 			localStorage.setItem("Time", TVal);
 			drawNightLines();
-			if ($('#clockhand').hasClass('rotateAnimation') == true) {
-				$('#clockhand').removeClass('rotateAnimation');
-			}	
-			//$('#clockhand').addClass('rotateAnimation');
 			AnimateRotate();
-			/*$('#clockhand').css({
-				  'transform': 'rotate(' + degrees + 'deg)',
-				  '-ms-transform': 'rotate(' + degrees + 'deg)',
-				  '-moz-transform': 'rotate(' + degrees + 'deg)',
-				  '-webkit-transform': 'rotate(' + degrees + 'deg)',
-				  '-o-transform': 'rotate(' + degrees + 'deg)'
-			});*/
 		} else if (PathList[PathNum[CurrentLoc]].includes(DestLoc) == true) {
 			console.log('Day Time. Time Left: '+TVal)
 			PathList = [['A','B'],['B','A','C','D'],['C','B','G'],['D','B','E','F'],['E','D'],['F','D'],['G','C']];
-			TVal -= 5;
+			
 			$( "#char" ).animate({left: position.left,top: position.top}, 200,'swing', function() {});
 			CurrentLoc = DestLoc;
 			EnterCheck(DestLoc,position.left,position.top);
 			localStorage.setItem("SavedLoc", DestLoc);
 			localStorage.setItem("Time", TVal);
 			drawDayLines();
-			if ($('#clockhand').hasClass('rotateAnimation') == true) {
-				$('#clockhand').removeClass('rotateAnimation');
-			}	
-			//$('#clockhand').addClass('rotateAnimation');
 			AnimateRotate();
-
-		} /* else if ((PathNum[DestLoc]-PathNum[CurrentLoc]) < -1 || (PathNum[DestLoc]-PathNum[CurrentLoc]) >= 1 ) {
-			for (x = 0; x<4;x++) {
-				if (PathList[x].includes(CurrentLoc) && PathList[x].includes(DestLoc)) {
-					for (var key in PathNum) {
-						if (PathNum.hasOwnProperty(key) && PathList.indexOf(PathList[x]) == PathNum[key]) {
-							for (var key2 in LocDict) {
-								if (LocDict.hasOwnProperty(key2) && key == LocDict[key2]) {
-									p = ('"#'+key2+'"')
-									console.log(key2)
-									position = p.position();
-									$( "#char" ).animate({left: position.left,top: position.top}, 100, function() {});	
-								}
-							}	
-						}
-					}
-				}
-			}
-		} */
+		}
 	});
 	$('#EnterButton,#ButtonLink').click(function() {
-		if (EnterCheck(DestLoc)[0] == true) {
-			console.log('EnterCheck(DestLoc)[0] == true'+EnterCheck(DestLoc)[0])
-			document.getElementById('ButtonLink').setAttribute('href',LocKeyGet(DestLoc)[4])
+		if (EnterCheck(DestLoc,position.left,position.top)[0] == true) {
+			console.log('EnterCheck(DestLoc)[0] == true'+EnterCheck(DestLoc,position.left,position.top)[0])
+			document.getElementById('ButtonLink').setAttribute('href',LocKeyGet(DestLoc,position.left,position.top)[4])
 		}	
 	});
 
