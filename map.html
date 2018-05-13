@@ -28,21 +28,20 @@ $(document).ready(function(){
 	HoverColor();
 	drawDayLines();
 	$('#map').addClass('bg3');
-	/*function AnimateRotate(){
+	function AnimateRotate(){
 		degrees += 150;
+		deg = degrees;
 		console.log('this is d at start:'+degrees)
-		$({degrees}).animate({deg: degrees}, {
+		$('#clockhand').animate({deg: degrees}, {
 			duration: 200,
-			step: function(now){
+			step: function(degree){
 				$('#clockhand').css({
-					 transform: "rotate(" + now + "deg)"
+					 transform: "rotate(" + degree + "deg)"
 				});
-				console.log('this is now: '+now)
-				console.log('this is d: '+degrees)
 				
 			}
 		});
-	} */
+	} 
 	for (let a =0; a<=11; a++)	{time.push(range(NTval[a][0],NTval[a][1]));}
 	$("#p1,#p2,#p3,#p4,#p5,#p6,#p7").click(function() {
 		if (TVal <= 0) {console.log('Game has ended')};
@@ -63,8 +62,8 @@ $(document).ready(function(){
 			if ($('#clockhand').hasClass('rotateAnimation') == true) {
 				$('#clockhand').removeClass('rotateAnimation');
 			}	
-			$('#clockhand').addClass('rotateAnimation');
-			//AnimateRotate();
+			//$('#clockhand').addClass('rotateAnimation');
+			AnimateRotate();
 			/*$('#clockhand').css({
 				  'transform': 'rotate(' + degrees + 'deg)',
 				  '-ms-transform': 'rotate(' + degrees + 'deg)',
@@ -85,8 +84,8 @@ $(document).ready(function(){
 			if ($('#clockhand').hasClass('rotateAnimation') == true) {
 				$('#clockhand').removeClass('rotateAnimation');
 			}	
-			$('#clockhand').addClass('rotateAnimation');
-			//AnimateRotate();
+			//$('#clockhand').addClass('rotateAnimation');
+			AnimateRotate();
 
 		} /* else if ((PathNum[DestLoc]-PathNum[CurrentLoc]) < -1 || (PathNum[DestLoc]-PathNum[CurrentLoc]) >= 1 ) {
 			for (x = 0; x<4;x++) {
