@@ -101,8 +101,8 @@ function CheckTime() {
 }
 
 function EnterCheck(DestLoc, Xcoord, Ycoord) {
-	Ycoord = Ycoord - 100;
-	Xcoord = Xcoord - 35;
+	Ycoord = Ycoord + 20;
+	Xcoord = Xcoord - 30;
 	if (LocKeyGet(DestLoc)[3] == true) {
 		$('#EnterButton').css({
 			'left': Xcoord,
@@ -119,7 +119,9 @@ function EnterCheck(DestLoc, Xcoord, Ycoord) {
 			'top': Ycoord,
 			'filter':'brightness(0.50) saturate(50%)',
 			'webkitFilter':'brightness(0.5) saturate(50%)',
-		}).hide();
+			'animation': 'pulsate 0s',
+			'-webkit-animation': 'pulsate 0s',
+		})
 	}
 }
 function CheckLoc() {

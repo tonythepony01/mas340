@@ -180,12 +180,18 @@ background-color: #b40000;
 }
 
 #EnterButton {
-	width: 65px;
+	width: 50px;
+	height: 15px;
 	display: none;
 }
 
 #ButtonLink {
-	font-size: 1.1em;
+	position: absolute;
+	left: 9px;
+	top: 1px;
+	font-size: 0.7em;
+	padding: 0;
+	margin: 0;
 }
 
 #itemGet {
