@@ -183,7 +183,7 @@ height: 30px;
 background-color: #b40000;
 }
 
-#inventorybutton, #EnterButton {
+#inventorybutton {
 position: absolute;
 right: 50px;
 top: 50px;
@@ -195,10 +195,15 @@ background-color: #b40000;
 }
 
 #EnterButton {
+	position: absolute;
+	left: -30px;
 	width: 50px;
 	height: 15px;
 	text-align: center;
 	vertical-align: text-top;
+	border-radius: 10px;
+padding: 5px;
+background-color: #b40000;
 }
 
 #ButtonLink {

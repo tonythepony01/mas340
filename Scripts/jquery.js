@@ -2,42 +2,7 @@ var TVal = 216;
 var CurrentLoc = 'A';
 var time = [];
 var EnterToggle = true;
-function drawLines() {
-	var c = document.getElementById("myCanvas");
-	var ctx = c.getContext("2d");
-	var locationp1 = $('#p1').position();
-	var locationp2 = $('#p2').position();
-	var locationp3 = $('#p3').position();
-	var locationp4 = $('#p4').position();
-	var locationp5 = $('#p5').position();
-	var locationp6 = $('#p6').position();
-	var locationp7 = $('#p7').position();
-	ctx.clearRect(0,0,1000,600);
-	ctx.beginPath();
-	ctx.moveTo(locationp1.left,locationp1.top);
-	ctx.lineTo(locationp4.left,locationp4.top);
-	ctx.stroke();
-	ctx.beginPath();
-	ctx.moveTo(locationp4.left,locationp4.top);
-	ctx.lineTo(locationp2.left,locationp2.top);
-	ctx.stroke();
-	ctx.beginPath();
-	ctx.moveTo(locationp4.left,locationp4.top);
-	ctx.lineTo(locationp3.left,locationp3.top);
-	ctx.stroke();
-	ctx.beginPath();
-	ctx.moveTo(locationp3.left,locationp3.top);
-	ctx.lineTo(locationp5.left,locationp5.top);
-	ctx.stroke();
-	ctx.beginPath();
-	ctx.moveTo(locationp3.left,locationp3.top);
-	ctx.lineTo(locationp6.left,locationp6.top);
-	ctx.stroke();
-	ctx.beginPath();
-	ctx.moveTo(locationp2.left,locationp2.top);
-	ctx.lineTo(locationp7.left,locationp7.top);
-	ctx.stroke();
-}
+
 function drawDayLines() {
 	TVal -= 5;
 	$('#map').css({
@@ -163,25 +128,24 @@ var degrees = 0;
 			duration: 200,
 			step: function(deg){
 				$('#clockhand').css({
-					 transform: "rotate(" + deg + "deg)"
+					transform: "rotate(" + deg + "deg)"
 				});
-				
 			}
 		});
 	} 
-	var isNightTime = true;
-		var NTval = [[0,6],[18,24],[36,42],[54,60],[72,78],[90,96],[108,114],[126,132],[144,150],[162,168],[180,186],[198,204]];
+var isNightTime = true;
+var NTval = [[0,6],[18,24],[36,42],[54,60],[72,78],[90,96],[108,114],[126,132],[144,150],[162,168],[180,186],[198,204]];
 function CheckTime() {
 
 	for (let a =0; a<=11; a++)	{time.push(range(NTval[a][0],NTval[a][1]));}
 	if (localStorage.getItem("Time") != "undefined" && localStorage.getItem("Time") != null) {
 		TVal = parseInt(localStorage.getItem("Time"));
-		console.log(isNightTime);
-		console.log(time.includes(TVal));
-		console.log(typeof TVal);
-		console.log(time);
-		console.log(TVal);
-		console.log('true');
+		//console.log(isNightTime);
+		//console.log(time.includes(TVal));
+		//console.log(typeof TVal);
+		//console.log(time);
+		//console.log(TVal);
+		//console.log('true');
 		$('#map').css({
 			'filter':'brightness(0.30) saturate(50%) hue-rotate(29deg)',
 			'webkitFilter':'brightness(0.30) saturate(50%) hue-rotate(29deg)',
