@@ -1,62 +1,177 @@
 body {
-  -webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none; /* Safari */
-     -khtml-user-select: none; /* Konqueror HTML */
-       -moz-user-select: none; /* Firefox */
-        -ms-user-select: none; /* Internet Explorer/Edge */
-            user-select: none; /* Non-prefixed version, currently
-                                  supported by Chrome and Opera */
+  -webkit-touch-callout: none; 
+    -webkit-user-select: none; 
+     -khtml-user-select: none; 
+       -moz-user-select: none; 
+        -ms-user-select: none; 
+            user-select: none;  
+			overflow: hidden;
 }
 
-#p1,#p2,#p3,#p4 {
+#p1,#p2,#p3,#p4, #p5,#p6,#p7 {
 	width:20px;
 	height: 20px;
 	position: absolute;
 	display: block;
-	background-color: #2196F3;	
+	background-color: #b40000;	
+	border-radius: 50%;
+	margin:-10px;
 }
 
 #p1 {
-	top: 100px;
-	left: 200px;
+	top: 500px;
+	left: 150px;
 }
 #p2 {
-	top: 100px;
-	left: 800px;
+	top: 250px;
+	left: 600px;
 }
 #p3 {
-	top: 400px;
-	left: 500px;
+	top: 460px;
+	left: 450px;
 }
 
 #p4 {
-	top: 100px;
-	left: 500px;
+	top: 375px;
+	left: 450px;
 }
+
+#p5 {
+	top: 575px;
+	left: 575px;
+}
+#p6 {
+	top: 575px;
+	left: 325px;
+}
+#p7 {
+	top: 375px;
+	left: 900px;
+}
+
 
 #char {
-	width: 50px;
-	height: 50px;
+	width: 100px;
+	height: 100px;
 	position: absolute;
-	top: 50px;
-	left: 50px;
-	background-color: red;
+	top: 500px;
+	left: 150px;
+	background-color: transparent;
+	background-image: url('../images/icon.png');
+	vertical-align: middle;
+	margin-top:-80px;
+	margin-left: -50px;
+	transform: scale(0.50,0.50)
 }
 
-#backbutton a, #inventorybutton a, #title, a:visited {
-	color: white;
+#backbutton a, #inventorybutton a, #title, a:visited, #itemGet, #EnterButton, #ButtonLink {
+	color: black;
 	font-size: 1.5em;
 		text-decoration: none;
+		font-family: 'Lato', sans-serif;
 }
 
-#background {
-	background-color: green;
+.player {
+    position: absolute;
+	top:550px;
+	left: 350px;
+	height: 50px;
+	width: 50px;
+
+}
+
+.fall {
+    -webkit-animation: bounce 1s ;
+    animation: bounce 1s ;
+}
+
+@-webkit-keyframes bounce {
+    from {
+        -webkit-animation-timing-function: cubic-bezier(.67,.02,.83,.67);
+    }
+    50% {
+        top: 500px;
+        -webkit-animation-timing-function: cubic-bezier(0.310, 0.440, 0.445, 1);
+    }
+    to {
+        top: 1080px;
+    }
+} 
+.jiggle {
+	-webkit-animation: jiggle 0.25s ;
+    animation: jiggle 0.25s ;
+}
+
+@-webkit-keyframes jiggle {
+    0% {transform: rotate(0deg);}
+	5%	{transform: rotate(4deg);}
+    10% {transform: rotate(-4deg);}
+	15%	{transform: rotate(4deg);}
+	25% {transform: rotate(-4deg);}
+	40%	{transform: rotate(4deg);}
+	60%	{transform: rotate(-4deg);}
+	80%	{transform: rotate(4deg);}
+    100% {transform: rotate(0deg);}
+}
+
+@-webkit-keyframes pulsate {
+ 0% {-webkit-transform: scale(1, 1);}
+ 50% {-webkit-transform: scale(1.05, 1.05); background-color: #ff7070;}
+ 100% {-webkit-transform: scale(1, 1); background-color: #b40000; };
+}
+
+@keyframes pulsate {
+ 0% {transform: scale(1, 1);}
+ 50% {transform: scale(1.05, 1.05); background-color: #ff7070;}
+ 100% {transform: scale(1, 1); background-color: #b40000;};
+}
+
+@-webkit-keyframes rotate {
+ 0% {-webkit-transform: rotate(0deg);}
+ 100% {-webkit-transform: rotate(150deg);}
+}
+
+@keyframes rotate {
+ 0% {transform: rotate(0deg);}
+ 100% {transform: rotate(150deg);}
+}
+
+.rotateAnimation {
+	-webkit-animation: rotate 1s ;
+    animation: rotate 1s ;
+}
+
+
+#background, #tunnelbackground, #map  {
+	background-color: white;
 	display: block;
 	position: relative;
-margin: auto;
-top: 150px;
+	margin: auto;
+	top: 150px;
 	width: 1000px;
 	height: 600px;
+}
+
+#map {
+	position: absolute;
+	top: 0px;
+}
+
+.bg1 {
+	background-image: url('../images/testscene1.jpg') ;
+}
+
+.bg2 {
+	background-image: url('../images/testscene2.jpg') ;
+}
+
+.bg3 {
+	background-image: url('../images/testmapgraphic.jpg');
+	background-repeat: no-repeat;
+}
+
+#tunnelbackground {
+	background-color: transparent;
 }
 
 #backbutton {
@@ -65,27 +180,55 @@ left: 50px;
 top: 50px;
 width: 75px;
 height: 30px;
-background-color: red;
+background-color: #b40000;
 }
 
 #inventorybutton {
-	position: absolute;
+position: absolute;
 right: 50px;
 top: 50px;
-width: 75px;
+width: auto;
 height: 30px;
-background-color: red;
+border-radius: 10px;
+padding: 5px;
+background-color: #b40000;
+}
+
+#EnterButton {
+	position: absolute;
+	left: -30px;
+	width: 50px;
+	height: 15px;
+	text-align: center;
+	vertical-align: text-top;
+	border-radius: 10px;
+padding: 5px;
+background-color: #b40000;
+}
+
+#ButtonLink {
+	position: absolute;
+	font-size: 0.7em;
+	padding: 0;
+	margin: 0;
+}
+
+#itemGet {
+position: absolute;
+right: 30px;
+top: 30px;
+color: black;
+display:none;
 }
 
 #nextbutton {
 	z-index: 1;
-	
 		position: absolute;
 right: 115px;
 bottom: 40px;
 width: 75px;
 height: 30px;
-background-color: red;
+background-color: #b40000;
 }
 
 
@@ -108,6 +251,18 @@ background-color: #2196F3;
 	bottom: 25px;
 	left: 100px;
 	padding: 0px;
+}
+
+
+
+#descbox {
+	background-color: #2196F3;	
+	position: relative;
+	margin: auto;
+	top: 35px;
+	width: 600px;
+	height: 100px;
+	display: none;
 }
 
 #itemgrid{
@@ -133,13 +288,22 @@ background-color: #2196F3;
 	display: none;
 }
 
-#descbox {
-	position: relative;
-	margin: auto;
-	top: 35px;
-	background-color: #2196F3;
-	width: 600px;
-	height: 100px;
-	display: none;
+#clockContainer {
+	position: absolute;
+	top: 25px;
+	left: -25px;
+	background-color: transparent;
 }
+
+#clock, #clockhand {
+	position: absolute;
+	width: 250px;
+	height: auto;
+}
+
+#clockhand {
+	z-index:5;
+
+}
+
 
