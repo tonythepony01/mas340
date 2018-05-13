@@ -181,6 +181,7 @@ background-color: #b40000;
 
 #EnterButton {
 	width: 65px;
+	display: none;
 }
 
 #ButtonLink {

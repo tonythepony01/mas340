@@ -111,7 +111,7 @@ function EnterCheck(DestLoc, Xcoord, Ycoord) {
 			'webkitFilter':'brightness(1) saturate(100%)',
 			'animation': 'pulsate 2s linear infinite',
 			'-webkit-animation': 'pulsate 2s linear infinite'
-		});
+		}).show();
 		return true
 	} else {
 		$('#EnterButton').css({
@@ -119,7 +119,7 @@ function EnterCheck(DestLoc, Xcoord, Ycoord) {
 			'top': Ycoord,
 			'filter':'brightness(0.50) saturate(50%)',
 			'webkitFilter':'brightness(0.5) saturate(50%)',
-		});
+		}).hide();
 	}
 }
 function CheckLoc() {
