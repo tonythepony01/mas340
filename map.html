@@ -19,13 +19,30 @@ $(document).ready(function(){
 	var PathNum = {A:0,B:1,C:2,D:3,E:4,F:5,G:6}; /*Traverse index*/
 	var PathList = [['A','B'],['B','A','C','D'],['C','B','G'],['D','B','E','F'],['E','D'],['F','D'],['G','C']]; /*Indicates the locations that can be travelled to from a certain point*/
 	var TVal = 216;
+	var degrees = 0;
 	var NTval = [[0,6],[18,24],[36,42],[54,60],[72,78],[90,96],[108,114],[126,132],[144,150],[162,168],[180,186],[198,204]]; /*Night time hours*/
 	var isNightTime = true;
 	CheckLoc();
 	CheckTime();
+	CheckEnter();
 	HoverColor();
 	drawDayLines();
 	$('#map').addClass('bg3');
+	/*function AnimateRotate(){
+		degrees += 150;
+		console.log('this is d at start:'+degrees)
+		$({degrees}).animate({deg: degrees}, {
+			duration: 200,
+			step: function(now){
+				$('#clockhand').css({
+					 transform: "rotate(" + now + "deg)"
+				});
+				console.log('this is now: '+now)
+				console.log('this is d: '+degrees)
+				
+			}
+		});
+	} */
 	for (let a =0; a<=11; a++)	{time.push(range(NTval[a][0],NTval[a][1]));}
 	$("#p1,#p2,#p3,#p4,#p5,#p6,#p7").click(function() {
 		if (TVal <= 0) {console.log('Game has ended')};
@@ -39,20 +56,38 @@ $(document).ready(function(){
 			TVal -= 5;
 			$( "#char" ).animate({left: position.left,top: position.top}, 200,'swing', function() {});
 			CurrentLoc = DestLoc;
+			EnterCheck(DestLoc,position.left,position.top);
 			localStorage.setItem("SavedLoc", DestLoc);
 			localStorage.setItem("Time", TVal);
 			drawNightLines();
-			EnterCheck(DestLoc,position.left,position.top);
+			if ($('#clockhand').hasClass('rotateAnimation') == true) {
+				$('#clockhand').removeClass('rotateAnimation');
+			}	
+			$('#clockhand').addClass('rotateAnimation');
+			//AnimateRotate();
+			/*$('#clockhand').css({
+				  'transform': 'rotate(' + degrees + 'deg)',
+				  '-ms-transform': 'rotate(' + degrees + 'deg)',
+				  '-moz-transform': 'rotate(' + degrees + 'deg)',
+				  '-webkit-transform': 'rotate(' + degrees + 'deg)',
+				  '-o-transform': 'rotate(' + degrees + 'deg)'
+			});*/
 		} else if (PathList[PathNum[CurrentLoc]].includes(DestLoc) == true) {
 			console.log('Day Time. Time Left: '+TVal)
 			PathList = [['A','B'],['B','A','C','D'],['C','B','G'],['D','B','E','F'],['E','D'],['F','D'],['G','C']];
 			TVal -= 5;
 			$( "#char" ).animate({left: position.left,top: position.top}, 200,'swing', function() {});
 			CurrentLoc = DestLoc;
+			EnterCheck(DestLoc,position.left,position.top);
 			localStorage.setItem("SavedLoc", DestLoc);
 			localStorage.setItem("Time", TVal);
 			drawDayLines();
-			EnterCheck(DestLoc,position.left,position.top);
+			if ($('#clockhand').hasClass('rotateAnimation') == true) {
+				$('#clockhand').removeClass('rotateAnimation');
+			}	
+			$('#clockhand').addClass('rotateAnimation');
+			//AnimateRotate();
+
 		} /* else if ((PathNum[DestLoc]-PathNum[CurrentLoc]) < -1 || (PathNum[DestLoc]-PathNum[CurrentLoc]) >= 1 ) {
 			for (x = 0; x<4;x++) {
 				if (PathList[x].includes(CurrentLoc) && PathList[x].includes(DestLoc)) {
@@ -73,8 +108,8 @@ $(document).ready(function(){
 		} */
 	});
 	$('#EnterButton,#ButtonLink').click(function() {
-		if (EnterCheck(DestLoc) == true) {
-			console.log(LocKeyGet(DestLoc)[4])
+		if (EnterCheck(DestLoc)[0] == true) {
+			console.log('EnterCheck(DestLoc)[0] == true'+EnterCheck(DestLoc)[0])
 			document.getElementById('ButtonLink').setAttribute('href',LocKeyGet(DestLoc)[4])
 		}	
 	});
@@ -92,6 +127,10 @@ $(document).ready(function(){
 <a href="collisiontest.html">collision</a>
 <div id="background">
 	<div id="map"><canvas id="myCanvas" width="1000" height="600" style="border:1px solid #d3d3d3;"></canvas></div>
+	<div id='clockContainer'>
+		<img id='clock' src="images/clock.png">
+		<img id='clockhand' src="images/clockhand.png">
+	</div>
 	<div id="inventorybutton"><a class="htmllink" href="inventory.html">Inventory</a></div>
 	<div id="char"></div>
 	<div id="p1"></div>

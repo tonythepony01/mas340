@@ -126,6 +126,21 @@ body {
  100% {transform: scale(1, 1); background-color: #b40000;};
 }
 
+@-webkit-keyframes rotate {
+ 0% {-webkit-transform: rotate(0deg);}
+ 100% {-webkit-transform: rotate(150deg);}
+}
+
+@keyframes rotate {
+ 0% {transform: rotate(0deg);}
+ 100% {transform: rotate(150deg);}
+}
+
+.rotateAnimation {
+	-webkit-animation: rotate 1s ;
+    animation: rotate 1s ;
+}
+
 
 #background, #tunnelbackground, #map  {
 	background-color: white;
@@ -182,7 +197,6 @@ background-color: #b40000;
 #EnterButton {
 	width: 50px;
 	height: 15px;
-	display: none;
 	text-align: center;
 	vertical-align: text-top;
 }
@@ -269,5 +283,22 @@ background-color: #2196F3;
 	display: none;
 }
 
+#clockContainer {
+	position: absolute;
+	top: 25px;
+	left: -25px;
+	background-color: transparent;
+}
+
+#clock, #clockhand {
+	position: absolute;
+	width: 250px;
+	height: auto;
+}
+
+#clockhand {
+	z-index:5;
+
+}
 
 

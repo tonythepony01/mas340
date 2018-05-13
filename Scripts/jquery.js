@@ -1,7 +1,7 @@
 var TVal = 216;
 var CurrentLoc = 'A';
 var time = [];
-
+var EnterToggle = true;
 function drawDayLines() {
 	$('#map').css({
 		'filter':'brightness(1) saturate(100%) hue-rotate(0deg)',
@@ -79,6 +79,45 @@ function drawNightLines() {
 	ctx.stroke();
 }
 
+function EnterCheck(DestLoc, Xcoord, Ycoord) {
+	Ycoord = Ycoord + 20;
+	Xcoord = Xcoord - 30;
+	if (LocKeyGet(DestLoc)[3] == true) {
+		EnterToggle = true;
+		localStorage.setItem("Enter", [EnterToggle,Xcoord,Ycoord]);
+		$('#EnterButton').css({
+			'left': Xcoord,
+			'top': Ycoord,
+			'filter':'brightness(1) saturate(100%)',
+			'webkitFilter':'brightness(1) saturate(100%)',
+			'animation': 'pulsate 2s linear infinite',
+			'-webkit-animation': 'pulsate 2s linear infinite'
+		}).show();
+		var resultList = [true,EnterToggle,Xcoord,Ycoord]
+		return resultList
+	} else {
+		$('#EnterButton').hide();
+		EnterToggle = false;
+		localStorage.setItem("Enter", [EnterToggle,Xcoord,Ycoord]);
+	}
+}
+
+function CheckEnter() {
+	if (localStorage.getItem('Enter') != "undefined" && localStorage.getItem('Enter') != null) {
+		var coords = JSON.parse("[" + localStorage.getItem('Enter') + "]")
+		$('#EnterButton').css({
+			'left': coords[1],
+			'top': coords[2],
+			'filter':'brightness(1) saturate(100%)',
+			'webkitFilter':'brightness(1) saturate(100%)',
+			'animation': 'pulsate 2s linear infinite',
+			'-webkit-animation': 'pulsate 2s linear infinite'
+		}).show();
+	} else {
+		$('#EnterButton').hide();
+	}
+}
+
 function CheckTime() {
 	if (localStorage.getItem("Time") != "undefined" && localStorage.getItem("Time") != null) {
 		TVal = localStorage.getItem("Time");
@@ -100,23 +139,6 @@ function CheckTime() {
 	}
 }
 
-function EnterCheck(DestLoc, Xcoord, Ycoord) {
-	Ycoord = Ycoord + 20;
-	Xcoord = Xcoord - 30;
-	if (LocKeyGet(DestLoc)[3] == true) {
-		$('#EnterButton').css({
-			'left': Xcoord,
-			'top': Ycoord,
-			'filter':'brightness(1) saturate(100%)',
-			'webkitFilter':'brightness(1) saturate(100%)',
-			'animation': 'pulsate 2s linear infinite',
-			'-webkit-animation': 'pulsate 2s linear infinite'
-		}).show();
-		return true
-	} else {
-		$('#EnterButton').hide();
-	}
-}
 function CheckLoc() {
 	if (localStorage.getItem("SavedLoc") != "undefined" && localStorage.getItem("SavedLoc") != null) {
 		CurrentLoc = localStorage.getItem("SavedLoc");
