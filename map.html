@@ -30,13 +30,11 @@ $(document).ready(function(){
 	$('#map').addClass('bg3');
 	function AnimateRotate(){
 		degrees += 150;
-		deg = degrees;
-		console.log('this is d at start:'+degrees)
 		$('#clockhand').animate({deg: degrees}, {
 			duration: 200,
-			step: function(degree){
+			step: function(deg){
 				$('#clockhand').css({
-					 transform: "rotate(" + degree + "deg)"
+					 transform: "rotate(" + deg + "deg)"
 				});
 				
 			}
