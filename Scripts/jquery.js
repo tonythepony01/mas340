@@ -94,18 +94,32 @@ function CheckTime() {
 		$('#map').css({
 			'filter':'brightness(1) saturate(100%) hue-rotate(0deg)',
 			'webkitFilter':'brightness(1) saturate(100%) hue-rotate(0deg)',
-			'transition':'all 0.0s',
-			'-webkit-transition':'all 0.0s',
+			'transition':'all 0.0s ease-out',
+			'-webkit-transition':'all 0.0s ease-out',
 		});
 	}
 }
 
-function EnterCheck(DestLoc) {
+function EnterCheck(DestLoc, Xcoord, Ycoord) {
+	Ycoord = Ycoord - 100;
+	Xcoord = Xcoord - 35;
 	if (LocKeyGet(DestLoc)[3] == true) {
-		$('#EnterButton').show();
+		$('#EnterButton').css({
+			'left': Xcoord,
+			'top': Ycoord,
+			'filter':'brightness(1) saturate(100%)',
+			'webkitFilter':'brightness(1) saturate(100%)',
+			'animation': 'pulsate 2s linear infinite',
+			'-webkit-animation': 'pulsate 2s linear infinite'
+		});
 		return true
 	} else {
-		$('#EnterButton').hide();
+		$('#EnterButton').css({
+			'left': Xcoord,
+			'top': Ycoord,
+			'filter':'brightness(0.50) saturate(50%)',
+			'webkitFilter':'brightness(0.5) saturate(50%)',
+		});
 	}
 }
 function CheckLoc() {

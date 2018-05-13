@@ -42,7 +42,7 @@ $(document).ready(function(){
 			localStorage.setItem("SavedLoc", DestLoc);
 			localStorage.setItem("Time", TVal);
 			drawNightLines();
-			EnterCheck(DestLoc);
+			EnterCheck(DestLoc,position.left,position.top);
 		} else if (PathList[PathNum[CurrentLoc]].includes(DestLoc) == true) {
 			console.log('Day Time. Time Left: '+TVal)
 			PathList = [['A','B'],['B','A','C','D'],['C','B','G'],['D','B','E','F'],['E','D'],['F','D'],['G','C']];
@@ -52,7 +52,7 @@ $(document).ready(function(){
 			localStorage.setItem("SavedLoc", DestLoc);
 			localStorage.setItem("Time", TVal);
 			drawDayLines();
-			EnterCheck(DestLoc);
+			EnterCheck(DestLoc,position.left,position.top);
 		} /* else if ((PathNum[DestLoc]-PathNum[CurrentLoc]) < -1 || (PathNum[DestLoc]-PathNum[CurrentLoc]) >= 1 ) {
 			for (x = 0; x<4;x++) {
 				if (PathList[x].includes(CurrentLoc) && PathList[x].includes(DestLoc)) {

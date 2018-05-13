@@ -64,7 +64,7 @@ body {
 	transform: scale(0.50,0.50)
 }
 
-#backbutton a, #inventorybutton a, #title, a:visited, #itemGet, #EnterButton {
+#backbutton a, #inventorybutton a, #title, a:visited, #itemGet, #EnterButton, #ButtonLink {
 	color: black;
 	font-size: 1.5em;
 		text-decoration: none;
@@ -180,11 +180,11 @@ background-color: #b40000;
 }
 
 #EnterButton {
-	top: 550px;
-	right: 50px;
-	-webkit-animation: pulsate 2s linear infinite;
-	animation: pulsate 2s linear infinite;
-	display:none;
+	width: 65px;
+}
+
+#ButtonLink {
+	font-size: 1.1em;
 }
 
 #itemGet {
