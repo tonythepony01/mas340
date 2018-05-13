@@ -135,6 +135,7 @@ function CheckEnter() {
 }
 
 	function AnimateRotate(){
+		degrees = parseInt(localStorage.getItem('ClockTime'));
 		degrees += 150;
 		$('#clockhand').animate({deg: degrees}, {
 			duration: 500,
@@ -150,9 +151,10 @@ function CheckClock() {
 		//console.log('True');
 		var degrees = localStorage.getItem('ClockTime');
 		//console.log(localStorage.getItem('ClockTime'));
-				$('#clockhand').css({
-					transform: "rotate(" + degrees + "deg)"
-				});
+		console.log(degrees)
+		$('#clockhand').css({
+			transform: "rotate(" + degrees + "deg)"
+		});
 	} else {
 		//console.log('false');
 		//console.log(localStorage.getItem('ClockTime'));

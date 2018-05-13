@@ -35,46 +35,44 @@ $(document).ready(function(){
 		defLoc = String($(this).attr('id'))
 		position = p.position();
 		DestLoc = LocDict[defLoc];
+		localStorage.setItem('ClockTime',degrees);
 		if (CurrentLoc != DestLoc){
-		 		if (isNightTime == time.includes(TVal) && PathList[PathNum[CurrentLoc]].includes(DestLoc) == true) {
-		console.log('path1');
-			console.log('Night Time. Time Left: '+TVal)
-			PathList = [['A','B'],['B','A','C'],['C','B'],['D','E','F'],['E','D'],['F','D'],['G']]; 
-
-			CurrentLoc = DestLoc;
-			EnterCheck(DestLoc,position.left,position.top);
-			localStorage.setItem("SavedLoc", DestLoc);
-			localStorage.setItem("Time", TVal);
-			localStorage.setItem('ClockTime',degrees);
-			drawNightLines();
-			NightPhase();
-			AnimateRotate();
-			$( "#char" ).animate({left: position.left,top: position.top}, 1000,'swing', function() {});
-		} else if (PathList[PathNum[CurrentLoc]].includes(DestLoc) == true) {
-		console.log('path2');
-			console.log('Day Time. Time Left: '+TVal)
-			PathList = [['A','B'],['B','A','C','D'],['C','B','G'],['D','B','E','F'],['E','D'],['F','D'],['G','C']];
-
-			CurrentLoc = DestLoc;
-			EnterCheck(DestLoc,position.left,position.top);
-			localStorage.setItem("SavedLoc", DestLoc);
-			localStorage.setItem("Time", TVal);
-			localStorage.setItem('ClockTime',degrees);
-			drawDayLines();
-			DayPhase();
-			AnimateRotate();
-			$( "#char" ).animate({left: position.left,top: position.top}, 1000,'swing', function() {});
-		}
+				if (isNightTime == time.includes(TVal) && PathList[PathNum[CurrentLoc]].includes(DestLoc) == true) {
+					console.log('path1');
+					console.log('Night Time. Time Left: '+TVal)
+					PathList = [['A','B'],['B','A','C'],['C','B'],['D','E','F'],['E','D'],['F','D'],['G']]; 
+					CurrentLoc = DestLoc;
+					EnterCheck(DestLoc,position.left,position.top);
+					localStorage.setItem("SavedLoc", DestLoc);
+					localStorage.setItem("Time", TVal);
+					drawNightLines();
+					NightPhase();
+					AnimateRotate();
+					localStorage.setItem('ClockTime',degrees);
+					$( "#char" ).animate({left: position.left,top: position.top}, 1000,'swing', function() {});
+				} else if (PathList[PathNum[CurrentLoc]].includes(DestLoc) == true) {
+					console.log('path2');
+					console.log('Day Time. Time Left: '+TVal)
+					PathList = [['A','B'],['B','A','C','D'],['C','B','G'],['D','B','E','F'],['E','D'],['F','D'],['G','C']];
+					CurrentLoc = DestLoc;
+					EnterCheck(DestLoc,position.left,position.top);
+					localStorage.setItem("SavedLoc", DestLoc);
+					localStorage.setItem("Time", TVal);
+					drawDayLines();
+					DayPhase();
+					AnimateRotate();
+					localStorage.setItem('ClockTime',degrees);
+					$( "#char" ).animate({left: position.left,top: position.top}, 1000,'swing', function() {});
+				}
 		} else {
 			console.log('doing nothing')
 			console.log(TVal);
+			localStorage.setItem('ClockTime',degrees);
 		}
-
-	});
+		});
 	$('#ButtonLink,#inventorybutton').click(function() {
 		DestLoc = localStorage.getItem('SavedLoc');
 		if (EnterCheck(DestLoc,position.left,position.top)[0] == true) {
-		localStorage.setItem('ClockTime',degrees);
 		document.getElementById('ButtonLink').setAttribute('href',LocKeyGet(DestLoc,position.left,position.top)[4]);
 		}	
 	});
