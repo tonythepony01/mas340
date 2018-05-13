@@ -114,14 +114,7 @@ function EnterCheck(DestLoc, Xcoord, Ycoord) {
 		}).show();
 		return true
 	} else {
-		$('#EnterButton').css({
-			'left': Xcoord,
-			'top': Ycoord,
-			'filter':'brightness(0.50) saturate(50%)',
-			'webkitFilter':'brightness(0.5) saturate(50%)',
-			'animation': 'pulsate 0s',
-			'-webkit-animation': 'pulsate 0s',
-		})
+		$('#EnterButton').hide();
 	}
 }
 function CheckLoc() {
