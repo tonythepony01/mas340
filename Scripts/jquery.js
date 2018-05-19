@@ -7,7 +7,30 @@ var degrees = 0;
 var DivList = ['#p1','#p2','#p3','#p4','#p5','#p6','#p7','#p8','#p9','#p10','#p11','#p12','#p13','#p14','#p15','#p16'];
 var isNightTime = true;
 var NTval = [[0,6],[18,30],[42,54],[66,78],[90,102],[114,126],[134,146],[158,170],[182,194],[206,218],[230,242]];
-var QuestDict = {}
+var QuestDict = [['Q1', false],['Q2', false],['Q3', false],['Q4', false],['Q5', false],['Q6', false]];
+var T2Dialogue = ['Hi, how are you doing?','I have a favour to ask of you.','Could you go to forest 3 and catch me some butterflies? I need them to make medicine for my son who has fallen sick.','Sure OKAY WHATEVS','Thank you so much for bringing me this shit','I now have another favour to ask','Could you go to the cave across the river and hand this to my son?','Sure OKAY']
+
+
+
+function QuestToggler(QNum,State) {
+	for (x =0; x<6; x++) {
+		if (QuestDict[x][0] == QNum) {
+			QuestDict[x][1] = State;
+		}
+	}
+	localStorage.setItem('QuestStatus', QuestDict);
+}
+
+function QuestMemory() {
+	if (localStorage.getItem("QuestStatus") != "undefined" && localStorage.getItem("QuestStatus") != null) {
+		var QuestDict = localStorage.getItem("QuestStatus");
+		console.log('Memory check1: '+QuestDict);
+	} else {
+		var QuestDict = [['Q1', false],['Q2', false],['Q3', false],['Q4', false],['Q5', false],['Q6', false]];
+		console.log('Memory check2: '+QuestDict);
+	};	
+}
+
 function DayPhase() {
 		$('#map').css({
 		'filter':'brightness(1) saturate(100%) hue-rotate(0deg)',
@@ -19,7 +42,6 @@ function DayPhase() {
 
 function conversationCheck(xAxis,yAxis) {
 	if ((xAxis < 510 && xAxis > 390) || (xAxis < 955 & xAxis > 835)) {
-		console.log('Conversation available')
 		$("#talkbutton").css({left: xAxis-45, top: yAxis-120}).show();
 		return true
 	} else {

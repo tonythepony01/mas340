@@ -12,6 +12,7 @@
 $(document).ready(function(){
 
 CheckTownTime('bg6','bg4');
+checkInventory();
 	$('#background').addClass('bg4');
     K = {}; // keys: {37:0||1, 38:0||1, ...}
 	if (localStorage.getItem("coords") != "undefined" && localStorage.getItem("coords") != null) {
@@ -98,7 +99,7 @@ function updatePlayerPos() {
 <div id="background">
 	<div id="talkbutton"></div>
 	<div id="char"></div>
-		<div id="textbox"></div>
+	<div id="textbox"></div>
 	<div id="nextbutton"></div>
 </div>
 </body>

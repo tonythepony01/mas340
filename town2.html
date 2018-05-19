@@ -12,6 +12,8 @@
 $(document).ready(function(){
 
 CheckTownTime('bg8','bg7');
+checkInventory();
+QuestMemory();
 var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0)
 var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0)
 var d = $(document).scrollTop();
@@ -20,9 +22,9 @@ var d = $(document).scrollTop();
 		var coords = (JSON.parse("[" + localStorage.getItem("coords") + "]"));
 		console.log(coords);
 		if (coords[0] < 35) {
-			var Pl = {el:$('#char'), x:coords[0]+65, y:coords[1], speed:coords[2]};
+			var Pl = {el:$('#char'), x:coords[0]+100, y:coords[1], speed:coords[2]};
 		} else if (coords[0] > 950) {
-			var Pl = {el:$('#char'), x:coords[0]-65, y:coords[1], speed:coords[2]};
+			var Pl = {el:$('#char'), x:coords[0]-100, y:coords[1], speed:coords[2]};
 		} else {
 			var Pl = {el:$('#char'), x:coords[0], y:coords[1], speed:coords[2]};
 		};
@@ -45,27 +47,76 @@ $(document).on('keydown keyup', function(e) {
 			var dialogue;
 			eventHandler();
 			function eventHandler() {
-				switch (progress) {
-					case 0:
+				if (localStorage.getItem('Butterfly') == 'true') {
+					switch (progress) {					
+						case 0:
+							$('#nextbutton, #textbox ').show();
+							dialogue = "Thank you so much for bringing me this shit";
+							break;
+						case 1:
+							dialogue = "I now have another favour to ask"
+							break;
+						case 2:
+							dialogue = "Could you go to the cave across the river and hand this to my son?"
+							console.log('broke1')
+							break;
+						case 3:
+							dialogue = "Sure OKAY"
+							console.log('broke2')
+							localStorage.setItem('Medicine', 'true');
+							break;		
+						case 4:		
+						console.log('broke3');
+						$('#nextbutton, #textbox ').hide();	
+						localStorage.setItem('Butterfly', 'false');
+							break;
+					}					
+						progress++;  
+						localStorage.setItem("DialogueProgress", progress);
+						$('#textbox').html(dialogue);
+				} else if (localStorage.getItem('Medicine') == 'true') {
+					switch (progress) {
+						case 0:
+						
 						$('#nextbutton, #textbox ').show();
-						dialogue = "Hi, how are you doing?";
-						break;
-					case 1:
-						dialogue = "I have a favour to ask of you."
-						break;
-					case 2:
-						dialogue = "Could you go to forest 3 and catch me some butterflies? I need them to make medicine for my son who has fallen sick."
-						break;
-					case 3:
-						dialogue = "Sure OKAY WHATEVS"
-						break;		
-					case 4:
-						$('#nextbutton, #textbox ').hide();			
-						break;	
-				}
-				progress++;  
-				localStorage.setItem("DialogueProgress", progress);
-				$('#textbox').html(dialogue); 
+							dialogue = "Please hurry";
+							console.log('broke3')
+							break;
+						case 1:
+							$('#nextbutton, #textbox ').hide();				
+							break;
+					}				
+					progress++;  
+					localStorage.setItem("DialogueProgress", progress);
+					$('#textbox').html(dialogue); 	
+				} else {					
+					switch (progress) {
+						case 0:
+							$('#nextbutton, #textbox ').show();
+							dialogue = "Hi, how are you doing?";
+							break;
+						case 1:
+							dialogue = "I have a favour to ask of you."
+							break;
+						case 2:
+							dialogue = "Could you go to forest 3 and catch me some butterflies? I need them to make medicine for my son who has fallen sick."
+							break;
+						case 3:
+							dialogue = "Sure OKAY WHATEVS"
+							console.log('passing')
+							if (QuestDict[1][1] == false) {
+								QuestToggler('Q2', true);
+								console.log('New: '+QuestDict);
+							}
+							break;		
+						case 4:
+							$('#nextbutton, #textbox ').hide();			
+							break;	
+					}
+					progress++;  
+					localStorage.setItem("DialogueProgress", progress);
+					$('#textbox').html(dialogue); 			
+					};
 			}
 			$('#nextbutton').click(eventHandler);				
 		}
@@ -74,7 +125,7 @@ $(document).on('keydown keyup', function(e) {
         console.log($(this))
 		window.location = "map.html";
     } else if (p.left > 950) {
-		window.location = "throne.html";
+		window.location = "throne2.html";
 	}
 });
 });
@@ -101,6 +152,9 @@ function updatePlayerPos() {
 <body>
 <div id="background">
 	<div id="char"></div>
+		<div id="talkbutton"></div>
+		<div id="textbox"></div>
+		<div id="nextbutton"></div>
 		<div id="inventorybutton"><a class="htmllink" href="inventory.html"><span>Inventory</span></a></div>
 </div>
 </body>

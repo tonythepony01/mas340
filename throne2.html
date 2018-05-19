@@ -1,0 +1,94 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>MAS340</title>
+<script src="Scripts/jquery-3.3.1.js"></script>
+<link href="Scripts/styles.css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+	<script src="Scripts/jquery.js"></script>
+<script src="Scripts/jquery-ui.js"></script>
+<script>
+$(document).ready(function(){
+	$('#char').css('transform','scale(1.5)');
+	$('#char').css({left: -200, top: 475});
+	$('#background').addClass('bg5');
+	$('#talkbutton').show().css({left: 850, top: 150});
+	checkInventory();
+QuestMemory();
+	// setup
+	$('#char').animate({left: 100, top: 450},750);
+	//$('#char').animate({left: -200, top: 475},750); // when finished with conversation
+	$('#talkbutton').click(function() {
+		$('#talkbutton').hide();
+		var progress = 0;
+		var dialogue;
+		eventHandler();
+			function eventHandler() {
+				if (localStorage.getItem('Flower') == 'true') {
+					switch (progress) {					
+						case 0:
+							$('#nextbutton, #textbox ').show();
+							dialogue = "Good work peasant";
+							break;
+						case 1:
+							dialogue = "I see you have brought me the very ordinary and boring flowers"
+							break;
+						case 2:
+							dialogue = "As promised, I will now attend your King's birthday party. Be grateful for my presence"
+							break;
+						case 3:
+							dialogue = "thx fgt"
+							break;		
+						case 4:		
+						$('#nextbutton, #textbox ').hide();	
+						break;
+					}					
+						progress++;  
+						localStorage.setItem("DialogueProgress", progress);
+						$('#textbox').html(dialogue);
+				} else {					
+					switch (progress) {
+						case 0:
+							$('#nextbutton, #textbox ').show();
+							dialogue = "Hello young peasant";
+							break;
+						case 1:
+							dialogue = "I have a favour to ask of you."
+							break;
+						case 2:
+							dialogue = "Find me some flowers from the nearby forest so I can present them to your filthy King for his birthday party fgt"
+							break;
+						case 3:
+							dialogue = "Sure OKAY WHATEVS"
+							if (QuestDict[0][1] == false) {
+								QuestToggler('Q1', true);
+								console.log('New: '+QuestDict);
+							}
+							break;		
+						case 4:
+							$('#nextbutton, #textbox ').hide();			
+							break;	
+					}
+					progress++;  
+					localStorage.setItem("DialogueProgress", progress);
+					$('#textbox').html(dialogue); 			
+					};
+			}
+		$('#nextbutton').click(eventHandler);		
+	});
+});
+
+</script>
+
+</head>
+<body>
+<div id="background">
+	<button onclick="goBack()">Go Back</button>
+	<div id="char"></div>
+	<div id="textbox"></div>
+	<div id="nextbutton"></div>
+	<div id="talkbutton"></div>
+</div>
+</body>
+</html>
