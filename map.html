@@ -15,52 +15,82 @@ $(document).ready(function(){
 	var defLoc;
 	var position;
 	var DestLoc;
-	var LocDict = {p1:'A',p2:'C',p3:'D',p4:'B',p5:'E',p6:'F',p7:'G'}; /*Location keys*/
-	var PathNum = {A:0,B:1,C:2,D:3,E:4,F:5,G:6}; /*Traverse index*/
-	var PathList = [['A','B'],['B','A','C','D'],['C','B','G'],['D','B','E','F'],['E','D'],['F','D'],['G','C']]; /*Indicates the locations that can be travelled to from a certain point*/
-	//var TVal = 216;
-	var NTval = [[0,6],[18,24],[36,42],[54,60],[72,78],[90,96],[108,114],[126,132],[144,150],[162,168],[180,186],[198,204]]; /*Night time hours*/
+	var LocDict = {p1:'A',p2:'B',p3:'C',p4:'D',p5:'E',p6:'F',p7:'G',p8:'H',p9:'I',p10:'J',p11:'K',p12:'L',p13:'M',p14:'N',p15:'O',p16:'P'}; /*Location keys*/
+	var PathNum = {A:0,B:1,C:2,D:3,E:4,F:5,G:6,H:7,I:8,J:9,K:10,L:11,M:12,N:13,O:14,P:15}; /*Traverse index*/
+	var PathList = [['A','B'],['B','A','C','E'],['C','D','B'],['D','C'],['E','F','J','B'],['F','E','G'],['G','F','H','I'],['H','G','I'],['I','H','G'],['J','K','L','N','E'],['K','J','L','M','P'],['L','K','J'],['M','K'],['N','O','J'],['O','N'],['P','K']]; /*Indicates the locations that can be travelled to from a certain point*/
+	//var TVal = 240;
+	var NTval = [[0,6],[18,30],[42,54],[66,78],[90,102],[114,126],[134,146],[158,170],[182,194],[206,218],[230,242]]; /*Night time hours*/
+	var NoonTimes = [12,36,60,84,108,132,156,180,204,228];
 	CheckLoc();
 	CheckTime();
 	CheckEnter();
-	CheckClock();
 	HoverColor();
+	displayDateTime(TVal);
 	$('#map').addClass('bg3');
-	$("#p1,#p2,#p3,#p4,#p5,#p6,#p7").click(function() {
+	$("#p1,#p2,#p3,#p4,#p5,#p6,#p7,#p8,#p9,#p10,#p11,#p12,#p13,#p14,#p15,#p16").click(function() {
 		if (TVal <= 0) {console.log('Game has ended')};
 		p = $(this);
 		defLoc = String($(this).attr('id'))
 		position = p.position();
 		DestLoc = LocDict[defLoc];
+		DestLoc2 = LocDict[defLoc];
 		localStorage.setItem('ClockTime',degrees);
 		if (CurrentLoc != DestLoc){
-				if (isNightTime == time.includes(TVal) && PathList[PathNum[CurrentLoc]].includes(DestLoc) == true) {
-					console.log('path1');
-					console.log('Night Time. Time Left: '+TVal)
-					PathList = [['A','B'],['B','A','C'],['C','B'],['D','E','F'],['E','D'],['F','D'],['G']]; 
-					CurrentLoc = DestLoc;
-					EnterCheck(DestLoc,position.left,position.top);
-					localStorage.setItem("SavedLoc", DestLoc);
+			if (CurrentLoc == 'J' && DestLoc == 'N' && NoonTimes.includes(TVal)) {
+				PathList = [['A','B'],['B','A','C','E'],['C','D','B'],['D','C'],['E','F','B'],['F','E','G'],['G','F','H','I'],['H','G','I'],['I','H','G'],['J','K','L','N'],['K','J','L','M'],['L','K','J'],['M','K'],['N','O','J'],['O','N'],['P','K']];
+				CurrentLoc = DestLoc;
+				EnterCheck(DestLoc,position.left,position.top);
+				localStorage.setItem("SavedLoc", DestLoc);
+				if (timeDeduction(CurrentLoc2, DestLoc2) > TVal) {
+					console.log('There is not enough time to travel');
+				} else {
+					TVal -= timeDeduction(CurrentLoc2, DestLoc2);
 					localStorage.setItem("Time", TVal);
-					drawNightLines();
-					NightPhase();
-					AnimateRotate();
-					localStorage.setItem('ClockTime',degrees);
-					$( "#char" ).animate({left: position.left,top: position.top}, 1000,'swing', function() {});
-				} else if (PathList[PathNum[CurrentLoc]].includes(DestLoc) == true) {
-					console.log('path2');
-					console.log('Day Time. Time Left: '+TVal)
-					PathList = [['A','B'],['B','A','C','D'],['C','B','G'],['D','B','E','F'],['E','D'],['F','D'],['G','C']];
-					CurrentLoc = DestLoc;
-					EnterCheck(DestLoc,position.left,position.top);
-					localStorage.setItem("SavedLoc", DestLoc);
-					localStorage.setItem("Time", TVal);
+					displayDateTime(TVal);
+					CurrentLoc2 = DestLoc2;
 					drawDayLines();
 					DayPhase();
-					AnimateRotate();
 					localStorage.setItem('ClockTime',degrees);
 					$( "#char" ).animate({left: position.left,top: position.top}, 1000,'swing', function() {});
 				}
+
+			} else if (isNightTime == time.includes(TVal) && PathList[PathNum[CurrentLoc]].includes(DestLoc) == true) {
+				PathList = [['A','B'],['B','A','C','E'],['C','D','B'],['D','C'],['E','F','J','B'],['F','E','G'],['G','F','H','I'],['H','G','I'],['I','H','G'],['J','K','L','E'],['K','P','J','L','M','P'],['L','K','J'],['M','K'],['N','O'],['O','N'],['P']];
+				CurrentLoc = DestLoc;
+				EnterCheck(DestLoc,position.left,position.top);
+				localStorage.setItem("SavedLoc", DestLoc);
+				if (timeDeduction(CurrentLoc2, DestLoc2) > TVal) {
+					console.log('There is not enough time to travel');
+				} else {
+					TVal -= timeDeduction(CurrentLoc2, DestLoc2);
+					console.log('Night Time. Time Left: '+TVal)
+					localStorage.setItem("Time", TVal);
+					displayDateTime(TVal);
+					CurrentLoc2 = DestLoc2;
+					drawNightLines();
+					NightPhase();
+					localStorage.setItem('ClockTime',degrees);
+					$( "#char" ).animate({left: position.left,top: position.top}, 1000,'swing', function() {});
+				}
+			} else if (PathList[PathNum[CurrentLoc]].includes(DestLoc) == true) {
+				PathList = [['A','B'],['B','A','C','E'],['C','D','B'],['D','C'],['E','F','B'],['F','E','G'],['G','F','H','I'],['H','G','I'],['I','H','G'],['J','K','L'],['K','J','L','M'],['L','K','J'],['M','K'],['N','O'],['O','N'],['P','K']];
+				CurrentLoc = DestLoc;
+				EnterCheck(DestLoc,position.left,position.top);
+				localStorage.setItem("SavedLoc", DestLoc);
+				if (timeDeduction(CurrentLoc2, DestLoc2) > TVal) {
+					console.log('There is not enough time to travel');
+				} else {
+					TVal -= timeDeduction(CurrentLoc2, DestLoc2);
+					console.log('Day Time. Time Left: '+TVal)
+					localStorage.setItem("Time", TVal);
+					displayDateTime(TVal);
+					CurrentLoc2 = DestLoc2;
+					drawDayLines();
+					DayPhase();
+					localStorage.setItem('ClockTime',degrees);
+					$( "#char" ).animate({left: position.left,top: position.top}, 1000,'swing', function() {});
+				}
+			}
 		} else {
 			console.log('doing nothing')
 			console.log(TVal);
@@ -87,11 +117,12 @@ $(document).ready(function(){
 <a href="collisiontest.html">collision</a>
 <div id="background">
 	<div id="map"><canvas id="myCanvas" width="1000" height="600" style="border:1px solid #d3d3d3;"></canvas></div>
-	<div id='clockContainer'>
-		<img id='clock' src="images/clock.png">
-		<img id='clockhand' src="images/clockhand.png">
-	</div>
-	<div id="inventorybutton"><a class="htmllink" href="inventory.html">Inventory</a></div>
+	<div id="noticebox"></div>
+	<ul id='DateTime'>
+		<li id='Day'>Day 1</li>
+		<li id='Time'>12pm</li>
+	</ul>
+	<div id="inventorybutton"><a class="htmllink" href="inventory.html"><span>Inventory</span></a></div>
 	<div id="char"></div>
 	<div id="p1"></div>
 	<div id="p2"></div>
@@ -100,6 +131,15 @@ $(document).ready(function(){
 	<div id="p5"></div>
 	<div id="p6"></div>
 	<div id="p7"></div>
+	<div id="p8"></div>
+	<div id="p9"></div>
+	<div id="p10"></div>
+	<div id="p11"></div>
+	<div id="p12"></div>
+	<div id="p13"></div>
+	<div id="p14"></div>
+	<div id="p15"></div>
+	<div id="p16"></div>
 	<a id ='ButtonLink' href=""><div id='EnterButton'>Enter</div></a>
 	
 	

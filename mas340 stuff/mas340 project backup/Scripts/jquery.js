@@ -1,9 +1,13 @@
-var TVal = 216;
+var TVal = 240;
 var CurrentLoc = 'A';
 var time = [];
+var hours = [];
 var EnterToggle = true;
 var degrees = 0;
-
+var DivList = ['#p1','#p2','#p3','#p4','#p5','#p6','#p7','#p8','#p9','#p10','#p11','#p12','#p13','#p14','#p15','#p16'];
+var isNightTime = true;
+var NTval = [[0,6],[18,30],[42,54],[66,78],[90,102],[114,126],[134,146],[158,170],[182,194],[206,218],[230,242]];
+var QuestDict = {}
 function DayPhase() {
 		$('#map').css({
 		'filter':'brightness(1) saturate(100%) hue-rotate(0deg)',
@@ -13,6 +17,16 @@ function DayPhase() {
 	});
 }
 
+function conversationCheck(xAxis,yAxis) {
+	if ((xAxis < 510 && xAxis > 390) || (xAxis < 955 & xAxis > 835)) {
+		console.log('Conversation available')
+		$("#talkbutton").css({left: xAxis-45, top: yAxis-120}).show();
+		return true
+	} else {
+		$("#talkbutton").hide();
+		return false
+	}
+}
 function NightPhase() {
 		$('#map').css({
 		'filter':'brightness(0.30) saturate(50%) hue-rotate(29deg)',
@@ -22,9 +36,68 @@ function NightPhase() {
 	});
 }
 
-function drawDayLines() {
-	TVal -= 5;
+function displayDateTime(TVal) {
+	var DayNTime = [['Day 1',216,240,228],['Day 2',192,216,204],['Day 3', 168,192,180],['Day 4', 144,168,156],['Day 5', 120,144,132],['Day 6',96,120,108],['Day 7',72,96,84],['Day 8',48,72,60],['Day 9',24,48,36],['Day 10',0,24,12]]
+	for (var a in DayNTime)	{
+		range2(DayNTime[a][1],DayNTime[a][2])
+		if (hours.includes(TVal)) {
+			$('#Day').html(DayNTime[a][0]); 
+			$('#Time').html(TVal); 
+		} else if (TVal == DayNTime[a][3]) {
+			$('#Time').html("12PM"); 
+		}
+		hours = []
+	}
+	
+	// get range of hours in the day with dayntime[x][1] and dayntime[x][2]
+	//if in this range, display dayntime[x][0]
+	// if TVal == dayntime[x][3], set as noon
+	// If TVal in NTVal then designate as night time PM, else as AM
+}
 
+	function range(start, end) {	
+		for (let i = start; i <= end; i++) {
+			time.push(i);
+		}
+		return
+	}
+		function range2(start, end) {	
+			for (let i = start; i <= end; i++) {
+				hours.push(i);
+			}
+		return
+	}
+
+
+function timeDeduction(CurrentLoc2, DestLoc2) {
+	var pathTimes = [
+	['A','B',3],
+	['B','C',6],
+	['B','E',6],
+	['C','D',3],
+	['E','F',6],
+	['E','J',6],
+	['F','G',3],
+	['G','H',3],
+	['G','I',9],
+	['H','I',3],
+	['J','K',6],
+	['J','L',6],
+	['J','N',6],
+	['K','L',3],
+	['K','P',9],
+	['K','M',12],
+	['O','N',6]
+	]
+	for (var x in pathTimes) {
+		if ((CurrentLoc2 == pathTimes[x][0] && DestLoc2 == pathTimes[x][1]) || (CurrentLoc2 == pathTimes[x][1] && DestLoc2 == pathTimes[x][0])) {
+			console.log(CurrentLoc2+ ' '+DestLoc2)
+			Deduction = pathTimes[x][2]
+			return Deduction
+		}
+	}
+}
+function drawDayLines() {
 	var c = document.getElementById("myCanvas");
 	var ctx = c.getContext("2d");
 	var locationp1 = $('#p1').position();
@@ -34,35 +107,82 @@ function drawDayLines() {
 	var locationp5 = $('#p5').position();
 	var locationp6 = $('#p6').position();
 	var locationp7 = $('#p7').position();
+	var locationp8 = $('#p8').position();
+	var locationp9 = $('#p9').position();
+	var locationp10 = $('#p10').position();
+	var locationp11 = $('#p11').position();
+	var locationp12 = $('#p12').position();
+	var locationp13 = $('#p13').position();
+	var locationp14 = $('#p14').position();
+	var locationp15 = $('#p15').position();
+	var locationp16 = $('#p16').position();
 	ctx.clearRect(0,0,1000,600);
 	ctx.beginPath();
 	ctx.moveTo(locationp1.left,locationp1.top);
-	ctx.lineTo(locationp4.left,locationp4.top);
-	ctx.stroke();
-	ctx.beginPath();
-	ctx.moveTo(locationp4.left,locationp4.top);
 	ctx.lineTo(locationp2.left,locationp2.top);
 	ctx.stroke();
 	ctx.beginPath();
-	ctx.moveTo(locationp4.left,locationp4.top);
+	ctx.moveTo(locationp2.left,locationp2.top);
 	ctx.lineTo(locationp3.left,locationp3.top);
 	ctx.stroke();
 	ctx.beginPath();
 	ctx.moveTo(locationp3.left,locationp3.top);
-	ctx.lineTo(locationp5.left,locationp5.top);
-	ctx.stroke();
-	ctx.beginPath();
-	ctx.moveTo(locationp3.left,locationp3.top);
-	ctx.lineTo(locationp6.left,locationp6.top);
+	ctx.lineTo(locationp4.left,locationp4.top);
 	ctx.stroke();
 	ctx.beginPath();
 	ctx.moveTo(locationp2.left,locationp2.top);
+	ctx.lineTo(locationp5.left,locationp5.top);
+	ctx.stroke();
+		ctx.beginPath();
+	ctx.moveTo(locationp5.left,locationp5.top);
+	ctx.lineTo(locationp6.left,locationp6.top);
+	ctx.stroke();
+		ctx.beginPath();
+	ctx.moveTo(locationp6.left,locationp6.top);
 	ctx.lineTo(locationp7.left,locationp7.top);
+	ctx.stroke();
+		ctx.beginPath();
+	ctx.moveTo(locationp7.left,locationp7.top);
+	ctx.lineTo(locationp8.left,locationp8.top);
+	ctx.stroke();
+		ctx.beginPath();
+	ctx.moveTo(locationp7.left,locationp7.top);
+	ctx.lineTo(locationp9.left,locationp9.top);
+	ctx.stroke();
+			ctx.beginPath();
+	ctx.moveTo(locationp8.left,locationp8.top);
+	ctx.lineTo(locationp9.left,locationp9.top);
+	ctx.stroke();
+		ctx.beginPath();
+	ctx.moveTo(locationp10.left,locationp10.top);
+	ctx.lineTo(locationp11.left,locationp11.top);
+	ctx.stroke();
+		ctx.beginPath();
+	ctx.moveTo(locationp10.left,locationp10.top);
+	ctx.lineTo(locationp14.left,locationp14.top);
+	ctx.stroke();
+		ctx.beginPath();
+	ctx.moveTo(locationp10.left,locationp10.top);
+	ctx.lineTo(locationp12.left,locationp12.top);
+	ctx.stroke();
+		ctx.beginPath();
+	ctx.moveTo(locationp11.left,locationp11.top);
+	ctx.lineTo(locationp13.left,locationp13.top);
+	ctx.stroke();
+				ctx.beginPath();
+	ctx.moveTo(locationp11.left,locationp11.top);
+	ctx.lineTo(locationp12.left,locationp12.top);
+	ctx.stroke();
+		ctx.beginPath();
+	ctx.moveTo(locationp11.left,locationp11.top);
+	ctx.lineTo(locationp16.left,locationp16.top);
+	ctx.stroke();
+		ctx.beginPath();
+	ctx.moveTo(locationp14.left,locationp14.top);
+	ctx.lineTo(locationp15.left,locationp15.top);
 	ctx.stroke();
 }
 function drawNightLines() {
-	TVal -= 5;
-
 	var c = document.getElementById("myCanvas");
 	var ctx = c.getContext("2d");
 	var locationp1 = $('#p1').position();
@@ -72,22 +192,83 @@ function drawNightLines() {
 	var locationp5 = $('#p5').position();
 	var locationp6 = $('#p6').position();
 	var locationp7 = $('#p7').position();
+	var locationp8 = $('#p8').position();
+	var locationp9 = $('#p9').position();
+	var locationp10 = $('#p10').position();
+	var locationp11 = $('#p11').position();
+	var locationp12 = $('#p12').position();
+	var locationp13 = $('#p13').position();
+	var locationp14 = $('#p14').position();
+	var locationp15 = $('#p15').position();
+	var locationp16 = $('#p16').position();
 	ctx.clearRect(0,0,1000,600);
 	ctx.beginPath();
 	ctx.moveTo(locationp1.left,locationp1.top);
-	ctx.lineTo(locationp4.left,locationp4.top);
-	ctx.stroke();
-	ctx.beginPath();
-	ctx.moveTo(locationp4.left,locationp4.top);
 	ctx.lineTo(locationp2.left,locationp2.top);
 	ctx.stroke();
 	ctx.beginPath();
-	ctx.moveTo(locationp3.left,locationp3.top);
-	ctx.lineTo(locationp5.left,locationp5.top);
+	ctx.moveTo(locationp2.left,locationp2.top);
+	ctx.lineTo(locationp3.left,locationp3.top);
 	ctx.stroke();
 	ctx.beginPath();
 	ctx.moveTo(locationp3.left,locationp3.top);
+	ctx.lineTo(locationp4.left,locationp4.top);
+	ctx.stroke();
+	ctx.beginPath();
+	ctx.moveTo(locationp2.left,locationp2.top);
+	ctx.lineTo(locationp5.left,locationp5.top);
+	ctx.stroke();
+		ctx.beginPath();
+	ctx.moveTo(locationp5.left,locationp5.top);
 	ctx.lineTo(locationp6.left,locationp6.top);
+	ctx.stroke();
+				ctx.beginPath();
+	ctx.moveTo(locationp5.left,locationp5.top);
+	ctx.lineTo(locationp10.left,locationp10.top);
+	ctx.stroke();
+		ctx.beginPath();
+	ctx.moveTo(locationp6.left,locationp6.top);
+	ctx.lineTo(locationp7.left,locationp7.top);
+	ctx.stroke();
+		ctx.beginPath();
+	ctx.moveTo(locationp7.left,locationp7.top);
+	ctx.lineTo(locationp8.left,locationp8.top);
+	ctx.stroke();
+		ctx.beginPath();
+	ctx.moveTo(locationp7.left,locationp7.top);
+	ctx.lineTo(locationp9.left,locationp9.top);
+	ctx.stroke();
+				ctx.beginPath();
+	ctx.moveTo(locationp8.left,locationp8.top);
+	ctx.lineTo(locationp9.left,locationp9.top);
+	ctx.stroke();
+		ctx.beginPath();
+	ctx.moveTo(locationp10.left,locationp10.top);
+	ctx.lineTo(locationp11.left,locationp11.top);
+	ctx.stroke();
+		ctx.beginPath();
+	ctx.moveTo(locationp10.left,locationp10.top);
+	ctx.lineTo(locationp14.left,locationp14.top);
+	ctx.stroke();
+		ctx.beginPath();
+	ctx.moveTo(locationp10.left,locationp10.top);
+	ctx.lineTo(locationp12.left,locationp12.top);
+	ctx.stroke();
+		ctx.beginPath();
+	ctx.moveTo(locationp11.left,locationp11.top);
+	ctx.lineTo(locationp13.left,locationp13.top);
+	ctx.stroke();
+			ctx.beginPath();
+	ctx.moveTo(locationp11.left,locationp11.top);
+	ctx.lineTo(locationp12.left,locationp12.top);
+	ctx.stroke();
+		ctx.beginPath();
+	ctx.moveTo(locationp11.left,locationp11.top);
+	ctx.lineTo(locationp16.left,locationp16.top);
+	ctx.stroke();
+		ctx.beginPath();
+	ctx.moveTo(locationp14.left,locationp14.top);
+	ctx.lineTo(locationp15.left,locationp15.top);
 	ctx.stroke();
 }
 
@@ -127,46 +308,40 @@ function CheckEnter() {
 			'-webkit-animation': 'pulsate 2s linear infinite'
 			
 		}).show();
-					Save = localStorage.getItem('SavedLoc');
-						document.getElementById('ButtonLink').setAttribute('href',LocKeyGet(Save,0,0)[4])
+		Save = localStorage.getItem('SavedLoc');
+			document.getElementById('ButtonLink').setAttribute('href',LocKeyGet(Save,0,0)[4])
 	} else {
 		$('#EnterButton').hide();
 	}
 }
-
-	function AnimateRotate(){
-		degrees = parseInt(localStorage.getItem('ClockTime'));
-		degrees += 150;
-		$('#clockhand').animate({deg: degrees}, {
-			duration: 500,
-			step: function(deg){
-				$('#clockhand').css({
-					transform: "rotate(" + deg + "deg)"
-				});
-			}
-		});
-	} 
-function CheckClock() {
-	if (localStorage.getItem("ClockTime") != "undefined" && localStorage.getItem("ClockTime") != null) {
-		//console.log('True');
-		var degrees = localStorage.getItem('ClockTime');
-		//console.log(localStorage.getItem('ClockTime'));
-		console.log(degrees)
-		$('#clockhand').css({
-			transform: "rotate(" + degrees + "deg)"
-		});
-	} else {
-		//console.log('false');
-		//console.log(localStorage.getItem('ClockTime'));
-		var degrees = 0;
+function CheckTownTime(Night,Day) {
+	for (let a =0; a<=10; a++)	{
+		time.push(range(NTval[a][0],NTval[a][1]));
 	}
-
+	if (localStorage.getItem("Time") != "undefined" && localStorage.getItem("Time") != null	) {
+		TVal = parseInt(localStorage.getItem("Time"));
+		console.log(TVal) 
+		console.log(time)
+		console.log(localStorage.getItem("Time"))
+		if (typeof Night == 'string' && typeof Day == 'string') {
+			if (isNightTime == time.includes(TVal)) {
+				$('#background').addClass(Night);
+			} else {
+				$('#background').addClass(Day);
+			}
+		} else {
+			if (isNightTime == time.includes(TVal)) {
+				return true
+			} else {
+				return false
+			}
+		}
+	}
 }
-var isNightTime = true;
-var NTval = [[0,6],[18,24],[36,42],[54,60],[72,78],[90,96],[108,114],[126,132],[144,150],[162,168],[180,186],[198,204]];
 function CheckTime() {
-
-	for (let a =0; a<=11; a++)	{time.push(range(NTval[a][0],NTval[a][1]));}
+	for (let a =0; a<=10; a++)	{
+		time.push(range(NTval[a][0],NTval[a][1]));
+	}
 	if (localStorage.getItem("Time") != "undefined" && localStorage.getItem("Time") != null) {
 		TVal = parseInt(localStorage.getItem("Time"));
 		//console.log(isNightTime);
@@ -182,17 +357,16 @@ function CheckTime() {
 			'-webkit-transition':'all 0.0s ease-out',
 		});
 		if (isNightTime == time.includes(TVal)) {
-						$('#map').css({
+			$('#map').css({
 				'filter':'brightness(0.30) saturate(50%) hue-rotate(29deg)',
 				'webkitFilter':'brightness(0.30) saturate(50%) hue-rotate(29deg)',
 				'transition':'all 0.0s ease-out',
 				'-webkit-transition':'all 0.0s ease-out',
 			});
-			drawNightLines()
+			drawNightLines();
 			//console.log('includes T');
-
 		} else {
-						$('#map').css({
+			$('#map').css({
 				'filter':'brightness(1) saturate(100%) hue-rotate(0deg)',
 				'webkitFilter':'brightness(1) saturate(100%) hue-rotate(0deg)',
 				'transition':'all 0.0s ease-out',
@@ -200,11 +374,10 @@ function CheckTime() {
 			});
 			drawDayLines();
 			//console.log('does not include T'+TVal)
-
 		}
 	} else {
 		drawDayLines();
-		TVal = 216;
+		TVal = 240;
 		//console.log('false');
 		$('#map').css({
 			'filter':'brightness(1) saturate(100%) hue-rotate(0deg)',
@@ -218,10 +391,12 @@ function CheckTime() {
 function CheckLoc() {
 	if (localStorage.getItem("SavedLoc") != "undefined" && localStorage.getItem("SavedLoc") != null) {
 		CurrentLoc = localStorage.getItem("SavedLoc");
+		CurrentLoc2 = localStorage.getItem("SavedLoc");
 		$( "#char" ).css({left: LocExtractorX(LocKeyGet(CurrentLoc)),top: LocExtractorY(LocKeyGet(CurrentLoc))}, 0, function() {});
 	} else {
 		CurrentLoc = 'A';
-		$('#char').css({top:500,left:150});
+		CurrentLoc2 = 'A';
+		$('#char').css({top:520,left:70});
 	}
 }
 	function range(start, end) {	
@@ -231,15 +406,15 @@ function CheckLoc() {
 		return
 	}
 	function HoverColor() {
-		$("#inventorybutton, #p1,#p2,#p3,#p4,#p5,#p6,#p7").hover(function(){
+		$("#inventorybutton, #p1,#p2,#p3,#p4,#p5,#p6,#p7,#p8,#p9,#p10,#p11,#p12,#p13,#p14,#p15,#p16").hover(function(){
 			$(this).css('background-color','#e54444');
 		}, function(){
 			$(this).css('background-color','#b40000');
 		});
 	}
 	function LocKeyGet(Location) {
-		var LocDict2 = [['p1','A',500,150,true,'testlocation1.html'],['p2','C',250,600,false],['p4','D',460,450, true,'testlocation2.html'],['p4','B',375,450,false],['p5','E',575,575,false],['p6','F',575,325,false],['p7','G',375,900,true,'testlocation3.html']]
-		for (let a=0;a<7;a++) {
+		var LocDict2 = [['p1','A',70,520,true,'town1.html'],['p2','B',190,450,false],['p3','C',200,300,true,'town2.html'],['p4','D',60,235,true,'forest1.html'],['p5','E',400,420,true,'bridge1.html'],['p6','F',325,300,false],['p7','G',265,245,true,'town3.html'],['p8','H',360,190,false],['p9','I',430,230,true,'forest2.html'],['p10','J',570,420,true,'bridge2.html'],['p11','K',690,300,false],['p12','L',810,360,true,'forest3.html'],['p13','M',850,220,true,'town4.html'],['p14','N',730,515,true,'cave.html'],['p15','O',905,515,true,'town5.html'],['p16','P',565,210,true,'hut.html']]
+		for (let a=0;a<16;a++) {
 				if (Location == LocDict2[a][1]) {
 					result = [LocDict2[a][0],LocDict2[a][2],LocDict2[a][3],LocDict2[a][4],LocDict2[a][5]]
 					return result
@@ -247,10 +422,10 @@ function CheckLoc() {
 		}
 	}
 	function LocExtractorX(Location) {
-		return Location[2]
+		return Location[1]
 	}
 	function LocExtractorY(Location) {
-		return Location[1]
+		return Location[2]
 	}
 	function testColl() {
 		function checkCollision() {
@@ -276,26 +451,53 @@ function setupInventory() {
 	localStorage.clear();
 
 	// SET UP LOCALSTORAGE OBJECTS
-	localStorage.setItem('Knife', 'false');
-	localStorage.setItem('Apple', 'false');
-	localStorage.setItem('Rope', 'false');
+	localStorage.setItem('Flower', 'false');
+	localStorage.setItem('Butterfly', 'false');
+	localStorage.setItem('Medicine', 'false');
+	localStorage.setItem('Weed', 'false');
+	localStorage.setItem('Beans', 'false');
+	localStorage.setItem('Magicmushroom', 'false');	
+	localStorage.setItem('Acorns', 'false');
+	localStorage.setItem('Sunflower', 'false');
+	localStorage.setItem('Necklace', 'false');	
 }
 
 function checkInventory() {
-	if( localStorage.getItem('Knife') == 'true' ) {
-		$('#itemgrid #inv-Knife').show();
-		$('#Knife').hide();
+	if( localStorage.getItem('Flower') == 'true' ) {
+		$('#itemgrid #inv-Flower').show();
+		$('#Flower').hide();
 	}
-	if( localStorage.getItem('Apple') == 'true' ) {
-		$('#itemgrid #inv-Apple').show();
-		$('#Apple').hide();
+	if( localStorage.getItem('Butterfly') == 'true' ) {
+		$('#itemgrid #inv-Butterfly').show();
+		$('#Butterfly').hide();
 	}
-	if( localStorage.getItem('Rope') == 'true' ) {
-		$('#itemgrid #inv-Rope').show();
-		$('#Rope').hide();
+	if( localStorage.getItem('Medicine') == 'true' ) {
+		$('#itemgrid #inv-Medicine').show();
+		$('#Medicine').hide();
 	}
-}
-
-
+	if( localStorage.getItem('Weed') == 'true' ) {
+		$('#itemgrid #inv-Weed').show();
+		$('#Weed').hide();
+	}
+	if( localStorage.getItem('Beanstalk') == 'true' ) {
+		$('#itemgrid #inv-Beans').show();
+		$('#Beanstalk').hide();
+	}
+	if( localStorage.getItem('Magicmushroom') == 'true' ) {
+		$('#itemgrid #inv-Magicmushroom').show();
+		$('#Magicmushroom').hide();
+	}	
+	if( localStorage.getItem('Acorns') == 'true' ) {
+		$('#itemgrid #inv-Acorns').show();
+		$('#Acorns').hide();
+	}
+	if( localStorage.getItem('Sunflower') == 'true' ) {
+		$('#itemgrid #inv-Sunflower').show();
+		$('#Sunflower').hide();
+	}
+	if( localStorage.getItem('Necklace') == 'true' ) {
+		$('#itemgrid #inv-Necklace').show();
+		$('#Necklace').hide();
+	}
 	
-
+}

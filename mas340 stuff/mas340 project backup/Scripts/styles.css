@@ -8,7 +8,75 @@ body {
 			overflow: hidden;
 }
 
-#p1,#p2,#p3,#p4, #p5,#p6,#p7 {
+
+
+
+
+#Flower,#Weed, #Beanstalk, #Butterfly, #Magicmushroom, #Sunflower, #Acorns    {
+	position: absolute;
+	top: 415px;
+	left: 807px;
+}
+#Weed {
+	top: 375px;
+	left:119px;
+}
+
+#Beanstalk {
+	left:465px;
+	top: 0px;
+}
+
+#Butterfly {
+	top: 370px;
+	left: 642px;
+}
+#Magicmushroom {
+	top: 495px;
+	left: 395px;
+}
+
+#DateTime {
+	background-color: black;
+	width: 75px;
+	height: 30px;
+	position: absolute;
+	display: block;
+	margin: 10px;
+	border-radius: 10px;
+}
+#Sunflower {
+	top: 500px;
+	left: 835px;
+	    -webkit-transform: scale(0.75, 0.75); /* Safari */
+    transform: scale(0.75, 0.75);
+}
+
+#Acorns {
+	top: 240px;
+	left: 310px;
+	    -webkit-transform: scale(0.75, 0.75); /* Safari */
+    transform: scale(0.75, 0.75);
+}
+	
+#Day,#Time {
+	position: absolute;
+	display: block;
+	font-size: 1em !important;
+	color: white !important;
+	list-style-type: none;
+	left: 0;
+	float: left;
+	padding: 5px;
+	padding-left: 10px;
+}
+
+#Time  {
+	padding-left:75px;
+}
+	
+
+#p1,#p2,#p3,#p4, #p5,#p6,#p7, #p8,#p9,#p10,#p11,#p12,#p13,#p14,#p15, #p16 {
 	width:20px;
 	height: 20px;
 	position: absolute;
@@ -19,43 +87,81 @@ body {
 }
 
 #p1 {
-	top: 500px;
-	left: 150px;
+	top: 520px;
+	left: 70px;
 }
 #p2 {
-	top: 250px;
-	left: 600px;
+	top: 450px;
+	left: 190px;
 }
 #p3 {
-	top: 460px;
-	left: 450px;
+	top: 300px;
+	left: 200px;
 }
 
 #p4 {
-	top: 375px;
-	left: 450px;
+	top: 235px;
+	left: 60px;
 }
 
 #p5 {
-	top: 575px;
-	left: 575px;
+	top: 420px;
+	left: 400px;
 }
 #p6 {
-	top: 575px;
+	top: 300px;
 	left: 325px;
 }
 #p7 {
-	top: 375px;
-	left: 900px;
+	top: 245px;
+	left: 265px;
 }
+
+#p8 {
+	top:190px;
+	left:360px;
+}
+#p9 {
+	top:230px;
+	left:430px;
+}
+#p10 {
+	top: 420px;
+	left: 570px;
+}
+#p11 {
+	top: 300px;
+	left: 690px;
+}
+#p12 {
+	top: 360px;
+	left: 810px;
+}
+#p13 {
+		top: 220px;
+	left: 850px;
+}
+#p14 {
+	top: 515px;
+	left: 730px;
+}
+
+#p15 {
+	top: 515px;
+	left: 905px;
+}
+
+#p16 {
+	top: 210px;
+	left: 565px;
+}
+
 
 
 #char {
 	width: 100px;
 	height: 100px;
 	position: absolute;
-	top: 500px;
-	left: 150px;
 	background-color: transparent;
 	background-image: url('../images/icon.png');
 	vertical-align: middle;
@@ -64,7 +170,7 @@ body {
 	transform: scale(0.50,0.50)
 }
 
-#backbutton a, #inventorybutton a, #title, a:visited, #itemGet, #EnterButton, #ButtonLink {
+#backbutton a, #inventorybutton a, #title, a:visited, #itemGet, #EnterButton, #ButtonLink, #Day,#Time, button  {
 	color: black;
 	font-size: 1.5em;
 		text-decoration: none;
@@ -150,6 +256,7 @@ body {
 	top: 150px;
 	width: 1000px;
 	height: 600px;
+	overflow: hidden;
 }
 
 #map {
@@ -166,34 +273,113 @@ body {
 }
 
 .bg3 {
-	background-image: url('../images/testmapgraphic.jpg');
+	background-image: url('../images/mapbackground.png');
 	background-repeat: no-repeat;
 }
+
+.bg4 {
+	background-image: url('../images/town.jpg');
+	background-repeat: no-repeat;
+}
+.bg5 {
+	background-image: url('../images/throneroom.jpg');
+	background-repeat: no-repeat;
+}
+.bg6 {
+background-image: url('../images/townnight.jpg');
+	background-repeat: no-repeat;
+}
+.bg7 {
+background-image: url('../images/town2day.jpg');
+	background-repeat: no-repeat;
+}
+.bg8 {
+background-image: url('../images/town2night.jpg');
+	background-repeat: no-repeat;
+}
+.bg9 {
+	background-image: url('../images/forest2a.jpg');
+	background-repeat: no-repeat;
+}
+.bg10 {
+	background-image: url('../images/forest2anight.jpg');
+	background-repeat: no-repeat;
+}
+.bg11 {
+	background-image: url('../images/forest2b.jpg');
+	background-repeat: no-repeat;
+}
+.bg12 {
+	background-image: url('../images/forest2bnight.jpg');
+	background-repeat: no-repeat;
+}
+.bg13 {
+	background-image: url('../images/forest3day.jpg');
+	background-repeat: no-repeat;
+}
+.bg14 {
+	background-image: url('../images/forest3night.jpg');
+	background-repeat: no-repeat;
+}
+.bg15 {
+	background-image: url('../images/forest1day.jpg');
+	background-repeat: no-repeat;
+}
+.bg16 {
+	background-image: url('../images/forest1night.jpg');
+	background-repeat: no-repeat;
+}
+.bg17 {
+	background-image: url('../images/forest3b.png');
+	background-repeat: no-repeat;
+}
+.bg18 {
+	background-image: url('../images/forest3bnight.png');
+	background-repeat: no-repeat;
+}
+
 
 #tunnelbackground {
 	background-color: transparent;
 }
 
-#backbutton {
-position: absolute;
-left: 50px;
-top: 50px;
-width: 75px;
-height: 30px;
-background-color: #b40000;
+button {
+	position: absolute;
+left: 10px;
+top: 10px;
+	text-decoration: none;
+	display: inline-block;
+    padding: 7.5px 6px;
+	
+	background-color: #b40000;
+    color: black;
+	border-width: 0px;
+	align-items: flex-start;
+	font-size: 1em !important;
+	border-radius: 10px;
+}
+
+button:hover {
+	background-color: #e54444;
 }
 
 #inventorybutton {
 position: absolute;
-right: 50px;
-top: 50px;
+right: 10px;
+top: 10px;
 width: auto;
 height: 30px;
 border-radius: 10px;
-padding: 5px;
+padding-left: 5px;
+padding-right: 5px;
 background-color: #b40000;
+display: inline-block;
 }
 
+#inventorybutton:hover {
+	background-color: #e54444;
+}
+span { display:inline-block !important; vertical-align:top !important; }
 #EnterButton {
 	position: absolute;
 	left: -30px;
@@ -216,7 +402,7 @@ background-color: #b40000;
 #itemGet {
 position: absolute;
 right: 30px;
-top: 30px;
+top: 0px;
 color: black;
 display:none;
 }
@@ -229,17 +415,28 @@ bottom: 40px;
 width: 75px;
 height: 30px;
 background-color: #b40000;
+display:none;
 }
 
-
+#talkbutton {
+	position: absolute;
+left: 200px;
+top: 470px;
+width: 75px;
+height: 30px;
+background-color: #b40000;
+display: none;
+border-radius: 10px;
+}
 #title {
 	position: relative;
 	display: block;
-	color: white;
-	top: 50px;
+	top: 35px;
+	color: black;
 	width: 100px;
 	height: 100px;
 	margin: auto;
+	z-index: 10;
 }
 
 #textbox {
@@ -247,63 +444,69 @@ background-color: #2196F3;
 	width: 800px;
 	height: 175px;
 	position: absolute;
-	display: block;
+	display: none;
 	bottom: 25px;
 	left: 100px;
 	padding: 0px;
 }
 
-
-
-#descbox {
+#noticebox {
 	background-color: #2196F3;	
-	position: relative;
+	width: 700px;
+	height: 30px;
+	position: absolute;
+	left: 150px;
+	top: 10px;
+	border-radius: 10px;
+	text-align: center;
+	display: none;
+}
+#noticebox span {
+	position: absolute;
 	margin: auto;
-	top: 35px;
-	width: 600px;
-	height: 100px;
+	top: 5px;
+	left: 324px;
+
+}
+#descbox {
+	background-color: rgba(0,0,0,0.35);
+	position: absolute;
+	margin: auto;
+	top: 414px;
+	left: 354px;
+	width: 446px;
+	height: 142px;
+	z-index: 10;
 	display: none;
 }
 
-#itemgrid{
+#itemgrid {
 	display: grid;
-	grid-template-columns: auto auto auto auto;
+	grid-template-columns: 140px 140px 140px 140px;
+	grid-template-rows: 140px 140px 140px 140px;
+	grid-gap: 10px;
 	position: relative;
-	width: 600px;
-	height: 325px;
-	background-color: blue;
+	padding: 10px;
+	padding-top: 110px;
+	width: 595px;
+	height: 446px;
 	margin: auto;
-	background-color: #2196F3;
+	margin-top: -100px;
+	background-image: url('../images/inventorylayout.jpg');
 }
 
 #itemgrid .items {
-  background-color: rgba(255, 255, 255, 0.8);
-  border: 1px solid rgba(0, 0, 0, 0.8);
+	
+  background-color: transparent;
   padding: 20px;
   font-size: 30px;
   text-align: center;
+  
 }
 
 #itemgrid .items img {
 	display: none;
 }
 
-#clockContainer {
-	position: absolute;
-	top: 25px;
-	left: -25px;
-	background-color: transparent;
-}
-
-#clock, #clockhand {
-	position: absolute;
-	width: 250px;
-	height: auto;
-}
-
-#clockhand {
-	z-index:5;
-
-}
 
 

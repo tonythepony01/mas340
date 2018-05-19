@@ -11,8 +11,8 @@
 <script>
 $(document).ready(function(){
 	checkInventory(); 
-	var itemDesc = {"inv-Knife": "Description1","inv-Apple":'Description2',"inv-Rope":"Description3"};
-	$("#inv-Knife, #inv-Apple,#inv-Rope").hover(function(){
+	var itemDesc = {"inv-Flower": "Description1","inv-Butterfly":'Description2',"inv-Medicine":"Description3","inv-Weed": "Description4","inv-Beans": "Description5","inv-Magicmushroom": "Description6","inv-Acorns": "Description7","inv-Sunflower": "Description8","#inv-Necklace": "Description9"};
+	$("#inv-Flower, #inv-Butterfly,#inv-Medicine,#inv-Weed,#inv-Beans,#inv-Magicmushroom,#inv-Acorns,#inv-Sunflower,#inv-Necklace").hover(function(){
 		$("#descbox").show();
 		attr = String($(this).attr('id'))
 		description = itemDesc[attr]
@@ -26,17 +26,18 @@ $(document).ready(function(){
 </head>
 <body>
 <div id="background">
-	<div id="backbutton"><button onclick="goBack()">Go Back</button></div>
+	<button onclick="goBack()">Go Back</button>
 	<div id="title">Inventory</div>
 	<div id="itemgrid">
-		<div class="items"><img src="images/inv-knife.png" id="inv-Knife"></div>
-		<div class="items"><img src="images/inv-apple.png" id="inv-Apple"></div>
-		<div class="items"><img src="images/inv-rope.png" id="inv-Rope"></div>
-		<div class="items"><img src="images/inv-rope.png" id="inv-Rope"></div>
-		<div class="items"><img src="images/inv-rope.png" id="inv-Rope"></div>
-		<div class="items"><img src="images/inv-rope.png" id="inv-Rope"></div>
-		<div class="items"><img src="images/inv-rope.png" id="inv-Rope"></div>
-		<div class="items"><img src="images/inv-rope.png" id="inv-Rope"></div>
+		<div class="items"><img src="images/items/inventoryver/invflower.png" id="inv-Flower"></div>
+		<div class="items"><img src="images/items/inventoryver/invbutterfly.png" id="inv-Butterfly"></div>
+		<div class="items"><img src="images/items/inventoryver/invmedicine.png" id="inv-Medicine"></div>
+		<div class="items"><img src="images/items/inventoryver/invweed.png" id="inv-Weed"></div>
+		<div class="items"><img src="images/items/inventoryver/invbeans.png" id="inv-Beans"></div>
+		<div class="items"><img src="images/items/inventoryver/invmagicmushroom.png" id="inv-Magicmushroom"></div>
+		<div class="items"><img src="images/items/inventoryver/invacorns.png" id="inv-Acorns"></div>
+		<div class="items"><img src="images/items/inventoryver/invsunflower.png" id="inv-Sunflower"></div>
+		<div class="items"><img src="images/items/inventoryver/invnecklace.png" id="inv-Necklace"></div>
 	</div>
 	<div id="descbox"></div>
 	</div>

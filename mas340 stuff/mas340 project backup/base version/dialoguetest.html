@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>MAS340</title>
+	<script src="Scripts/jquery-3.3.1.js"></script>
+	<link href="Scripts/styles.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+	<script src="Scripts/jquery-ui.js"></script>
+	<script src="Scripts/jquery.js"></script>
+<script>
+$(document).ready(function(){
+//setupInventory()
+//Place this function at the beginning of the story, or else the dialogue memory function will not work. it will clear the localstorage on refresh and page changes
+	checkInventory(); // required on every page to check which items have been picked up
+	$('.clickable').mousedown(function() {
+		if ($('#inventorybutton').hasClass('spring') == true) {
+			$('#inventorybutton').removeClass('spring');
+			$('#itemGet').removeAttr('style');
+		}		
+	}).mouseup(function() {
+		if ($('#inventorybutton').hasClass('spring') == false) {
+			$('#inventorybutton').addClass('spring');
+		}
+		$('#itemGet').html($(this).attr('id')); 
+		$('#itemGet').show().animate({top: '15px'}, 150).fadeOut(200);
+		$(this).fadeOut('fast');
+		var itemName = $(this).attr('id');
+		localStorage.setItem(itemName, 'true');	
+		checkInventory();
+	});
+	
+	if (localStorage.getItem('DialogueProgress') != "undefined" && localStorage.getItem('DialogueProgress') != null && localStorage.getItem('DialogueProgress') != 0) {
+		var progress = localStorage.getItem('DialogueProgress') /*Dialogue progress saver*/
+		progress -= 1;
+		eventHandler();	
+	} else {
+		var progress = 0;
+	}
+	var dialogue;
+
+	function eventHandler() {
+		switch (progress) {
+    		case 0:
+        		dialogue = "text1";
+				$('#background').addClass('bg1');
+        		break;
+			case 1:
+				dialogue = "text2"
+				$('#background').addClass('bg1');
+				break;
+			case 2:
+				dialogue = "text3"
+				$('#background').addClass('bg2').removeClass('bg1');
+				break;
+			case 3:
+				dialogue = "text4"
+				$('#background').addClass('bg2');
+				break;			
+        }
+        progress++;  
+		localStorage.setItem("DialogueProgress", progress);
+        $('#textbox').html(dialogue); 
+	}
+	$('#nextbutton').click(eventHandler);
+
+});
+</script>
+</head>
+<body>
+<div id="background">
+<a href="inventory.html">Inventory</a>
+<a href="dialoguetest.html">dialogue</a>
+<a href="map.html">map</a>
+<a href="collisiontest.html">collision</a>
+	<div id="inventorybutton"><a class="htmllink" href="inventory.html">Inventory</a></div>
+	<div id="itemGet"></div>
+	<img src="images/knife.png" id="Knife" class="clickable">
+	<img src="images/apple.png" id="Apple" class="clickable">
+	<img src="images/rope.png" id="Rope" class="clickable">
+	<div id="textbox"></div>
+	<div id="nextbutton"></div>
+</div>
+</body>
+</html>

@@ -14,16 +14,16 @@ $(document).ready(function(){
 //Place this function at the beginning of the story, or else the dialogue memory function will not work. it will clear the localstorage on refresh and page changes
 	checkInventory(); // required on every page to check which items have been picked up
 	$('.clickable').mousedown(function() {
-		if ($('#inventorybutton').hasClass('spring') == true) {
-			$('#inventorybutton').removeClass('spring');
+		if ($('#inventorybutton').hasClass('jiggle') == true) {
+			$('#inventorybutton').removeClass('jiggle');
 			$('#itemGet').removeAttr('style');
 		}		
 	}).mouseup(function() {
-		if ($('#inventorybutton').hasClass('spring') == false) {
-			$('#inventorybutton').addClass('spring');
+		if ($('#inventorybutton').hasClass('jiggle') == false) {
+			$('#inventorybutton').addClass('jiggle');
 		}
 		$('#itemGet').html($(this).attr('id')); 
-		$('#itemGet').show().animate({top: '15px'}, 150).fadeOut(200);
+		$('#itemGet').show().animate({top: '-20px'}, 150).fadeOut(200);
 		$(this).fadeOut('fast');
 		var itemName = $(this).attr('id');
 		localStorage.setItem(itemName, 'true');	
