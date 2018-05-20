@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>MAS340</title>
+<script src="Scripts/jquery-3.3.1.js"></script>
+<link href="Scripts/styles.css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+<script src="Scripts/jquery.js"></script>
+<script src="Scripts/jquery-ui.js"></script>
+<script src="Scripts/e-smart-hittest-jquery.js"></script>
+<script>
+$(document).ready(function() { 
+	$("#noticebox").slideDown('400').delay(2200).slideUp('400');
+	QuestMemory();
+	QuestCompletionMemory();
+	CheckLoc();
+	var angle = 0;
+var speed = 5;
+	K = {}; // keys: {37:0||1, 38:0||1, ...}
+	$(document).on('keydown keyup', function(e) {
+		var kN = e.which; // key Number
+		if(kN>36||kN<41) K[kN]= e.type==="keydown";
+		$.each($("div"),function(){
+			p = $('.player').position();
+		});	
+
+	});
+
+	function updatePlayerPos() {
+  var dist = K[38]&&(K[37]||K[39]) || K[40]&&(K[37]||K[39]) ? 0.707 : 1; 
+  dist *= speed;
+  if(K[37]) angle -= dist;
+  if(K[39]) angle += dist;
+  $('.player').css({transform:"rotateZ("+angle+"deg)"});
+}
+
+
+(function engine() {
+  updatePlayerPos();
+  window.requestAnimationFrame( engine );
+
+}());
+	$('.player').mousedown(function() {
+		$(this).removeClass("fall");
+		$(this).draggable({ revert: "valid", containment: "none" , drag: function() {
+			testColl();
+			var p = $(this).position();
+			console.log(p.left+' '+p.top);
+			if (p.left < 35){
+				window.location = "cave.html";
+			} else if (p.left > 950) {
+				window.location = "map.html";
+				DestLoc = 'O';
+				localStorage.setItem("SavedLoc", DestLoc);
+			}
+		}});
+	}).mouseup(function() {
+		$(this).addClass("fall");
+		testColl();
+	});
+});
+</script>
+
+</head>
+<body>
+
+
+
+	
+<div id="background">
+<button onclick="goBack()">Go Back</button>
+<div id="noticebox"><span>Tunnel<span></div>
+<img id="tunnelbackground" src="images/tunnel.png">
+<img class="player" src="images/player.png">
+</div>
+
+
+
+</body>
+</html>

@@ -7,7 +7,7 @@ var degrees = 0;
 var DivList = ['#p1','#p2','#p3','#p4','#p5','#p6','#p7','#p8','#p9','#p10','#p11','#p12','#p13','#p14','#p15','#p16'];
 var isNightTime = true;
 var NTval = [[0,6],[18,30],[42,54],[66,78],[90,102],[114,126],[134,146],[158,170],[182,194],[206,218],[230,242]];
-var QuestDict = [['Q1', false],['Q2', false],['Q3', false],['Q4', false],['Q5', false],['Q6', false]]; // default value
+var QuestDict = [['Q1', false],['Q2', false],['Q3', false],['Q4', false],['Q5', true],['Q6', false]]; // default value
 var QuestComp = [false, false, false, false, false,false];
 
 function QuestToggler(QNum,State) { // takes the quest number and true/false state and replaces the second value in each list in QuestDict.
@@ -72,7 +72,7 @@ function QuestMemory() {
 		// current state: [["Q1",true],["Q2",true],["Q3",true],["Q4",true],["Q5",false],["Q6",false]]
 		console.log(QuestDict);
 	} else {
-		QuestDict = [['Q1', false],['Q2', false],['Q3', false],['Q4', false],['Q5', false],['Q6', false]];
+		QuestDict = [['Q1', false],['Q2', false],['Q3', false],['Q4', false],['Q5', true],['Q6', false]];
 		console.log('Memory check2: '+QuestDict);
 	};	
 }
@@ -105,7 +105,7 @@ function NightPhase() {
 }
 
 function displayDateTime(TVal) {
-	var DayNTime = [['Day 1',216,235,228],['Day 2',192,216,204],['Day 3', 168,192,180],['Day 4', 144,168,156],['Day 5', 120,144,132],['Day 6',96,120,108],['Day 7',72,96,84],['Day 8',48,72,60],['Day 9',24,48,36],['Day 10',0,24,12]]
+	var DayNTime = [['Day 1',216,240,228],['Day 2',192,216,204],['Day 3', 168,192,180],['Day 4', 144,168,156],['Day 5', 120,144,132],['Day 6',96,120,108],['Day 7',72,96,84],['Day 8',48,72,60],['Day 9',24,48,36],['Day 10',0,24,12]]
 	for (var a in DayNTime)	{
 		range2(DayNTime[a][1],DayNTime[a][2]);
 		if (TVal == DayNTime[a][3]) {
