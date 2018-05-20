@@ -105,7 +105,7 @@ function NightPhase() {
 }
 
 function displayDateTime(TVal) {
-	var DayNTime = [['Day 1',216,240,228],['Day 2',192,216,204],['Day 3', 168,192,180],['Day 4', 144,168,156],['Day 5', 120,144,132],['Day 6',96,120,108],['Day 7',72,96,84],['Day 8',48,72,60],['Day 9',24,48,36],['Day 10',0,24,12]]
+	var DayNTime = [['Day 1',216,235,228],['Day 2',192,216,204],['Day 3', 168,192,180],['Day 4', 144,168,156],['Day 5', 120,144,132],['Day 6',96,120,108],['Day 7',72,96,84],['Day 8',48,72,60],['Day 9',24,48,36],['Day 10',0,24,12]]
 	for (var a in DayNTime)	{
 		range2(DayNTime[a][1],DayNTime[a][2]);
 		if (TVal == DayNTime[a][3]) {
@@ -113,6 +113,7 @@ function displayDateTime(TVal) {
 		} else if (hours.includes(TVal)) {
 			$('#Day').html(DayNTime[a][0]);
 			var reverseHour = hours.reverse();
+			console.log(reverseHour)
 			if (reverseHour.indexOf(TVal) >= 12) {
 			$('#Time').html(reverseHour.indexOf(TVal)+'PM'); 
 			} else if (reverseHour.indexOf(TVal) <12) {
@@ -479,7 +480,7 @@ function CheckLoc() {
 		return
 	}
 	function HoverColor() {
-		var LocName = {p1:'Town 1',p3:'Town 2',p4:'Forest 1',p5:'Bridge',p7:'Town 3',p9:'Forest 2',p12:'Forest 3',p13:'Town 4',p14:'Cave',p15:'Town 5',p16:'Random Hut'};
+		var LocName = {p1:'Town 1',p3:'Town 2',p4:'Forest 1',p5:'Bridge',p7:'Town 3',p9:'Forest 2',p10:'Bridge',p12:'Forest 3',p13:'Town 4',p14:'Cave',p15:'Town 5',p16:'Random Hut'};
 		$("#inventorybutton, #p1,#p2,#p3,#p4,#p5,#p6,#p7,#p8,#p9,#p10,#p11,#p12,#p13,#p14,#p15,#p16, #QuestButton").hover(function(){
 			$(this).css('background-color','#e54444');
 			LocPoint = String($(this).attr('id'));
@@ -494,7 +495,7 @@ function CheckLoc() {
 		});
 	}
 	function LocKeyGet(Location) {
-		var LocDict2 = [['p1','A',70,520,true,'town1.html'],['p2','B',190,450,false],['p3','C',200,300,true,'town2.html'],['p4','D',60,235,true,'forest1.html'],['p5','E',400,420,true,'bridge1.html'],['p6','F',325,300,false],['p7','G',265,245,true,'town3.html'],['p8','H',360,190,false],['p9','I',430,230,true,'forest2.html'],['p10','J',570,420,true,'bridge2.html'],['p11','K',690,300,false],['p12','L',810,360,true,'forest3.html'],['p13','M',850,220,true,'town4.html'],['p14','N',730,515,true,'cave.html'],['p15','O',905,515,true,'town5.html'],['p16','P',565,210,true,'hut.html']]
+		var LocDict2 = [['p1','A',70,520,true,'town1.html'],['p2','B',190,450,false],['p3','C',200,300,true,'town2.html'],['p4','D',60,235,true,'forest1.html'],['p5','E',400,420,false],['p6','F',325,300,false],['p7','G',265,245,true,'town3.html'],['p8','H',360,190,false],['p9','I',430,230,true,'forest2.html'],['p10','J',570,420,false],['p11','K',690,300,false],['p12','L',810,360,true,'forest3.html'],['p13','M',850,220,true,'town4.html'],['p14','N',730,515,true,'cave.html'],['p15','O',905,515,true,'town5.html'],['p16','P',565,210,true,'hut.html']]
 		for (let a=0;a<16;a++) {
 				if (Location == LocDict2[a][1]) {
 					result = [LocDict2[a][0],LocDict2[a][2],LocDict2[a][3],LocDict2[a][4],LocDict2[a][5]]

@@ -8,6 +8,15 @@ body {
 			overflow: hidden;
 }
 
+#dockLeft, #dockRight {
+	position: absolute;
+	z-index: 9;
+	top: 83px;
+	left: 166.5px;
+	width: 667px;
+	height: 400px;
+	display: none;
+}
 
 #Flower,#Weed, #Beanstalk, #Butterfly, #Magicmushroom, #Sunflower, #Acorns, #Necklace    {
 	position: absolute;
@@ -173,10 +182,10 @@ body {
 	margin-top:-80px;
 	margin-left: -50px;
 	transform: scale(0.50,0.50);
-	z-index: 10;
+	z-index: 8;
 }
 
-#backbutton a, #inventorybutton a, #title, a:visited, #itemGet, #EnterButton, #ButtonLink, #Day,#Time, button, #QuestList li, #QuestButton a, #noticebox span {
+#backbutton a, #inventorybutton a, #title, a:visited, #itemGet, #EnterButton, #ButtonLink, #Day,#Time, button, #QuestList li, #QuestButton a, #noticebox span, #noticebox2 span {
 	color: black;
 	font-size: 1.5em;
 	text-decoration: none;
@@ -472,13 +481,32 @@ background-color: #2196F3;
 	border-radius: 10px;
 	text-align: center;
 	display: none;
-	z-index: 10;
+	z-index: 11;
 }
 #noticebox span {
 	position: absolute;
 	margin: auto;
 	top: 5px;
 	left: 324px;
+	font-size: 1.15em;
+}
+#noticebox2 {
+	background-color: #2196F3;	
+	width: 700px;
+	height: 30px;
+	position: absolute;
+	left: 150px;
+	top: 10px;
+	border-radius: 10px;
+	text-align: center;
+	display: none;
+	z-index: 11;
+}
+#noticebox2 span {
+	position: relative;
+	margin: auto;
+	top: 5px;
+	text-align: center;
 	font-size: 1.15em;
 }
 #descbox {

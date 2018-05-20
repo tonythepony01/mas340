@@ -82,22 +82,33 @@ $(document).ready(function(){
 				}
 			} else if (PathList[PathNum[CurrentLoc]].includes(DestLoc) == true) {
 				PathList = [['A','B'],['B','A','C','E'],['C','D','B'],['D','C'],['E','F','B'],['F','E','G'],['G','F','H','I'],['H','G','I'],['I','H','G'],['J','K','L'],['K','J','L','M'],['L','K','J'],['M','K'],['N','O'],['O','N'],['P','K']];
-				CurrentLoc = DestLoc;
-				EnterCheck(DestLoc,position.left,position.top);
-				localStorage.setItem("SavedLoc", DestLoc);
-				if (timeDeduction(CurrentLoc2, DestLoc2) > TVal) {
-					console.log('There is not enough time to travel');
+				if (CurrentLoc == 'E' && DestLoc == 'J') {
+					$('#noticebox2 span').html('Seems like the bridge is broken. Try coming back later.');
+					$('#dockLeft').show().delay(2000).fadeOut();
+					$("#noticebox2").slideDown('100').delay(2900).slideUp('100');
+				} else if (CurrentLoc == 'J' && DestLoc == 'E') {
+					$('#noticebox2 span').html('Seems like the bridge is broken. Try coming back later.');
+					$('#dockRight').show().delay(2000).fadeOut();
+					$("#noticebox2").slideDown('100').delay(2900).slideUp('100');					
 				} else {
-					TVal -= timeDeduction(CurrentLoc2, DestLoc2);
-					console.log('Day Time. Time Left: '+TVal)
-					localStorage.setItem("Time", TVal);
-					displayDateTime(TVal);
-					CurrentLoc2 = DestLoc2;
-					drawDayLines();
-					DayPhase();
-					localStorage.setItem('ClockTime',degrees);
-					$( "#char" ).animate({left: position.left,top: position.top}, 1000,'swing', function() {});
+					CurrentLoc = DestLoc;
+					EnterCheck(DestLoc,position.left,position.top);
+					localStorage.setItem("SavedLoc", DestLoc);
+					if (timeDeduction(CurrentLoc2, DestLoc2) > TVal) {
+						console.log('There is not enough time to travel');
+					} else {
+						TVal -= timeDeduction(CurrentLoc2, DestLoc2);
+						console.log('Day Time. Time Left: '+TVal)
+						localStorage.setItem("Time", TVal);
+						displayDateTime(TVal);
+						CurrentLoc2 = DestLoc2;
+						drawDayLines();
+						DayPhase();
+						localStorage.setItem('ClockTime',degrees);
+						$( "#char" ).animate({left: position.left,top: position.top}, 1000,'swing', function() {});
+					}
 				}
+
 			}
 		} else {
 			console.log('doing nothing')
@@ -125,7 +136,9 @@ $(document).ready(function(){
 <a href="collisiontest.html">collision</a>
 <div id="background">
 	<div id="map"><canvas id="myCanvas" width="1000" height="600" style="border:1px solid #d3d3d3;"></canvas></div>
-	<div id="noticebox"><span></span></div>
+	<img id='dockLeft' src='images/dockleft.jpg'>
+	<img id='dockRight' src='images/dockright.jpg'>
+	<div id="noticebox2"><span></span></div>
 	<ul id='DateTime'>
 		<li id='Day'>Day 1</li>
 		<li id='Time'>12pm</li>
