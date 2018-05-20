@@ -9,9 +9,6 @@ body {
 }
 
 
-
-
-
 #Flower,#Weed, #Beanstalk, #Butterfly, #Magicmushroom, #Sunflower, #Acorns, #Necklace    {
 	position: absolute;
 	top: 415px;
@@ -38,7 +35,7 @@ body {
 
 #DateTime {
 	background-color: black;
-	width: 75px;
+	width: 80px;
 	height: 30px;
 	position: absolute;
 	display: block;
@@ -76,7 +73,7 @@ body {
 	left: 0;
 	float: left;
 	padding: 5px;
-	padding-left: 10px;
+	padding-left: 5px;
 }
 
 #Time  {
@@ -175,10 +172,11 @@ body {
 	vertical-align: middle;
 	margin-top:-80px;
 	margin-left: -50px;
-	transform: scale(0.50,0.50)
+	transform: scale(0.50,0.50);
+	z-index: 10;
 }
 
-#backbutton a, #inventorybutton a, #title, a:visited, #itemGet, #EnterButton, #ButtonLink, #Day,#Time, button, #QuestList li, #QuestButton a {
+#backbutton a, #inventorybutton a, #title, a:visited, #itemGet, #EnterButton, #ButtonLink, #Day,#Time, button, #QuestList li, #QuestButton a, #noticebox span {
 	color: black;
 	font-size: 1.5em;
 	text-decoration: none;
@@ -265,6 +263,7 @@ body {
 	width: 1000px;
 	height: 600px;
 	overflow: hidden;
+	
 }
 
 #map {
@@ -392,6 +391,7 @@ display: inline-block;
 	background-color: #e54444;
 }
 span { display:inline-block !important; vertical-align:top !important; }
+
 #EnterButton {
 	position: absolute;
 	left: -30px;
@@ -412,11 +412,11 @@ background-color: #b40000;
 }
 
 #itemGet {
-position: absolute;
-right: 30px;
-top: 0px;
-color: black;
-display:none;
+	position: absolute;
+	right: 20px;
+	top: 20px;
+	color: #b40000;
+	z-index: 10;
 }
 
 #nextbutton {
@@ -472,13 +472,14 @@ background-color: #2196F3;
 	border-radius: 10px;
 	text-align: center;
 	display: none;
+	z-index: 10;
 }
 #noticebox span {
 	position: absolute;
 	margin: auto;
 	top: 5px;
 	left: 324px;
-
+	font-size: 1.15em;
 }
 #descbox {
 	background-color: rgba(0,0,0,0.35);

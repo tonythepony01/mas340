@@ -15,6 +15,7 @@ $(document).ready(function(){
 	checkInventory();
 	QuestMemory();
 	QuestCompletionMemory();
+	$("#noticebox").slideDown('400').delay(2200).slideUp('400');
 	if (CheckTownTime(0,0) == true) {
 		$('#Sunflower').attr("src","images/items/night/sunflowernight.png");
 		$('#Acorns').attr("src","images/items/night/acornsnight.png");
@@ -94,7 +95,7 @@ $(document).ready(function(){
 			$('#inventorybutton').addClass('jiggle');
 		}
 		$('#itemGet').html($(this).attr('id')); 
-		$('#itemGet').show().animate({top: '-20px'}, 150).fadeOut(200);
+		$('#itemGet').show().animate({top: '40px'}, 150).fadeOut(200);
 		$(this).fadeOut('fast');
 		var itemName = $(this).attr('id');
 		localStorage.setItem(itemName, 'true');	
@@ -107,6 +108,8 @@ $(document).ready(function(){
 </head>
 <body>
 <div id="background">
+<div id="noticebox"><span>Forest 3-B<span></div>
+<div id="itemGet"></div>
 			<img src="images/items/sunflower.png" id="Sunflower" class="clickable">
 			<img src="images/items/acorns.png" id="Acorns" class="clickable">
 			<img src="images/items/necklace.png" id="Necklace" class="clickable">

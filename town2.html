@@ -14,6 +14,7 @@ QuestMemory();
 QuestCompletionMemory();
 CheckTownTime('bg8','bg7');
 checkInventory();
+$("#noticebox").slideDown('400').delay(2200).slideUp('400');
 	if (localStorage.getItem("coords") != "undefined" && localStorage.getItem("coords") != null) {
 		var coords = (JSON.parse("[" + localStorage.getItem("coords") + "]"));
 		console.log(coords);
@@ -147,6 +148,7 @@ function updatePlayerPos() {
 </head>
 <body>
 <div id="background">
+<div id="noticebox"><span>Town 2<span></div>
 	<div id="char"></div>
 		<div id="talkbutton"></div>
 		<div id="textbox"></div>

@@ -57,7 +57,7 @@ checkInventory();
 			$('#inventorybutton').addClass('jiggle');
 		}
 		$('#itemGet').html($(this).attr('id')); 
-		$('#itemGet').show().animate({top: '-20px'}, 150).fadeOut(200);
+		$('#itemGet').show().animate({top: '40px'}, 150).fadeOut(200);
 		$(this).fadeOut('fast');
 		var itemName = $(this).attr('id');
 		localStorage.setItem(itemName, 'true');	
@@ -100,6 +100,7 @@ function updatePlayerPos() {
 <div id="background">
 <div id="char"></div>
 	<div id="noticebox"><span>Forest 1<span></div>
+	<div id="itemGet"></div>
 	<img src="images/items/flower.png" id="Flower" class="clickable">
 	<div id="inventorybutton"><a class="htmllink" href="inventory.html"><span>Inventory</span></a></div>
 </div>

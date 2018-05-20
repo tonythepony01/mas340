@@ -13,6 +13,7 @@ $(document).ready(function(){
 QuestMemory();
 QuestCompletionMemory();
 	$('#background').addClass('bg4');
+	$("#noticebox").slideDown('400').delay(2200).slideUp('400');
 	if (localStorage.getItem("coords") != "undefined" && localStorage.getItem("coords") != null) {
 		var coords = (JSON.parse("[" + localStorage.getItem("coords") + "]"));
 		console.log(coords);
@@ -64,6 +65,7 @@ function updatePlayerPos() {
 </head>
 <body>
 <div id="background">
+<div id="noticebox"><span>Town 4<span></div>
 	<div id="char"></div>
 	
 </div>

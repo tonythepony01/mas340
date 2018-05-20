@@ -14,6 +14,7 @@ $(document).ready(function(){
 	QuestCompletionMemory();
 CheckTownTime('bg6','bg4');
 checkInventory();
+$("#noticebox").slideDown('400').delay(2200).slideUp('400');
 	$('#background').addClass('bg4');
     K = {}; // keys: {37:0||1, 38:0||1, ...}
 	if (localStorage.getItem("coords") != "undefined" && localStorage.getItem("coords") != null) {
@@ -98,6 +99,7 @@ function updatePlayerPos() {
 </head>
 <body>
 <div id="background">
+<div id="noticebox"><span>Town 1<span></div>
 	<div id="talkbutton"></div>
 	<div id="char"></div>
 	<div id="textbox"></div>

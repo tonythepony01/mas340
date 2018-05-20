@@ -14,6 +14,7 @@ $(document).ready(function(){
 		checkInventory();
 	QuestMemory();
 	QuestCompletionMemory();
+	$("#noticebox").slideDown('400').delay(2200).slideUp('400');
     K = {}; // keys: {37:0||1, 38:0||1, ...}
 	if (localStorage.getItem("coords2") != "undefined" && localStorage.getItem("coords2") != null) {
 		var coords2 = (JSON.parse("[" + localStorage.getItem("coords") + "]"));
@@ -73,7 +74,7 @@ $(document).ready(function(){
 			$('#inventorybutton').addClass('jiggle');
 		}
 		$('#itemGet').html($(this).attr('id')); 
-		$('#itemGet').show().animate({top: '-20px'}, 150).fadeOut(200);
+		$('#itemGet').show().animate({top: '40px'}, 150).fadeOut(200);
 		$(this).fadeOut('fast');
 		var itemName = $(this).attr('id');
 		localStorage.setItem(itemName, 'true');	
@@ -113,7 +114,9 @@ function updatePlayerPos() {
 </head>
 <body>
 <div id="background">
+<div id="noticebox"><span>Forest 2-B<span></div>
 	<div id="char"></div>
+	<div id="itemGet"></div>
 	<img src="images/items/weed.png" id="Weed" class="clickable">
 	<img src="images/items/beanstalk.png" id="Beanstalk" class="clickable">
 	<div id="inventorybutton"><a class="htmllink" href="inventory.html"><span>Inventory</span></a></div>

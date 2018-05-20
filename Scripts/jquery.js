@@ -9,7 +9,6 @@ var isNightTime = true;
 var NTval = [[0,6],[18,30],[42,54],[66,78],[90,102],[114,126],[134,146],[158,170],[182,194],[206,218],[230,242]];
 var QuestDict = [['Q1', false],['Q2', false],['Q3', false],['Q4', false],['Q5', false],['Q6', false]]; // default value
 var QuestComp = [false, false, false, false, false,false];
-var T2Dialogue = ['Hi, how are you doing?','I have a favour to ask of you.','Could you go to forest 3 and catch me some butterflies? I need them to make medicine for my son who has fallen sick.','Sure OKAY WHATEVS','Thank you so much for bringing me this shit','I now have another favour to ask','Could you go to the cave across the river and hand this to my son?','Sure OKAY']
 
 function QuestToggler(QNum,State) { // takes the quest number and true/false state and replaces the second value in each list in QuestDict.
 	if (typeof QNum == 'string') {
@@ -108,12 +107,17 @@ function NightPhase() {
 function displayDateTime(TVal) {
 	var DayNTime = [['Day 1',216,240,228],['Day 2',192,216,204],['Day 3', 168,192,180],['Day 4', 144,168,156],['Day 5', 120,144,132],['Day 6',96,120,108],['Day 7',72,96,84],['Day 8',48,72,60],['Day 9',24,48,36],['Day 10',0,24,12]]
 	for (var a in DayNTime)	{
-		range2(DayNTime[a][1],DayNTime[a][2])
-		if (hours.includes(TVal)) {
-			$('#Day').html(DayNTime[a][0]); 
-			$('#Time').html(TVal); 
-		} else if (TVal == DayNTime[a][3]) {
-			$('#Time').html("12PM"); 
+		range2(DayNTime[a][1],DayNTime[a][2]);
+		if (TVal == DayNTime[a][3]) {
+			$('#Time').html("12PM");
+		} else if (hours.includes(TVal)) {
+			$('#Day').html(DayNTime[a][0]);
+			var reverseHour = hours.reverse();
+			if (reverseHour.indexOf(TVal) >= 12) {
+			$('#Time').html(reverseHour.indexOf(TVal)+'PM'); 
+			} else if (reverseHour.indexOf(TVal) <12) {
+				$('#Time').html(reverseHour.indexOf(TVal)+'AM'); 	
+			}	
 		}
 		hours = []
 	}
@@ -140,7 +144,7 @@ function displayDateTime(TVal) {
 
 function timeDeduction(CurrentLoc2, DestLoc2) {
 	var pathTimes = [
-	['A','B',3],
+	['A','B',1],
 	['B','C',6],
 	['B','E',6],
 	['C','D',3],
@@ -475,10 +479,18 @@ function CheckLoc() {
 		return
 	}
 	function HoverColor() {
+		var LocName = {p1:'Town 1',p3:'Town 2',p4:'Forest 1',p5:'Bridge',p7:'Town 3',p9:'Forest 2',p12:'Forest 3',p13:'Town 4',p14:'Cave',p15:'Town 5',p16:'Random Hut'};
 		$("#inventorybutton, #p1,#p2,#p3,#p4,#p5,#p6,#p7,#p8,#p9,#p10,#p11,#p12,#p13,#p14,#p15,#p16, #QuestButton").hover(function(){
 			$(this).css('background-color','#e54444');
+			LocPoint = String($(this).attr('id'));
+			console.log(LocName[LocPoint]);
+			if (LocName[LocPoint] != "undefined" && LocName[LocPoint] != null) {
+				$('#noticebox span').html(LocName[LocPoint]);
+				$("#noticebox").stop().slideDown('100');
+			}
 		}, function(){
 			$(this).css('background-color','#b40000');
+			$("#noticebox").stop().slideUp('100');
 		});
 	}
 	function LocKeyGet(Location) {
