@@ -13,15 +13,35 @@ $(document).ready(function(){
 	$('#char').css('transform','scale(1.8)');
 	CheckTownTime('bg18','bg17');
 	checkInventory();
+	QuestMemory();
+	QuestCompletionMemory();
 	if (CheckTownTime(0,0) == true) {
-		console.log('true');
 		$('#Sunflower').attr("src","images/items/night/sunflowernight.png");
 		$('#Acorns').attr("src","images/items/night/acornsnight.png");
+		$('#Necklace').attr("src","images/items/night/necklacenight.png");
 	} else {
-		console.log('false');
 		$('#Sunflower').attr("src","images/items/sunflower.png");
 		$('#Acorns').attr("src","images/items/acorns.png");
+		$('#Necklace').attr("src","images/items/night/necklace.png");
 	};
+	if (QuestComp[0,3] == true && CheckTownTime(0,0) == true && QuestDict[5][1] != true) {
+		console.log('yes')
+		$('#Necklace').show();
+	} else {
+		$('#Necklace').hide();
+	}
+	$('#Necklace').click(function() {
+		if (QuestDict[5][1] == false) {
+			console.log(QuestDict[5][1])
+			QuestToggler('Q6', true);
+			console.log(QuestDict);
+			console.log('necklace IN')
+		} else {
+		console.log(QuestDict[5][1])
+			console.log('necklace out')
+		}
+	
+	});
 	$('#Sunflower').hover(function() {
 		if(CheckTownTime(0,0) == true) {
 			$(this).attr("src","images/items/night/hoversunflowernight.png");
@@ -46,6 +66,20 @@ $(document).ready(function(){
 			$(this).attr("src","images/items/night/acornsnight.png");
 		} else {
 			$(this).attr("src","images/items/acorns.png");
+		}
+	});
+	
+	$('#Necklace').hover(function() {
+		if(CheckTownTime(0,0) == true) {
+			$(this).attr("src","images/items/night/hovernecklacenight.png");
+		} else {
+			$(this).attr("src","images/items/hovernecklace.png");
+		}
+	}, function() {
+		if(CheckTownTime(0,0) == true) {
+			$(this).attr("src","images/items/night/necklacenight.png");
+		} else {
+			$(this).attr("src","images/items/necklace.png");
 		}
 	});
 	
@@ -75,6 +109,7 @@ $(document).ready(function(){
 <div id="background">
 			<img src="images/items/sunflower.png" id="Sunflower" class="clickable">
 			<img src="images/items/acorns.png" id="Acorns" class="clickable">
+			<img src="images/items/necklace.png" id="Necklace" class="clickable">
 			<div id="inventorybutton"><a class="htmllink" href="inventory.html"><span>Inventory</span></a></div>
 				<button onclick="goBack()">Go Back</button>
 </body>

@@ -13,6 +13,8 @@ $(document).ready(function(){
 	$('#char').css('transform','scale(1.8)');
 	CheckTownTime('bg14','bg13');
 		checkInventory();
+			QuestMemory();
+	QuestCompletionMemory();
 	if (localStorage.getItem("coords") != "undefined" && localStorage.getItem("coords") != null) {
 		var coords = (JSON.parse("[" + localStorage.getItem("coords") + "]"));
 		console.log(coords);

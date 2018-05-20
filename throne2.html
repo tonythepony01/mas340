@@ -10,12 +10,14 @@
 <script src="Scripts/jquery-ui.js"></script>
 <script>
 $(document).ready(function(){
+QuestMemory();	
+	QuestCompletionMemory();						
 	$('#char').css('transform','scale(1.5)');
 	$('#char').css({left: -200, top: 475});
 	$('#background').addClass('bg5');
 	$('#talkbutton').show().css({left: 850, top: 150});
 	checkInventory();
-QuestMemory();
+
 	// setup
 	$('#char').animate({left: 100, top: 450},750);
 	//$('#char').animate({left: -200, top: 475},750); // when finished with conversation
@@ -39,6 +41,9 @@ QuestMemory();
 							break;
 						case 3:
 							dialogue = "thx fgt"
+							if (QuestComp[0] == false) {
+								QuestToggler(0, true);
+							}
 							break;		
 						case 4:		
 						$('#nextbutton, #textbox ').hide();	
@@ -63,7 +68,7 @@ QuestMemory();
 							dialogue = "Sure OKAY WHATEVS"
 							if (QuestDict[0][1] == false) {
 								QuestToggler('Q1', true);
-								console.log('New: '+QuestDict);
+								console.log(QuestDict);
 							}
 							break;		
 						case 4:

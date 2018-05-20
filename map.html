@@ -11,6 +11,7 @@
 <script>
 
 $(document).ready(function(){
+
 	var p;
 	var defLoc;
 	var position;
@@ -21,12 +22,18 @@ $(document).ready(function(){
 	//var TVal = 240;
 	var NTval = [[0,6],[18,30],[42,54],[66,78],[90,102],[114,126],[134,146],[158,170],[182,194],[206,218],[230,242]]; /*Night time hours*/
 	var NoonTimes = [12,36,60,84,108,132,156,180,204,228];
+	
 	CheckLoc();
 	CheckTime();
 	CheckEnter();
 	HoverColor();
 	QuestMemory();
+	QuestCompletionMemory();
+	console.log(QuestComp)
 	displayDateTime(TVal);
+	if (QuestDict[4][1] == false) {
+		QuestToggler('Q5', true);
+	} 
 	$('#map').addClass('bg3');
 	$("#p1,#p2,#p3,#p4,#p5,#p6,#p7,#p8,#p9,#p10,#p11,#p12,#p13,#p14,#p15,#p16").click(function() {
 		if (TVal <= 0) {console.log('Game has ended')};
@@ -124,6 +131,7 @@ $(document).ready(function(){
 		<li id='Time'>12pm</li>
 	</ul>
 	<div id="inventorybutton"><a class="htmllink" href="inventory.html"><span>Inventory</span></a></div>
+	<div id="QuestButton"><a class="htmllink" href="questList.html"><span>Quest List</span></a></div>
 	<div id="char"></div>
 	<div id="p1"></div>
 	<div id="p2"></div>

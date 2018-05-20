@@ -10,11 +10,8 @@
 <script src="Scripts/jquery-ui.js"></script>
 <script>
 $(document).ready(function(){
-
-var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0)
-var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0)
-var d = $(document).scrollTop();
-var d = $(document).scrollTop();
+	QuestMemory();
+	QuestCompletionMemory();
 	$('#background').addClass('bg4');
 	if (localStorage.getItem("coords") != "undefined" && localStorage.getItem("coords") != null) {
 		var coords = (JSON.parse("[" + localStorage.getItem("coords") + "]"));

@@ -7,26 +7,73 @@ var degrees = 0;
 var DivList = ['#p1','#p2','#p3','#p4','#p5','#p6','#p7','#p8','#p9','#p10','#p11','#p12','#p13','#p14','#p15','#p16'];
 var isNightTime = true;
 var NTval = [[0,6],[18,30],[42,54],[66,78],[90,102],[114,126],[134,146],[158,170],[182,194],[206,218],[230,242]];
-var QuestDict = [['Q1', false],['Q2', false],['Q3', false],['Q4', false],['Q5', false],['Q6', false]];
+var QuestDict = [['Q1', false],['Q2', false],['Q3', false],['Q4', false],['Q5', false],['Q6', false]]; // default value
+var QuestComp = [false, false, false, false, false,false];
 var T2Dialogue = ['Hi, how are you doing?','I have a favour to ask of you.','Could you go to forest 3 and catch me some butterflies? I need them to make medicine for my son who has fallen sick.','Sure OKAY WHATEVS','Thank you so much for bringing me this shit','I now have another favour to ask','Could you go to the cave across the river and hand this to my son?','Sure OKAY']
 
-
-
-function QuestToggler(QNum,State) {
-	for (x =0; x<6; x++) {
-		if (QuestDict[x][0] == QNum) {
-			QuestDict[x][1] = State;
+function QuestToggler(QNum,State) { // takes the quest number and true/false state and replaces the second value in each list in QuestDict.
+	if (typeof QNum == 'string') {
+		for (x =0; x<6; x++) {
+			if (QuestDict[x][0] == QNum) {
+				QuestDict[x][1] = State;
+			}
 		}
+		localStorage.setItem('QuestStatus', QuestDict); // saves the current state of QuestDict to Localstorage as a string
+	} else if (typeof QNum == 'number') {
+		for (x =0; x<6; x++) {
+			if (x == QNum) {
+				QuestComp[QNum] = State;
+			}
+		}
+		localStorage.setItem('QuestCompletion', QuestComp); 
 	}
-	localStorage.setItem('QuestStatus', QuestDict);
+
 }
 
-function QuestMemory() {
-	if (localStorage.getItem("QuestStatus") != "undefined" && localStorage.getItem("QuestStatus") != null) {
-		var QuestDict = localStorage.getItem("QuestStatus");
-		console.log('Memory check1: '+QuestDict);
+function QuestCompletionMemory() {
+	if (localStorage.getItem("QuestCompletion") != "undefined" && localStorage.getItem("QuestCompletion") != null) {
+		QuestComp = JSON.parse("[" + localStorage.getItem("QuestCompletion") + "]");
+		console.log('Memory check1: '+QuestComp);
 	} else {
-		var QuestDict = [['Q1', false],['Q2', false],['Q3', false],['Q4', false],['Q5', false],['Q6', false]];
+		QuestComp = [false, false, false, false, false,false];
+		console.log('Memory check2: '+QuestComp);
+	};	
+}
+
+
+
+function QuestMemory() { 
+	// checks if the QuestDict already exists in LocalStorage. If exists, grab from LocalStorage, if not then set as default value.
+	if (localStorage.getItem("QuestStatus") != "undefined" && localStorage.getItem("QuestStatus") != null) {
+		a = localStorage.getItem("QuestStatus");
+		console.log('Memory check1: '+a);
+		// current state: "Q1,true,Q2,true,Q3,true,Q4,true,Q5,false,Q6,false"
+		var b = a.split(',') // converts the string into list with string as items 
+		// from the list of strings, grab each 'true' and 'false' string and convert it back into boolean
+		// current state: ["Q1","true","Q2","true","Q3","true","Q4","true","Q5","false","Q6","false"]
+		for (x in b) {
+			if (b[x] == 'false') {
+				b[x] = false;
+			} else if (b[x] == 'true') {
+				b[x] = true;
+			}
+		}
+		// current state: ["Q1",true,"Q2",true,"Q3",true,"Q4",true,"Q5",false,"Q6",false]
+		QuestDict = []
+		// take the list of strings and booleans, and convert them into list with sublists consisting of pairs of string and boolean
+		for (y in b) {
+			if (y % 2 == 0) {
+				var c = []
+				c.push(b[y])
+			} else {
+				c.push(b[y])
+				QuestDict.push(c)
+			}
+		}
+		// current state: [["Q1",true],["Q2",true],["Q3",true],["Q4",true],["Q5",false],["Q6",false]]
+		console.log(QuestDict);
+	} else {
+		QuestDict = [['Q1', false],['Q2', false],['Q3', false],['Q4', false],['Q5', false],['Q6', false]];
 		console.log('Memory check2: '+QuestDict);
 	};	
 }
@@ -342,9 +389,9 @@ function CheckTownTime(Night,Day) {
 	}
 	if (localStorage.getItem("Time") != "undefined" && localStorage.getItem("Time") != null	) {
 		TVal = parseInt(localStorage.getItem("Time"));
-		console.log(TVal) 
-		console.log(time)
-		console.log(localStorage.getItem("Time"))
+		//console.log(TVal) 
+		//console.log(time)
+		//console.log(localStorage.getItem("Time"))
 		if (typeof Night == 'string' && typeof Day == 'string') {
 			if (isNightTime == time.includes(TVal)) {
 				$('#background').addClass(Night);
@@ -428,7 +475,7 @@ function CheckLoc() {
 		return
 	}
 	function HoverColor() {
-		$("#inventorybutton, #p1,#p2,#p3,#p4,#p5,#p6,#p7,#p8,#p9,#p10,#p11,#p12,#p13,#p14,#p15,#p16").hover(function(){
+		$("#inventorybutton, #p1,#p2,#p3,#p4,#p5,#p6,#p7,#p8,#p9,#p10,#p11,#p12,#p13,#p14,#p15,#p16, #QuestButton").hover(function(){
 			$(this).css('background-color','#e54444');
 		}, function(){
 			$(this).css('background-color','#b40000');

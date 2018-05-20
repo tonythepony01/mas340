@@ -10,14 +10,10 @@
 <script src="Scripts/jquery-ui.js"></script>
 <script>
 $(document).ready(function(){
-
+QuestMemory();
+QuestCompletionMemory();
 CheckTownTime('bg8','bg7');
 checkInventory();
-QuestMemory();
-var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0)
-var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0)
-var d = $(document).scrollTop();
-var d = $(document).scrollTop();
 	if (localStorage.getItem("coords") != "undefined" && localStorage.getItem("coords") != null) {
 		var coords = (JSON.parse("[" + localStorage.getItem("coords") + "]"));
 		console.log(coords);
@@ -58,15 +54,17 @@ $(document).on('keydown keyup', function(e) {
 							break;
 						case 2:
 							dialogue = "Could you go to the cave across the river and hand this to my son?"
-							console.log('broke1')
+
 							break;
 						case 3:
 							dialogue = "Sure OKAY"
-							console.log('broke2')
+							if (QuestComp[1] == false) {
+								QuestToggler(1, true);
+							}
 							localStorage.setItem('Medicine', 'true');
 							break;		
 						case 4:		
-						console.log('broke3');
+
 						$('#nextbutton, #textbox ').hide();	
 						localStorage.setItem('Butterfly', 'false');
 							break;
@@ -77,10 +75,9 @@ $(document).on('keydown keyup', function(e) {
 				} else if (localStorage.getItem('Medicine') == 'true') {
 					switch (progress) {
 						case 0:
-						
 						$('#nextbutton, #textbox ').show();
 							dialogue = "Please hurry";
-							console.log('broke3')
+			
 							break;
 						case 1:
 							$('#nextbutton, #textbox ').hide();				
@@ -103,10 +100,9 @@ $(document).on('keydown keyup', function(e) {
 							break;
 						case 3:
 							dialogue = "Sure OKAY WHATEVS"
-							console.log('passing')
 							if (QuestDict[1][1] == false) {
 								QuestToggler('Q2', true);
-								console.log('New: '+QuestDict);
+								console.log(QuestDict);
 							}
 							break;		
 						case 4:

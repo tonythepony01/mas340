@@ -12,7 +12,8 @@
 $(document).ready(function(){
 	CheckTownTime('bg12','bg11');
 		checkInventory();
-
+	QuestMemory();
+	QuestCompletionMemory();
     K = {}; // keys: {37:0||1, 38:0||1, ...}
 	if (localStorage.getItem("coords2") != "undefined" && localStorage.getItem("coords2") != null) {
 		var coords2 = (JSON.parse("[" + localStorage.getItem("coords") + "]"));
