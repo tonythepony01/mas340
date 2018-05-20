@@ -10,12 +10,10 @@
 <script src="Scripts/jquery-ui.js"></script>
 <script>
 $(document).ready(function(){
-
-var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0)
-var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0)
-var d = $(document).scrollTop();
-var d = $(document).scrollTop();
+	QuestMemory();
+	QuestCompletionMemory();
 	$('#background').addClass('bg4');
+	$("#noticebox").slideDown('400').delay(2200).slideUp('400');
 	if (localStorage.getItem("coords") != "undefined" && localStorage.getItem("coords") != null) {
 		var coords = (JSON.parse("[" + localStorage.getItem("coords") + "]"));
 		console.log(coords);
@@ -42,7 +40,7 @@ $(document).on('keydown keyup', function(e) {
         console.log($(this))
 		window.location = "map.html";
     } else if (p.left > 950) {
-		window.location = "throne.html";
+		window.location = "throne5.html";
 	}
 });
 });
@@ -68,6 +66,7 @@ function updatePlayerPos() {
 </head>
 <body>
 <div id="background">
+<div id="noticebox"><span>Town 5<span></div>
 	<div id="char"></div>
 	
 </div>

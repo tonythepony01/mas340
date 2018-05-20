@@ -7,7 +7,76 @@ var degrees = 0;
 var DivList = ['#p1','#p2','#p3','#p4','#p5','#p6','#p7','#p8','#p9','#p10','#p11','#p12','#p13','#p14','#p15','#p16'];
 var isNightTime = true;
 var NTval = [[0,6],[18,30],[42,54],[66,78],[90,102],[114,126],[134,146],[158,170],[182,194],[206,218],[230,242]];
-var QuestDict = {}
+var QuestDict = [['Q1', false],['Q2', false],['Q3', false],['Q4', false],['Q5', true],['Q6', false]]; // default value
+var QuestComp = [false, false, false, false, false,false];
+
+function QuestToggler(QNum,State) { // takes the quest number and true/false state and replaces the second value in each list in QuestDict.
+	if (typeof QNum == 'string') {
+		for (x =0; x<6; x++) {
+			if (QuestDict[x][0] == QNum) {
+				QuestDict[x][1] = State;
+			}
+		}
+		localStorage.setItem('QuestStatus', QuestDict); // saves the current state of QuestDict to Localstorage as a string
+	} else if (typeof QNum == 'number') {
+		for (x =0; x<6; x++) {
+			if (x == QNum) {
+				QuestComp[QNum] = State;
+			}
+		}
+		localStorage.setItem('QuestCompletion', QuestComp); 
+	}
+
+}
+
+function QuestCompletionMemory() {
+	if (localStorage.getItem("QuestCompletion") != "undefined" && localStorage.getItem("QuestCompletion") != null) {
+		QuestComp = JSON.parse("[" + localStorage.getItem("QuestCompletion") + "]");
+		console.log('Memory check1: '+QuestComp);
+	} else {
+		QuestComp = [false, false, false, false, false,false];
+		console.log('Memory check2: '+QuestComp);
+	};	
+}
+
+
+
+function QuestMemory() { 
+	// checks if the QuestDict already exists in LocalStorage. If exists, grab from LocalStorage, if not then set as default value.
+	if (localStorage.getItem("QuestStatus") != "undefined" && localStorage.getItem("QuestStatus") != null) {
+		a = localStorage.getItem("QuestStatus");
+		console.log('Memory check1: '+a);
+		// current state: "Q1,true,Q2,true,Q3,true,Q4,true,Q5,false,Q6,false"
+		var b = a.split(',') // converts the string into list with string as items 
+		// from the list of strings, grab each 'true' and 'false' string and convert it back into boolean
+		// current state: ["Q1","true","Q2","true","Q3","true","Q4","true","Q5","false","Q6","false"]
+		for (x in b) {
+			if (b[x] == 'false') {
+				b[x] = false;
+			} else if (b[x] == 'true') {
+				b[x] = true;
+			}
+		}
+		// current state: ["Q1",true,"Q2",true,"Q3",true,"Q4",true,"Q5",false,"Q6",false]
+		QuestDict = []
+		// take the list of strings and booleans, and convert them into list with sublists consisting of pairs of string and boolean
+		for (y in b) {
+			if (y % 2 == 0) {
+				var c = []
+				c.push(b[y])
+			} else {
+				c.push(b[y])
+				QuestDict.push(c)
+			}
+		}
+		// current state: [["Q1",true],["Q2",true],["Q3",true],["Q4",true],["Q5",false],["Q6",false]]
+		console.log(QuestDict);
+	} else {
+		QuestDict = [['Q1', false],['Q2', false],['Q3', false],['Q4', false],['Q5', true],['Q6', false]];
+		console.log('Memory check2: '+QuestDict);
+	};	
+}
+
 function DayPhase() {
 		$('#map').css({
 		'filter':'brightness(1) saturate(100%) hue-rotate(0deg)',
@@ -19,7 +88,6 @@ function DayPhase() {
 
 function conversationCheck(xAxis,yAxis) {
 	if ((xAxis < 510 && xAxis > 390) || (xAxis < 955 & xAxis > 835)) {
-		console.log('Conversation available')
 		$("#talkbutton").css({left: xAxis-45, top: yAxis-120}).show();
 		return true
 	} else {
@@ -39,12 +107,18 @@ function NightPhase() {
 function displayDateTime(TVal) {
 	var DayNTime = [['Day 1',216,240,228],['Day 2',192,216,204],['Day 3', 168,192,180],['Day 4', 144,168,156],['Day 5', 120,144,132],['Day 6',96,120,108],['Day 7',72,96,84],['Day 8',48,72,60],['Day 9',24,48,36],['Day 10',0,24,12]]
 	for (var a in DayNTime)	{
-		range2(DayNTime[a][1],DayNTime[a][2])
-		if (hours.includes(TVal)) {
-			$('#Day').html(DayNTime[a][0]); 
-			$('#Time').html(TVal); 
-		} else if (TVal == DayNTime[a][3]) {
-			$('#Time').html("12PM"); 
+		range2(DayNTime[a][1],DayNTime[a][2]);
+		if (TVal == DayNTime[a][3]) {
+			$('#Time').html("12PM");
+		} else if (hours.includes(TVal)) {
+			$('#Day').html(DayNTime[a][0]);
+			var reverseHour = hours.reverse();
+			console.log(reverseHour)
+			if (reverseHour.indexOf(TVal) >= 12) {
+			$('#Time').html(reverseHour.indexOf(TVal)+'PM'); 
+			} else if (reverseHour.indexOf(TVal) <12) {
+				$('#Time').html(reverseHour.indexOf(TVal)+'AM'); 	
+			}	
 		}
 		hours = []
 	}
@@ -71,7 +145,7 @@ function displayDateTime(TVal) {
 
 function timeDeduction(CurrentLoc2, DestLoc2) {
 	var pathTimes = [
-	['A','B',3],
+	['A','B',1],
 	['B','C',6],
 	['B','E',6],
 	['C','D',3],
@@ -320,9 +394,9 @@ function CheckTownTime(Night,Day) {
 	}
 	if (localStorage.getItem("Time") != "undefined" && localStorage.getItem("Time") != null	) {
 		TVal = parseInt(localStorage.getItem("Time"));
-		console.log(TVal) 
-		console.log(time)
-		console.log(localStorage.getItem("Time"))
+		//console.log(TVal) 
+		//console.log(time)
+		//console.log(localStorage.getItem("Time"))
 		if (typeof Night == 'string' && typeof Day == 'string') {
 			if (isNightTime == time.includes(TVal)) {
 				$('#background').addClass(Night);
@@ -406,14 +480,22 @@ function CheckLoc() {
 		return
 	}
 	function HoverColor() {
-		$("#inventorybutton, #p1,#p2,#p3,#p4,#p5,#p6,#p7,#p8,#p9,#p10,#p11,#p12,#p13,#p14,#p15,#p16").hover(function(){
+		var LocName = {p1:'Town 1',p3:'Town 2',p4:'Forest 1',p5:'Bridge',p7:'Town 3',p9:'Forest 2',p10:'Bridge',p12:'Forest 3',p13:'Town 4',p14:'Cave',p15:'Town 5',p16:'Random Hut'};
+		$("#inventorybutton, #p1,#p2,#p3,#p4,#p5,#p6,#p7,#p8,#p9,#p10,#p11,#p12,#p13,#p14,#p15,#p16, #QuestButton").hover(function(){
 			$(this).css('background-color','#e54444');
+			LocPoint = String($(this).attr('id'));
+			console.log(LocName[LocPoint]);
+			if (LocName[LocPoint] != "undefined" && LocName[LocPoint] != null) {
+				$('#noticebox span').html(LocName[LocPoint]);
+				$("#noticebox").stop().slideDown('100');
+			}
 		}, function(){
 			$(this).css('background-color','#b40000');
+			$("#noticebox").stop().slideUp('100');
 		});
 	}
 	function LocKeyGet(Location) {
-		var LocDict2 = [['p1','A',70,520,true,'town1.html'],['p2','B',190,450,false],['p3','C',200,300,true,'town2.html'],['p4','D',60,235,true,'forest1.html'],['p5','E',400,420,true,'bridge1.html'],['p6','F',325,300,false],['p7','G',265,245,true,'town3.html'],['p8','H',360,190,false],['p9','I',430,230,true,'forest2.html'],['p10','J',570,420,true,'bridge2.html'],['p11','K',690,300,false],['p12','L',810,360,true,'forest3.html'],['p13','M',850,220,true,'town4.html'],['p14','N',730,515,true,'cave.html'],['p15','O',905,515,true,'town5.html'],['p16','P',565,210,true,'hut.html']]
+		var LocDict2 = [['p1','A',70,520,true,'town1.html'],['p2','B',190,450,false],['p3','C',200,300,true,'town2.html'],['p4','D',60,235,true,'forest1.html'],['p5','E',400,420,false],['p6','F',325,300,false],['p7','G',265,245,true,'town3.html'],['p8','H',360,190,false],['p9','I',430,230,true,'forest2.html'],['p10','J',570,420,false],['p11','K',690,300,false],['p12','L',810,360,true,'forest3.html'],['p13','M',850,220,true,'town4.html'],['p14','N',730,515,true,'cave.html'],['p15','O',905,515,true,'town5.html'],['p16','P',565,210,true,'hut.html']]
 		for (let a=0;a<16;a++) {
 				if (Location == LocDict2[a][1]) {
 					result = [LocDict2[a][0],LocDict2[a][2],LocDict2[a][3],LocDict2[a][4],LocDict2[a][5]]

@@ -10,14 +10,31 @@
 <script src="Scripts/jquery-ui.js"></script>
 <script>
 $(document).ready(function(){
-
-	
+$('#background').addClass('bg19');
+	QuestMemory();
+	QuestCompletionMemory();
+	CheckLoc();
+	HoverColor();
+	$("#noticebox").slideDown('400').delay(2200).slideUp('400');
+	$('#EnterButton').css({
+		'left': '650px',
+		'top': '375px',
+		'filter':'brightness(1) saturate(100%)',
+		'webkitFilter':'brightness(1) saturate(100%)',
+		'animation': 'pulsate 2s linear infinite',
+		'-webkit-animation': 'pulsate 2s linear infinite'
+	}).show();
 });
 
 </script>
 
 </head>
 <body>
-
+<div id="background">
+	<div id="noticebox"><span>Cave<span></div>
+	<button onclick="goBack()">Go Back</button>
+	<div id="inventorybutton"><a class="htmllink" href="inventory.html"><span>Inventory</span></a></div>
+	<a id ='ButtonLink' href="tunnelpuzzle.html"><div id='EnterButton'>Enter</div></a>
+</div>
 </body>
 </html>

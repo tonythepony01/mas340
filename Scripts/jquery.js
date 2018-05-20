@@ -513,6 +513,7 @@ function CheckLoc() {
 		function checkCollision() {
 			var hit = $('.player').objectHitTest({"object": $('#tunnelbackground'),'transparency': true});
 			if(hit) {
+				window.location = "cave.html";
 				$('.player').hide({effect:'explode'});
 				clearInterval(collisionTimer);
 				setTimeout(resetPlayer,1000);
@@ -520,9 +521,9 @@ function CheckLoc() {
 	}
 		function resetPlayer() {
 			$('.player').css({top:550,left: 350}).fadeIn();
-			collisionTimer = setInterval(checkCollision, 150);
+			collisionTimer = setInterval(checkCollision, 200);
 		}	
-		var collisionTimer = setInterval(checkCollision, 150);
+		var collisionTimer = setInterval(checkCollision, 200);
 	}
 function goBack() {
     window.history.back()

@@ -10,31 +10,40 @@
 <script src="Scripts/jquery-ui.js"></script>
 <script>
 $(document).ready(function(){
+K = {}; // keys: {37:0||1, 38:0||1, ...}
+var angle = 0;
+var speed = 5;
+	$(document).on('keydown keyup', function(e) {
+		var kN = e.which; // key Number
+		if(kN>36||kN<41) K[kN]= e.type==="keydown";
+		$.each($("div"),function(){
+			p = $('.player').position();
+		});	
 
-	 /* else if ((PathNum[DestLoc]-PathNum[CurrentLoc]) < -1 || (PathNum[DestLoc]-PathNum[CurrentLoc]) >= 1 ) {
-			for (x = 0; x<4;x++) {
-				if (PathList[x].includes(CurrentLoc) && PathList[x].includes(DestLoc)) {
-					for (var key in PathNum) {
-						if (PathNum.hasOwnProperty(key) && PathList.indexOf(PathList[x]) == PathNum[key]) {
-							for (var key2 in LocDict) {
-								if (LocDict.hasOwnProperty(key2) && key == LocDict[key2]) {
-									p = ('"#'+key2+'"')
-									console.log(key2)
-									position = p.position();
-									$( "#char" ).animate({left: position.left,top: position.top}, 100, function() {});	
-								}
-							}	
-						}
-					}
-				}
-			}
-		} */
+	});
+	
+	function updatePlayerPos() {
+  var dist = K[38]&&(K[37]||K[39]) || K[40]&&(K[37]||K[39]) ? 0.707 : 1; 
+  dist *= speed;
+  if(K[37]) angle -= dist;
+  if(K[39]) angle += dist;
+  $('.player').css({transform:"rotateZ("+angle+"deg)"});
+}
+
+(function engine() {
+  updatePlayerPos();
+  window.requestAnimationFrame( engine );
+
+}());
 });
 
 </script>
 
 </head>
 <body>
+<div id="background">
 
+<img class="player" src="images/player.png">
+</div>
 </body>
 </html>

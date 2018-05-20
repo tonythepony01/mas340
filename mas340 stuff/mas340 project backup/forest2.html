@@ -12,6 +12,9 @@
 $(document).ready(function(){
 	CheckTownTime('bg10','bg9');
 	checkInventory();
+		QuestMemory();
+	QuestCompletionMemory();
+	$("#noticebox").slideDown('400').delay(2200).slideUp('400');
 	if (localStorage.getItem("coords") != "undefined" && localStorage.getItem("coords") != null) {
 		var coords = (JSON.parse("[" + localStorage.getItem("coords") + "]"));
 		console.log(coords);
@@ -62,7 +65,9 @@ function updatePlayerPos() {
 </head>
 <body>
 <div id="background">
+<div id="noticebox"><span>Forest 2<span></div>
 	<div id="char"></div>
+	<div id="itemGet"></div>
 	<div id="inventorybutton"><a class="htmllink" href="inventory.html"><span>Inventory</span></a></div>
 
 </div>

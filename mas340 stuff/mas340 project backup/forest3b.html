@@ -13,15 +13,36 @@ $(document).ready(function(){
 	$('#char').css('transform','scale(1.8)');
 	CheckTownTime('bg18','bg17');
 	checkInventory();
+	QuestMemory();
+	QuestCompletionMemory();
+	$("#noticebox").slideDown('400').delay(2200).slideUp('400');
 	if (CheckTownTime(0,0) == true) {
-		console.log('true');
 		$('#Sunflower').attr("src","images/items/night/sunflowernight.png");
 		$('#Acorns').attr("src","images/items/night/acornsnight.png");
+		$('#Necklace').attr("src","images/items/night/necklacenight.png");
 	} else {
-		console.log('false');
 		$('#Sunflower').attr("src","images/items/sunflower.png");
 		$('#Acorns').attr("src","images/items/acorns.png");
+		$('#Necklace').attr("src","images/items/night/necklace.png");
 	};
+	if (QuestComp[0,3] == true && CheckTownTime(0,0) == true && QuestDict[5][1] != true) {
+		console.log('yes')
+		$('#Necklace').show();
+	} else {
+		$('#Necklace').hide();
+	}
+	$('#Necklace').click(function() {
+		if (QuestDict[5][1] == false) {
+			console.log(QuestDict[5][1])
+			QuestToggler('Q6', true);
+			console.log(QuestDict);
+			console.log('necklace IN')
+		} else {
+		console.log(QuestDict[5][1])
+			console.log('necklace out')
+		}
+	
+	});
 	$('#Sunflower').hover(function() {
 		if(CheckTownTime(0,0) == true) {
 			$(this).attr("src","images/items/night/hoversunflowernight.png");
@@ -49,6 +70,20 @@ $(document).ready(function(){
 		}
 	});
 	
+	$('#Necklace').hover(function() {
+		if(CheckTownTime(0,0) == true) {
+			$(this).attr("src","images/items/night/hovernecklacenight.png");
+		} else {
+			$(this).attr("src","images/items/hovernecklace.png");
+		}
+	}, function() {
+		if(CheckTownTime(0,0) == true) {
+			$(this).attr("src","images/items/night/necklacenight.png");
+		} else {
+			$(this).attr("src","images/items/necklace.png");
+		}
+	});
+	
 	
 	$('.clickable').mousedown(function() {
 	if ($('#inventorybutton').hasClass('jiggle') == true) {
@@ -60,7 +95,7 @@ $(document).ready(function(){
 			$('#inventorybutton').addClass('jiggle');
 		}
 		$('#itemGet').html($(this).attr('id')); 
-		$('#itemGet').show().animate({top: '-20px'}, 150).fadeOut(200);
+		$('#itemGet').show().animate({top: '40px'}, 150).fadeOut(200);
 		$(this).fadeOut('fast');
 		var itemName = $(this).attr('id');
 		localStorage.setItem(itemName, 'true');	
@@ -73,8 +108,11 @@ $(document).ready(function(){
 </head>
 <body>
 <div id="background">
+<div id="noticebox"><span>Forest 3-B<span></div>
+<div id="itemGet"></div>
 			<img src="images/items/sunflower.png" id="Sunflower" class="clickable">
 			<img src="images/items/acorns.png" id="Acorns" class="clickable">
+			<img src="images/items/necklace.png" id="Necklace" class="clickable">
 			<div id="inventorybutton"><a class="htmllink" href="inventory.html"><span>Inventory</span></a></div>
 				<button onclick="goBack()">Go Back</button>
 </body>

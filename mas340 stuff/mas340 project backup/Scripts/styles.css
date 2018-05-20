@@ -8,11 +8,17 @@ body {
 			overflow: hidden;
 }
 
+#dockLeft, #dockRight {
+	position: absolute;
+	z-index: 9;
+	top: 83px;
+	left: 166.5px;
+	width: 667px;
+	height: 400px;
+	display: none;
+}
 
-
-
-
-#Flower,#Weed, #Beanstalk, #Butterfly, #Magicmushroom, #Sunflower, #Acorns    {
+#Flower,#Weed, #Beanstalk, #Butterfly, #Magicmushroom, #Sunflower, #Acorns, #Necklace    {
 	position: absolute;
 	top: 415px;
 	left: 807px;
@@ -38,7 +44,7 @@ body {
 
 #DateTime {
 	background-color: black;
-	width: 75px;
+	width: 80px;
 	height: 30px;
 	position: absolute;
 	display: block;
@@ -55,8 +61,16 @@ body {
 #Acorns {
 	top: 240px;
 	left: 310px;
-	    -webkit-transform: scale(0.75, 0.75); /* Safari */
+	-webkit-transform: scale(0.75, 0.75); /* Safari */
     transform: scale(0.75, 0.75);
+}
+
+#Necklace {
+	top: 325px;
+	left: 575px;
+	-webkit-transform: scale(0.20, 0.20); /* Safari */
+    transform: scale(0.20, 0.20);
+	display: none;
 }
 	
 #Day,#Time {
@@ -68,7 +82,7 @@ body {
 	left: 0;
 	float: left;
 	padding: 5px;
-	padding-left: 10px;
+	padding-left: 5px;
 }
 
 #Time  {
@@ -167,23 +181,23 @@ body {
 	vertical-align: middle;
 	margin-top:-80px;
 	margin-left: -50px;
-	transform: scale(0.50,0.50)
+	transform: scale(0.50,0.50);
+	z-index: 8;
 }
 
-#backbutton a, #inventorybutton a, #title, a:visited, #itemGet, #EnterButton, #ButtonLink, #Day,#Time, button  {
+#backbutton a, #inventorybutton a, #title, a:visited, #itemGet, #EnterButton, #ButtonLink, #Day,#Time, button, #QuestList li, #QuestButton a, #noticebox span, #noticebox2 span {
 	color: black;
 	font-size: 1.5em;
-		text-decoration: none;
-		font-family: 'Lato', sans-serif;
+	text-decoration: none;
+	font-family: 'Lato', sans-serif;
 }
 
 .player {
     position: absolute;
-	top:550px;
-	left: 350px;
+	top:170px;
+	left: 50px;
 	height: 50px;
 	width: 50px;
-
 }
 
 .fall {
@@ -338,32 +352,40 @@ background-image: url('../images/town2night.jpg');
 	background-repeat: no-repeat;
 }
 
+.bg19 {
+	background-image: url('../images/caveentrance.jpg');
+	background-repeat: no-repeat;
+}
+
 
 #tunnelbackground {
 	background-color: transparent;
+	top: 0px;
 }
 
 button {
 	position: absolute;
 left: 10px;
 top: 10px;
+height: 30px;
 	text-decoration: none;
 	display: inline-block;
-    padding: 7.5px 6px;
-	
+    padding: 0px 6px;
 	background-color: #b40000;
     color: black;
 	border-width: 0px;
 	align-items: flex-start;
-	font-size: 1em !important;
+	font-size: 1.5em !important;
 	border-radius: 10px;
+	z-index: 5;
 }
 
 button:hover {
 	background-color: #e54444;
+	z-index: 5;
 }
 
-#inventorybutton {
+#inventorybutton, #QuestButton {
 position: absolute;
 right: 10px;
 top: 10px;
@@ -376,10 +398,15 @@ background-color: #b40000;
 display: inline-block;
 }
 
+#QuestButton {
+	top: 60px;
+}
+
 #inventorybutton:hover {
 	background-color: #e54444;
 }
 span { display:inline-block !important; vertical-align:top !important; }
+
 #EnterButton {
 	position: absolute;
 	left: -30px;
@@ -400,11 +427,11 @@ background-color: #b40000;
 }
 
 #itemGet {
-position: absolute;
-right: 30px;
-top: 0px;
-color: black;
-display:none;
+	position: absolute;
+	right: 20px;
+	top: 20px;
+	color: #b40000;
+	z-index: 10;
 }
 
 #nextbutton {
@@ -460,13 +487,33 @@ background-color: #2196F3;
 	border-radius: 10px;
 	text-align: center;
 	display: none;
+	z-index: 11;
 }
 #noticebox span {
 	position: absolute;
 	margin: auto;
 	top: 5px;
 	left: 324px;
-
+	font-size: 1.15em;
+}
+#noticebox2 {
+	background-color: #2196F3;	
+	width: 700px;
+	height: 30px;
+	position: absolute;
+	left: 150px;
+	top: 10px;
+	border-radius: 10px;
+	text-align: center;
+	display: none;
+	z-index: 11;
+}
+#noticebox2 span {
+	position: relative;
+	margin: auto;
+	top: 5px;
+	text-align: center;
+	font-size: 1.15em;
 }
 #descbox {
 	background-color: rgba(0,0,0,0.35);
@@ -493,6 +540,29 @@ background-color: #2196F3;
 	margin: auto;
 	margin-top: -100px;
 	background-image: url('../images/inventorylayout.jpg');
+}
+
+#QuestScroll {
+	padding-top: 150px;
+	width: 550px;
+	height: 446px;
+	margin: auto;
+	margin-top: -105px;
+	background-image: url('../images/scroll.png');
+	background-repeat: no-repeat;
+}
+
+#QuestList {
+	position: absolute;
+	margin-left: 80px;
+	margin-top: -20px;
+	width: 300px;
+}
+
+#QuestList li {
+	padding-bottom: 10px;
+	font-size: 1.2em;
+	display: none;
 }
 
 #itemgrid .items {
