@@ -514,13 +514,14 @@ function CheckLoc() {
 			var hit = $('.player').objectHitTest({"object": $('#tunnelbackground'),'transparency': true});
 			if(hit) {
 				window.location = "cave.html";
+				console.log('yass')
 				$('.player').hide({effect:'explode'});
 				clearInterval(collisionTimer);
 				setTimeout(resetPlayer,1000);
 		}
 	}
 		function resetPlayer() {
-			$('.player').css({top:550,left: 350}).fadeIn();
+			$('.player').css({top:170,left: 50}).fadeIn();
 			collisionTimer = setInterval(checkCollision, 200);
 		}	
 		var collisionTimer = setInterval(checkCollision, 200);
