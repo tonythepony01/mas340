@@ -20,7 +20,7 @@ $(document).ready(function(){
 	var PathNum = {A:0,B:1,C:2,D:3,E:4,F:5,G:6,H:7,I:8,J:9,K:10,L:11,M:12,N:13,O:14,P:15}; /*Traverse index*/
 	var PathList = [['A','B'],['B','A','C','E'],['C','D','B'],['D','C'],['E','F','J','B'],['F','E','G'],['G','F','H','I'],['H','G','I'],['I','H','G'],['J','K','L','N','E'],['K','J','L','M','P'],['L','K','J'],['M','K'],['N'],['O'],['P','K']]; /*Indicates the locations that can be travelled to from a certain point*/
 	//var TVal = 249;
-	var NTval = [[0,6],[18,30],[42,54],[66,78],[90,102],[114,126],[134,146],[158,170],[182,194],[206,218],[234,240]]; /*Night time hours*/
+	var NTval = [[3,14],[27,38],[51,62],[75,86],[99,110],[123,134],[147,158],[171,182],[195,206],[219,230]];
 	var NoonTimes = [12,36,60,84,108,132,156,180,204,228];
 	CheckLoc();
 	CheckTime();
@@ -31,86 +31,86 @@ $(document).ready(function(){
 	displayDateTime(TVal);
 	$('#map').addClass('bg3');
 	$("#p1,#p2,#p3,#p4,#p5,#p6,#p7,#p8,#p9,#p10,#p11,#p12,#p13,#p14,#p15,#p16").click(function() {
-		if (TVal <= 0) {console.log('Game has ended')};
+		if (TVal <= 9) {console.log('Game has ended')};
 		p = $(this);
 		defLoc = String($(this).attr('id'))
 		position = p.position();
 		DestLoc = LocDict[defLoc];
 		DestLoc2 = LocDict[defLoc];
 		localStorage.setItem('ClockTime',degrees);
+		
 		if (CurrentLoc != DestLoc){
-			if (CurrentLoc == 'J' && DestLoc == 'N' && NoonTimes.includes(TVal)) {
-				PathList = [['A','B'],['B','A','C','E'],['C','D','B'],['D','C'],['E','F','B'],['F','E','G'],['G','F','H','I'],['H','G','I'],['I','H','G'],['J','K','L','N'],['K','J','L','M'],['L','K','J'],['M','K'],['N','J'],['O'],['P','K']];
-				CurrentLoc = DestLoc;
-				EnterCheck(DestLoc,position.left,position.top);
-				localStorage.setItem("SavedLoc", DestLoc);
-				if (timeDeduction(CurrentLoc2, DestLoc2) > TVal) {
-					console.log('There is not enough time to travel');
-				} else {
-					TVal -= timeDeduction(CurrentLoc2, DestLoc2);
-					localStorage.setItem("Time", TVal);
-					displayDateTime(TVal);
-					CurrentLoc2 = DestLoc2;
-					drawDayLines();
-					DayPhase();
-					localStorage.setItem('ClockTime',degrees);
-					$( "#char" ).animate({left: position.left,top: position.top}, 1000,'swing', function() {});
-				}
-
-			} else if (isNightTime == time.includes(TVal) && PathList[PathNum[CurrentLoc]].includes(DestLoc) == true) {
-				PathList = [['A','B'],['B','A','C','E'],['C','D','B'],['D','C'],['E','F','J','B'],['F','E','G'],['G','F','H','I'],['H','G','I'],['I','H','G'],['J','K','L','E'],['K','P','J','L','M','P'],['L','K','J'],['M','K'],['N'],['O'],['P']];
-				CurrentLoc = DestLoc;
-				EnterCheck(DestLoc,position.left,position.top);
-				localStorage.setItem("SavedLoc", DestLoc);
-				if (timeDeduction(CurrentLoc2, DestLoc2) > TVal) {
-					console.log('There is not enough time to travel');
-				} else {
-					TVal -= timeDeduction(CurrentLoc2, DestLoc2);
-					console.log('Night Time. Time Left: '+TVal)
-					localStorage.setItem("Time", TVal);
-					displayDateTime(TVal);
-					CurrentLoc2 = DestLoc2;
-					drawNightLines();
-					NightPhase();
-					localStorage.setItem('ClockTime',degrees);
-					$( "#char" ).animate({left: position.left,top: position.top}, 1000,'swing', function() {});
-				}
-			} else if (PathList[PathNum[CurrentLoc]].includes(DestLoc) == true) {
-				PathList = [['A','B'],['B','A','C','E'],['C','D','B'],['D','C'],['E','F','B'],['F','E','G'],['G','F','H','I'],['H','G','I'],['I','H','G'],['J','K','L'],['K','J','L','M'],['L','K','J'],['M','K'],['N'],['O'],['P','K']];
-				if (CurrentLoc == 'E' && DestLoc == 'J') {
-					$('#noticebox2 span').html('Seems like the bridge is broken. Try coming back later.');
-					$('#dockLeft').show().delay(2000).fadeOut();
-					$("#noticebox2").slideDown('100').delay(2900).slideUp('100');
-				} else if (CurrentLoc == 'J' && DestLoc == 'E') {
-					$('#noticebox2 span').html('Seems like the bridge is broken. Try coming back later.');
-					$('#dockRight').show().delay(2000).fadeOut();
-					$("#noticebox2").slideDown('100').delay(2900).slideUp('100');					
-				} else {
+			if (CurrentLoc == 'J' && DestLoc == 'N') {
+				if (NoonTimes.includes(TVal)) {
+					PathList = [['A','B'],['B','A','C','E'],['C','D','B'],['D','C'],['E','F','B'],['F','E','G'],['G','F','H','I'],['H','G','I'],['I','H','G'],['J','K','L','N'],['K','J','L','M'],['L','K','J'],['M','K'],['N','J'],['O'],['P','K']];
+					console.log('its noon');
 					CurrentLoc = DestLoc;
 					EnterCheck(DestLoc,position.left,position.top);
 					localStorage.setItem("SavedLoc", DestLoc);
+					TVal -= timeDeduction(CurrentLoc2, DestLoc2);
+					console.log('deduction1');
 					if (timeDeduction(CurrentLoc2, DestLoc2) > TVal) {
 						console.log('There is not enough time to travel');
 					} else {
-						TVal -= timeDeduction(CurrentLoc2, DestLoc2);
-						console.log('Day Time. Time Left: '+TVal)
 						localStorage.setItem("Time", TVal);
 						displayDateTime(TVal);
 						CurrentLoc2 = DestLoc2;
-						drawDayLines();
-						DayPhase();
-						localStorage.setItem('ClockTime',degrees);
 						$( "#char" ).animate({left: position.left,top: position.top}, 1000,'swing', function() {});
 					}
 				}
+			} else if (PathList[PathNum[CurrentLoc]].includes(DestLoc) == true) {
+				CurrentLoc = DestLoc;
+				EnterCheck(DestLoc,position.left,position.top);
+				localStorage.setItem("SavedLoc", DestLoc);
+				TVal -= timeDeduction(CurrentLoc2, DestLoc2);
+				console.log('deduction2');
+				if (isNightTime == time.includes(TVal)) {
+					if (timeDeduction(CurrentLoc2, DestLoc2) > TVal) {
+						console.log('There is not enough time to travel');
+					} else {
+						PathList = [['A','B'],['B','A','C','E'],['C','D','B'],['D','C'],['E','F','J','B'],['F','E','G'],['G','F','H','I'],['H','G','I'],['I','H','G'],['J','K','L','E'],['K','P','J','L','M','P'],['L','K','J'],['M','K'],['N'],['O'],['P']];
+						console.log('Night Time. Time Left: '+TVal);
+						localStorage.setItem("Time", TVal);
+						displayDateTime(TVal);
+						CurrentLoc2 = DestLoc2;
+						drawNightLines();
+						NightPhase();
+						$( "#char" ).animate({left: position.left,top: position.top}, 1000,'swing', function() {});
+					}
+				} else {
+					PathList = [['A','B'],['B','A','C','E'],['C','D','B'],['D','C'],['E','F','B'],['F','E','G'],['G','F','H','I'],['H','G','I'],['I','H','G'],['J','K','L'],['K','J','L','M'],['L','K','J'],['M','K'],['N'],['O'],['P','K']];
+					if (CurrentLoc == 'E' && DestLoc == 'J') {
+						$('#noticebox2 span').html('Seems like the bridge is broken. Try coming back later.');
+						$('#dockLeft').show().delay(2000).fadeOut();
+						$("#noticebox2").slideDown('100').delay(2900).slideUp('100');
+					} else if (CurrentLoc == 'J' && DestLoc == 'E') {
+						$('#noticebox2 span').html('Seems like the bridge is broken. Try coming back later.');
+						$('#dockRight').show().delay(2000).fadeOut();
+						$("#noticebox2").slideDown('100').delay(2900).slideUp('100');					
+					} else {
+						CurrentLoc = DestLoc;
+						EnterCheck(DestLoc,position.left,position.top);
+						localStorage.setItem("SavedLoc", DestLoc);
+						console.log('deduction3');
+						if (timeDeduction(CurrentLoc2, DestLoc2) > TVal) {
+							console.log('There is not enough time to travel');
+						} else {
+							console.log('Day Time. Time Left: '+TVal)
+							localStorage.setItem("Time", TVal);
+							displayDateTime(TVal);
+							CurrentLoc2 = DestLoc2;
+							drawDayLines();
+							DayPhase();
+							$( "#char" ).animate({left: position.left,top: position.top}, 1000,'swing', function() {});
+						}
+					}
 
+				}
+			} else {
+				console.log('doing nothing');
+				console.log(TVal);
 			}
-		} else {
-			console.log('doing nothing')
-			console.log(TVal);
-			localStorage.setItem('ClockTime',degrees);
-		}
-	});
+	}});
 	$('#ButtonLink,#inventorybutton').click(function() {
 		DestLoc = localStorage.getItem('SavedLoc');
 		if (EnterCheck(DestLoc,position.left,position.top)[0] == true) {
@@ -135,8 +135,8 @@ $(document).ready(function(){
 	<img id='dockRight' src='images/dockright.jpg'>
 	<div id="noticebox2"><span></span></div>
 	<ul id='DateTime'>
-		<li id='Day'>Day 1</li>
-		<li id='Time'>12pm</li>
+		<li id='Day'></li>
+		<li id='Time'></li>
 	</ul>
 	<div id="inventorybutton"><a class="htmllink" href="inventory.html"><span>Inventory</span></a></div>
 	<div id="QuestButton"><a class="htmllink" href="questList.html"><span>Quest List</span></a></div>

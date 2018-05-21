@@ -1,12 +1,13 @@
-var TVal = 240;
+var TVal = 239;
 var CurrentLoc = 'A';
 var time = [];
 var hours = [];
+var hours2 = [];
 var EnterToggle = true;
 var degrees = 0;
 var DivList = ['#p1','#p2','#p3','#p4','#p5','#p6','#p7','#p8','#p9','#p10','#p11','#p12','#p13','#p14','#p15','#p16'];
 var isNightTime = true;
-var NTval = [[0,6],[18,30],[42,54],[66,78],[90,102],[114,126],[134,146],[158,170],[182,194],[206,218],[230,242]];
+	var NTval = [[3,14],[27,38],[51,62],[75,86],[99,110],[123,134],[147,158],[171,182],[195,206],[219,230]];
 var QuestDict = [['Q1', false],['Q2', false],['Q3', false],['Q4', false],['Q5', true],['Q6', false]]; // default value
 var QuestComp = [false, false, false, false, false,false];
 
@@ -103,30 +104,25 @@ function NightPhase() {
 		'-webkit-transition':'all 0.7s ease-out',
 	});
 }
-
 function displayDateTime(TVal) {
-	var DayNTime = [['Day 1',216,240,228],['Day 2',192,216,204],['Day 3', 168,192,180],['Day 4', 144,168,156],['Day 5', 120,144,132],['Day 6',96,120,108],['Day 7',72,96,84],['Day 8',48,72,60],['Day 9',24,48,36],['Day 10',0,24,12]]
+	var ClockTimes = [9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,0,1,2,3,4,5,6,7,8];
+	var DayNTime = [['Day 1',216,239],['Day 2',192,215],['Day 3', 168,191],['Day 4', 144,167],['Day 5', 120,143],['Day 6',96,119],['Day 7',72,95],['Day 8',48,71],['Day 9',24,47],['Day 10',0,23]];
+	var DayDisplayTimes = [['Day 1',225,239],['Day 2',201,224],['Day 3', 177,200],['Day 4', 153,176],['Day 5', 129,152],['Day 6',105,128],['Day 7',81,104],['Day 8',57,80],['Day 9',33,56],['Day 10',9,32]];
 	for (var a in DayNTime)	{
 		range2(DayNTime[a][1],DayNTime[a][2]);
-		if (TVal == DayNTime[a][3]) {
-			$('#Time').html("12PM");
-		} else if (hours.includes(TVal)) {
-			$('#Day').html(DayNTime[a][0]);
+		range3(DayDisplayTimes[a][1],DayDisplayTimes[a][2]);
+		if (hours.includes(TVal)) {
 			var reverseHour = hours.reverse();
-			console.log(reverseHour)
-			if (reverseHour.indexOf(TVal) >= 12) {
-			$('#Time').html(reverseHour.indexOf(TVal)+'PM'); 
-			} else if (reverseHour.indexOf(TVal) <12) {
-				$('#Time').html(reverseHour.indexOf(TVal)+'AM'); 	
-			}	
+			$('#Time').html(ClockTimes[reverseHour.indexOf(TVal)]+':00'); 
+		}
+		if (hours2.includes(TVal)) {
+			$('#Day').html(DayDisplayTimes[a][0]);
+			console.log(DayDisplayTimes[a][0])
+			console.log(a)
 		}
 		hours = []
+		hours2 = []
 	}
-	
-	// get range of hours in the day with dayntime[x][1] and dayntime[x][2]
-	//if in this range, display dayntime[x][0]
-	// if TVal == dayntime[x][3], set as noon
-	// If TVal in NTVal then designate as night time PM, else as AM
 }
 
 	function range(start, end) {	
@@ -138,6 +134,13 @@ function displayDateTime(TVal) {
 		function range2(start, end) {	
 			for (let i = start; i <= end; i++) {
 				hours.push(i);
+				hours2.push(i);
+			}
+		return
+	}
+			function range3(start, end) {	
+			for (let i = start; i <= end; i++) {
+				hours2.push(i);
 			}
 		return
 	}
@@ -389,14 +392,11 @@ function CheckEnter() {
 	}
 }
 function CheckTownTime(Night,Day) {
-	for (let a =0; a<=10; a++)	{
+	for (let a =0; a<=9; a++)	{
 		time.push(range(NTval[a][0],NTval[a][1]));
 	}
 	if (localStorage.getItem("Time") != "undefined" && localStorage.getItem("Time") != null	) {
 		TVal = parseInt(localStorage.getItem("Time"));
-		//console.log(TVal) 
-		//console.log(time)
-		//console.log(localStorage.getItem("Time"))
 		if (typeof Night == 'string' && typeof Day == 'string') {
 			if (isNightTime == time.includes(TVal)) {
 				$('#background').addClass(Night);
@@ -413,23 +413,11 @@ function CheckTownTime(Night,Day) {
 	}
 }
 function CheckTime() {
-	for (let a =0; a<=10; a++)	{
+	for (let a =0; a<=9; a++)	{
 		time.push(range(NTval[a][0],NTval[a][1]));
 	}
 	if (localStorage.getItem("Time") != "undefined" && localStorage.getItem("Time") != null) {
 		TVal = parseInt(localStorage.getItem("Time"));
-		//console.log(isNightTime);
-		//console.log(time.includes(TVal));
-		//console.log(typeof TVal);
-		//console.log(time);
-		//console.log(TVal);
-		//console.log('true');
-		$('#map').css({
-			'filter':'brightness(0.30) saturate(50%) hue-rotate(29deg)',
-			'webkitFilter':'brightness(0.30) saturate(50%) hue-rotate(29deg)',
-			'transition':'all 0.0s ease-out',
-			'-webkit-transition':'all 0.0s ease-out',
-		});
 		if (isNightTime == time.includes(TVal)) {
 			$('#map').css({
 				'filter':'brightness(0.30) saturate(50%) hue-rotate(29deg)',
@@ -451,7 +439,7 @@ function CheckTime() {
 		}
 	} else {
 		drawDayLines();
-		TVal = 240;
+		TVal = 239;
 		//console.log('false');
 		$('#map').css({
 			'filter':'brightness(1) saturate(100%) hue-rotate(0deg)',
@@ -484,7 +472,7 @@ function CheckLoc() {
 		$("#inventorybutton, #p1,#p2,#p3,#p4,#p5,#p6,#p7,#p8,#p9,#p10,#p11,#p12,#p13,#p14,#p15,#p16, #QuestButton").hover(function(){
 			$(this).css('background-color','#e54444');
 			LocPoint = String($(this).attr('id'));
-			console.log(LocName[LocPoint]);
+
 			if (LocName[LocPoint] != "undefined" && LocName[LocPoint] != null) {
 				$('#noticebox span').html(LocName[LocPoint]);
 				$("#noticebox").stop().slideDown('100');
@@ -515,7 +503,7 @@ function CheckLoc() {
 			if(hit) {
 				window.location = "cave.html";
 				console.log('yass')
-				$('.player').hide({effect:'explode'});
+				$('.player').hide();
 				clearInterval(collisionTimer);
 				setTimeout(resetPlayer,1000);
 		}

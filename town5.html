@@ -12,7 +12,7 @@
 $(document).ready(function(){
 	QuestMemory();
 	QuestCompletionMemory();
-	$('#background').addClass('bg4');
+	CheckTownTime('bg23','bg22');
 	$("#noticebox").slideDown('400').delay(2200).slideUp('400');
 	if (localStorage.getItem("coords") != "undefined" && localStorage.getItem("coords") != null) {
 		var coords = (JSON.parse("[" + localStorage.getItem("coords") + "]"));
@@ -68,7 +68,9 @@ function updatePlayerPos() {
 <div id="background">
 <div id="noticebox"><span>Town 5<span></div>
 	<div id="char"></div>
-	
+	<img src="images/npcs/char5.png" id="char5">
+	<img src="images/npcs/char5-2.png" id="char5-2">
+			<div id="inventorybutton"><a class="htmllink" href="inventory.html"><span>Inventory</span></a></div>
 </div>
 </body>
 </html>
