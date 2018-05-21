@@ -88,13 +88,41 @@ function DayPhase() {
 }
 
 function conversationCheck(xAxis,yAxis) {
-	if ((xAxis < 510 && xAxis > 390) || (xAxis < 955 & xAxis > 835)) {
-		$("#talkbutton").css({left: xAxis-45, top: yAxis-120}).show();
-		return true
-	} else {
-		$("#talkbutton").hide();
-		return false
+	var PageLocation = location.href.split("/").slice(-1);
+	if (PageLocation == 'town2.html') {
+		if ((xAxis < 470 && xAxis > 390) || (xAxis < 955 && xAxis > 835) || (xAxis < 775 && xAxis > 675)) {
+			$("#talkbutton").css({left: xAxis-45, top: yAxis-120}).show();
+			return true
+		} else {
+			$("#talkbutton").hide();
+			return false
+		}
+	} else if (PageLocation == 'town3.html') {
+		if ((xAxis < 200 && xAxis > 100) || (xAxis < 775 && xAxis > 675) || (xAxis < 955 && xAxis > 835)) {
+			$("#talkbutton").css({left: xAxis-45, top: yAxis-120}).show();
+			return true
+		} else {
+			$("#talkbutton").hide();
+			return false
+		}
+	} else if (PageLocation == 'town4.html') {
+		if ((xAxis < 470 && xAxis > 370) || (xAxis < 680  & xAxis > 580) || (xAxis < 955 && xAxis > 835)) {
+			$("#talkbutton").css({left: xAxis-45, top: yAxis-120}).show();
+			return true
+		} else {
+			$("#talkbutton").hide();
+			return false
+		}
+	} else if (PageLocation == 'town5.html') {
+		if ((xAxis < 510 && xAxis > 390) || (xAxis < 955 & xAxis > 835)) {
+			$("#talkbutton").css({left: xAxis-45, top: yAxis-120}).show();
+			return true
+		} else {
+			$("#talkbutton").hide();
+			return false
+		}
 	}
+
 }
 function NightPhase() {
 		$('#map').css({

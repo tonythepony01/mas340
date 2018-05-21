@@ -467,12 +467,13 @@ width: 75px;
 height: 30px;
 background-color: #b40000;
 display:none;
+z-index: 12;
 }
 
 #talkbutton {
 	position: absolute;
 left: 200px;
-top: 470px;
+top: 440px;
 width: 75px;
 height: 30px;
 background-color: #b40000;
@@ -499,6 +500,7 @@ background-color: #2196F3;
 	bottom: 25px;
 	left: 100px;
 	padding: 0px;
+	z-index:11;
 }
 
 #noticebox {

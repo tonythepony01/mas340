@@ -44,18 +44,18 @@ $(document).on('keydown keyup', function(e) {
 			var dialogue;
 			eventHandler();
 			function eventHandler() {
-				if (localStorage.getItem('Butterfly') == 'true') {
+				if (p.left < 470 && p.left > 390) {
+									if (localStorage.getItem('Butterfly') == 'true') {
 					switch (progress) {					
 						case 0:
 							$('#nextbutton, #textbox ').show();
-							dialogue = "Thank you so much for bringing me this shit";
+							dialogue = "Thank you so much for bringing me the Butterflies.";
 							break;
 						case 1:
-							dialogue = "I now have another favour to ask"
+							dialogue = "If it's not too much, I have another favour to ask"
 							break;
 						case 2:
 							dialogue = "Could you go to the cave across the river and hand this to my son?"
-
 							break;
 						case 3:
 							dialogue = "Sure OKAY"
@@ -114,6 +114,51 @@ $(document).on('keydown keyup', function(e) {
 					localStorage.setItem("DialogueProgress", progress);
 					$('#textbox').html(dialogue); 			
 					};
+				} else if (p.left < 775 && p.left > 675) {			
+					switch (progress) {
+						case 0:
+							$('#nextbutton, #textbox ').show();
+							dialogue = "Hi d00d. I'm just the random NPC just chilling here.";
+							break;
+						case 1:
+							dialogue = "I have 39 quests for you to take."
+							break;
+						case 2:
+							dialogue = "jokes."
+							break;
+						case 3:
+							dialogue = "Sure OKAY WHATEVS"
+							break;		
+						case 4:
+							$('#nextbutton, #textbox ').hide();			
+							break;	
+					}
+					progress++;  
+					localStorage.setItem("DialogueProgress", progress);
+					$('#textbox').html(dialogue); 			
+					} else if (p.left < 955 && p.left > 835) {			
+					switch (progress) {
+						case 0:
+							$('#nextbutton, #textbox ').show();
+							dialogue = "The King has been waiting for you, peasant from a galaxy far far away.";
+							break;
+						case 1:
+							dialogue = "Draw your sword"
+							break;
+						case 2:
+							dialogue = "and prepare to face the dark lord himself. loljk"
+							break;
+						case 3:
+							dialogue = "Sure OKAY WHATEVS"
+							break;		
+						case 4:
+							$('#nextbutton, #textbox ').hide();			
+							break;	
+					}
+					progress++;  
+					localStorage.setItem("DialogueProgress", progress);
+					$('#textbox').html(dialogue); 			
+					}
 			}
 			$('#nextbutton').click(eventHandler);				
 		}

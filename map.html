@@ -38,7 +38,6 @@ $(document).ready(function(){
 		DestLoc = LocDict[defLoc];
 		DestLoc2 = LocDict[defLoc];
 		localStorage.setItem('ClockTime',degrees);
-		
 		if (CurrentLoc != DestLoc){
 			if (CurrentLoc == 'J' && DestLoc == 'N') {
 				if (NoonTimes.includes(TVal)) {
@@ -81,10 +80,12 @@ $(document).ready(function(){
 					PathList = [['A','B'],['B','A','C','E'],['C','D','B'],['D','C'],['E','F','B'],['F','E','G'],['G','F','H','I'],['H','G','I'],['I','H','G'],['J','K','L'],['K','J','L','M'],['L','K','J'],['M','K'],['N'],['O'],['P','K']];
 					if (CurrentLoc == 'E' && DestLoc == 'J') {
 						$('#noticebox2 span').html('Seems like the bridge is broken. Try coming back later.');
+						console.log('nu1')
 						$('#dockLeft').show().delay(2000).fadeOut();
 						$("#noticebox2").slideDown('100').delay(2900).slideUp('100');
 					} else if (CurrentLoc == 'J' && DestLoc == 'E') {
 						$('#noticebox2 span').html('Seems like the bridge is broken. Try coming back later.');
+						console.log('nu2')
 						$('#dockRight').show().delay(2000).fadeOut();
 						$("#noticebox2").slideDown('100').delay(2900).slideUp('100');					
 					} else {
