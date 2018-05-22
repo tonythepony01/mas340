@@ -25,7 +25,10 @@ $(document).ready(function(){
 	CheckLoc();
 	CheckTime();
 	CheckEnter();
+	$('#p1').hover(function() {
 	HoverColor();
+	});
+	
 	QuestMemory();
 	QuestCompletionMemory();
 	displayDateTime(TVal);
@@ -37,15 +40,12 @@ $(document).ready(function(){
 		position = p.position();
 		DestLoc = LocDict[defLoc];
 		DestLoc2 = LocDict[defLoc];
-		localStorage.setItem('ClockTime',degrees);
 		if (CurrentLoc != DestLoc) {
 			 if (CurrentLoc == 'E' && DestLoc == 'J' && time.includes(TVal) == false) {
-					console.log('trueee')
 						$('#noticebox2 span').html('Seems like the bridge is broken. Try coming back later.');
 						$('#dockLeft').show().delay(2000).fadeOut();
 						$("#noticebox2").slideDown('100').delay(2900).slideUp('100');
 				} else if (CurrentLoc == 'J' && DestLoc == 'E' && time.includes(TVal) == false) {
-					console.log('trueee2')
 						$('#noticebox2 span').html('Seems like the bridge is broken. Try coming back later.');
 						$('#dockRight').show().delay(2000).fadeOut();
 						$("#noticebox2").slideDown('100').delay(2900).slideUp('100');	
@@ -85,7 +85,6 @@ $(document).ready(function(){
 					}
 				} else {
 					PathList = [['A','B'],['B','A','C','E'],['C','D','B'],['D','C'],['E','F','B'],['F','E','G'],['G','F','H','I'],['H','G','I'],['I','H','G'],['J','K','L'],['K','J','L','M'],['L','K','J'],['M','K'],['N'],['O'],['P','K']];
-					console.log('ITS DAYTIME');
 						CurrentLoc = DestLoc;
 						EnterCheck(DestLoc,position.left,position.top);
 						localStorage.setItem("SavedLoc", DestLoc);

@@ -562,6 +562,7 @@ function CheckLoc() {
 		return
 	}
 	function HoverColor() {
+		console.log("thiss")
 		var LocName = {p1:'Town 1',p3:'Town 2',p4:'Forest 1',p5:'Bridge',p7:'Town 3',p9:'Forest 2',p10:'Bridge',p12:'Forest 3',p13:'Town 4',p14:'Cave',p15:'Town 5',p16:'Random Hut'};
 		$("#inventorybutton, #p1,#p2,#p3,#p4,#p5,#p6,#p7,#p8,#p9,#p10,#p11,#p12,#p13,#p14,#p15,#p16, #QuestButton,#talkbutton, #nextbutton").hover(function(){
 			$(this).css('background-color','#e54444');

@@ -12,6 +12,7 @@
 $(document).ready(function(){
 	QuestMemory();
 	QuestCompletionMemory();
+	CheckTownTime(0,0);
 	$('#char').css('transform','scale(1.5)');
 	$('#char').css({left: -200, top: 475});
 	$('#background').addClass('bg5');
@@ -52,7 +53,7 @@ $(document).ready(function(){
 						progress++;  
 						localStorage.setItem("DialogueProgress", progress);
 						$('#textbox').html(dialogue);
-				} else {					
+				} else if (CheckTownTime(0,0)== true) {
 					switch (progress) {
 						case 0:
 							$('#nextbutton, #textbox ').show();
@@ -78,7 +79,29 @@ $(document).ready(function(){
 					}
 					progress++;  
 					localStorage.setItem("DialogueProgress", progress);
-					$('#textbox').html(dialogue); 			
+					$('#textbox').html(dialogue); 	
+				} else {					
+					switch (progress) {
+						case 0:
+							$('#nextbutton, #textbox ').show();
+							dialogue = "Sorry peasant";
+							break;
+						case 1:
+							dialogue = "I'm feeling tired right now"
+							break;
+						case 2:
+							dialogue = "Come talk to me during the night."
+							break;
+						case 3:
+							dialogue = "Sure OKAY WHATEVS"
+							break;		
+						case 4:
+							$('#nextbutton, #textbox ').hide();			
+							break;	
+					}
+					progress++;  
+					localStorage.setItem("DialogueProgress", progress);
+					$('#textbox').html(dialogue); 	
 					};
 			}
 		$('#nextbutton').click(eventHandler);		

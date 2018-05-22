@@ -17,6 +17,8 @@ $(document).ready(function(){
 		checkInventory();
 QuestMemory();
 QuestCompletionMemory();
+	QuestCompletionMemory();
+	CheckTownTime(0,0);
 	// setup
 	$('#char').animate({left: 100, top: 450},750);
 	//$('#char').animate({left: -200, top: 475},750); // when finished with conversation
@@ -26,7 +28,7 @@ QuestCompletionMemory();
 		var dialogue;
 		eventHandler();
 			function eventHandler() {
-				if (localStorage.getItem('Acorns') == 'true') {
+				if (localStorage.getItem('Acorns') == 'true' && CheckTownTime(0,0) == true) {
 					switch (progress) {					
 						case 0:
 							$('#nextbutton, #textbox ').show();
@@ -36,7 +38,7 @@ QuestCompletionMemory();
 							dialogue = "So yeah, now that you've brought me my beloved acorns, I'll go to your king's party"
 							break;
 						case 2:
-							dialogue = "thx fgt"
+							dialogue = "thx"
 							if (QuestComp[3] == false) {
 								QuestToggler(3, true);
 								if ($('#QuestButton').hasClass('jiggle') == true) {
@@ -53,7 +55,27 @@ QuestCompletionMemory();
 						progress++;  
 						localStorage.setItem("DialogueProgress", progress);
 						$('#textbox').html(dialogue);
-				} else {					
+				} else if (localStorage.getItem('Acorns') == 'true' && CheckTownTime(0,0) == false) {
+										switch (progress) {					
+						case 0:
+							$('#nextbutton, #textbox ').show();
+							dialogue = "Looks like you have what I need there";
+							break;
+						case 1:
+							dialogue = "But I am tired. Come back at night"
+							break;
+						case 2:
+							dialogue = "goddddamn"
+							break;		
+							
+						case 3:		
+						$('#nextbutton, #textbox ').hide();	
+						break;
+					}					
+						progress++;  
+						localStorage.setItem("DialogueProgress", progress);
+						$('#textbox').html(dialogue);
+				} else if (CheckTownTime(0,0) == true) {
 					switch (progress) {
 						case 0:
 							$('#nextbutton, #textbox ').show();
@@ -79,7 +101,30 @@ QuestCompletionMemory();
 					}
 					progress++;  
 					localStorage.setItem("DialogueProgress", progress);
-					$('#textbox').html(dialogue); 			
+					$('#textbox').html(dialogue); 	
+				} else if (CheckTownTime(0,0) == false) {					
+							switch (progress) {
+						case 0:
+							$('#nextbutton, #textbox ').show();
+							dialogue = "Hi, welcome to my kingdoms";
+							break;
+						case 1:
+							dialogue = "Invitation?"
+							break;
+						case 2:
+							dialogue = "Sorry I am busy right now. Come back later at night when I am free"
+							break;
+						case 3:
+							dialogue = "tch"
+
+							break;		
+						case 4:
+							$('#nextbutton, #textbox ').hide();			
+							break;	
+					}
+					progress++;  
+					localStorage.setItem("DialogueProgress", progress);
+					$('#textbox').html(dialogue); 	
 					};
 			}
 		$('#nextbutton').click(eventHandler);		
