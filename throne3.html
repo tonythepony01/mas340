@@ -30,15 +30,19 @@ $(document).ready(function(){
 					switch (progress) {					
 						case 0:
 							$('#nextbutton, #textbox ').show();
-							dialogue = "Looks nice and fresh there peasant";
+							dialogue = "Looks good there peasant";
 							break;
 						case 1:
 							dialogue = "So yeah, now that you've brought me my beloved weed, I'll go to your king's party"
 							break;
 						case 2:
-							dialogue = "thx fgt"
+							dialogue = "thx "
 							if (QuestComp[2] == false) {
 								QuestToggler(2, true);
+																if ($('#QuestButton').hasClass('jiggle') == true) {
+									$('#QuestButton').removeClass('jiggle');
+								}
+								$('#QuestButton').addClass('jiggle');
 							}
 							break;		
 						case 3:		
@@ -64,6 +68,7 @@ $(document).ready(function(){
 							dialogue = "Sure OKAY WHATEVS"
 							if (QuestDict[2][1] == false) {
 								QuestToggler('Q3', true);
+								$('#QuestButton').addClass('jiggle');
 								console.log(QuestDict);
 							}
 							break;		
@@ -87,9 +92,13 @@ $(document).ready(function(){
 <div id="background">
 	<button onclick="goBack()">Go Back</button>
 	<div id="char"></div>
-	<div id="textbox"></div>
-	<div id="nextbutton"></div>
-	<div id="talkbutton"></div>
+		<div id="talkbutton"><span>Chat</span></div>
+		<div id="textbox">
+			<span id='span1'></span>
+			<span id='span2'></span>
+		</div>
+		<div id="nextbutton"><span>Continue</span></div>
+				<div id="QuestButton"><a class="htmllink" href="questList.html"><span>Quest List</span></a></div>
 </div>
 </body>
 </html>

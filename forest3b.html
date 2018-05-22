@@ -33,13 +33,12 @@ $(document).ready(function(){
 	}
 	$('#Necklace').click(function() {
 		if (QuestDict[5][1] == false) {
-			console.log(QuestDict[5][1])
 			QuestToggler('Q6', true);
-			console.log(QuestDict);
-			console.log('necklace IN')
+											if ($('#QuestButton').hasClass('jiggle') == true) {
+									$('#QuestButton').removeClass('jiggle');
+								}
+								$('#QuestButton').addClass('jiggle');
 		} else {
-		console.log(QuestDict[5][1])
-			console.log('necklace out')
 		}
 	
 	});

@@ -42,22 +42,27 @@ $(document).on('keydown keyup', function(e) {
 			$('#talkbutton').hide();
 			var progress = 0;
 			var dialogue;
+					var character;
 			eventHandler();
 			function eventHandler() {
 				if (p.left < 470 && p.left > 390) {
-									if (localStorage.getItem('Butterfly') == 'true') {
+					if (localStorage.getItem('Butterfly') == 'true') {
 					switch (progress) {					
 						case 0:
 							$('#nextbutton, #textbox ').show();
+							character = 'Old Woman';
 							dialogue = "Thank you so much for bringing me the Butterflies.";
 							break;
 						case 1:
+						character = 'Old Woman';
 							dialogue = "If it's not too much, I have another favour to ask"
 							break;
 						case 2:
+						character = 'Old Woman';
 							dialogue = "Could you go to the cave across the river and hand this to my son?"
 							break;
 						case 3:
+						character = 'This guy';
 							dialogue = "Sure OKAY"
 							if (QuestComp[1] == false) {
 								QuestToggler(1, true);
@@ -72,7 +77,8 @@ $(document).on('keydown keyup', function(e) {
 					}					
 						progress++;  
 						localStorage.setItem("DialogueProgress", progress);
-						$('#textbox').html(dialogue);
+						$('#textbox #span2').html(dialogue);	
+						$('#textbox #span1').html(character);	
 				} else if (localStorage.getItem('Medicine') == 'true') {
 					switch (progress) {
 						case 0:
@@ -86,24 +92,29 @@ $(document).on('keydown keyup', function(e) {
 					}				
 					progress++;  
 					localStorage.setItem("DialogueProgress", progress);
-					$('#textbox').html(dialogue); 	
+						$('#textbox #span2').html(dialogue);	
+						$('#textbox #span1').html(character);	
 				} else {					
 					switch (progress) {
 						case 0:
 							$('#nextbutton, #textbox ').show();
-							dialogue = "Hi, how are you doing?";
+							character = 'Old Woman';
+							dialogue = "Hello young man.";
 							break;
 						case 1:
-							dialogue = "I have a favour to ask of you."
+							character = 'Old Woman';
+							dialogue = "I have a favour to ask of you.";
 							break;
 						case 2:
-							dialogue = "Could you go to forest 3 and catch me some butterflies? I need them to make medicine for my son who has fallen sick."
+							character = 'Old Woman';
+							dialogue = "Could you go to forest 3 and catch me some butterflies? I need them to make medicine for my son who has fallen sick.";
 							break;
 						case 3:
-							dialogue = "Sure OKAY WHATEVS"
+							character = 'This guy';
+							dialogue = "okey";
 							if (QuestDict[1][1] == false) {
 								QuestToggler('Q2', true);
-								console.log(QuestDict);
+								$('#QuestButton').addClass('jiggle');
 							}
 							break;		
 						case 4:
@@ -112,21 +123,26 @@ $(document).on('keydown keyup', function(e) {
 					}
 					progress++;  
 					localStorage.setItem("DialogueProgress", progress);
-					$('#textbox').html(dialogue); 			
+											$('#textbox #span2').html(dialogue);	
+						$('#textbox #span1').html(character);			
 					};
 				} else if (p.left < 775 && p.left > 675) {			
 					switch (progress) {
 						case 0:
 							$('#nextbutton, #textbox ').show();
+							character = 'Townsperson';
 							dialogue = "Hi d00d. I'm just the random NPC just chilling here.";
 							break;
 						case 1:
-							dialogue = "I have 39 quests for you to take."
+						character = 'Townsperson';
+							dialogue = "I have 39 quests for you to take.";
 							break;
 						case 2:
+						character = 'Townsperson';
 							dialogue = "jokes."
 							break;
 						case 3:
+						character = 'This guy';
 							dialogue = "Sure OKAY WHATEVS"
 							break;		
 						case 4:
@@ -135,20 +151,25 @@ $(document).on('keydown keyup', function(e) {
 					}
 					progress++;  
 					localStorage.setItem("DialogueProgress", progress);
-					$('#textbox').html(dialogue); 			
+											$('#textbox #span2').html(dialogue);	
+						$('#textbox #span1').html(character);		
 					} else if (p.left < 955 && p.left > 835) {			
 					switch (progress) {
 						case 0:
 							$('#nextbutton, #textbox ').show();
+							character = 'Guard';
 							dialogue = "The King has been waiting for you, peasant from a galaxy far far away.";
 							break;
 						case 1:
+						character = 'Guard';
 							dialogue = "Draw your sword"
 							break;
 						case 2:
+						character = 'Guard';
 							dialogue = "and prepare to face the dark lord himself. loljk"
 							break;
 						case 3:
+						character = 'This guy';
 							dialogue = "Sure OKAY WHATEVS"
 							break;		
 						case 4:
@@ -157,7 +178,8 @@ $(document).on('keydown keyup', function(e) {
 					}
 					progress++;  
 					localStorage.setItem("DialogueProgress", progress);
-					$('#textbox').html(dialogue); 			
+						$('#textbox #span2').html(dialogue);	
+						$('#textbox #span1').html(character);			
 					}
 			}
 			$('#nextbutton').click(eventHandler);				
@@ -198,10 +220,14 @@ function updatePlayerPos() {
 	<img src="images/npcs/oldwoman.png" id="old-woman">
 	<img src="images/npcs/char1.png" id="char1">
 	<img src="images/npcs/char4.png" id="char4">
-		<div id="talkbutton"></div>
-		<div id="textbox"></div>
-		<div id="nextbutton"></div>
+		<div id="talkbutton"><span>Chat</span></div>
+		<div id="textbox">
+			<span id='span1'></span>
+			<span id='span2'></span>
+		</div>
+		<div id="nextbutton"><span>Continue</span></div>
 		<div id="inventorybutton"><a class="htmllink" href="inventory.html"><span>Inventory</span></a></div>
+			<div id="QuestButton"><a class="htmllink" href="questList.html"><span>Quest List</span></a></div>
 </div>
 </body>
 </html>

@@ -43,6 +43,7 @@ $(document).on('keydown keyup', function(e) {
 				$('#talkbutton').hide();
 				var progress = 0;
 				var dialogue;
+						var character;
 				eventHandler();
 				function eventHandler() {
 					switch (progress) {
@@ -65,7 +66,8 @@ $(document).on('keydown keyup', function(e) {
 					}
 					progress++;  
 					localStorage.setItem("DialogueProgress", progress);
-					$('#textbox').html(dialogue); 
+						$('#textbox #span2').html(dialogue);	
+						$('#textbox #span1').html(character);	
 				}
 				$('#nextbutton').click(eventHandler);				
 			}
@@ -100,11 +102,15 @@ function updatePlayerPos() {
 <body>
 <div id="background">
 <div id="noticebox"><span>Town 1<span></div>
-	<div id="talkbutton"></div>
 	<div id="char"></div>
-	<div id="textbox"></div>
-	<div id="nextbutton"></div>
+		<div id="talkbutton"><span>Chat</span></div>
+		<div id="textbox">
+			<span id='span1'></span>
+			<span id='span2'></span>
+		</div>
+		<div id="nextbutton"><span>Continue</span></div>
 			<div id="inventorybutton"><a class="htmllink" href="inventory.html"><span>Inventory</span></a></div>
+				<div id="QuestButton"><a class="htmllink" href="questList.html"><span>Quest List</span></a></div>
 </div>
 </body>
 </html>

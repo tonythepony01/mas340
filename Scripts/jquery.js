@@ -114,7 +114,7 @@ function conversationCheck(xAxis,yAxis) {
 			return false
 		}
 	} else if (PageLocation == 'town5.html') {
-		if ((xAxis < 510 && xAxis > 390) || (xAxis < 955 & xAxis > 835)) {
+		if ((xAxis < 550 && xAxis > 450) || (xAxis < 955 & xAxis > 835)) {
 			$("#talkbutton").css({left: xAxis-45, top: yAxis-120}).show();
 			return true
 		} else {

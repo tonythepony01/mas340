@@ -219,7 +219,7 @@ body {
 	z-index: 8;
 }
 
-#backbutton a, #inventorybutton a, #title, a:visited, #itemGet, #EnterButton, #ButtonLink, #Day,#Time, button, #QuestList li, #QuestButton a, #noticebox span, #noticebox2 span {
+#backbutton a, #inventorybutton a, #title, a:visited, #itemGet, #EnterButton, #ButtonLink, #Day,#Time, button, #QuestList li, #QuestButton a, #noticebox span, #noticebox2 span, #talkbutton span, #textbox #span2, #textbox #span1, #nextbutton span{
 	color: black;
 	font-size: 1.5em;
 	text-decoration: none;
@@ -420,10 +420,12 @@ padding-left: 5px;
 padding-right: 5px;
 background-color: #b40000;
 display: inline-block;
+
 }
 
 #QuestButton {
 	top: 60px;
+	font-size: 0.95em;
 }
 
 #inventorybutton:hover {
@@ -460,15 +462,19 @@ background-color: #b40000;
 
 #nextbutton {
 	z-index: 1;
-		position: absolute;
-right: 115px;
-bottom: 40px;
-width: 75px;
-height: 30px;
-background-color: #b40000;
-display:none;
-z-index: 12;
+	position: absolute;
+	border-radius: 10px;
+	right: 115px;
+	bottom: 40px;
+	width: auto;
+	height: 30px;
+	padding-left: 5px;
+padding-right: 5px;
+	background-color: #b40000;
+	display:none;
+	z-index: 12;
 }
+
 
 #talkbutton {
 	position: absolute;
@@ -479,7 +485,10 @@ height: 30px;
 background-color: #b40000;
 display: none;
 border-radius: 10px;
+
 }
+
+
 #title {
 	position: relative;
 	display: block;
@@ -492,15 +501,43 @@ border-radius: 10px;
 }
 
 #textbox {
-background-color: #2196F3;	
+background-color: rgba(194, 202, 214,0.85);
+border-color: #535456;
+  box-shadow: 0px 0px 0px 8px rgb(83,84,86,1);   
 	width: 800px;
 	height: 175px;
+	border-radius: 20px;
 	position: absolute;
 	display: none;
 	bottom: 25px;
 	left: 100px;
 	padding: 0px;
 	z-index:11;
+	
+} 
+
+#textbox #span2, #textbox #span1, #talkbutton span, #nextbutton span{
+	position: relative;
+	font-size: 1.2em;
+	top: 3px;
+}
+
+#talkbutton span {
+	left: 16px;
+}
+#textbox #span1 {
+		position: absolute !important;
+	margin-left: 20px;
+	margin-top: 10px;
+	color: #b40000;
+	font-size: 1.3em;
+		opacity: 1 !important;
+}
+#textbox #span2 {
+	position: absolute !important;
+		margin-left: 20px;
+	margin-top: 50px;
+	opacity: 1 !important;
 }
 
 #noticebox {

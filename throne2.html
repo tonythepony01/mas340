@@ -43,6 +43,10 @@ QuestMemory();
 							dialogue = "thx fgt"
 							if (QuestComp[0] == false) {
 								QuestToggler(0, true);
+								if ($('#QuestButton').hasClass('jiggle') == true) {
+									$('#QuestButton').removeClass('jiggle');
+								}
+								$('#QuestButton').addClass('jiggle');
 							}
 							break;		
 						case 4:		
@@ -62,13 +66,14 @@ QuestMemory();
 							dialogue = "I have a favour to ask of you."
 							break;
 						case 2:
-							dialogue = "Find me some flowers from the nearby forest so I can present them to your filthy King for his birthday party fgt"
+							dialogue = "Find me some flowers from the nearby forest so I can present them to your filthy King for his birthday party."
 							break;
 						case 3:
-							dialogue = "Sure OKAY WHATEVS"
+							dialogue = "yis sir"
 							if (QuestDict[0][1] == false) {
 								QuestToggler('Q1', true);
 								console.log(QuestDict);
+								$('#QuestButton').addClass('jiggle');
 							}
 							break;		
 						case 4:
@@ -91,9 +96,13 @@ QuestMemory();
 <div id="background">
 	<button onclick="goBack()">Go Back</button>
 	<div id="char"></div>
-	<div id="textbox"></div>
-	<div id="nextbutton"></div>
-	<div id="talkbutton"></div>
+		<div id="talkbutton"><span>Chat</span></div>
+		<div id="textbox">
+			<span id='span1'></span>
+			<span id='span2'></span>
+		</div>
+		<div id="nextbutton"><span>Continue</span></div>
+				<div id="QuestButton"><a class="htmllink" href="questList.html"><span>Quest List</span></a></div>
 </div>
 </body>
 </html>

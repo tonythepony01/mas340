@@ -35,7 +35,74 @@ $(document).on('keydown keyup', function(e) {
   $.each($("div"),function(){
     p = $('#char').position();
 	conversationCheck(p.left); // create button to start conversation
-	localStorage.setItem('coords', [Pl.x,Pl.y,Pl.speed])
+	localStorage.setItem('coords', [Pl.x,Pl.y,Pl.speed]);
+				$('#talkbutton').click(function() {	
+		if (conversationCheck(p.left, p.top) == true) {
+			$('#talkbutton').hide();
+			var progress = 0;
+			var dialogue;
+			var character;
+			eventHandler();
+			function eventHandler() {
+				if (p.left < 550 && p.left > 450) {
+					switch (progress) {					
+						case 0:
+							$('#nextbutton, #textbox ').show();
+							character = 'Guard 1';
+							dialogue = "...";
+							break;
+						case 1:
+							character = 'Guard 1';
+							dialogue = "What do you want punk?"
+							break;
+						case 2:
+						character = 'Guard 1';
+							dialogue = "..."
+							break;
+						case 3:
+						character = 'This guy';
+							dialogue = "Sure OKAY"
+							break;		
+						case 4:		
+						$('#nextbutton, #textbox ').hide();	
+							break;
+					}					
+						progress++;  
+						localStorage.setItem("DialogueProgress", progress);
+						$('#textbox #span2').html(dialogue);	
+						$('#textbox #span1').html(character);	
+				}  else if (p.left < 955 && p.left > 835) {			
+					switch (progress) {
+						case 0:
+							$('#nextbutton, #textbox ').show();
+							character = 'Guard 2';
+							dialogue = "The King has been waiting for you, peasant from a galaxy far far away.";
+							break;
+						case 1:
+						character = 'Guard 2';
+							dialogue = "Draw your sword"
+							break;
+						case 2:
+						character = 'Guard 2';
+							dialogue = "and prepare to face the dark lord himself. loljk"
+							break;
+						case 3:
+						character = 'This guy';
+							dialogue = "Sure OKAY WHATEVS"
+							break;		
+						case 4:
+							$('#nextbutton, #textbox ').hide();			
+							break;	
+					}
+					progress++;  
+					localStorage.setItem("DialogueProgress", progress);
+						$('#textbox #span2').html(dialogue);	
+						$('#textbox #span1').html(character);			
+					}
+			}
+			$('#nextbutton').click(eventHandler);				
+		}
+});	
     if (p.left < 35){
         console.log($(this))
 		window.location = "map.html";
@@ -70,7 +137,14 @@ function updatePlayerPos() {
 	<div id="char"></div>
 	<img src="images/npcs/char5.png" id="char5">
 	<img src="images/npcs/char5-2.png" id="char5-2">
+		<div id="talkbutton"><span>Chat</span></div>
+		<div id="textbox">
+			<span id='span1'></span>
+			<span id='span2'></span>
+		</div>
+		<div id="nextbutton"><span>Continue</span></div>
 			<div id="inventorybutton"><a class="htmllink" href="inventory.html"><span>Inventory</span></a></div>
+	<div id="QuestButton"><a class="htmllink" href="questList.html"><span>Quest List</span></a></div>			
 </div>
 </body>
 </html>

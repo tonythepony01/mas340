@@ -35,7 +35,103 @@ $(document).on('keydown keyup', function(e) {
   $.each($("div"),function(){
     p = $('#char').position();
 	conversationCheck(p.left); // create button to start conversation
-	localStorage.setItem('coords', [Pl.x,Pl.y,Pl.speed])
+	localStorage.setItem('coords', [Pl.x,Pl.y,Pl.speed]);
+		$('#talkbutton').click(function() {	
+		if (conversationCheck(p.left, p.top) == true) {
+			$('#talkbutton').hide();
+			var progress = 0;
+			var dialogue;
+					var character;
+			eventHandler();
+			function eventHandler() {
+				if (p.left < 200 && p.left > 100) {
+
+					switch (progress) {					
+						case 0:
+							$('#nextbutton, #textbox ').show();
+							character = 'Blacksmith';
+							dialogue = "Hello";
+							break;
+						case 1:
+						character = 'Blacksmith';
+							dialogue = "I make a lot of stuff. Stuff like tools, weapons and armour."
+							break;
+						case 2:
+						character = 'Blacksmith';
+							dialogue = "But I don't sell them."
+							break;
+						case 3:
+						character = 'This guy';
+							dialogue = "Sure OKAY"
+							break;		
+						case 4:		
+
+						$('#nextbutton, #textbox ').hide();	
+							break;
+					}					
+						progress++;  
+						localStorage.setItem("DialogueProgress", progress);
+						$('#textbox #span2').html(dialogue);	
+						$('#textbox #span1').html(character);						
+				} else if (p.left < 775 && p.left > 675) {			
+					switch (progress) {
+						case 0:
+							$('#nextbutton, #textbox ').show();
+							character = 'Townsperson';
+							dialogue = "I wonder who funds the construction and repair of the bridge at the river...";
+							break;
+						case 1:
+						character = 'This guy';
+							dialogue = "Why do you say that?"
+							break;
+						case 2:
+						character = 'Townsperson';
+							dialogue = "Because it keeps breaking and you can only cross it at certain times of the day *wink"
+							break;
+						case 3:
+						character = 'This guy';
+							dialogue = "Interesting."
+							break;		
+						case 4:
+							$('#nextbutton, #textbox ').hide();			
+							break;	
+					}
+					progress++;  
+					localStorage.setItem("DialogueProgress", progress);
+											$('#textbox #span2').html(dialogue);	
+						$('#textbox #span1').html(character);				
+					} else if (p.left < 955 && p.left > 835) {			
+					switch (progress) {
+						case 0:
+							$('#nextbutton, #textbox ').show();
+							character = 'Guard';
+							dialogue = "The King has been waiting for you, peasant from a galaxy far far away.";
+							break;
+						case 1:
+						character = 'Guard';
+							dialogue = "Draw your sword"
+							break;
+						case 2:
+						character = 'Guard';
+							dialogue = "and prepare to face the dark lord himself. loljk"
+							break;
+						case 3:
+						character = 'This guy';
+							dialogue = "Sure OKAY WHATEVS"
+							break;		
+						case 4:
+							$('#nextbutton, #textbox ').hide();			
+							break;	
+					}
+					progress++;  
+					localStorage.setItem("DialogueProgress", progress);
+											$('#textbox #span2').html(dialogue);	
+						$('#textbox #span1').html(character);			
+					}
+			}
+			$('#nextbutton').click(eventHandler);				
+		}
+});	
     if (p.left < 35){
         console.log($(this))
 		window.location = "map.html";
@@ -71,10 +167,14 @@ function updatePlayerPos() {
 	<img src="images/npcs/char3.png" id="char3">
 	<img src="images/npcs/char6.png" id="char6">
 	<div id="char"></div>
-			<div id="talkbutton"></div>
-		<div id="textbox"></div>
-		<div id="nextbutton"></div>
+		<div id="talkbutton"><span>Chat</span></div>
+		<div id="textbox">
+			<span id='span1'></span>
+			<span id='span2'></span>
+		</div>
+		<div id="nextbutton"><span>Continue</span></div>
 			<div id="inventorybutton"><a class="htmllink" href="inventory.html"><span>Inventory</span></a></div>
+				<div id="QuestButton"><a class="htmllink" href="questList.html"><span>Quest List</span></a></div>
 </div>
 </body>
 </html>
