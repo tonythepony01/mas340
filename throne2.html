@@ -25,22 +25,27 @@ QuestMemory();
 		$('#talkbutton').hide();
 		var progress = 0;
 		var dialogue;
+		var character;
 		eventHandler();
 			function eventHandler() {
 				if (localStorage.getItem('Flower') == 'true') {
 					switch (progress) {					
 						case 0:
 							$('#nextbutton, #textbox ').show();
+							character = 'King';
 							dialogue = "Good work peasant";
 							break;
 						case 1:
+						character = 'King';
 							dialogue = "I see you have brought me the very ordinary and boring flowers"
 							break;
 						case 2:
+						character = 'King';
 							dialogue = "As promised, I will now attend your King's birthday party. Be grateful for my presence"
 							break;
 						case 3:
-							dialogue = "thx fgt"
+						character = 'This guy';
+							dialogue = "k thanks bye"
 							if (QuestComp[0] == false) {
 								QuestToggler(0, true);
 								if ($('#QuestButton').hasClass('jiggle') == true) {
@@ -55,20 +60,25 @@ QuestMemory();
 					}					
 						progress++;  
 						localStorage.setItem("DialogueProgress", progress);
-						$('#textbox').html(dialogue);
+												$('#textbox #span2').html(dialogue);	
+						$('#textbox #span1').html(character);
 				} else {					
 					switch (progress) {
 						case 0:
+						character = 'King';
 							$('#nextbutton, #textbox ').show();
 							dialogue = "Hello young peasant";
 							break;
 						case 1:
+						character = 'King';
 							dialogue = "I have a favour to ask of you."
 							break;
 						case 2:
+						character = 'King';
 							dialogue = "Find me some flowers from the nearby forest so I can present them to your filthy King for his birthday party."
 							break;
 						case 3:
+						character = 'This guy';
 							dialogue = "yis sir"
 							if (QuestDict[0][1] == false) {
 								QuestToggler('Q1', true);
@@ -82,7 +92,8 @@ QuestMemory();
 					}
 					progress++;  
 					localStorage.setItem("DialogueProgress", progress);
-					$('#textbox').html(dialogue); 			
+											$('#textbox #span2').html(dialogue);	
+						$('#textbox #span1').html(character);			
 					};
 			}
 		$('#nextbutton').click(eventHandler);		

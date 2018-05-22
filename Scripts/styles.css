@@ -107,7 +107,7 @@ body {
 	display: none;
 }
 	
-#Day,#Time {
+#Day,#Time, #TimeDeduction {
 	position: absolute;
 	display: block;
 	font-size: 1em !important;
@@ -123,7 +123,11 @@ body {
 	padding-left:75px;
 }
 	
-
+#TimeDeduction {
+	padding-left:123px;
+	color: red !important;
+	
+}
 #p1,#p2,#p3,#p4, #p5,#p6,#p7, #p8,#p9,#p10,#p11,#p12,#p13,#p14,#p15, #p16 {
 	width:20px;
 	height: 20px;
@@ -219,7 +223,7 @@ body {
 	z-index: 8;
 }
 
-#backbutton a, #inventorybutton a, #title, a:visited, #itemGet, #EnterButton, #ButtonLink, #Day,#Time, button, #QuestList li, #QuestButton a, #noticebox span, #noticebox2 span, #talkbutton span, #textbox #span2, #textbox #span1, #nextbutton span{
+#backbutton a, #inventorybutton a, #title, a:visited, #itemGet, #EnterButton, #ButtonLink, #Day,#Time, button, #QuestList li, #QuestButton a, #noticebox span, #noticebox2 span, #talkbutton span, #textbox #span2, #textbox #span1, #nextbutton span, #TimeDeduction {
 	color: black;
 	font-size: 1.5em;
 	text-decoration: none;
