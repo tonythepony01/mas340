@@ -36,7 +36,7 @@ $(document).on('keydown keyup', function(e) {
     p = $('#char').position();
 	conversationCheck(p.left); // create button to start conversation
 	localStorage.setItem('coords', [Pl.x,Pl.y,Pl.speed]);
-		$('#talkbutton').click(function() {	
+	$('#talkbutton').click(function() {	
 		if (conversationCheck(p.left, p.top) == true) {
 			$('#talkbutton').hide();
 			var progress = 0;
@@ -133,7 +133,6 @@ $(document).on('keydown keyup', function(e) {
 		}
 });	
     if (p.left < 35){
-        console.log($(this))
 		window.location = "map.html";
     } else if (p.left > 950) {
 		window.location = "throne3.html";

@@ -264,10 +264,6 @@ function drawDayLines() {
 	ctx.stroke();
 		ctx.beginPath();
 	ctx.moveTo(locationp10.left,locationp10.top);
-	ctx.lineTo(locationp14.left,locationp14.top);
-	ctx.stroke();
-		ctx.beginPath();
-	ctx.moveTo(locationp10.left,locationp10.top);
 	ctx.lineTo(locationp12.left,locationp12.top);
 	ctx.stroke();
 		ctx.beginPath();
@@ -281,10 +277,6 @@ function drawDayLines() {
 		ctx.beginPath();
 	ctx.moveTo(locationp11.left,locationp11.top);
 	ctx.lineTo(locationp16.left,locationp16.top);
-	ctx.stroke();
-		ctx.beginPath();
-	ctx.moveTo(locationp14.left,locationp14.top);
-	ctx.lineTo(locationp15.left,locationp15.top);
 	ctx.stroke();
 }
 function drawNightLines() {
@@ -353,6 +345,84 @@ function drawNightLines() {
 	ctx.stroke();
 		ctx.beginPath();
 	ctx.moveTo(locationp10.left,locationp10.top);
+	ctx.lineTo(locationp12.left,locationp12.top);
+	ctx.stroke();
+		ctx.beginPath();
+	ctx.moveTo(locationp11.left,locationp11.top);
+	ctx.lineTo(locationp13.left,locationp13.top);
+	ctx.stroke();
+			ctx.beginPath();
+	ctx.moveTo(locationp11.left,locationp11.top);
+	ctx.lineTo(locationp12.left,locationp12.top);
+	ctx.stroke();
+		ctx.beginPath();
+	ctx.moveTo(locationp11.left,locationp11.top);
+	ctx.lineTo(locationp16.left,locationp16.top);
+	ctx.stroke();
+}
+
+function drawNoonLines() {
+	var c = document.getElementById("myCanvas");
+	var ctx = c.getContext("2d");
+	var locationp1 = $('#p1').position();
+	var locationp2 = $('#p2').position();
+	var locationp3 = $('#p3').position();
+	var locationp4 = $('#p4').position();
+	var locationp5 = $('#p5').position();
+	var locationp6 = $('#p6').position();
+	var locationp7 = $('#p7').position();
+	var locationp8 = $('#p8').position();
+	var locationp9 = $('#p9').position();
+	var locationp10 = $('#p10').position();
+	var locationp11 = $('#p11').position();
+	var locationp12 = $('#p12').position();
+	var locationp13 = $('#p13').position();
+	var locationp14 = $('#p14').position();
+	var locationp15 = $('#p15').position();
+	var locationp16 = $('#p16').position();
+	ctx.clearRect(0,0,1000,600);
+	ctx.beginPath();
+	ctx.moveTo(locationp1.left,locationp1.top);
+	ctx.lineTo(locationp2.left,locationp2.top);
+	ctx.stroke();
+	ctx.beginPath();
+	ctx.moveTo(locationp2.left,locationp2.top);
+	ctx.lineTo(locationp3.left,locationp3.top);
+	ctx.stroke();
+	ctx.beginPath();
+	ctx.moveTo(locationp3.left,locationp3.top);
+	ctx.lineTo(locationp4.left,locationp4.top);
+	ctx.stroke();
+	ctx.beginPath();
+	ctx.moveTo(locationp2.left,locationp2.top);
+	ctx.lineTo(locationp5.left,locationp5.top);
+	ctx.stroke();
+		ctx.beginPath();
+	ctx.moveTo(locationp5.left,locationp5.top);
+	ctx.lineTo(locationp6.left,locationp6.top);
+	ctx.stroke();
+		ctx.beginPath();
+	ctx.moveTo(locationp6.left,locationp6.top);
+	ctx.lineTo(locationp7.left,locationp7.top);
+	ctx.stroke();
+		ctx.beginPath();
+	ctx.moveTo(locationp7.left,locationp7.top);
+	ctx.lineTo(locationp8.left,locationp8.top);
+	ctx.stroke();
+		ctx.beginPath();
+	ctx.moveTo(locationp7.left,locationp7.top);
+	ctx.lineTo(locationp9.left,locationp9.top);
+	ctx.stroke();
+				ctx.beginPath();
+	ctx.moveTo(locationp8.left,locationp8.top);
+	ctx.lineTo(locationp9.left,locationp9.top);
+	ctx.stroke();
+		ctx.beginPath();
+	ctx.moveTo(locationp10.left,locationp10.top);
+	ctx.lineTo(locationp11.left,locationp11.top);
+	ctx.stroke();
+		ctx.beginPath();
+	ctx.moveTo(locationp10.left,locationp10.top);
 	ctx.lineTo(locationp14.left,locationp14.top);
 	ctx.stroke();
 		ctx.beginPath();
@@ -370,10 +440,6 @@ function drawNightLines() {
 		ctx.beginPath();
 	ctx.moveTo(locationp11.left,locationp11.top);
 	ctx.lineTo(locationp16.left,locationp16.top);
-	ctx.stroke();
-		ctx.beginPath();
-	ctx.moveTo(locationp14.left,locationp14.top);
-	ctx.lineTo(locationp15.left,locationp15.top);
 	ctx.stroke();
 }
 
@@ -497,7 +563,7 @@ function CheckLoc() {
 	}
 	function HoverColor() {
 		var LocName = {p1:'Town 1',p3:'Town 2',p4:'Forest 1',p5:'Bridge',p7:'Town 3',p9:'Forest 2',p10:'Bridge',p12:'Forest 3',p13:'Town 4',p14:'Cave',p15:'Town 5',p16:'Random Hut'};
-		$("#inventorybutton, #p1,#p2,#p3,#p4,#p5,#p6,#p7,#p8,#p9,#p10,#p11,#p12,#p13,#p14,#p15,#p16, #QuestButton").hover(function(){
+		$("#inventorybutton, #p1,#p2,#p3,#p4,#p5,#p6,#p7,#p8,#p9,#p10,#p11,#p12,#p13,#p14,#p15,#p16, #QuestButton,#talkbutton, #nextbutton").hover(function(){
 			$(this).css('background-color','#e54444');
 			LocPoint = String($(this).attr('id'));
 

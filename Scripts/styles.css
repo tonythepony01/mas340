@@ -428,9 +428,10 @@ display: inline-block;
 	font-size: 0.95em;
 }
 
-#inventorybutton:hover {
+#inventorybutton:hover, #QuestButton:hover, #nextbutton:hover, #talkbutton:hover  {
 	background-color: #e54444;
 }
+
 span { display:inline-block !important; vertical-align:top !important; }
 
 #EnterButton {
