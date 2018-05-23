@@ -569,10 +569,13 @@ var PathNum2 = {A:0,B:1,C:2,D:3,E:4,F:5,G:6,H:7,I:8,J:9,K:10,L:11,M:12,N:13,O:14
 var LocDict2 = {p1:'A',p2:'B',p3:'C',p4:'D',p5:'E',p6:'F',p7:'G',p8:'H',p9:'I',p10:'J',p11:'K',p12:'L',p13:'M',p14:'N',p15:'O',p16:'P'}; 
 		$("#inventorybutton, #p1,#p2,#p3,#p4,#p5,#p6,#p7,#p8,#p9,#p10,#p11,#p12,#p13,#p14,#p15,#p16, #QuestButton,#talkbutton, #nextbutton").hover(function(){
 			PointerLoc = String($(this).attr('id'));
-			if (PathList2[PathNum2[CurrentLoc]].includes(LocDict2[PointerLoc])) {
+			if (CurrentLoc == LocDict2[PointerLoc]) {
+				$('#TimeDeduction').html('0');
+			} else if (PathList2[PathNum2[CurrentLoc]].includes(LocDict2[PointerLoc])) {
 				$('#TimeDeduction').html('-'+timeDeduction(CurrentLoc,LocDict2[PointerLoc]));
-				console.log(timeDeduction(CurrentLoc,LocDict2[PointerLoc]))
 			}
+			
+			
 			$(this).css('background-color','#e54444');
 			LocPoint = String($(this).attr('id'));
 
