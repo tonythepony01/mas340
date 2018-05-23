@@ -19,9 +19,9 @@ checkInventory();
 		var coords = (JSON.parse("[" + localStorage.getItem("coords") + "]"));
 		console.log(coords);
 		if (coords[0] < 50) {
-			var Pl = {el:$('#char'), x:coords[0]+65, y:coords[1], speed:coords[2]};
+			var Pl = {el:$('#char'), x:coords[0]+100, y:coords[1], speed:coords[2]};
 		} else if (coords[0] > 950) {
-			var Pl = {el:$('#char'), x:coords[0]-65, y:coords[1], speed:coords[2]};
+			var Pl = {el:$('#char'), x:coords[0]-100, y:coords[1], speed:coords[2]};
 		} else {
 			var Pl = {el:$('#char'), x:coords[0], y:coords[1], speed:coords[2]};
 		};
@@ -70,17 +70,18 @@ checkInventory();
 		$.each($("div"),function(){
 			p = $('#char').position();
 			localStorage.setItem('coords', [Pl.x,Pl.y,Pl.speed])
-			if (p.left < 35){
-				window.location = "map.html";
-			} else if (p.left > 950) {
-				window.location = "throne.html";
-			}
 		});
 	});
 
 function updatePlayerPos() {
   var dist = K[38]&&(K[37]||K[39]) || K[40]&&(K[37]||K[39]) ? 0.707 : 1; 
   dist *= Pl.speed;
+  if (Pl.x < 40)   {
+	Pl.x = 40;
+	window.location = "map.html";
+  } else if ((Pl.x > 950)) {
+    Pl.x = 950;
+  }
   if(K[37]) Pl.x -= dist;
   if(K[39]) Pl.x += dist;
   Pl.el.css({transform:"translate3D("+ Pl.x +"px, "+ Pl.y +"px, 0)"});

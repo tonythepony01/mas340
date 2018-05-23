@@ -84,6 +84,7 @@ body {
 	display: block;
 	margin: 10px;
 	border-radius: 10px;
+	-webkit-border-radius: 10px;
 }
 #Sunflower {
 	top: 500px;
@@ -135,6 +136,7 @@ body {
 	display: block;
 	background-color: #b40000;	
 	border-radius: 50%;
+	-webkit-border-radius: 50%;
 	margin:-10px;
 }
 
@@ -220,6 +222,7 @@ body {
 	margin-top:-80px;
 	margin-left: -50px;
 	transform: scale(0.50,0.50);
+	-webkit-transform: scale(0.50,0.50);
 	z-index: 8;
 }
 
@@ -246,10 +249,12 @@ body {
 @-webkit-keyframes bounce {
     from {
         -webkit-animation-timing-function: cubic-bezier(.67,.02,.83,.67);
+		animation-timing-function: cubic-bezier(.67,.02,.83,.67);
     }
     50% {
         top: 500px;
         -webkit-animation-timing-function: cubic-bezier(0.310, 0.440, 0.445, 1);
+		animation-timing-function: cubic-bezier(0.310, 0.440, 0.445, 1);
     }
     to {
         top: 1080px;
@@ -261,44 +266,50 @@ body {
 }
 
 @-webkit-keyframes jiggle {
-    0% {transform: rotate(0deg);}
-	5%	{transform: rotate(4deg);}
-    10% {transform: rotate(-4deg);}
-	15%	{transform: rotate(4deg);}
-	25% {transform: rotate(-4deg);}
-	40%	{transform: rotate(4deg);}
-	60%	{transform: rotate(-4deg);}
-	80%	{transform: rotate(4deg);}
-    100% {transform: rotate(0deg);}
+    0% {
+		transform: rotate(0deg);
+		-webkit-transform: rotate(0deg);
+	}
+	5%	{transform: rotate(4deg);
+	-webkit-transform: rotate(4deg);}
+    10% {transform: rotate(-4deg);
+	-webkit-transform: rotate(-4deg);}
+	15%	{transform: rotate(4deg);
+	-webkit-transform: rotate(4deg);}
+	25% {transform: rotate(-4deg);
+	-webkit-transform: rotate(-4deg);}
+	40%	{transform: rotate(4deg);
+	-webkit-transform: rotate(4deg);}
+	60%	{transform: rotate(-4deg);
+	-webkit-transform: rotate(-4deg);}
+	80%	{transform: rotate(4deg);
+	-webkit-transform: rotate(4deg);}
+    100% {transform: rotate(0deg);
+	-webkit-transform: rotate(0deg);}
 }
 
 @-webkit-keyframes pulsate {
- 0% {-webkit-transform: scale(1, 1);}
- 50% {-webkit-transform: scale(1.05, 1.05); background-color: #ff7070;}
- 100% {-webkit-transform: scale(1, 1); background-color: #b40000; };
+ 0% {-webkit-transform: scale(1, 1);
+transform: scale(1, 1);}
+ 50% {-webkit-transform: scale(1.05, 1.05);
+transform: scale(1.05, 1.05);
+ background-color: #ff7070;}
+ 100% {-webkit-transform: scale(1, 1); 
+transform: scale(1, 1);
+ background-color: #b40000; };
 }
 
 @keyframes pulsate {
- 0% {transform: scale(1, 1);}
- 50% {transform: scale(1.05, 1.05); background-color: #ff7070;}
- 100% {transform: scale(1, 1); background-color: #b40000;};
+ 0% {transform: scale(1, 1);
+ -webkit-transform: scale(1, 1);
+ }
+ 50% {transform: scale(1.05, 1.05);
+-webkit-transform: scale(1.05, 1.05); background-color: #ff7070;
 }
-
-@-webkit-keyframes rotate {
- 0% {-webkit-transform: rotate(0deg);}
- 100% {-webkit-transform: rotate(150deg);}
+ 100% {transform: scale(1, 1);
+-webkit-transform: scale(1, 1); background-color: #b40000;
+};
 }
-
-@keyframes rotate {
- 0% {transform: rotate(0deg);}
- 100% {transform: rotate(150deg);}
-}
-
-.rotateAnimation {
-	-webkit-animation: rotate 1s ;
-    animation: rotate 1s ;
-}
-
 
 #background, #tunnelbackground, #map  {
 	background-color: white;
@@ -405,6 +416,7 @@ height: 30px;
 	align-items: flex-start;
 	font-size: 1.5em !important;
 	border-radius: 10px;
+	-webkit-border-radius: 10px;
 	z-index: 5;
 }
 
@@ -420,6 +432,7 @@ top: 10px;
 width: auto;
 height: 30px;
 border-radius: 10px;
+-webkit-border-radius: 10px;
 padding-left: 5px;
 padding-right: 5px;
 background-color: #b40000;
@@ -446,6 +459,7 @@ span { display:inline-block !important; vertical-align:top !important; }
 	text-align: center;
 	vertical-align: text-top;
 	border-radius: 10px;
+	-webkit-border-radius: 10px;
 padding: 5px;
 background-color: #b40000;
 }
@@ -469,6 +483,7 @@ background-color: #b40000;
 	z-index: 1;
 	position: absolute;
 	border-radius: 10px;
+	-webkit-border-radius: 10px;
 	right: 115px;
 	bottom: 40px;
 	width: auto;
@@ -490,7 +505,7 @@ height: 30px;
 background-color: #b40000;
 display: none;
 border-radius: 10px;
-
+-webkit-border-radius: 10px;
 }
 
 
@@ -512,6 +527,7 @@ border-color: #535456;
 	width: 800px;
 	height: 175px;
 	border-radius: 20px;
+	-webkit-border-radius: 20px;
 	position: absolute;
 	display: none;
 	bottom: 25px;
@@ -553,6 +569,7 @@ border-color: #535456;
 	left: 150px;
 	top: 10px;
 	border-radius: 10px;
+	-webkit-border-radius: 20px;
 	text-align: center;
 	display: none;
 	z-index: 11;
@@ -572,6 +589,7 @@ border-color: #535456;
 	left: 150px;
 	top: 10px;
 	border-radius: 10px;
+	-webkit-border-radius: 10px;
 	text-align: center;
 	display: none;
 	z-index: 11;

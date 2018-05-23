@@ -132,17 +132,19 @@ $(document).on('keydown keyup', function(e) {
 			$('#nextbutton').click(eventHandler);				
 		}
 });	
-    if (p.left < 35){
-		window.location = "map.html";
-    } else if (p.left > 950) {
-		window.location = "throne3.html";
-	}
 });
 });
 
 function updatePlayerPos() {
   var dist = K[38]&&(K[37]||K[39]) || K[40]&&(K[37]||K[39]) ? 0.707 : 1; 
   dist *= Pl.speed;
+    if (Pl.x < 35)   {
+	Pl.x = 35;
+	window.location = "map.html";
+  } else if ((Pl.x > 950)) {
+    Pl.x = 950;
+	window.location =  "throne3.html";
+  }
   if(K[37]) Pl.x -= dist;
   if(K[39]) Pl.x += dist;
   Pl.el.css({transform:"translate3D("+ Pl.x +"px, "+ Pl.y +"px, 0)"});

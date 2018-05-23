@@ -20,9 +20,9 @@ $(document).ready(function(){
 		var coords2 = (JSON.parse("[" + localStorage.getItem("coords") + "]"));
 		console.log(coords2);
 		if (coords2[0] < 50) {
-			var Pl = {el:$('#char'), x:coords2[0]+65, y:coords2[1], speed:coords2[2]};
+			var Pl = {el:$('#char'), x:coords2[0]+100, y:coords2[1], speed:coords2[2]};
 		} else if (coords2[0] > 950) {
-			var Pl = {el:$('#char'), x:coords2[0]-65, y:coords2[1], speed:coords2[2]};
+			var Pl = {el:$('#char'), x:coords2[0]-100, y:coords2[1], speed:coords2[2]};
 		} else {
 			var Pl = {el:$('#char'), x:coords2[0], y:coords2[1], speed:coords2[2]};
 		};
@@ -86,17 +86,18 @@ $(document).on('keydown keyup', function(e) {
 	$.each($("div"),function(){
 		p = $('#char').position();
 		localStorage.setItem('coords2', [Pl.x,Pl.y,Pl.speed])
-		if (p.left < 35){
-			window.location = "forest2.html";
-		} else if (p.left > 950) {
-			window.location = "forest2.html"
-		}
 	});
 });
 
 function updatePlayerPos() {
   var dist = K[38]&&(K[37]||K[39]) || K[40]&&(K[37]||K[39]) ? 0.707 : 1; 
   dist *= Pl.speed;
+    if (Pl.x < 35)   {
+	Pl.x = 35;
+				window.location = "forest2.html";
+  } else if ((Pl.x > 950)) {
+    Pl.x = 950;
+  }
   if(K[37]) Pl.x -= dist;
   if(K[39]) Pl.x += dist;
   Pl.el.css({transform:"translate3D("+ Pl.x +"px, "+ Pl.y +"px, 0)"});

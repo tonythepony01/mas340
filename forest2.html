@@ -18,10 +18,10 @@ $(document).ready(function(){
 	if (localStorage.getItem("coords") != "undefined" && localStorage.getItem("coords") != null) {
 		var coords = (JSON.parse("[" + localStorage.getItem("coords") + "]"));
 		console.log(coords);
-		if (coords[0] < 35) {
-			var Pl = {el:$('#char'), x:coords[0]+65, y:coords[1], speed:coords[2]};
+		if (coords[0] < 50) {
+			var Pl = {el:$('#char'), x:coords[0]+100, y:coords[1], speed:coords[2]};
 		} else if (coords[0] > 950) {
-			var Pl = {el:$('#char'), x:coords[0]-65, y:coords[1], speed:coords[2]};
+			var Pl = {el:$('#char'), x:coords[0]-100, y:coords[1], speed:coords[2]};
 		} else {
 			var Pl = {el:$('#char'), x:coords[0], y:coords[1], speed:coords[2]};
 		};
@@ -39,6 +39,7 @@ $(document).on('keydown keyup', function(e) {
 			localStorage.setItem('coords', [Pl.x,Pl.y,Pl.speed])
 		if (p.left < 35){
 			window.location = "map.html";
+
 		} else if (p.left > 950) {
 			window.location = "forest2b.html";
 		}

@@ -26,18 +26,22 @@ QuestCompletionMemory();
 		$('#talkbutton').hide();
 		var progress = 0;
 		var dialogue;
+		var character;
 		eventHandler();
 			function eventHandler() {
 				if (localStorage.getItem('Acorns') == 'true' && CheckTownTime(0,0) == true) {
 					switch (progress) {					
 						case 0:
 							$('#nextbutton, #textbox ').show();
+							character = 'King';
 							dialogue = "Looks nice and fresh there peasant";
 							break;
 						case 1:
+						character = 'King';
 							dialogue = "So yeah, now that you've brought me my beloved acorns, I'll go to your king's party"
 							break;
 						case 2:
+						character = 'This guy';
 							dialogue = "thx"
 							if (QuestComp[3] == false) {
 								QuestToggler(3, true);
@@ -54,17 +58,21 @@ QuestCompletionMemory();
 					}					
 						progress++;  
 						localStorage.setItem("DialogueProgress", progress);
-						$('#textbox').html(dialogue);
+												$('#textbox #span2').html(dialogue);	
+						$('#textbox #span1').html(character);
 				} else if (localStorage.getItem('Acorns') == 'true' && CheckTownTime(0,0) == false) {
 										switch (progress) {					
 						case 0:
 							$('#nextbutton, #textbox ').show();
+							character = 'King';
 							dialogue = "Looks like you have what I need there";
 							break;
 						case 1:
+						character = 'King';
 							dialogue = "But I am tired. Come back at night"
 							break;
 						case 2:
+						character = 'This guy';
 							dialogue = "goddddamn"
 							break;		
 							
@@ -74,20 +82,25 @@ QuestCompletionMemory();
 					}					
 						progress++;  
 						localStorage.setItem("DialogueProgress", progress);
-						$('#textbox').html(dialogue);
+												$('#textbox #span2').html(dialogue);	
+						$('#textbox #span1').html(character);
 				} else if (CheckTownTime(0,0) == true) {
 					switch (progress) {
 						case 0:
 							$('#nextbutton, #textbox ').show();
+							character = 'King';
 							dialogue = "Hi, welcome to my kingdoms";
 							break;
 						case 1:
+						character = 'King';
 							dialogue = "Party? aw yeah I love parties"
 							break;
 						case 2:
+						character = 'King';
 							dialogue = "I'll rock up if you get me some acorns from the nearby forest"
 							break;
 						case 3:
+						character = 'This guy';
 							dialogue = "Okay you weirdo"
 							if (QuestDict[3][1] == false) {
 								QuestToggler('Q4', true);
@@ -101,20 +114,25 @@ QuestCompletionMemory();
 					}
 					progress++;  
 					localStorage.setItem("DialogueProgress", progress);
-					$('#textbox').html(dialogue); 	
+											$('#textbox #span2').html(dialogue);	
+						$('#textbox #span1').html(character);	
 				} else if (CheckTownTime(0,0) == false) {					
 							switch (progress) {
 						case 0:
 							$('#nextbutton, #textbox ').show();
+							character = 'King';
 							dialogue = "Hi, welcome to my kingdoms";
 							break;
 						case 1:
+						character = 'King';
 							dialogue = "Invitation?"
 							break;
 						case 2:
+						character = 'King';
 							dialogue = "Sorry I am busy right now. Come back later at night when I am free"
 							break;
 						case 3:
+						character = 'this guy';
 							dialogue = "tch"
 
 							break;		
@@ -124,7 +142,8 @@ QuestCompletionMemory();
 					}
 					progress++;  
 					localStorage.setItem("DialogueProgress", progress);
-					$('#textbox').html(dialogue); 	
+											$('#textbox #span2').html(dialogue);	
+						$('#textbox #span1').html(character); 	
 					};
 			}
 		$('#nextbutton').click(eventHandler);		

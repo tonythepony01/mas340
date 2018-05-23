@@ -25,18 +25,22 @@ $(document).ready(function(){
 		$('#talkbutton').hide();
 		var progress = 0;
 		var dialogue;
+		var character;
 		eventHandler();
 			function eventHandler() {
 				if (localStorage.getItem('Weed') == 'true') {
 					switch (progress) {					
 						case 0:
 							$('#nextbutton, #textbox ').show();
+							character = 'King';
 							dialogue = "Looks good there peasant";
 							break;
 						case 1:
+						character = 'King';
 							dialogue = "So yeah, now that you've brought me my beloved weed, I'll go to your king's party"
 							break;
 						case 2:
+						character = 'This guy';
 							dialogue = "thx "
 							if (QuestComp[2] == false) {
 								QuestToggler(2, true);
@@ -52,20 +56,25 @@ $(document).ready(function(){
 					}					
 						progress++;  
 						localStorage.setItem("DialogueProgress", progress);
-						$('#textbox').html(dialogue);
+						$('#textbox #span2').html(dialogue);	
+						$('#textbox #span1').html(character);		
 				} else if (CheckTownTime(0,0)== true) {
 					switch (progress) {
 						case 0:
 							$('#nextbutton, #textbox ').show();
+							character = 'King';
 							dialogue = "Sup' peasant";
 							break;
 						case 1:
+						character = 'King';
 							dialogue = "You want me to go to your king's party?"
 							break;
 						case 2:
+						character = 'King';
 							dialogue = "Sure, fetch me some weed from the nearby forest and then we can talk"
 							break;
 						case 3:
+						character = 'This guy';
 							dialogue = "Sure OKAY WHATEVS"
 							if (QuestDict[2][1] == false) {
 								QuestToggler('Q3', true);
@@ -79,20 +88,25 @@ $(document).ready(function(){
 					}
 					progress++;  
 					localStorage.setItem("DialogueProgress", progress);
-					$('#textbox').html(dialogue); 	
+																$('#textbox #span2').html(dialogue);	
+						$('#textbox #span1').html(character);			
 				} else {					
 					switch (progress) {
 						case 0:
 							$('#nextbutton, #textbox ').show();
+							character = 'King';
 							dialogue = "Sorry peasant";
 							break;
 						case 1:
+						character = 'King';
 							dialogue = "I'm feeling tired right now"
 							break;
 						case 2:
+						character = 'King';
 							dialogue = "Come talk to me during the night."
 							break;
 						case 3:
+						character = 'King';
 							dialogue = "Sure OKAY WHATEVS"
 							break;		
 						case 4:
@@ -101,7 +115,8 @@ $(document).ready(function(){
 					}
 					progress++;  
 					localStorage.setItem("DialogueProgress", progress);
-					$('#textbox').html(dialogue); 	
+																$('#textbox #span2').html(dialogue);	
+						$('#textbox #span1').html(character);		
 					};
 			}
 		$('#nextbutton').click(eventHandler);		
