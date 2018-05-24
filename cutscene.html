@@ -205,14 +205,26 @@
 						case 25:
 							$('#nextbutton, #textbox ').fadeOut(0).delay(6000).fadeIn(0);
 							$('#Scene1, #prop1,#prop2,#prop3').fadeOut(0).hide();
-														character = 'Max';
+							character = 'Max';
 							dialogue = "(Damn it, they caught her.)";
 							$('#Scene2').fadeIn(1000);
 							break;
 						case 26:
-
+							character = '';
+							dialogue = "...";
 							break;
-													
+						case 27:
+							character = 'Soldier';
+							dialogue = "Sir, what about the other child that was with her?";
+							break;
+						case 28:
+							character = 'Captain';
+							dialogue = "Forget about him. He'll die sooner or later even if we don't find him.";
+							break;
+						case 29:
+							character = 'Captain';
+							dialogue = "Take this one back.";
+							break;													
 					}
 					progress++;  
 					localStorage.setItem("DialogueProgress", progress);
