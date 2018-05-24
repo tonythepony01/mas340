@@ -226,7 +226,7 @@ body {
 	z-index: 8;
 }
 
-#backbutton a, #inventorybutton a, #title, a:visited, #itemGet, #EnterButton, #ButtonLink, #Day,#Time, button, #QuestList li, #QuestButton a, #noticebox span, #noticebox2 span, #talkbutton span, #textbox #span2, #textbox #span1, #nextbutton span, #TimeDeduction {
+#backbutton a, #inventorybutton a, #title,  #title0,a:visited, #itemGet, #EnterButton, #ButtonLink, #Day,#Time, button, #QuestList li, #QuestButton a, #noticebox span, #noticebox2 span, #talkbutton span, #textbox #span2, #textbox #span1, #nextbutton span, #TimeDeduction, #startButton, #instructionsButton, #QuestButton2 a {
 	color: black;
 	font-size: 1.5em;
 	text-decoration: none;
@@ -331,7 +331,7 @@ transform: scale(1, 1);
 	background-repeat: no-repeat;
 }
 .bg3 {
-	background-image: url('../images/mapbackground.png');
+	background-image: url('../images/mapbackground2.jpg');
 }
 .bg4 {
 	background-image: url('../images/town.jpg');
@@ -425,7 +425,7 @@ button:hover {
 	z-index: 5;
 }
 
-#inventorybutton, #QuestButton {
+#inventorybutton, #QuestButton, #QuestButton2 {
 position: absolute;
 right: 10px;
 top: 10px;
@@ -440,12 +440,36 @@ display: inline-block;
 
 }
 
+
+
+#startButton, #instructionsButton {
+position: absolute;
+width: auto;
+height: 30px;
+margin-left: 470px;
+top: 300px;
+border-radius: 10px;
+-webkit-border-radius: 10px;
+padding-left: 5px;
+padding-right: 5px;
+background-color: #b40000;
+display: inline-block;
+
+}
+#instructionsButton {
+	top: 350px;
+	left: -35px;
+}
+
 #QuestButton {
-	top: 60px;
+	top: 50px;
+	font-size: 0.95em;
+}
+#QuestButton {
 	font-size: 0.95em;
 }
 
-#inventorybutton:hover, #QuestButton:hover, #nextbutton:hover, #talkbutton:hover  {
+#inventorybutton:hover, #QuestButton:hover,#QuestButton2:hover, #nextbutton:hover, #talkbutton:hover  {
 	background-color: #e54444;
 }
 
@@ -509,7 +533,7 @@ border-radius: 10px;
 }
 
 
-#title {
+#title, #title0 {
 	position: relative;
 	display: block;
 	top: 35px;
@@ -519,6 +543,10 @@ border-radius: 10px;
 	margin: auto;
 	z-index: 10;
 }
+ #title0 {
+	 left: -25px;
+	 top: 37px;
+ }
 
 #textbox {
 background-color: rgba(194, 202, 214,0.85);

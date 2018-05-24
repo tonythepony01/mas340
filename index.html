@@ -4,51 +4,16 @@
 <meta charset="utf-8">
 <title>MAS340</title>
 <script src="Scripts/jquery-3.3.1.js"></script>
-<!---<script src="Scripts/jquery-3.3.1.js"></script>
+<script src="Scripts/jquery-3.3.1.js"></script>
 <link href="Scripts/styles.css" rel="stylesheet" />
 <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 	<script src="Scripts/jquery.js"></script>
-<script src="Scripts/jquery-ui.js"></script> --->
-<style> .Container
-        {
-            width: 1000px;
-            height: 600px;
-            background-color: White;
-            border: 1px solid black;
-        }
-        .player
-        {
-            left: 0px;
-            position: relative;
-            bottom: 0px;
-            width: 35px;
-            height: 35px;
-        }
+<script src="Scripts/jquery-ui.js"></script>
 
-		</style>
 <script>
   $(document).ready(function () {
            
-           var pane = $('#Container');
-            box = $('#PLayer'),
-            w = pane.width() - box.width(),
-            d = {},
-            speed = 10;
-			
-			console.log(box.width())
-            function newv(v, a, b) {
-                var n = parseInt(v, 10) - (d[a] ? speed : 0) + (d[b] ? speed : 0);
-                return n < 0 ? 0 : n > w ? w : n;
-            }
-
-          
-
-            $(window).keydown(function (e) {d[e.which] = true;});
-            $(window).keyup(function (e) { d[e.which] = false; });
-
-            setInterval(function () {
-                box.css({left: function (i, v) { return newv(v, 38, 40); }});
-            }, 20);
+HoverColor();
         });
 
 </script>
@@ -56,11 +21,12 @@
 
 </head>
 <body>
- <div id="Container" class="Container">
-        <div id="PLayer" class="player">
-            <img id="Ninja" src="https://lh3.ggpht.com/-iWPbpjo8tbo/TzTaJ25rytI/AAAAAAAAAto/aS2zrzm-w_o/s1600/ninja.png" width="35px" height="35px" alt="Player" />
-        </div>
-    </div>
+
+<div id="background">
+
+	<div id="startButton"><a class="htmllink" href="map.html"><span>Start</span></a></div>
+	<div id="instructionsButton"><a class="htmllink" href="instructions.html"><span>Instructions</span></a></div>
+	
 </div>
 </body>
 </html>

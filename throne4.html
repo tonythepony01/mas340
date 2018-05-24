@@ -45,10 +45,10 @@ QuestCompletionMemory();
 							dialogue = "thx"
 							if (QuestComp[3] == false) {
 								QuestToggler(3, true);
-								if ($('#QuestButton').hasClass('jiggle') == true) {
-									$('#QuestButton').removeClass('jiggle');
+									if ($('#QuestButton2').hasClass('jiggle') == true) {
+									$('#QuestButton2').removeClass('jiggle');
 								}
-								$('#QuestButton').addClass('jiggle');
+								$('#QuestButton2').addClass('jiggle');
 							}
 							break;		
 							
@@ -105,7 +105,10 @@ QuestCompletionMemory();
 							if (QuestDict[3][1] == false) {
 								QuestToggler('Q4', true);
 								console.log(QuestDict);
-								$('#QuestButton').addClass('jiggle');
+																if ($('#QuestButton2').hasClass('jiggle') == true) {
+									$('#QuestButton2').removeClass('jiggle');
+								}
+								$('#QuestButton2').addClass('jiggle');
 							}
 							break;		
 						case 4:
@@ -163,7 +166,7 @@ QuestCompletionMemory();
 			<span id='span2'></span>
 		</div>
 		<div id="nextbutton"><span>Continue</span></div>
-				<div id="QuestButton"><a class="htmllink" href="questList.html"><span>Quest List</span></a></div>
+				<div id="QuestButton2"><a class="htmllink" href="questList.html"><span>Quest List</span></a></div>
 </div>
 </body>
 </html>
