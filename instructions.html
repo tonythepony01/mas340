@@ -10,16 +10,22 @@
 <script src="Scripts/jquery-ui.js"></script>
 <script>
 $(document).ready(function(){
-
+ $('#Q1, #Q2, #Q3, #Q4').show();
 });
 </script>
 
 </head>
 <body>
 <div id="background">
+<button onclick="goBack()">Go Back</button>
 	<div id="title0">Instructions</div>
 	<div id='QuestScroll'>
-
+		<ul id='QuestList'>
+			<li id='Q1'>Do not navigate to pages using the URL bar.</li>
+			<li id='Q2'>Controls: Mouse, left and right arrow keys.</li>
+			<li id='Q3'>Try not to collect items until you are told to do so :D</li>		
+			<li id='Q4'>Try not to refresh the page.</li>		
+		</ul>
 	</div>
 
 	
