@@ -12,15 +12,26 @@
 
 <script>
   $(document).ready(function () {
-  	$('#Scene1, #prop1, #prop2, #prop3').css({
+  	$('#Scene1, #prop1, #prop2, #prop3, #Scene3').css({
 		'filter':'brightness(0)',
 		'webkitFilter':'brightness(0)',
 	});
-	$('#Scene2').hide();
-        var progress = 0;
+	$('#Scene2, #prop4, #Scene3').fadeOut(0);
+		if (localStorage.getItem('DialogueProgress') != "undefined" && localStorage.getItem('DialogueProgress') != null && localStorage.getItem('DialogueProgress') != 0) {
+		var progress = localStorage.getItem('DialogueProgress') /*Dialogue progress saver*/
+		progress -= 1;
+		eventHandler();	
+		console.log('yey')
+	} else {
+		var progress = 0;
+	}
 		var dialogue;
 		var character;
-		eventHandler();
+		var rustle = document.getElementById('audio');		
+		var rustle2 = document.getElementById('audio2');
+		var grassSteps = document.getElementById('audio3');
+		var fallOver = document.getElementById('audio4');
+		var gallop = document.getElementById('audio5');
 		$('#nextbutton, #textbox ').show();
 			function eventHandler() {		
 					switch (progress) {
@@ -39,7 +50,7 @@
 							dialogue = "Did you find them?"
 							break;
 						case 2:
-						character = 'Soldier 1';
+						character = 'Soldier';
 							dialogue = "No sir, they must be hiding somewhere in the vicinity."
 							break;
 						case 3:
@@ -58,7 +69,7 @@
 							'webkitFilter':'brightness(0)',
 							'transition':'all 1s ease-out',
 							'-webkit-transition':'all 1s ease-out',
-							}).animate({left:'-200px'});
+							}).animate({left:'-200px'}).fadeOut(0);
 							break;	
 						case 6:
 							$('#prop1').css({left:'1000px'});
@@ -95,6 +106,7 @@
 							dialogue = "There they are! Get them!";
 							break;	
 						case 11:
+							$('#prop1').css({left:'1000px'}).fadeIn(100);
 							$('#prop1').css({
 							'filter':'brightness(1)',
 							'webkitFilter':'brightness(1)',
@@ -118,25 +130,25 @@
 							$('#prop2, #prop3').css({
 							'filter':'brightness(0)',
 							'webkitFilter':'brightness(0)',
-							'transition':'all 0.2s ease-out',
-							'-webkit-transition':'all 0.2s ease-out',
+							'transition':'all 1s ease-out',
+							'-webkit-transition':'all 1s ease-out',
 							}).animate({left:'-300px'}, 'fast');
 							$('#prop1').css({
 							'filter':'brightness(0)',
 							'webkitFilter':'brightness(0)',
-							'transition':'all 0.6s ease-out',
-							'-webkit-transition':'all 0.6s ease-out',
+							'transition':'all 1s ease-out',
+							'-webkit-transition':'all 1s ease-out',
 							}).animate({left:'100px'}, 'slow');
 							$('#Scene1').css({
 							'filter':'brightness(0)',
 							'webkitFilter':'brightness(0)',
-							'transition':'all 1s ease-out',
-							'-webkit-transition':'all 1s ease-out',
+							'transition':'all 0.6s ease-out',
+							'-webkit-transition':'all 0.6s ease-out',
 							});
 							break;
 						case 14:
-							$('#prop2').css({left:'200px'});
-							$('#prop3').css({left:'150px'});
+							$('#prop2').css({left:'400px'}).fadeOut();
+							$('#prop3').css({left:'350px'}).fadeOut();
 							$('#nextbutton, #textbox ').fadeOut(0).delay(4000).fadeIn(0);
 							character = '???';
 							dialogue = "...";
@@ -147,7 +159,7 @@
 								'webkitFilter':'brightness(1)',
 								'transition':'all 1s ease-out',
 								'-webkit-transition':'all 1s ease-out',
-							});
+							}).fadeIn();
 							character = '???';
 							dialogue = "My necklace!! I dropped it somewhere!";
 							break;	
@@ -171,7 +183,7 @@
 
 							break;	
 						case 19:
-													$('#prop2').css({
+							$('#prop2').css({
 								'filter':'brightness(0)',
 								'webkitFilter':'brightness(0)',
 								'transition':'all 1s ease-out',
@@ -187,14 +199,17 @@
 							dialogue = "Damn it! Where the heck did she go!?";
 							break;	
 						case 21:
+							rustle.play();
 							character = '';
 							dialogue = "(Rustles)";
 							break;	
 						case 22:
+							rustle.play();
 							character = '';
 							dialogue = "(Rustles)(Rustles)";
 							break;
 						case 23:
+							rustle2.play();
 							character = '';
 							dialogue = "(Rustles)(Rustles)(Rustles)";
 							break;
@@ -203,11 +218,11 @@
 							dialogue = "Gotcha!";
 							break;
 						case 25:
-							$('#nextbutton, #textbox ').fadeOut(0).delay(6000).fadeIn(0);
+							$('#nextbutton, #textbox ').fadeOut(0).delay(4000).fadeIn(0);
 							$('#Scene1, #prop1,#prop2,#prop3').fadeOut(0).hide();
 							character = 'Max';
 							dialogue = "(Damn it, they caught her.)";
-							$('#Scene2').fadeIn(1000);
+							$('#Scene2, #prop4').fadeIn(1000);
 							break;
 						case 26:
 							character = '';
@@ -215,23 +230,90 @@
 							break;
 						case 27:
 							character = 'Soldier';
-							dialogue = "Sir, what about the other child that was with her?";
+							dialogue = "Sir, what about the other kid that was with her?";
 							break;
 						case 28:
 							character = 'Captain';
-							dialogue = "Forget about him. He'll die sooner or later even if we don't find him.";
+							dialogue = "Keep searching for him. He's bound to be around here somewhere. ";
 							break;
 						case 29:
+							character = 'Max';
+							dialogue = "(Crap, I need to get out of here)";
+							break;	
+						case 30:
+							$('#prop4').fadeOut(500);
 							character = 'Captain';
-							dialogue = "Take this one back.";
-							break;													
+							dialogue = "Take this one back for now.";
+							break;	
+						case 31:
+							character = 'Captain';
+							dialogue = "Return if you cannot find him. He'll die sooner or later.";
+							break;	
+						case 32:
+							character = 'Soldier';
+							dialogue = "Yes sir.";
+							break;
+						case 33:
+							$('#Scene2').css({
+								'filter':'brightness(0)',
+								'webkitFilter':'brightness(0)',
+								'transition':'all 1s ease-out',
+								'-webkit-transition':'all 1s ease-out',
+							});
+							$('#nextbutton, #textbox ').fadeOut(0).delay(4000).fadeIn(0, function() {
+								grassSteps.play();
+							});
+							character = 'Max';
+							dialogue = "...";
+							break;		
+						case 34:
+							grassSteps.play();
+							character = 'Max';
+							dialogue = "..have to get away...";
+							break;
+						case 35:
+							fallOver.play();
+							character = 'Max';
+							dialogue = "..someone..help me..";
+							break;
+						case 36:
+							$('#nextbutton, #textbox ').fadeOut(0).delay(4000).fadeIn(0, function() {
+								gallop.play();
+							});
+							character = '???';
+							dialogue = "Sir, there is a child lying in the grass here.";
+							break;
+						case 37:
+							$('#Scene3').fadeIn().css({
+								'filter':'brightness(1)',
+								'webkitFilter':'brightness(1)',
+								'transition':'all 1s ease-out',
+								'-webkit-transition':'all 1s ease-out',
+							});
+							character = '???';
+							dialogue = "Are you alright?";
+							break;
+						case 38:
+							$('#nextbutton, #textbox ').fadeOut(0).delay(4000).fadeIn(0);
+							character = 'Max';
+							dialogue = "..help me...";
+							break;
+						case 39:
+							$('#nextbutton, #textbox ').fadeOut(0);
+							$('#Scene3').fadeOut(2000).css({
+								'filter':'brightness(0)',
+								'webkitFilter':'brightness(0)',
+								'transition':'all 2s ease-out',
+								'-webkit-transition':'all 2s ease-out',
+							});
+							break;
 					}
 					progress++;  
 					localStorage.setItem("DialogueProgress", progress);
 					$('#textbox #span2').html(dialogue);	
 					$('#textbox #span1').html(character);			
 					};
-		$('#nextbutton').click(eventHandler);	
+		$('#nextbutton').finish().click(eventHandler);	
 });
 </script>
 
@@ -241,10 +323,17 @@
 
 <div id="background">
 <img id='Scene1' src="images/cutscenes/1-1.jpg">
-<img id='Scene2' src='images/cutscenes/2.jpg'>
+<img id='Scene2' src='images/cutscenes/2-1.jpg'>
+<img id='Scene3' src='images/cutscenes/3.jpg'>
 <img id='prop1' src="images/cutscenes/1-2.png">
 <img id='prop2' src="images/cutscenes/1-3.png">
 <img id='prop3' src="images/cutscenes/1-4.png">
+<img id='prop4' src="images/cutscenes/2-2.png">
+<audio id="audio" src="sounds/bushrustle.wav" preload="auto"></audio>
+<audio id="audio2" src="sounds/bushlargerustle.wav" preload="auto"></audio>
+<audio id="audio3" src="sounds/grasssteps.wav" preload="auto"></audio>
+<audio id="audio4" src="sounds/fallover.wav" preload="auto"></audio>
+<audio id="audio5" src="sounds/galloping.wav" preload="auto"></audio>
 
 		<div id="talkbutton"><span>Chat</span></div>
 		<div id="textbox">
