@@ -32,7 +32,7 @@
 		var grassSteps = document.getElementById('audio3');
 		var fallOver = document.getElementById('audio4');
 		var gallop = document.getElementById('audio5');
-		$('#nextbutton, #textbox ').delay(1000).fadeIn(2000);
+		$('#nextbutton, #textbox').fadeOut(0).delay(1000).fadeIn(2000);
 			function eventHandler() {		
 					switch (progress) {
 						case 0:
@@ -73,7 +73,7 @@
 							break;	
 						case 6:
 							$('#prop1').css({left:'1000px'});
-							$('#nextbutton, #textbox ').fadeOut(0).delay(4000).fadeIn(0);
+							$('#nextbutton, #textbox').fadeOut(0).delay(4000).fadeIn(0);
 							character = 'Max';
 							dialogue = "...";
 							break;	
