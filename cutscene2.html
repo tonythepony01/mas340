@@ -20,20 +20,27 @@
 		var progress = localStorage.getItem('DialogueProgress') /*Dialogue progress saver*/
 		progress -= 1;
 		eventHandler();	
-	} else {
-		var progress = 0;
-
-	}
-		var dialogue;
-		var character;
-		var knocking = document.getElementById('audio6');		
-		var blanketlift = document.getElementById('audio7');	
 		$('#nextbutton, #textbox').fadeIn().css({
 			'filter':'brightness(1)',
 			'webkitFilter':'brightness(1)',
 			'transition':'all 0.7s ease-out',
 			'-webkit-transition':'all 0.7s ease-out',
 		});
+	} else {
+		var progress = 0;
+		$('#nextbutton, #textbox').fadeIn().css({
+			'filter':'brightness(1)',
+			'webkitFilter':'brightness(1)',
+			'transition':'all 0.7s ease-out',
+			'-webkit-transition':'all 0.7s ease-out',
+		});
+
+	}
+		var dialogue;
+		var character;
+		var knocking = document.getElementById('audio6');		
+		var blanketlift = document.getElementById('audio7');	
+
 					function eventHandler() {		
 					switch (progress) {
 						case 0:
@@ -55,14 +62,42 @@
 							blanketlift.play();
 							break;
 						case 3:
-							character = '???';
+							character = 'Messenger';
 							dialogue = 'Sir, the King requests your presence immediately.';
 							break;
 						case 4:
 							character = 'Max';
-							dialogue = 'Oh ma fahkin gawd. LEAVE BRITNEY ALOOONE!';
+							dialogue = 'What does he want?';
 							break;
-
+						case 5:
+							character = 'Messenger';
+							dialogue = 'He has an errand for you. It also seems the Royal chef has a request for you as well.';
+							break;
+						case 6:
+							character = 'Max';
+							dialogue = "I'll head over to the palace soon then. You may leave now.";
+							break;
+						case 7:
+							character = 'Messenger';
+							dialogue = "yis sir";
+							break;
+						case 8:
+							character = "";
+							dialogue = "";
+							$('#Scene4').css({
+								'filter':'brightness(0)',
+								'webkitFilter':'brightness(0)',
+								'transition':'all 1s ease-out',
+								'-webkit-transition':'all 1s ease-out',
+							});
+							$('#nextbutton, #textbox').css({
+								'filter':'brightness(0)',
+								'webkitFilter':'brightness(0)',
+								'transition':'all 1s ease-out',
+								'-webkit-transition':'all 1s ease-out',
+							}).fadeOut();
+							setTimeout(function() {window.location = 'throne.html'}, 4000);
+							break;
 					}
 					progress++;  
 					localStorage.setItem("DialogueProgress", progress);

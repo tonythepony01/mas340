@@ -10,45 +10,71 @@
 <script src="Scripts/jquery-ui.js"></script>
 <script>
 $(document).ready(function(){
-QuestMemory();
-	$('#char').css('transform','scale(1.5)');
-	$('#char').css({left: -200, top: 475});
+$('button,#QuestButton2, #nextbutton, #textbox').fadeOut(0);
+	QuestMemory();
+	$('#char-2').css({left: -300, top: 175});
 	$('#background').addClass('bg5');
 	$('#talkbutton').show().css({left: 850, top: 150});
 	// setup
-	$('#char').animate({left: 100, top: 450},750);
-	//$('#char').animate({left: -200, top: 475},750); // when finished with conversation
-	$('#talkbutton').click(function() {
-		$('#talkbutton').hide();
+	$('#char-2').animate({left: -100, top: 175},750);
+		if (localStorage.getItem('DialogueProgress') != "undefined" && localStorage.getItem('DialogueProgress') != null && localStorage.getItem('DialogueProgress') != 0) {
+		var progress = localStorage.getItem('DialogueProgress') /*Dialogue progress saver*/
+		progress -= 1;
+		eventHandler();	
+		console.log('yey'+ progress)
+		$('#nextbutton, #textbox').fadeIn(700);
+	} else {
 		var progress = 0;
+		eventHandler();	
+		$('#nextbutton, #textbox').fadeIn(700);
+	}
 		var dialogue;
-		eventHandler();
+		var character;
 		function eventHandler() {
 			switch (progress) {
 				case 0:
-					$('#nextbutton, #textbox ').show();
-					dialogue = "Hi, how are you doing?";
+					character = 'Max'
+					dialogue = "You summoned me, your majesty.";
 					break;
 				case 1:
-					dialogue = "Its a lovely evening isn't it aye"
+					character = 'King'
+					dialogue = "Ahh yes, young Max";
 					break;
 				case 2:
-					dialogue = "The person who designed this place is a genius"
+					character = 'King'
+					dialogue = "-ine";
 					break;
 				case 3:
-					dialogue = "Dont you agree?"
+					character = 'Max'
+					dialogue = "Just Max, your majesty.";
 					break;		
 				case 4:
-					$('#nextbutton, #textbox ').hide();	
-					$('#talkbutton').show();
+					character = 'King'
+					dialogue = "Max, right.";
 					break;	
+				case 5:
+					character = 'King'
+					dialogue = "Anyway, the reason I have called you here is because I have a task for you.";
+					break;	
+				case 6:
+					character = 'Max'
+					dialogue = "Task?";
+					break;
+				case 7:
+					character = 'King'
+					dialogue = "As you may know, it is my 80th birthday soon, and I plan to hold a feast in the palace ";
+					break;
+				case 8:
+					character = 'King'
+					dialogue = "I dun have friends, so I would like you to go to the neighbouring lands and invite the Dukes to attend.";
+					break;
 			}
 			progress++;  
 			localStorage.setItem("DialogueProgress", progress);
-			$('#textbox').html(dialogue); 
+								$('#textbox #span2').html(dialogue);	
+					$('#textbox #span1').html(character);	
 		}
 		$('#nextbutton').click(eventHandler);		
-	});
 });
 
 </script>
@@ -57,14 +83,13 @@ QuestMemory();
 <body>
 <div id="background">
 	<button onclick="goBack()">Go Back</button>
-	<div id="char"></div>
+	<div id="char-2"></div>
 		<div id="talkbutton"><span>Chat</span></div>
 		<div id="textbox">
 			<span id='span1'></span>
 			<span id='span2'></span>
 		</div>
 		<div id="nextbutton"><span>Continue</span></div>
-				<div id="QuestButton2"><a class="htmllink" href="questList.html"><span>Quest List</span></a></div>
 </div>
 </body>
 </html>
