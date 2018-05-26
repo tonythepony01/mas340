@@ -12,7 +12,7 @@
 
 <script>
   $(document).ready(function () {
-  	$('#Scene5').css({
+  	$('#Scene5, #Scene4').css({
 		'filter':'brightness(0)',
 		'webkitFilter':'brightness(0)',
 	});
@@ -21,7 +21,7 @@
 		var progress = localStorage.getItem('DialogueProgress') /*Dialogue progress saver*/
 		progress -= 1;
 		eventHandler();	
-		$('#nextbutton, #textbox').fadeIn().css({
+		$('#nextbutton').fadeIn().css({
 			'filter':'brightness(1)',
 			'webkitFilter':'brightness(1)',
 			'transition':'all 0.7s ease-out',
@@ -29,19 +29,26 @@
 		});
 	} else {
 		var progress = 0;
-		$('#nextbutton, #textbox').fadeIn().css({
+		$('#nextbutton').fadeIn().css({
 			'filter':'brightness(1)',
 			'webkitFilter':'brightness(1)',
 			'transition':'all 0.7s ease-out',
 			'-webkit-transition':'all 0.7s ease-out',
 		});
 
-	}
+	}		
+		var blanketlift = document.getElementById('audio7');
 		var dialogue;
 		var character;
 					function eventHandler() {		
 					switch (progress) {
 						case 0:
+							$('#textbox').fadeIn().css({
+								'filter':'brightness(1)',
+								'webkitFilter':'brightness(1)',
+								'transition':'all 0.7s ease-out',
+								'-webkit-transition':'all 0.7s ease-out',
+							});
 							 $('#Scene5').css({
 								'filter':'brightness(1)',
 								'webkitFilter':'brightness(1)',
@@ -108,7 +115,7 @@
 							break;
 						case 15:
 							character = "Chef Jamie";
-							dialogue = "Yes, any other questions?";
+							dialogue = "Very. Any other questions?";
 							break;
 						case 16:
 							character = "Max";
@@ -126,7 +133,40 @@
 								'-webkit-transition':'all 1s ease-out',
 							});
 							$('#prop5').fadeOut(0);
-							$('#nextbutton, #textbox ').fadeOut(0);
+							$('#nextbutton').fadeOut(0).delay(3000).fadeIn(0);
+							$('#textbox ').fadeOut(0);
+							character = "";
+							dialogue = "";
+							break;
+						case 19:	
+							$('#textbox ').fadeIn(0);
+							$('#Scene5').hide();						
+							$('#Scene4').css({
+								'filter':'brightness(1)',
+								'webkitFilter':'brightness(1)',
+								'transition':'all 1s ease-out',
+								'-webkit-transition':'all 1s ease-out',
+							});
+							character = "Max";
+							dialogue = "...";
+							blanketlift.play();
+							break;
+						case 20:
+							character = "Max";
+							dialogue = "It's time to go...";
+							break;
+						case 21:
+							$('#Scene4').css({
+								'filter':'brightness()',
+								'webkitFilter':'brightness(0)',
+								'transition':'all 1s ease-out',
+								'-webkit-transition':'all 1s ease-out',
+							});
+							$('#nextbutton, #textbox ').fadeOut(0)
+							character = "";
+							dialogue = "";
+							setTimeout(function() {window.location = 'map.html'}, 3000);
+							progress = 0;
 							break;
 					}
 					progress++;  
@@ -144,8 +184,10 @@
 <body>
 
 <div id="background">
+<img id='Scene4' src='images/cutscenes/bedroom.jpg'>
 <img id='Scene5' src='images/cutscenes/hallway.jpg'>
 <img id='prop5' src='images/cutscenes/chef.png'>
+<audio id="audio7" src="sounds/blanketlift.wav" preload="auto"></audio>
 		<div id="talkbutton"><span>Chat</span></div>
 		<div id="textbox">
 			<span id='span1'></span>

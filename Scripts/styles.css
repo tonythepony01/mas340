@@ -229,7 +229,7 @@ body {
 #char-2 {
 		width: 800px;
 	height: 800px;
-	background-image: url('../images/char1.png');
+	background-image: url('../images/cutscenes/char1.png');
 }
 
 #backbutton a, #inventorybutton a, #title,  #title0,a:visited, #itemGet, #EnterButton, #ButtonLink, #Day,#Time, button, #QuestList li, #QuestButton a, #noticebox span, #noticebox2 span, #talkbutton span, #textbox #span2, #textbox #span1, #nextbutton span, #TimeDeduction, #startButton a, #instructionsButton a, #QuestButton2 a {
@@ -345,7 +345,7 @@ transform: scale(1, 1);
 	background-image: url('../images/town.jpg');
 }
 .bg5 {
-	background-image: url('../images/throneroom.jpg');
+	background-image: url('../images/throneroom2.jpg');
 }
 .bg6 {
 background-image: url('../images/townnight.jpg');
