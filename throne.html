@@ -14,6 +14,12 @@ $('button,#QuestButton2, #nextbutton, #textbox').fadeOut(0);
 	QuestMemory();
 	$('#char-2').css({left: -300, top: 175});
 	$('#background').addClass('bg5');
+								 $('#background').css({
+								'filter':'brightness(0)',
+								'webkitFilter':'brightness(0)',
+								'transition':'all 0s ease-out',
+								'-webkit-transition':'all 0s ease-out',
+							});
 	$('#talkbutton').show().css({left: 850, top: 150});
 	// setup
 	$('#char-2').animate({left: -100, top: 175},750);
@@ -33,6 +39,12 @@ $('button,#QuestButton2, #nextbutton, #textbox').fadeOut(0);
 		function eventHandler() {
 			switch (progress) {
 				case 0:
+												 $('#background').css({
+								'filter':'brightness(1)',
+								'webkitFilter':'brightness(1)',
+								'transition':'all 1s ease-out',
+								'-webkit-transition':'all 1s ease-out',
+							});
 					character = 'Max'
 					dialogue = "You summoned me, your majesty.";
 					break;
