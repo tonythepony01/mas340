@@ -39,12 +39,12 @@ $('button,#QuestButton2, #nextbutton, #textbox').fadeOut(0);
 		function eventHandler() {
 			switch (progress) {
 				case 0:
-												 $('#background').css({
-								'filter':'brightness(1)',
-								'webkitFilter':'brightness(1)',
-								'transition':'all 1s ease-out',
-								'-webkit-transition':'all 1s ease-out',
-							});
+					$('#background').css({
+						'filter':'brightness(1)',
+						'webkitFilter':'brightness(1)',
+						'transition':'all 1s ease-out',
+						'-webkit-transition':'all 1s ease-out',
+					});
 					character = 'Max'
 					dialogue = "You summoned me, your majesty.";
 					break;
@@ -74,7 +74,7 @@ $('button,#QuestButton2, #nextbutton, #textbox').fadeOut(0);
 					break;
 				case 7:
 					character = 'King'
-					dialogue = "As you may know, it is my 80th birthday soon, and I plan to hold a feast in the palace.";
+					dialogue = "As you may know, it is my 80th birthday soon, and I plan to hold a feast in my palace.";
 					break;
 				case 8:
 					character = 'King'
@@ -90,11 +90,31 @@ $('button,#QuestButton2, #nextbutton, #textbox').fadeOut(0);
 					break;
 				case 11:
 					character = 'King'
-					dialogue = "We have been raising you to become a diplomat all these years after we found you lying in the grass fields when you were a child.";
+					dialogue = "We have been grooming you after all these years to become a fine diplomat, after we found you lying in the grass fields when you were a child.";
 					break;
 				case 12:
 					character = 'King'
 					dialogue = "I believe it is time to put your skills to the test.";
+					break;
+				case 13:
+					character = 'Max'
+					dialogue = "I see. ";
+					break;
+				case 14:
+					character = 'King'
+					dialogue = "You will leave at 9 in the morning tomorrow.";
+					break;
+				case 15:
+					character = 'King'
+					dialogue = "Ah yes, it seems the head chef Jamie has something for you to do as well.";
+					break;
+				case 16:
+					character = 'King'
+					dialogue = "You may leave me now.";
+					break;
+				case 17:
+					character = 'Max'
+					dialogue = "Understood. I will go see him right away.";
 					break;
 			}
 			progress++;  
