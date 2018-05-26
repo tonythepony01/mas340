@@ -21,9 +21,10 @@
 		var progress = localStorage.getItem('DialogueProgress') /*Dialogue progress saver*/
 		progress -= 1;
 		eventHandler();	
-		console.log('yey')
+		console.log('yey'+ progress)
 	} else {
 		var progress = 0;
+
 	}
 		var dialogue;
 		var character;
@@ -32,10 +33,16 @@
 		var grassSteps = document.getElementById('audio3');
 		var fallOver = document.getElementById('audio4');
 		var gallop = document.getElementById('audio5');
-		$('#nextbutton, #textbox').fadeOut(0).delay(1000).fadeIn(2000);
+				$('#nextbutton, #textbox').fadeIn().css({
+			'filter':'brightness(1)',
+			'webkitFilter':'brightness(1)',
+			'transition':'all 0.7s ease-out',
+			'-webkit-transition':'all 0.7s ease-out',
+		});
 			function eventHandler() {		
 					switch (progress) {
 						case 0:
+						
 						character = 'Captain';
 							dialogue = "...";
 							break;
@@ -267,6 +274,7 @@
 							dialogue = "...";
 							break;		
 						case 34:
+						
 							grassSteps.play();
 							character = 'Max';
 							dialogue = "..have to get away...";
@@ -290,11 +298,13 @@
 								'transition':'all 1s ease-out',
 								'-webkit-transition':'all 1s ease-out',
 							});
+							
 							character = '???';
 							dialogue = "Are you alright?";
 							break;
 						case 38:
-							$('#nextbutton, #textbox ').fadeOut(0).delay(4000).fadeIn(0);
+						
+							$('#nextbutton, #textbox ').fadeOut(0).delay(3000).fadeIn(0);
 							character = 'Max';
 							dialogue = "..help me...";
 							break;
@@ -306,6 +316,8 @@
 								'transition':'all 2s ease-out',
 								'-webkit-transition':'all 2s ease-out',
 							});
+							$('#Scene2').hide();
+							setTimeout(function() {window.location = 'cutscene2.html'}, 4000);
 							break;
 					}
 					progress++;  
