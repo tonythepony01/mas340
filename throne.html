@@ -10,7 +10,7 @@
 <script src="Scripts/jquery-ui.js"></script>
 <script>
 $(document).ready(function(){
-$('button,#QuestButton2, #nextbutton, #textbox').fadeOut(0);
+$('#nextbutton, #textbox').fadeOut(0);
 	QuestMemory();
 	$('#char-2').css({left: -300, top: 175});
 	$('#background').addClass('bg5');
@@ -23,6 +23,7 @@ $('button,#QuestButton2, #nextbutton, #textbox').fadeOut(0);
 	$('#talkbutton').show().css({left: 850, top: 150});
 	// setup
 	$('#char-2').animate({left: -100, top: 175},750);
+	$('#talkbutton').hide();
 		if (localStorage.getItem('DialogueProgress') != "undefined" && localStorage.getItem('DialogueProgress') != null && localStorage.getItem('DialogueProgress') != 0) {
 		var progress = localStorage.getItem('DialogueProgress') /*Dialogue progress saver*/
 		progress -= 1;
@@ -116,6 +117,21 @@ $('button,#QuestButton2, #nextbutton, #textbox').fadeOut(0);
 					character = 'Max'
 					dialogue = "Understood. I will go see him right away.";
 					break;
+				case 18:
+					$('#nextbutton, #textbox ').fadeOut(0);
+					if ($('#QuestButton2').hasClass('jiggle') == true) {
+						$('#QuestButton2').removeClass('jiggle');
+					}
+					$('#QuestButton2').addClass('jiggle');
+					$('#char-2').animate({left: -600, top: 175},750);
+					$('#background').delay(1000).css({
+						'filter':'brightness()',
+						'webkitFilter':'brightness(0)',
+						'transition':'all 1s ease-out',
+						'-webkit-transition':'all 1s ease-out',
+					});
+					progress = 0;
+					break;
 			}
 			progress++;  
 			localStorage.setItem("DialogueProgress", progress);
@@ -130,7 +146,6 @@ $('button,#QuestButton2, #nextbutton, #textbox').fadeOut(0);
 </head>
 <body>
 <div id="background">
-	<button onclick="goBack()">Go Back</button>
 	<div id="char-2"></div>
 		<div id="talkbutton"><span>Chat</span></div>
 		<div id="textbox">

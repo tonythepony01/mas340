@@ -701,13 +701,13 @@ border-color: #535456;
 	display: none;
 }
 
-#Scene1, #Scene2, #prop4, #Scene3, #Scene4 {
+#Scene1, #Scene2, #prop4, #Scene3, #Scene4, #Scene5 {
 	position: absolute;
 	width: 1000px;
 	height: auto;
 }
 
-#prop1, #prop2, #prop3 {
+#prop1, #prop2, #prop3, #prop5 {
 	position: absolute;
 	z-index: 10;
 	top: 200px;
@@ -722,4 +722,10 @@ border-color: #535456;
 	 	top: 275px;
 	 left: 400px;
  }
+ 
+#prop5 {
+	left: 350px;
+	top: 0px;
+}
+
 
