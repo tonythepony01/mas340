@@ -480,7 +480,7 @@ function CheckEnter() {
 			
 		}).show();
 		Save = localStorage.getItem('SavedLoc');
-			document.getElementById('ButtonLink').setAttribute('href',LocKeyGet(Save,0,0)[4])
+		document.getElementById('ButtonLink').setAttribute('href',LocKeyGet(Save,0,0)[4])
 	} else {
 		$('#EnterButton').hide();
 	}

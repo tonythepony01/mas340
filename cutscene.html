@@ -32,21 +32,11 @@
 		var grassSteps = document.getElementById('audio3');
 		var fallOver = document.getElementById('audio4');
 		var gallop = document.getElementById('audio5');
-		$('#nextbutton').fadeIn().css({
-			'filter':'brightness(1)',
-			'webkitFilter':'brightness(1)',
-			'transition':'all 0.7s ease-out',
-			'-webkit-transition':'all 0.7s ease-out',
-		});
+		$('#nextbutton').fadeIn();
 			function eventHandler() {		
 					switch (progress) {
 						case 0:
-						$('#textbox').fadeIn().css({
-							'filter':'brightness(1)',
-							'webkitFilter':'brightness(1)',
-							'transition':'all 0.7s ease-out',
-							'-webkit-transition':'all 0.7s ease-out',
-						});
+						$('#textbox').fadeIn();
 						character = 'Captain';
 							dialogue = "...";
 							break;
@@ -184,7 +174,7 @@
 							break;	
 						case 18:
 							character = 'Max';
-							dialogue = "Wait!!";
+							dialogue = "Alice wait!!!";
 							$('#prop3').css({
 								'filter':'brightness(0)',
 								'webkitFilter':'brightness(0)',
@@ -320,7 +310,6 @@
 								'transition':'all 2s ease-out',
 								'-webkit-transition':'all 2s ease-out',
 							});
-							$('#Scene2').hide();
 							setTimeout(function() {window.location = 'cutscene2.html'}, 4000);
 							progress = 0;
 							break;

@@ -32,7 +32,6 @@ $(document).ready(function(){
 	displayDateTime(TVal);
 	$('#map').addClass('bg3');
 	$("#p1,#p2,#p3,#p4,#p5,#p6,#p7,#p8,#p9,#p10,#p11,#p12,#p13,#p14,#p15,#p16").click(function() {
-		if (TVal <= 9) {console.log('Game has ended')};
 		p = $(this);
 		defLoc = String($(this).attr('id'))
 		position = p.position();
@@ -55,7 +54,14 @@ $(document).ready(function(){
 				
 				if (NoonTimes.includes(TVal)) {
 					if (timeDeduction(CurrentLoc2, DestLoc2) > TVal) {
-						console.log('There is not enough time to travel');
+						$('#background').css({
+							'filter':'brightness(0)',
+							'webkitFilter':'brightness(0)',
+							'transition':'all 1s ease-out',
+							'-webkit-transition':'all 1s ease-out',
+						});
+						$('#inventorybutton, #QuestButton, #char').fadeOut();
+						setTimeout(function() {window.location = 'cutscene4.html'}, 3000);
 					} else {
 					PathList = [['A','B'],['B','A','C','E'],['C','D','B'],['D','C'],['E','F','B'],['F','E','G'],['G','F','H','I'],['H','G','I'],['I','H','G'],['J','K','L','N'],['K','J','L','M'],['L','K','J'],['M','K'],['N','J'],['O'],['P','K']];
 					CurrentLoc = DestLoc;
@@ -70,7 +76,14 @@ $(document).ready(function(){
 					}
 				} else if (isNightTime == time.includes(TVal)) {
 					if (timeDeduction(CurrentLoc2, DestLoc2) > TVal) {
-						console.log('There is not enough time to travel');
+						$('#background').css({
+								'filter':'brightness(0)',
+								'webkitFilter':'brightness(0)',
+								'transition':'all 1s ease-out',
+								'-webkit-transition':'all 1s ease-out',
+						});
+						$('#inventorybutton, #QuestButton, #char').fadeOut();
+						setTimeout(function() {window.location = 'cutscene4.html'}, 3000);
 					} else {
 						PathList = [['A','B'],['B','A','C','E'],['C','D','B'],['D','C'],['E','F','J','B'],['F','E','G'],['G','F','H','I'],['H','G','I'],['I','H','G'],['J','K','L','E'],['K','P','J','L','M','P'],['L','K','J'],['M','K'],['N'],['O'],['P']];
 						console.log('Night Time. Time Left: '+TVal);
@@ -87,7 +100,14 @@ $(document).ready(function(){
 						EnterCheck(DestLoc,position.left,position.top);
 						localStorage.setItem("SavedLoc", DestLoc);
 						if (timeDeduction(CurrentLoc2, DestLoc2) > TVal) {
-							console.log('There is not enough time to travel');
+							$('#background').css({
+								'filter':'brightness(0)',
+								'webkitFilter':'brightness(0)',
+								'transition':'all 1s ease-out',
+								'-webkit-transition':'all 1s ease-out',
+							});
+							$('#inventorybutton, #QuestButton, #char').fadeOut();
+							setTimeout(function() {window.location = 'cutscene4.html'}, 3000);
 						} else {
 							console.log('Day Time. Time Left: '+TVal)
 							localStorage.setItem("Time", TVal);

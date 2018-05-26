@@ -104,27 +104,23 @@ $(document).on('keydown keyup', function(e) {
 						case 0:
 							$('#nextbutton, #textbox ').show();
 							character = 'Guard';
-							dialogue = "The King has been waiting for you, peasant from a galaxy far far away.";
+							dialogue = "The Duke has been waiting for you. Please proceed to the throne room.";
 							break;
 						case 1:
-						character = 'Guard';
-							dialogue = "Anyways, our King is very picky. If you're going to see him, he might get you to do things during strange hours of the day."
+							character = 'Guard';
+							dialogue = "Oh, by the way. Our Duke is very picky. If you're going to see him, he might get you to do things during strange hours of the day."
 							break;
 						case 2:
-						character = 'Guard';
-							dialogue = "oh, and prepare to face the dark lord himself."
-							break;
-						case 3:
-						character = 'This guy';
-							dialogue = "Please do your job properly."
+							character = 'Max';
+							dialogue = "Thanks, I'll keep that in mind."
 							break;		
 						case 4:
 							$('#nextbutton, #textbox ').hide();			
 							break;	
 					}
-					progress++;  
-					localStorage.setItem("DialogueProgress", progress);
-											$('#textbox #span2').html(dialogue);	
+						progress++;  
+						localStorage.setItem("DialogueProgress", progress);
+						$('#textbox #span2').html(dialogue);	
 						$('#textbox #span1').html(character);	 			
 					}
 			}

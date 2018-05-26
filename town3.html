@@ -45,7 +45,6 @@ $(document).on('keydown keyup', function(e) {
 			eventHandler();
 			function eventHandler() {
 				if (p.left < 200 && p.left > 100) {
-
 					switch (progress) {					
 						case 0:
 							$('#nextbutton, #textbox ').show();
@@ -53,19 +52,30 @@ $(document).on('keydown keyup', function(e) {
 							dialogue = "Hello";
 							break;
 						case 1:
-						character = 'Blacksmith';
+							character = 'Blacksmith';
 							dialogue = "I make a lot of stuff. Stuff like tools, weapons and armour."
 							break;
 						case 2:
-						character = 'Blacksmith';
+							character = 'Blacksmith';
 							dialogue = "But I don't sell them."
 							break;
 						case 3:
-						character = 'This guy';
-							dialogue = "Sure OKAY"
+							character = 'Max';
+							dialogue = "Good to know."
 							break;		
-						case 4:		
-
+						case 4:
+							character = 'Blacksmith';
+							dialogue = "Anyways, did you know that some items appear depending on the time of the day?"
+							break;	
+						case 5:
+							character = 'Blacksmith';
+							dialogue = "Isn't that just mysterious?"
+							break;	
+						case 6:
+							character = 'Max';
+							dialogue = "Totally."
+							break;	
+						case 7:		
 						$('#nextbutton, #textbox ').hide();	
 							break;
 					}					
@@ -81,48 +91,40 @@ $(document).on('keydown keyup', function(e) {
 							dialogue = "I wonder who funds the construction and repair of the bridge at the river...";
 							break;
 						case 1:
-						character = 'This guy';
+							character = 'Max';
 							dialogue = "Why do you say that?"
 							break;
 						case 2:
-						character = 'Townsperson';
+							character = 'Townsperson';
 							dialogue = "Because it keeps breaking and you can only cross it at certain times of the day *wink"
 							break;
 						case 3:
-						character = 'This guy';
-							dialogue = "Interesting."
+							character = 'Max';
+							dialogue = "Interesting..."
 							break;		
 						case 4:
 							$('#nextbutton, #textbox ').hide();			
 							break;	
 					}
-					progress++;  
-					localStorage.setItem("DialogueProgress", progress);
-											$('#textbox #span2').html(dialogue);	
+						progress++;  
+						localStorage.setItem("DialogueProgress", progress);
+						$('#textbox #span2').html(dialogue);	
 						$('#textbox #span1').html(character);				
 					} else if (p.left < 955 && p.left > 835) {			
-					switch (progress) {
-						case 0:
-							$('#nextbutton, #textbox ').show();
-							character = 'Guard';
-							dialogue = "The King has been waiting for you, peasant from a galaxy far far away.";
-							break;
-						case 1:
-						character = 'Guard';
-							dialogue = "Draw your sword"
-							break;
-						case 2:
-						character = 'Guard';
-							dialogue = "and prepare to face the dark lord himself. loljk"
-							break;
-						case 3:
-						character = 'This guy';
-							dialogue = "Sure OKAY WHATEVS"
-							break;		
-						case 4:
-							$('#nextbutton, #textbox ').hide();			
-							break;	
-					}
+						switch (progress) {
+							case 0:
+								$('#nextbutton, #textbox ').show();
+								character = 'Guard';
+								dialogue = "The Duke has been waiting for you.";
+								break;
+							case 1:
+								character = 'Guard';
+								dialogue = "Please proceed straight to the throne room"
+								break;	
+							case 2:
+								$('#nextbutton, #textbox ').hide();			
+								break;	
+						}
 					progress++;  
 					localStorage.setItem("DialogueProgress", progress);
 											$('#textbox #span2').html(dialogue);	

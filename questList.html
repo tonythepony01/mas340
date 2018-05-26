@@ -13,7 +13,7 @@ $(document).ready(function(){
 	QuestMemory();
 	QuestCompletionMemory();
 	$('#Q5').show();
-	var liList = ['Q1','Q2','Q3','Q4','Q5','Q6']
+	var liList = ['Q1','Q2','Q3','Q4','Q5','Q6'];
 	for (x in QuestDict) {
 		if (QuestComp[x] == true) {
 			$('#'+liList[x]).show().css('text-decoration', 'line-through');	
@@ -32,7 +32,7 @@ $(document).ready(function(){
 	<div id='QuestScroll'>
 		<ul id='QuestList'>
 			<li id='Q1'>Find Flowers in Forest 1 for the King</li>
-			<li id='Q2'>Catch butterflies for the old lady in town</li>
+			<li id='Q2'>Catch butterflies for the old lady in town and bring the medicine to her son</li>
 			<li id='Q3'>Fetch weed(s) for the king</li>
 			<li id='Q4'>Find Acorns in the nearby forest</li>
 			<li id='Q5'>Find Magic Beans, Magic Mushrooms and a sunflower for the royal chef.</li>

@@ -58,7 +58,7 @@ QuestCompletionMemory();
 					}					
 						progress++;  
 						localStorage.setItem("DialogueProgress", progress);
-												$('#textbox #span2').html(dialogue);	
+						$('#textbox #span2').html(dialogue);	
 						$('#textbox #span1').html(character);
 				} else if (localStorage.getItem('Acorns') == 'true' && CheckTownTime(0,0) == false) {
 										switch (progress) {					
@@ -82,9 +82,9 @@ QuestCompletionMemory();
 					}					
 						progress++;  
 						localStorage.setItem("DialogueProgress", progress);
-												$('#textbox #span2').html(dialogue);	
+						$('#textbox #span2').html(dialogue);	
 						$('#textbox #span1').html(character);
-				} else if (CheckTownTime(0,0) == true) {
+				} else if (CheckTownTime(0,0) == false) {
 					switch (progress) {
 						case 0:
 							$('#nextbutton, #textbox ').show();
@@ -92,34 +92,34 @@ QuestCompletionMemory();
 							dialogue = "Hi, welcome to my kingdoms";
 							break;
 						case 1:
-						character = 'King';
+							character = 'King';
 							dialogue = "Party? aw yeah I love parties"
 							break;
 						case 2:
-						character = 'King';
+							character = 'King';
 							dialogue = "I'll rock up if you get me some acorns from the nearby forest"
 							break;
 						case 3:
-						character = 'This guy';
+							character = 'This guy';
 							dialogue = "Okay you weirdo"
 							if (QuestDict[3][1] == false) {
 								QuestToggler('Q4', true);
 								console.log(QuestDict);
-																if ($('#QuestButton2').hasClass('jiggle') == true) {
+								if ($('#QuestButton2').hasClass('jiggle') == true) {
 									$('#QuestButton2').removeClass('jiggle');
 								}
-								$('#QuestButton2').addClass('jiggle');
+							$('#QuestButton2').addClass('jiggle');
 							}
 							break;		
 						case 4:
 							$('#nextbutton, #textbox ').hide();			
 							break;	
 					}
-					progress++;  
-					localStorage.setItem("DialogueProgress", progress);
-											$('#textbox #span2').html(dialogue);	
+						progress++;  
+						localStorage.setItem("DialogueProgress", progress);
+						$('#textbox #span2').html(dialogue);	
 						$('#textbox #span1').html(character);	
-				} else if (CheckTownTime(0,0) == false) {					
+				} else if (CheckTownTime(0,0) == true) {					
 							switch (progress) {
 						case 0:
 							$('#nextbutton, #textbox ').show();

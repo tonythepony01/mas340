@@ -54,16 +54,8 @@ $(document).on('keydown keyup', function(e) {
 						case 1:
 							character = 'Guard 1';
 							dialogue = "What do you want punk?"
-							break;
-						case 2:
-						character = 'Guard 1';
-							dialogue = "..."
-							break;
-						case 3:
-						character = 'This guy';
-							dialogue = "Sure OKAY"
-							break;		
-						case 4:		
+							break;	
+						case 2:		
 						$('#nextbutton, #textbox ').hide();	
 							break;
 					}					
@@ -75,20 +67,20 @@ $(document).on('keydown keyup', function(e) {
 					switch (progress) {
 						case 0:
 							$('#nextbutton, #textbox ').show();
-							character = 'Guard 2';
-							dialogue = "The King has been waiting for you, peasant from a galaxy far far away.";
+							character = 'Captain';
+							dialogue = "...";
 							break;
 						case 1:
-						character = 'Guard 2';
-							dialogue = "Draw your sword"
+						character = 'Captain';
+							dialogue = "Hey you.";
 							break;
 						case 2:
-						character = 'Guard 2';
-							dialogue = "and prepare to face the dark lord himself. loljk"
+							character = 'Captain';
+							dialogue = "Haven't I seen you somewhere before?";
 							break;
 						case 3:
-						character = 'This guy';
-							dialogue = "Sure OKAY WHATEVS"
+							character = 'Max';
+							dialogue = "I don't think so...";
 							break;		
 						case 4:
 							$('#nextbutton, #textbox ').hide();			
