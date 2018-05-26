@@ -29,17 +29,27 @@ $('#nextbutton, #textbox').fadeOut(0);
 		progress -= 1;
 		eventHandler();	
 		console.log('yey'+ progress)
-		$('#nextbutton, #textbox').fadeIn(700);
 	} else {
 		var progress = 0;
 		eventHandler();	
-		$('#nextbutton, #textbox').fadeIn(700);
 	}
 		var dialogue;
 		var character;
+				$('#nextbutton').fadeIn().css({
+			'filter':'brightness(1)',
+			'webkitFilter':'brightness(1)',
+			'transition':'all 0.7s ease-out',
+			'-webkit-transition':'all 0.7s ease-out',
+		});
 		function eventHandler() {
 			switch (progress) {
 				case 0:
+						$('#textbox').fadeIn().css({
+			'filter':'brightness(1)',
+			'webkitFilter':'brightness(1)',
+			'transition':'all 0.7s ease-out',
+			'-webkit-transition':'all 0.7s ease-out',
+		});
 					$('#background').css({
 						'filter':'brightness(1)',
 						'webkitFilter':'brightness(1)',

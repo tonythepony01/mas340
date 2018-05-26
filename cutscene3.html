@@ -21,25 +21,18 @@
 		var progress = localStorage.getItem('DialogueProgress') /*Dialogue progress saver*/
 		progress -= 1;
 		eventHandler();	
-		$('#nextbutton').fadeIn().css({
-			'filter':'brightness(1)',
-			'webkitFilter':'brightness(1)',
-			'transition':'all 0.7s ease-out',
-			'-webkit-transition':'all 0.7s ease-out',
-		});
 	} else {
 		var progress = 0;
-		$('#nextbutton').fadeIn().css({
-			'filter':'brightness(1)',
-			'webkitFilter':'brightness(1)',
-			'transition':'all 0.7s ease-out',
-			'-webkit-transition':'all 0.7s ease-out',
-		});
-
 	}		
 		var blanketlift = document.getElementById('audio7');
 		var dialogue;
 		var character;
+				$('#nextbutton').fadeIn().css({
+			'filter':'brightness(1)',
+			'webkitFilter':'brightness(1)',
+			'transition':'all 0.7s ease-out',
+			'-webkit-transition':'all 0.7s ease-out',
+		});
 					function eventHandler() {		
 					switch (progress) {
 						case 0:

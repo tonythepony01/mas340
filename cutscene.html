@@ -32,7 +32,7 @@
 		var grassSteps = document.getElementById('audio3');
 		var fallOver = document.getElementById('audio4');
 		var gallop = document.getElementById('audio5');
-		$('#nextbutton, #textbox').fadeIn().css({
+		$('#nextbutton').fadeIn().css({
 			'filter':'brightness(1)',
 			'webkitFilter':'brightness(1)',
 			'transition':'all 0.7s ease-out',
@@ -41,6 +41,12 @@
 			function eventHandler() {		
 					switch (progress) {
 						case 0:
+						$('#textbox').fadeIn().css({
+							'filter':'brightness(1)',
+							'webkitFilter':'brightness(1)',
+							'transition':'all 0.7s ease-out',
+							'-webkit-transition':'all 0.7s ease-out',
+						});
 						character = 'Captain';
 							dialogue = "...";
 							break;
