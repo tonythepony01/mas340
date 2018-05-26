@@ -57,13 +57,14 @@ $(document).on('keydown keyup', function(e) {
 							break;	
 						case 2:		
 						$('#nextbutton, #textbox ').hide();	
+						progress= 0;
 							break;
 					}					
 						progress++;  
 						localStorage.setItem("DialogueProgress", progress);
 						$('#textbox #span2').html(dialogue);	
 						$('#textbox #span1').html(character);	
-				}  else if (p.left < 955 && p.left > 835) {			
+				} else if (p.left < 955 && p.left > 835) {			
 					switch (progress) {
 						case 0:
 							$('#nextbutton, #textbox ').show();
@@ -71,7 +72,7 @@ $(document).on('keydown keyup', function(e) {
 							dialogue = "...";
 							break;
 						case 1:
-						character = 'Captain';
+							character = 'Captain';
 							dialogue = "Hey you.";
 							break;
 						case 2:
@@ -81,15 +82,17 @@ $(document).on('keydown keyup', function(e) {
 						case 3:
 							character = 'Max';
 							dialogue = "I don't think so...";
+							
 							break;		
 						case 4:
-							$('#nextbutton, #textbox ').hide();			
+							$('#nextbutton, #textbox ').hide();		
+progress= 0;							
 							break;	
 					}
 					progress++;  
 					localStorage.setItem("DialogueProgress", progress);
-						$('#textbox #span2').html(dialogue);	
-						$('#textbox #span1').html(character);			
+					$('#textbox #span2').html(dialogue);	
+					$('#textbox #span1').html(character);			
 					}
 			}
 			$('#nextbutton').click(eventHandler);				

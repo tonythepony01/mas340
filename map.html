@@ -18,7 +18,7 @@ $(document).ready(function(){
 	var DestLoc;
 	var LocDict = {p1:'A',p2:'B',p3:'C',p4:'D',p5:'E',p6:'F',p7:'G',p8:'H',p9:'I',p10:'J',p11:'K',p12:'L',p13:'M',p14:'N',p15:'O',p16:'P'}; /*Location keys*/
 	var PathNum = {A:0,B:1,C:2,D:3,E:4,F:5,G:6,H:7,I:8,J:9,K:10,L:11,M:12,N:13,O:14,P:15}; /*Traverse index*/
-	var PathList = [['A','B'],['B','A','C','E'],['C','D','B'],['D','C'],['E','F','B'],['F','E','G'],['G','F','H','I'],['H','G','I'],['I','H','G'],['J','K','L','N'],['K','J','L','M','P'],['L','K','J'],['M','K'],['N'],['O'],['P','K']]; /*Indicates the locations that can be travelled to from a certain point*/
+	var PathList = [['A','B'],['B','A','C','E'],['C','D','B'],['D','C'],['E','F','B'],['F','E','G'],['G','F','H','I'],['H','G','I'],['I','H','G'],['J','K','L','N'],['K','J','L','M','P'],['L','K','J'],['M','K'],['N'],['O','N'],['P','K']]; /*Indicates the locations that can be travelled to from a certain point*/
 	//var TVal = 249;
 	var NTval = [[3,14],[27,38],[51,62],[75,86],[99,110],[123,134],[147,158],[171,182],[195,206],[219,230]];
 	var NoonTimes = [20,44,68,92,116,140,164,188,212,236];
@@ -63,7 +63,7 @@ $(document).ready(function(){
 						$('#inventorybutton, #QuestButton, #char').fadeOut();
 						setTimeout(function() {window.location = 'cutscene4.html'}, 3000);
 					} else {
-					PathList = [['A','B'],['B','A','C','E'],['C','D','B'],['D','C'],['E','F','B'],['F','E','G'],['G','F','H','I'],['H','G','I'],['I','H','G'],['J','K','L','N'],['K','J','L','M'],['L','K','J'],['M','K'],['N','J'],['O'],['P','K']];
+					PathList = [['A','B'],['B','A','C','E'],['C','D','B'],['D','C'],['E','F','B'],['F','E','G'],['G','F','H','I'],['H','G','I'],['I','H','G'],['J','K','L','N'],['K','J','L','M'],['L','K','J'],['M','K'],['N','J'],['O','N'],['P','K']];
 					CurrentLoc = DestLoc;
 					EnterCheck(DestLoc,position.left,position.top);
 					localStorage.setItem("SavedLoc", DestLoc);
@@ -85,7 +85,7 @@ $(document).ready(function(){
 						$('#inventorybutton, #QuestButton, #char').fadeOut();
 						setTimeout(function() {window.location = 'cutscene4.html'}, 3000);
 					} else {
-						PathList = [['A','B'],['B','A','C','E'],['C','D','B'],['D','C'],['E','F','J','B'],['F','E','G'],['G','F','H','I'],['H','G','I'],['I','H','G'],['J','K','L','E'],['K','P','J','L','M','P'],['L','K','J'],['M','K'],['N'],['O'],['P']];
+						PathList = [['A','B'],['B','A','C','E'],['C','D','B'],['D','C'],['E','F','J','B'],['F','E','G'],['G','F','H','I'],['H','G','I'],['I','H','G'],['J','K','L','E'],['K','P','J','L','M','P'],['L','K','J'],['M','K'],['N'],['O','N'],['P']];
 						console.log('Night Time. Time Left: '+TVal);
 						localStorage.setItem("Time", TVal);
 						displayDateTime(TVal);
@@ -95,7 +95,7 @@ $(document).ready(function(){
 						$( "#char" ).animate({left: position.left,top: position.top}, 1000,'swing', function() {});
 					}
 				} else {
-					PathList = [['A','B'],['B','A','C','E'],['C','D','B'],['D','C'],['E','F','B'],['F','E','G'],['G','F','H','I'],['H','G','I'],['I','H','G'],['J','K','L'],['K','J','L','M'],['L','K','J'],['M','K'],['N'],['O'],['P','K']];
+					PathList = [['A','B'],['B','A','C','E'],['C','D','B'],['D','C'],['E','F','B'],['F','E','G'],['G','F','H','I'],['H','G','I'],['I','H','G'],['J','K','L'],['K','J','L','M'],['L','K','J'],['M','K'],['N'],['O','N'],['P','K']];
 						CurrentLoc = DestLoc;
 						EnterCheck(DestLoc,position.left,position.top);
 						localStorage.setItem("SavedLoc", DestLoc);

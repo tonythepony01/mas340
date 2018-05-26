@@ -85,7 +85,8 @@ $(document).on('keydown keyup', function(e) {
 							localStorage.setItem('Medicine', 'true');
 							$('#nextbutton, #textbox ').hide();	
 							localStorage.setItem('Butterfly', 'false');
-							break;			
+							break;
+							progress = 0;							
 					}					
 						progress++;  
 						localStorage.setItem("DialogueProgress", progress);
@@ -100,7 +101,8 @@ $(document).on('keydown keyup', function(e) {
 			
 							break;
 						case 1:
-							$('#nextbutton, #textbox ').hide();				
+							$('#nextbutton, #textbox ').hide();	
+							progress = 0;
 							break;
 					}				
 						progress++;  
@@ -156,6 +158,7 @@ $(document).on('keydown keyup', function(e) {
 								$('#QuestButton').addClass('jiggle');
 							}
 							$('#nextbutton, #textbox ').hide();	
+							progress = 0;
 							break;		
 					}
 						progress++;  
@@ -183,7 +186,8 @@ $(document).on('keydown keyup', function(e) {
 							dialogue = "(Maybe I shouldn't be wasting my time talking...)"
 							break;		
 						case 4:
-							$('#nextbutton, #textbox ').hide();			
+							$('#nextbutton, #textbox ').hide();
+							progress = 0;
 							break;	
 					}
 						progress++;  
@@ -202,7 +206,8 @@ $(document).on('keydown keyup', function(e) {
 								dialogue = "Please proceed straight to the throne room"
 								break;	
 							case 2:
-								$('#nextbutton, #textbox ').hide();			
+								$('#nextbutton, #textbox ').hide();
+								progress = 0;
 								break;	
 						}
 					progress++;  
