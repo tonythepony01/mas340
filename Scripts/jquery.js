@@ -673,7 +673,7 @@ function checkInventory() {
 	}
 	if( localStorage.getItem('Beans') == 'true' ) {
 		$('#itemgrid #inv-Beans').show();
-		$('#Beanstalk').hide();
+		$('#Beans').hide();
 	}
 	if( localStorage.getItem('Magicmushroom') == 'true' ) {
 		$('#itemgrid #inv-Magicmushroom').show();

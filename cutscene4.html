@@ -14,17 +14,14 @@
   $(document).ready(function () {	
 	QuestMemory();
 	QuestCompletionMemory();
-	checkInventory();
 	var ItemCompletion = [[localStorage.getItem('Beans'),'Beans'],[localStorage.getItem('Magicmushroom'),'Magicmushroom'],[localStorage.getItem('Sunflower'),'Sunflower']];
 	var QuestCompletion = [[QuestComp[0], 'prop6'],[QuestComp[2], 'prop7'],[QuestComp[3], 'prop8']];
-	$('#cake, #Beans, #Magicmushroom, #Sunflower, #prop6,#prop7,#prop8, #Scene6').show();
-	$('#cake, #Beans, #Magicmushroom, #Sunflower').css('transform', 'scale('+0.6+')');
-	$('#Scene7').css({
+	$('#Scene6, #Scene7').css({
 		'filter':'brightness(0)',
 		'webkitFilter':'brightness(0)',
-		'transition':'all 0s ease-out',
-		'-webkit-transition':'all 0s ease-out',
 	});
+	$('#cake,#Beans, #Magicmushroom, #Sunflower').css({left:300, top: 0});
+	$('#cake, #Beans, #Magicmushroom, #Sunflower').css('transform', 'scale('+0.6+')');
 	$('#char-2').css({left: -300, top: 175});
 	if (localStorage.getItem('DialogueProgress') != "undefined" && localStorage.getItem('DialogueProgress') != null && localStorage.getItem('DialogueProgress') != 0) {
 		var progress = localStorage.getItem('DialogueProgress') //Dialogue progress saver
@@ -38,12 +35,14 @@
 	$('#nextbutton').fadeIn().css({
 		'filter':'brightness(1)',
 		'webkitFilter':'brightness(1)',
-		'transition':'all 0.7s ease-out',
-		'-webkit-transition':'all 0.7s ease-out',
+		'transition':'all 1s ease-out',
+		'-webkit-transition':'all 1s ease-out',
 	});
+	$('#cake, #Beans, #Magicmushroom, #Sunflower').hide();
 	function eventHandler() {		
 		switch (progress) {
 			case 0:
+			
 				$('#Scene7').css({
 					'filter':'brightness(1)',
 					'webkitFilter':'brightness(1)',
@@ -53,8 +52,8 @@
 				$('#textbox').fadeIn().css({
 					'filter':'brightness(1)',
 					'webkitFilter':'brightness(1)',
-					'transition':'all 0.7s ease-out',
-					'-webkit-transition':'all 0.7s ease-out',
+					'transition':'all 1s ease-out',
+					'-webkit-transition':'all 1s ease-out',
 				});	
 				
 				$('#char-2').animate({left: -100, top: 175},750);
@@ -82,36 +81,38 @@
 				dialogue = "Yes your majesty.";
 				break;		
 			case 6:
-				
 				$('#Scene7').css({
 					'filter':'brightness(0)',
 					'webkitFilter':'brightness(0)',
 					'transition':'all 1s ease-out',
 					'-webkit-transition':'all 1s ease-out',
-				}).fadeOut();
+				});
 				$('#textbox').fadeOut();
 				$('#char-2').fadeOut();
+				$('#nextbutton').fadeOut(0).delay(3000).fadeIn(0);
 				break;
 			case 7:
-			console.log('yus');
-							
-				$('#Scene6').fadeIn().css({
+				$('#cake').show();
+				for (x in ItemCompletion) {
+					if (ItemCompletion[x][0] == 'true') {
+					console.log('true');
+						$('#'+ItemCompletion[x][1]).show();
+						
+					}
+				}
+				for (x in QuestCompletion) {
+					if (QuestCompletion[x][0] == true) {
+						$('#'+QuestCompletion[x][1]).show();	
+					}
+				}
+				$('#Scene7').fadeOut(0);
+				$('#Scene6').show().css({
 					'filter':'brightness(1)',
 					'webkitFilter':'brightness(1)',
-					'transition':'all 0s ease-out',
-					'-webkit-transition':'all 0s ease-out',
+					'transition':'all 1s ease-out',
+					'-webkit-transition':'all 1s ease-out',
 				});
-				$('#cake').show();
-				for (x in QuestCompletion) {
-					if (QuestCompletion[x][0] == false) {
-						$('#'+QuestCompletion[x][1]).show();
-					}
-				}
-				for (x in ItemCompletion) {
-					if (ItemCompletion[x][0] == false) {
-						$('#'+ItemCompletion[x][1]).show();
-					}
-				}
+				progress = 0;
 				break;
 			
 		}

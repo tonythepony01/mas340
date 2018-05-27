@@ -11,13 +11,13 @@
 <script>
 $(document).ready(function(){
 	CheckTownTime('bg12','bg11');
-		checkInventory();
+	checkInventory();
 	QuestMemory();
 	QuestCompletionMemory();
 	$("#noticebox").slideDown('400').delay(2200).slideUp('400');
     K = {}; // keys: {37:0||1, 38:0||1, ...}
 	if (localStorage.getItem("coords2") != "undefined" && localStorage.getItem("coords2") != null) {
-		var coords2 = (JSON.parse("[" + localStorage.getItem("coords") + "]"));
+		var coords2 = (JSON.parse("[" + localStorage.getItem("coords2") + "]"));
 		console.log(coords2);
 		if (coords2[0] < 50) {
 			var Pl = {el:$('#char'), x:coords2[0]+100, y:coords2[1], speed:coords2[2]};
@@ -31,11 +31,11 @@ $(document).ready(function(){
 	};	
 	if (CheckTownTime(0,0) == true) {
 		console.log('true');
-		$('#Beanstalk').attr("src","images/items/night/beanstalknight.png");
+		$('#Beans').attr("src","images/items/night/beanstalknight.png");
 		$('#Weed').attr("src","images/items/night/weednight.png");
 	} else {
 		console.log('false');
-		$('#Beanstalk').attr("src","images/items/beanstalk.png");
+		$('#Beans').attr("src","images/items/beanstalk.png");
 		$('#Weed').attr("src","images/items/weed.png");
 	};
 	$('#Beanstalk').hover(function() {
@@ -83,10 +83,6 @@ $(document).ready(function(){
 $(document).on('keydown keyup', function(e) {
 	var kN = e.which; // key Number
 	if(kN>36||kN<41) K[kN]= e.type==="keydown";
-	$.each($("div"),function(){
-		p = $('#char').position();
-		localStorage.setItem('coords2', [Pl.x,Pl.y,Pl.speed])
-	});
 });
 
 function updatePlayerPos() {
@@ -98,6 +94,8 @@ function updatePlayerPos() {
   } else if ((Pl.x > 950)) {
     Pl.x = 950;
   }
+  p = $('#char').position();
+	localStorage.setItem('coords2', [Pl.x,Pl.y,Pl.speed])
   if(K[37]) Pl.x -= dist;
   if(K[39]) Pl.x += dist;
   Pl.el.css({transform:"translate3D("+ Pl.x +"px, "+ Pl.y +"px, 0)"});
@@ -119,7 +117,7 @@ function updatePlayerPos() {
 	<div id="char"></div>
 	<div id="itemGet"></div>
 	<img src="images/items/weed.png" id="Weed" class="clickable">
-	<img src="images/items/beanstalk.png" id="Beanstalk" class="clickable">
+	<img src="images/items/beanstalk.png" id="Beans" class="clickable">
 	<div id="inventorybutton"><a class="htmllink" href="inventory.html"><span>Inventory</span></a></div>
 </div>
 </body>

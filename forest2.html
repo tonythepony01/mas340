@@ -12,7 +12,7 @@
 $(document).ready(function(){
 	CheckTownTime('bg10','bg9');
 	checkInventory();
-		QuestMemory();
+	QuestMemory();
 	QuestCompletionMemory();
 	$("#noticebox").slideDown('400').delay(2200).slideUp('400');
 	if (localStorage.getItem("coords") != "undefined" && localStorage.getItem("coords") != null) {
@@ -35,14 +35,6 @@ $(document).on('keydown keyup', function(e) {
 	var kN = e.which; // key Number
 	if(kN>36||kN<41) K[kN]= e.type==="keydown";
 	$.each($("div"),function(){
-		p = $('#char').position();
-			localStorage.setItem('coords', [Pl.x,Pl.y,Pl.speed])
-		if (p.left < 35){
-			window.location = "map.html";
-
-		} else if (p.left > 950) {
-			window.location = "forest2b.html";
-		}
 	});
 });
 
@@ -52,6 +44,13 @@ function updatePlayerPos() {
   if(K[37]) Pl.x -= dist;
   if(K[39]) Pl.x += dist;
   Pl.el.css({transform:"translate3D("+ Pl.x +"px, "+ Pl.y +"px, 0)"});
+	p = $('#char').position();
+		localStorage.setItem('coords', [Pl.x,Pl.y,Pl.speed])
+	if (p.left < 35){
+		window.location = "map.html";
+	} else if (p.left > 950) {
+		window.location = "forest2b.html";
+	}
 }
 
 (function engine() {

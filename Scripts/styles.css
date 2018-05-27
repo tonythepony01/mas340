@@ -729,8 +729,12 @@ border-color: #535456;
 }
 
 #cake, #Beans, #Magicmushroom, #Sunflower {
+	z-index: 11;
 	position: absolute;
-	top: 0px;
-	left: 300px;
+}
+
+#prop6,#prop7,#prop8 {
+	z-index: 11;
+	display: none;
 }
 
