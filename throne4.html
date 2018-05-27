@@ -10,18 +10,15 @@
 <script src="Scripts/jquery-ui.js"></script>
 <script>
 $(document).ready(function(){
-	$('#char').css('transform','scale(1.5)');
-	$('#char').css({left: -200, top: 475});
-	$('#background').addClass('bg5');
-	$('#talkbutton').show().css({left: 850, top: 150});
-		checkInventory();
 QuestMemory();
-QuestCompletionMemory();
 	QuestCompletionMemory();
 	CheckTownTime(0,0);
+	$('#background').addClass('bg26');
+	$('#talkbutton').show().css({left: 850, top: 150});
+		checkInventory();
+$('#char-3').css({left: -250, top: 50});
 	// setup
-	$('#char').animate({left: 100, top: 450},750);
-	//$('#char').animate({left: -200, top: 475},750); // when finished with conversation
+	$('#char-3').animate({left: 0, top: 50},750);
 	$('#talkbutton').click(function() {
 		$('#talkbutton').hide();
 		var progress = 0;
@@ -159,7 +156,7 @@ QuestCompletionMemory();
 <body>
 <div id="background">
 	<button onclick="goBack()">Go Back</button>
-	<div id="char"></div>
+	<div id="char-3"></div>
 		<div id="talkbutton"><span>Chat</span></div>
 		<div id="textbox">
 			<span id='span1'></span>
