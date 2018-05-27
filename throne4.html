@@ -31,15 +31,15 @@ $('#char-3').css({left: -250, top: 50});
 						case 0:
 							$('#nextbutton, #textbox ').show();
 							character = 'Duke';
-							dialogue = "Looks nice and fresh there peasant";
+							dialogue = "Looks nice and fresh there.";
 							break;
 						case 1:
-						character = 'Duke';
+							character = 'Duke';
 							dialogue = "So yeah, now that you've brought me my beloved acorns, I'll go to your king's party"
 							break;
 						case 2:
-						character = 'This guy';
-							dialogue = "thx"
+							character = 'Max';
+							dialogue = "Thank you. We will be expecting you.";
 							if (QuestComp[3] == false) {
 								QuestToggler(3, true);
 									if ($('#QuestButton2').hasClass('jiggle') == true) {
@@ -48,7 +48,6 @@ $('#char-3').css({left: -250, top: 50});
 								$('#QuestButton2').addClass('jiggle');
 							}
 							break;		
-							
 						case 3:		
 						$('#nextbutton, #textbox ').hide();	
 						break;
@@ -65,14 +64,13 @@ $('#char-3').css({left: -250, top: 50});
 							dialogue = "Looks like you have what I need there";
 							break;
 						case 1:
-						character = 'Duke';
+							character = 'Duke';
 							dialogue = "But I am tired. Come back at night"
 							break;
 						case 2:
-						character = 'This guy';
-							dialogue = "goddddamn"
+							character = 'Max';
+							dialogue = "Yes sir.";
 							break;		
-							
 						case 3:		
 						$('#nextbutton, #textbox ').hide();	
 						break;
@@ -86,19 +84,53 @@ $('#char-3').css({left: -250, top: 50});
 						case 0:
 							$('#nextbutton, #textbox ').show();
 							character = 'Duke';
-							dialogue = "Hi, welcome to my kingdoms";
+							dialogue = "Hello and welcome to the city of Wealdstone.";
 							break;
 						case 1:
 							character = 'Duke';
-							dialogue = "Party? aw yeah I love parties"
+							dialogue = "How can I help you?";
 							break;
 						case 2:
-							character = 'Duke';
-							dialogue = "I'll rock up if you get me some acorns from the nearby forest"
+							character = 'Max';
+							dialogue = "The King of Windermere requests your presence at his birthday celebration.";
 							break;
 						case 3:
-							character = 'This guy';
-							dialogue = "Okay you weirdo"
+							character = 'Duke';
+							dialogue = "Hmm. I will make a deal with you.";
+							break;
+						case 4:
+							character = 'Max';
+							dialogue = "Deal?";
+							break;
+						case 5:
+							character = 'Duke';
+							dialogue = "We are currently facing attacks from an unknown army. A village of ours to the south of here has already been razed.";
+							break;		
+						case 6:
+							character = 'Duke';
+							dialogue = "On top of that, someone has destroyed the bridge to the south-east and that has effectively cut off our supply chain from the west.";
+							break;	
+						case 7:
+							character = 'Duke';
+							dialogue = "The rations for our troops are running dangerously low.";
+							break;	
+						case 8:
+							character = 'Duke';
+							dialogue = "Hence I require you to travel to the forest to the south and find me an alternate food source.";
+							break;
+						case 9:
+							character = 'Max';
+							dialogue = "What could I find in a forest that would feed thousands of soldiers?";
+							break;	
+						case 10:
+							character = 'Duke';
+							dialogue = "Acorns. Acorns everywhere.";
+							break;
+						case 11:
+							character = 'Max';
+							dialogue = "I'll be back.";
+							break;							
+						case 12:
 							if (QuestDict[3][1] == false) {
 								QuestToggler('Q4', true);
 								console.log(QuestDict);
@@ -107,10 +139,8 @@ $('#char-3').css({left: -250, top: 50});
 								}
 							$('#QuestButton2').addClass('jiggle');
 							}
+							$('#nextbutton, #textbox ').hide();		
 							break;		
-						case 4:
-							$('#nextbutton, #textbox ').hide();			
-							break;	
 					}
 						progress++;  
 						localStorage.setItem("DialogueProgress", progress);
@@ -121,20 +151,19 @@ $('#char-3').css({left: -250, top: 50});
 						case 0:
 							$('#nextbutton, #textbox ').show();
 							character = 'Duke';
-							dialogue = "Hi, welcome to my kingdoms";
+							dialogue = "Hi, welcome to the city of Wealdstone.";
 							break;
 						case 1:
-						character = 'Duke';
-							dialogue = "Invitation?"
+							character = 'Duke';
+							dialogue = "Invitation?";
 							break;
 						case 2:
-						character = 'Duke';
-							dialogue = "Sorry I am busy right now. Come back later at night when I am free"
+							character = 'Duke';
+							dialogue = "Sorry I am busy right now. Come back later at night when I am free.";
 							break;
 						case 3:
-						character = 'this guy';
-							dialogue = "tch"
-
+							character = 'Max';
+							dialogue = "Understood";
 							break;		
 						case 4:
 							$('#nextbutton, #textbox ').hide();			

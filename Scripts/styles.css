@@ -10,7 +10,7 @@ body {
 
 #dockLeft, #dockRight {
 	position: absolute;
-	z-index: 9;
+	z-index: 13;
 	top: 83px;
 	left: 166.5px;
 	width: 667px;
@@ -242,7 +242,7 @@ body {
 	position: absolute;
 }
 
-#backbutton a, #inventorybutton a, #title,  #title0,a:visited, #itemGet, #EnterButton, #ButtonLink, #Day,#Time, button, #QuestList li, #QuestButton a, #noticebox span, #noticebox2 span, #talkbutton span, #textbox #span2, #textbox #span1, #nextbutton span, #TimeDeduction, #startButton a, #instructionsButton a, #QuestButton2 a {
+#backbutton a, #inventorybutton a, #title,  #title0,a:visited, #itemGet, #EnterButton, #ButtonLink, #Day,#Time, button, #QuestList li, #QuestButton a, #noticebox span, #noticebox2 span, #talkbutton span, #textbox #span2, #textbox #span1, #nextbutton span, #TimeDeduction, #startButton a, #instructionsButton a, #QuestButton2 a, #descbox, #descbox span {
 	color: black;
 	font-size: 1.5em;
 	text-decoration: none;
@@ -627,7 +627,7 @@ border-color: #535456;
 	position: absolute;
 	margin: auto;
 	top: 5px;
-	left: 324px;
+	left: 300px;
 	font-size: 1.15em;
 }
 #noticebox2 {
@@ -660,6 +660,12 @@ border-color: #535456;
 	height: 142px;
 	z-index: 10;
 	display: none;
+}
+
+#descbox span {
+	font-size: 0.8em;
+	color: white;
+	margin: 10px;
 }
 
 #itemgrid {

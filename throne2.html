@@ -30,18 +30,22 @@ $('#char-3').css({left: -250, top: 50});
 						case 0:
 							$('#nextbutton, #textbox ').show();
 							character = 'Duke';
-							dialogue = "Good work peasant";
+							dialogue = "I see you have returned with the flowers.";
 							break;
 						case 1:
-						character = 'Duke';
-							dialogue = "I see you have brought me the very ordinary and boring flowers"
+							character = 'Duke';
+							dialogue = "I thank you for your efforts.";
 							break;
+						case 1:
+							character = 'Max';
+							dialogue = "Anything for you sir.";
+							break;							
 						case 2:
-						character = 'Duke';
-							dialogue = "As promised, I will now attend your King's birthday party. Be grateful for my presence"
+							character = 'Duke';
+							dialogue = "As promised, I will now attend your King's birthday celebration. Be grateful for my presence";
 							break;
 						case 3:
-						character = 'This guy';
+							character = 'This guy';
 							dialogue = "k thanks bye"
 							if (QuestComp[0] == false) {
 								QuestToggler(0, true);
@@ -50,45 +54,97 @@ $('#char-3').css({left: -250, top: 50});
 								}
 								$('#QuestButton2').addClass('jiggle');
 							}
-							break;		
-						case 4:		
-						$('#nextbutton, #textbox ').hide();	
-						break;
+							$('#nextbutton, #textbox ').hide();	
+							break;
 					}					
 						progress++;  
 						localStorage.setItem("DialogueProgress", progress);
-												$('#textbox #span2').html(dialogue);	
+						$('#textbox #span2').html(dialogue);	
 						$('#textbox #span1').html(character);
 				} else {					
 					switch (progress) {
 						case 0:
-						character = 'Duke';
+							character = 'Duke';
 							$('#nextbutton, #textbox ').show();
-							dialogue = "Hello young peasant";
+							dialogue = "Hello young one.";
 							break;
 						case 1:
-						character = 'Duke';
-							dialogue = "I have a favour to ask of you."
+							character = 'Duke';
+							dialogue = "What business do you have here today?";
 							break;
 						case 2:
-						character = 'Duke';
-							dialogue = "Find me some flowers from the nearby forest so I can present them to your filthy King for his birthday party."
+							character = 'Max';
+							dialogue = "I come from the the city of Windermere to bring you an invitation from the King himself.";
 							break;
 						case 3:
-						character = 'This guy';
-							dialogue = "yis sir"
+							character = 'Duke';
+							dialogue = "An invitation to...?";
+							break;
+						case 4:
+							character = 'Max';
+							dialogue = "The King's birthday celebration sir.";
+							break;
+						case 5:
+							character = 'Duke';
+							dialogue = "Oh it's that time of the year again eh..";
+							break;
+						case 6:
+							character = 'Max';
+							dialogue = "Yes. I am sure the King would be delighted if you could join us in our feast.";
+							break;
+						case 7:
+							character = 'Duke';
+							dialogue = "I am quite the busy man..";
+							break;
+						case 8:
+							character = 'Duke';
+							dialogue = "Hm...I will go if you can do a small favour for me.";
+							break;		
+						case 9:
+							character = 'Max';
+							dialogue = "Favour? and that would be..?";
+							break;	
+						case 10:
+							character = 'Duke';
+							dialogue = "A village to the south has recently been raided and burnt down a few days ago. Innocent villagers were slain and we are currently building memorials for them.";
+							break;	
+						case 11:
+							character = 'Duke';
+							dialogue = "Hence I require you to go to the nearby forest and find me a flower.";
+							break;	
+						case 11:
+							character = 'Max';
+							dialogue = "A single flower?";
+							break;
+						case 12:
+							character = 'Duke';
+							dialogue = "Yes.";
+							break;	
+						case 13:
+							character = 'Max';
+							dialogue = "Is there any particular sort of flower that you require?";
+							break;	
+						case 14:
+							character = 'Duke';
+							dialogue = "Ahh yes. This is a special type of flower that will glow when your hand is near it. You should be able to find it very easily.";
+							break;
+						case 15:
+							character = 'Max';
+							dialogue = "I see. I shall return with this flower.";
+							break;	
+						case 16:
+							character = '';
+							dialogue = "";
 							if (QuestDict[0][1] == false) {
 								QuestToggler('Q1', true);
 								console.log(QuestDict);
-																if ($('#QuestButton2').hasClass('jiggle') == true) {
+								if ($('#QuestButton2').hasClass('jiggle') == true) {
 									$('#QuestButton2').removeClass('jiggle');
 								}
 								$('#QuestButton2').addClass('jiggle');
 							}
+							$('#nextbutton, #textbox ').hide();	
 							break;		
-						case 4:
-							$('#nextbutton, #textbox ').hide();			
-							break;	
 					}
 					progress++;  
 					localStorage.setItem("DialogueProgress", progress);

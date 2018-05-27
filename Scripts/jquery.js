@@ -582,11 +582,11 @@ function CheckLoc() {
 		return
 	}
 	function HoverColor() {
-		var LocName = {p1:'Town 1',p3:'Town 2',p4:'Forest 1',p5:'Bridge',p7:'Town 3',p9:'Forest 2',p10:'Bridge',p12:'Forest 3',p13:'Town 4',p14:'Cave',p15:'Town 5',p16:'Random Hut'};
+		var LocName = {p1:'Windermere',p3:'Garmsby',p4:'Procyt Wood',p5:'Bridge',p7:'Spalding',p9:'Spotted Frog Forest',p10:'Bridge',p12:'Kruhm Woodland',p13:'Wealdstone',p14:'Cave',p15:'Xynnar',p16:'Random Hut'};
 		var PointerLoc;
 		var PathList2 = [['A','B'],['B','A','C','E'],['C','D','B'],['D','C'],['E','F','B','J'],['F','E','G'],['G','F','H','I'],['H','G','I'],['I','H','G'],['J','K','L','N','E'],['K','J','L','M','P'],['L','K','J'],['M','K'],['N','J'],['O','N'],['P','K']];
-var PathNum2 = {A:0,B:1,C:2,D:3,E:4,F:5,G:6,H:7,I:8,J:9,K:10,L:11,M:12,N:13,O:14,P:15}; 
-var LocDict2 = {p1:'A',p2:'B',p3:'C',p4:'D',p5:'E',p6:'F',p7:'G',p8:'H',p9:'I',p10:'J',p11:'K',p12:'L',p13:'M',p14:'N',p15:'O',p16:'P'}; 
+		var PathNum2 = {A:0,B:1,C:2,D:3,E:4,F:5,G:6,H:7,I:8,J:9,K:10,L:11,M:12,N:13,O:14,P:15}; 
+		var LocDict2 = {p1:'A',p2:'B',p3:'C',p4:'D',p5:'E',p6:'F',p7:'G',p8:'H',p9:'I',p10:'J',p11:'K',p12:'L',p13:'M',p14:'N',p15:'O',p16:'P'}; 
 		$("#inventorybutton, #p1,#p2,#p3,#p4,#p5,#p6,#p7,#p8,#p9,#p10,#p11,#p12,#p13,#p14,#p15,#p16, #QuestButton,#talkbutton, #nextbutton, #startButton, #instructionsButton").hover(function(){
 			console.log('ysi')
 			PointerLoc = String($(this).attr('id'));
