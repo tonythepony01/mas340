@@ -11,7 +11,7 @@
 <script>
 $(document).ready(function(){
 	checkInventory(); 
-	var itemDesc = {"inv-Flower": "Flowers found in the Procyt Woods to be used for the memorials of the villagers. Return this to the Duke of Garmsby.","inv-Butterfly":'A delicious-looking pink butterfly you caught in the Kruhm Woodland. Return this to the old woman in Garmsby',"inv-Medicine":"Recieved from the old woman in Garmsby and made from the delicious-looking pink butterfly. Give this to her son.","inv-Weed": "'Herbs' found in the Spotted Frog Forest. Return this to the Duke of Spalding so that he may relax.","inv-Beans": "Ordinary-looking magic beans found in the Spotted Frog Forest.","inv-Magicmushroom": "Mushrooms required by the chef. Found in the Kruhm Woodland.","inv-Acorns": "To be used as rations for the troops of Wealdstone. Return this to the Duke of Wealdstone","inv-Sunflower": "An ordinary sunflower that was requested by the royal chef. I wonder how he's going to use this.","#inv-Necklace": "Conveniently looks like the necklace that Alice dropped years ago. I wonder where she is now."};
+	var itemDesc = {"inv-Flower": "Flowers found in the Procyt Woods to be used for the memorials of the villagers. Return this to the Duke of Garmsby.","inv-Butterfly":'A delicious-looking pink butterfly you caught in the Kruhm Woodland. Return this to the old woman in Garmsby',"inv-Medicine":"Recieved from the old woman in Garmsby and made from the delicious-looking pink butterfly. Give this to her son.","inv-Weed": "'Herbs' found in the Spotted Frog Forest. Return this to the Duke of Spalding so that he may relax.","inv-Beans": "Ordinary-looking magic beans found in the Spotted Frog Forest.","inv-Magicmushroom": "Mushrooms required by the chef. Found in the Kruhm Woodland.","inv-Acorns": "To be used as rations for the troops of Wealdstone. Return this to the Duke of Wealdstone","inv-Sunflower": "An ordinary sunflower that was requested by the royal chef. I wonder how he's going to use this.","inv-Necklace": "Conveniently looks like the necklace that Alice dropped years ago. I wonder where she is now."};
 	$("#inv-Flower, #inv-Butterfly,#inv-Medicine,#inv-Weed,#inv-Beans,#inv-Magicmushroom,#inv-Acorns,#inv-Sunflower,#inv-Necklace").hover(function(){
 		$("#descbox").show();
 		attr = String($(this).attr('id'))
@@ -19,6 +19,9 @@ $(document).ready(function(){
 		$('#descbox span').html(description); 
 	}, function(){
 		$("#descbox").hide();
+	});
+	$("#inv-Necklace").hover(function() {
+	console.log('true');
 	});
 });
 </script>
