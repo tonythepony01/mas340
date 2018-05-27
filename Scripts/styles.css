@@ -62,10 +62,6 @@ body {
 	left:119px;
 }
 
-#Beanstalk {
-	left:465px;
-	top: 0px;
-}
 
 #Butterfly {
 	top: 370px;
@@ -522,7 +518,7 @@ background-color: #b40000;
 	position: absolute;
 	right: 20px;
 	top: 20px;
-	color: #b40000;
+	color: white;
 	z-index: 10;
 }
 

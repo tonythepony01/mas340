@@ -57,7 +57,7 @@ checkInventory();
 			$('#inventorybutton').addClass('jiggle');
 		}
 		$('#itemGet').html($(this).attr('id')); 
-		$('#itemGet').show().animate({top: '40px'}, 150).fadeOut(200);
+		$('#itemGet').show().animate({top: '60px'}, 150).fadeOut(700);
 		$(this).fadeOut('fast');
 		var itemName = $(this).attr('id');
 		localStorage.setItem(itemName, 'true');	
