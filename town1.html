@@ -28,7 +28,7 @@ $("#noticebox").slideDown('400').delay(2200).slideUp('400');
 			var Pl = {el:$('#char'), x:coords[0], y:coords[1], speed:coords[2]};
 		};
 	} else {
-		var Pl = {el:$('#char'), x:100, y:560, speed:5};
+		var Pl = {el:$('#char'), x:900, y:560, speed:5};
 	};	
 
 $(document).on('keydown keyup', function(e) {
@@ -38,40 +38,106 @@ $(document).on('keydown keyup', function(e) {
 	p = $('#char').position();
 	conversationCheck(p.left, p.top); // create button to start conversation
 	localStorage.setItem('coords', [Pl.x,Pl.y,Pl.speed])
-		$('#talkbutton').click(function() {	
-			if (conversationCheck(p.left, p.top) == true) {
-				$('#talkbutton').hide();
-				var progress = 0;
-				var dialogue;
-						var character;
-				eventHandler();
-				function eventHandler() {
+	$('#talkbutton').click(function() {	
+		if (conversationCheck(p.left, p.top) == true) {
+			$('#talkbutton').hide();
+			var progress = 0;
+			var dialogue;
+					var character;
+			eventHandler();
+			function eventHandler() {
+				if (p.left < 450 && p.left > 350) {
+					switch (progress) {					
+						case 0:
+							$('#nextbutton, #textbox ').show();
+							character = 'Townsperson';
+							dialogue = "Hello";
+							break;
+						case 1:
+							character = 'Townsperson';
+							dialogue = "Did you know that you can see how much time will be taken to travel to a place by simply hover overing that location?";
+							break;
+						case 2:
+							character = 'Townsperson';
+							dialogue = "If you wanted to get something done in time, you'd better not waste your time getting there."
+							break;
+						case 3:
+							character = 'Max';
+							dialogue = "(Maybe I shouldn't be wasting my time talking...)"
+							break;		
+						case 4:
+							$('#nextbutton, #textbox ').hide();
+							progress = 0;
+							break;	
+					}					
+						progress++;  
+						localStorage.setItem("DialogueProgress", progress);
+						$('#textbox #span2').html(dialogue);	
+						$('#textbox #span1').html(character);						
+				} else if (p.left < 650 && p.left > 550) {			
 					switch (progress) {
 						case 0:
 							$('#nextbutton, #textbox ').show();
-							dialogue = "Hi, how are you doing?";
+							character = 'Guard';
+							dialogue = "Hm, this isn't looking good";
 							break;
 						case 1:
-							dialogue = "Its a lovely evening isn't it aye"
+							character = 'Max';
+							dialogue = "Why, what's wrong?"
 							break;
 						case 2:
-							dialogue = "The person who designed this place is a genius"
+							character = 'Guard';
+							dialogue = "The village to the north-east of here had been raided and burnt down.";
 							break;
 						case 3:
-							dialogue = "Dont you agree?"
+							character = 'Guard';
+							dialogue = "Reports say that some army to the east across the river is gearing up for war.";
 							break;		
 						case 4:
+							character = 'Max';
+							dialogue = "Sounds like a great time to be having a birthday party.";
+							break;	
+						case 5:
 							$('#nextbutton, #textbox ').hide();			
+							break;	
+					}
+						progress++;  
+						localStorage.setItem("DialogueProgress", progress);
+						$('#textbox #span2').html(dialogue);	
+						$('#textbox #span1').html(character);				
+					} else if (p.left < 750 && p.left > 650) {			
+					switch (progress) {
+						case 0:
+							$('#nextbutton, #textbox ').show();
+							character = 'Townsperson';
+							dialogue = "Hello";
+							break;
+						case 1:
+							character = 'Townsperson';
+							dialogue = "Did you know that some tasks can only be accepted and turned in at night?";
+							break;
+						case 2:
+							character = 'Townsperson';
+							dialogue = "It's probably best to pay attention to some of the things people say so you don't end up wasting time."
+							break;
+						case 3:
+							character = 'Max';
+							dialogue = "Thanks, I'll keep that in mind."
+							break;		
+						case 4:
+							$('#nextbutton, #textbox ').hide();
+							progress = 0;
 							break;	
 					}
 					progress++;  
 					localStorage.setItem("DialogueProgress", progress);
-						$('#textbox #span2').html(dialogue);	
-						$('#textbox #span1').html(character);	
-				}
-				$('#nextbutton').click(eventHandler);				
+											$('#textbox #span2').html(dialogue);	
+						$('#textbox #span1').html(character);			
+					}
 			}
-	});
+			$('#nextbutton').click(eventHandler);				
+		}
+});	
 	});
 });
 
@@ -83,7 +149,6 @@ function updatePlayerPos() {
 	window.location = "map.html";
   } else if ((Pl.x > 950)) {
     Pl.x = 950;
-	window.location = "throne.html";
   }
   if(K[37]) Pl.x -= dist;
   if(K[39]) Pl.x += dist;
@@ -104,6 +169,9 @@ function updatePlayerPos() {
 <body>
 <div id="background">
 <div id="noticebox"><span>Town 1<span></div>
+<img src="images/npcs/char1.png" id="char1">
+<img src="images/npcs/char2.png" id="char8">
+<img src="images/npcs/char7.png" id="char7">
 	<div id="char"></div>
 		<div id="talkbutton"><span>Chat</span></div>
 		<div id="textbox">

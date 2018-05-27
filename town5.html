@@ -44,27 +44,27 @@ $(document).on('keydown keyup', function(e) {
 			var character;
 			eventHandler();
 			function eventHandler() {
-				if (p.left < 550 && p.left > 450) {
+				if (p.left < 350 && p.left > 250) {			
 					switch (progress) {					
 						case 0:
 							$('#nextbutton, #textbox ').show();
-							character = 'Guard 1';
+							character = 'Soldier';
 							dialogue = "...";
 							break;
 						case 1:
-							character = 'Guard 1';
+							character = 'Soldier';
 							dialogue = "What do you want punk?"
 							break;	
 						case 2:		
-						$('#nextbutton, #textbox ').hide();	
-						progress= 0;
+							$('#nextbutton, #textbox ').hide();	
+							progress= 0;
 							break;
-					}					
-						progress++;  
-						localStorage.setItem("DialogueProgress", progress);
-						$('#textbox #span2').html(dialogue);	
-						$('#textbox #span1').html(character);	
-				} else if (p.left < 955 && p.left > 835) {			
+					}	
+					progress++;  
+					localStorage.setItem("DialogueProgress", progress);
+					$('#textbox #span2').html(dialogue);	
+					$('#textbox #span1').html(character);			
+					} else if (p.left < 550 && p.left > 450) {
 					switch (progress) {
 						case 0:
 							$('#nextbutton, #textbox ').show();
@@ -82,17 +82,91 @@ $(document).on('keydown keyup', function(e) {
 						case 3:
 							character = 'Max';
 							dialogue = "I don't think so...";
-							
 							break;		
 						case 4:
 							$('#nextbutton, #textbox ').hide();		
-progress= 0;							
+							progress= 0;							
 							break;	
-					}
-					progress++;  
-					localStorage.setItem("DialogueProgress", progress);
-					$('#textbox #span2').html(dialogue);	
-					$('#textbox #span1').html(character);			
+					}				
+						progress++;  
+						localStorage.setItem("DialogueProgress", progress);
+						$('#textbox #span2').html(dialogue);	
+						$('#textbox #span1').html(character);	
+				} else if (p.left < 955 && p.left > 835) {		
+				if (localStorage.getItem('Necklace') == 'true') {					
+						switch (progress) {					
+							case 0:
+								$('#nextbutton, #textbox ').show();
+								character = 'Guard';
+								dialogue = "...";
+								break;
+							case 1:
+								character = 'Guard';
+								dialogue = "Do you have it with you?"
+								break;
+							case 2:
+								character = 'Max';
+								dialogue = "Have what with me?"
+								break;	
+							case 3:
+								character = 'Guard';
+								dialogue = "The necklace."
+								break;	
+							case 4:
+								character = 'Max';
+								dialogue = "You mean this one?"
+								break;
+							case 5:
+								character = 'Guard';
+								dialogue = "Yes. You may proceed to the palace."
+								break;								
+							case 6:		
+								$('#nextbutton, #textbox ').hide();	
+								progress= 0;
+								break;
+						}	
+						progress++;  
+						localStorage.setItem("DialogueProgress", progress);
+						$('#textbox #span2').html(dialogue);	
+						$('#textbox #span1').html(character); 
+					} else if (localStorage.getItem('Necklace') == 'false') {		
+						switch (progress) {					
+							case 0:
+								$('#nextbutton, #textbox ').show();
+								character = 'Guard 2';
+								dialogue = "...";
+								break;
+							case 1:
+								character = 'Guard 2';
+								dialogue = "Do you have it with you?"
+								break;
+							case 2:
+								character = 'Max';
+								dialogue = "Have what with me?"
+								break;	
+							case 3:
+								character = 'Guard 2';
+								dialogue = "The necklace."
+								break;	
+							case 4:
+								character = 'Max';
+								dialogue = "No I don't."
+								break;
+							case 5:
+								character = 'Guard 2';
+								dialogue = "You may not pass."
+								break;									
+							case 6:		
+							$('#nextbutton, #textbox ').hide();	
+							progress= 0;
+								break;
+						}	
+						progress++;  
+						localStorage.setItem("DialogueProgress", progress);
+						$('#textbox #span2').html(dialogue);	
+						$('#textbox #span1').html(character);
+					}				
+			
 					}
 			}
 			$('#nextbutton').click(eventHandler);				
@@ -105,13 +179,23 @@ progress= 0;
 function updatePlayerPos() {
   var dist = K[38]&&(K[37]||K[39]) || K[40]&&(K[37]||K[39]) ? 0.707 : 1; 
   dist *= Pl.speed;
-    if (Pl.x < 35)   {
-	Pl.x = 35;
-	window.location = "map.html";
-  } else if ((Pl.x > 950)) {
-    Pl.x = 950;
-	window.location = "throne5.html";
+  if (localStorage.getItem('Necklace') == 'true') {
+      if (Pl.x < 35)   {
+		Pl.x = 35;
+		window.location = "map.html";
+	  } else if ((Pl.x > 950)) {
+		Pl.x = 950;
+		window.location = "throne5.html";
+	  }
+  } else if (localStorage.getItem('Necklace') == 'false') {
+        if (Pl.x < 35)   {
+		Pl.x = 35;
+		window.location = "map.html";
+	  } else if ((Pl.x > 950)) {
+		Pl.x = 950;
+	  }
   }
+
   if(K[37]) Pl.x -= dist;
   if(K[39]) Pl.x += dist;
   Pl.el.css({transform:"translate3D("+ Pl.x +"px, "+ Pl.y +"px, 0)"});
@@ -131,9 +215,11 @@ function updatePlayerPos() {
 <body>
 <div id="background">
 <div id="noticebox"><span>Town 5<span></div>
-	<div id="char"></div>
+	
 	<img src="images/npcs/char5.png" id="char5">
 	<img src="images/npcs/char5-2.png" id="char5-2">
+	<img src="images/npcs/char5.png" id="char5-3">
+	<div id="char"></div>
 		<div id="talkbutton"><span>Chat</span></div>
 		<div id="textbox">
 			<span id='span1'></span>

@@ -18,7 +18,7 @@ body {
 	display: none;
 }
 
-#old-woman, #char1, #char4, #char3, #char6, #char7, #char8, #char2, #char5,#char5-2   {
+#old-woman, #char1, #char4, #char3, #char6, #char7, #char8, #char2, #char5,#char5-2, #char5-3   {
 	position: absolute;
 	top: 510px;
 	left: 400px;
@@ -31,14 +31,16 @@ body {
 #char4, #char3, #char2, #char5   {
 	left: 940px;
 }
-#char5, #char5-2 {
+#char5, #char5-2, #char5-3 {
 	top: 490px;
 }
 
 #char5-2  {
 	left: 500px;
 }
-
+#char5-3 {
+	left: 300px;
+}
 #char6{
 	top: 490px;
 	left: 120px;
@@ -219,7 +221,7 @@ body {
 	margin-left: -50px;
 	transform: scale(0.50,0.50);
 	-webkit-transform: scale(0.50,0.50);
-	z-index: 15;
+	z-index: 11;
 }
 #char-2 {
 		width: 800px;
@@ -414,7 +416,7 @@ background-image: url('../images/town2night.jpg');
 .bg24 {background-image: url('../images/cutscenes/k1throneroom.jpg');}
 .bg25 {background-image: url('../images/cutscenes/k2throneroom.jpg');}
 .bg26 {background-image: url('../images/cutscenes/k3throneroom.jpg');}
-
+.bg27 {background-image: url('../images/cutscenes/throne5test.jpg');}
 #tunnelbackground {
 	background-color: transparent;
 	top: 0px;
@@ -580,7 +582,7 @@ border-color: #535456;
 	bottom: 25px;
 	left: 100px;
 	padding: 0px;
-	z-index:11;
+	z-index:12;
 	
 } 
 

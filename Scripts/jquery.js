@@ -90,7 +90,15 @@ function DayPhase() {
 
 function conversationCheck(xAxis,yAxis) {
 	var PageLocation = location.href.split("/").slice(-1);
-	if (PageLocation == 'town2.html') {
+	if (PageLocation == 'town1.html') {
+		if ((xAxis < 450 && xAxis > 350) || (xAxis < 650 && xAxis > 550) || (xAxis < 750 && xAxis > 650)) {
+			$("#talkbutton").css({left: xAxis-45, top: yAxis-120}).show();
+			return true
+		} else {
+			$("#talkbutton").hide();
+			return false
+		}
+	} else if (PageLocation == 'town2.html') {
 		if ((xAxis < 470 && xAxis > 390) || (xAxis < 955 && xAxis > 835) || (xAxis < 775 && xAxis > 675)) {
 			$("#talkbutton").css({left: xAxis-45, top: yAxis-120}).show();
 			return true
@@ -115,7 +123,7 @@ function conversationCheck(xAxis,yAxis) {
 			return false
 		}
 	} else if (PageLocation == 'town5.html') {
-		if ((xAxis < 550 && xAxis > 450) || (xAxis < 955 & xAxis > 835)) {
+		if ((xAxis < 350 && xAxis > 250)||(xAxis < 550 && xAxis > 450) || (xAxis < 955 & xAxis > 835)) {
 			$("#talkbutton").css({left: xAxis-45, top: yAxis-120}).show();
 			return true
 		} else {

@@ -10,46 +10,114 @@
 <script src="Scripts/jquery-ui.js"></script>
 <script>
 $(document).ready(function(){
-	$('#char').css('transform','scale(1.5)');
-	$('#char').css({left: -200, top: 475});
-	$('#background').addClass('bg5');
+	$('#background').addClass('bg27').css({
+		'filter':'brightness(0)',
+		'webkitFilter':'brightness(0)',
+		'transition':'all 0s ease-out',
+		'-webkit-transition':'all 0s ease-out',
+	});
 	$('#talkbutton').show().css({left: 850, top: 150});
-		QuestMemory();
+	QuestMemory();
 	QuestCompletionMemory();
-	// setup
-	$('#char').animate({left: 100, top: 450},750);
-	//$('#char').animate({left: -200, top: 475},750); // when finished with conversation
-	$('#talkbutton').click(function() {
-		$('#talkbutton').hide();
+	if (localStorage.getItem('DialogueProgress') != "undefined" && localStorage.getItem('DialogueProgress') != null && localStorage.getItem('DialogueProgress') != 0) {
+		var progress = localStorage.getItem('DialogueProgress') /*Dialogue progress saver*/
+		progress -= 1;
+		eventHandler();	
+		console.log('yey'+ progress)
+	} else {
 		var progress = 0;
+		eventHandler();	
+	}
 		var dialogue;
-		eventHandler();
+		var character;
 		function eventHandler() {
 			switch (progress) {
 				case 0:
 					$('#nextbutton, #textbox ').show();
-					dialogue = "Hi, how are you doing?";
+					$('#background').css({
+						'filter':'brightness(1)',
+						'webkitFilter':'brightness(1)',
+						'transition':'all 2s ease-out',
+						'-webkit-transition':'all 2s ease-out',
+					});
+					character = '???';
+					dialogue = 'So have you brought it?';
 					break;
 				case 1:
-					dialogue = "Its a lovely evening isn't it aye"
+					character = 'Max';
+					dialogue = 'Brought what?';
 					break;
 				case 2:
-					dialogue = "The person who designed this place is a genius"
+					character = '???';
+					dialogue = 'The necklace.';
 					break;
 				case 3:
-					dialogue = "Dont you agree?"
-					break;		
+					character = 'Max';
+					dialogue = 'I might have.';
+					break;	
 				case 4:
+					character = '???';
+					dialogue = 'Give it to me.';
+					break;
+				case 5:
+					character = 'Max';
+					dialogue = 'Tell me who you are first.';
+					break;
+				case 6:
+					character = 'Max';
+					dialogue = 'Why are you searching for this necklace?';
+					break;	
+				case 7:
+					character = 'Max';
+					dialogue = 'Why have you been ravaging the nearby lands in search of this necklace?';
+					break;					
+				case 8:
+					character = 'Max';
+					dialogue = 'oh and send us your snapchat lel. <3';
+					break;
+				case 9:
+					character = '???';
+					dialogue = 'the names alice. ';
+					break;		
+				case 10:
+					character = 'Alice';
+					dialogue = 'That necklace is from my mother.';
+					break;
+				case 11:
+					character = 'Alice';
+					dialogue = 'I have been searching for it ever since I lost it during my escape from this dreaded place.';
+					break;	
+				case 12:
+					character = 'Alice';
+					dialogue = 'They dragged me back here.';
+					break;
+				case 13:
+					character = 'Alice';
+					dialogue = 'and they made me the queen of this rotting kingdom.';
+					break;	
+				case 14:
+					character = 'Max';
+					dialogue = 'Sounds like you need a break.';
+					break;	
+				case 15:
+					character = 'Max';
+					dialogue = 'Here, have a kit-kat';
+					break;	
+				case 16:
+					character = 'Alice';
+					dialogue = "Ooooh thanks. I needed that. They don't sell that stuff here.";
+					break;						
+				case 17:
 					$('#nextbutton, #textbox ').hide();	
 					$('#talkbutton').show();
 					break;	
 			}
 			progress++;  
 			localStorage.setItem("DialogueProgress", progress);
-			$('#textbox').html(dialogue); 
+			$('#textbox #span2').html(dialogue);	
+			$('#textbox #span1').html(character);
 		}
 		$('#nextbutton').click(eventHandler);		
-	});
 });
 
 </script>
@@ -57,15 +125,11 @@ $(document).ready(function(){
 </head>
 <body>
 <div id="background">
-	<button onclick="goBack()">Go Back</button>
-	<div id="char"></div>
-		<div id="talkbutton"><span>Chat</span></div>
 		<div id="textbox">
 			<span id='span1'></span>
 			<span id='span2'></span>
 		</div>
 		<div id="nextbutton"><span>Continue</span></div>
-				<div id="QuestButton2"><a class="htmllink" href="questList.html"><span>Quest List</span></a></div>
 </div>
 </body>
 </html>

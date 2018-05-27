@@ -58,11 +58,11 @@ $(document).on('keydown keyup', function(e) {
 							dialogue = "No worries.";
 							break;
 						case 1:
-						character = 'Old Woman';
+							character = 'Old Woman';
 							dialogue = "If it's not too much, I have another favour to ask"
 							break;
 						case 2:
-						character = 'Old Woman';
+							character = 'Old Woman';
 							dialogue = "Could you go to the cave across the river and hand this to my son?"
 							break;
 						case 3:
@@ -170,22 +170,54 @@ $(document).on('keydown keyup', function(e) {
 					switch (progress) {
 						case 0:
 							$('#nextbutton, #textbox ').show();
-							character = 'Townsperson';
+							character = 'Max';
 							dialogue = "Hello";
 							break;
 						case 1:
 							character = 'Townsperson';
-							dialogue = "Did you know that you can see how much time will be taken to travel to a place by simply hover overing that location?";
+							dialogue = "Hi, I haven't seen you around here before.";
 							break;
 						case 2:
-							character = 'Townsperson';
-							dialogue = "If you wanted to get something done in time, you'd better not waste your time getting there."
+							character = 'Max';
+							dialogue = "Neither have I.";
 							break;
 						case 3:
-							character = 'Max';
-							dialogue = "(Maybe I shouldn't be wasting my time talking...)"
+							character = 'Townsperson';
+							dialogue = "Where are you from?";
 							break;		
 						case 4:
+							character = 'Max';
+							dialogue = "I'm from town 1";
+							break;	
+						case 5:
+							character = 'Townsperson';
+							dialogue = "Oh so you're from the capital?";
+							break;
+						case 6:
+							character = 'Townsperson';
+							dialogue = "I've always wanted to live there. I was thinking about moving over there because it's getting dangerous around these parts.";
+							break;
+						case 7:
+							character = 'Max';
+							dialogue = "Dangerous?";
+							break;
+						case 8:
+							character = 'Townsperson';
+							dialogue = "Yes. It seems like another village to the east across the bridge was destroyed the other night.";
+							break;
+						case 9:
+							character = 'Max';
+							dialogue = "Do you have any idea to who it could have been?";
+							break;
+						case 10:
+							character = 'Townsperson';
+							dialogue = "No, but I've heard reports of men in dark purple armour snooping around.";
+							break;
+						case 11:
+							character = 'Max';
+							dialogue = "I think you'd better start moving.";
+							break;
+						case 12:
 							$('#nextbutton, #textbox ').hide();
 							progress = 0;
 							break;	
@@ -203,7 +235,7 @@ $(document).on('keydown keyup', function(e) {
 								break;
 							case 1:
 								character = 'Guard';
-								dialogue = "Please proceed straight to the throne room"
+								dialogue = "Please proceed straight to the throne room";
 								break;	
 							case 2:
 								$('#nextbutton, #textbox ').hide();
@@ -251,10 +283,11 @@ function updatePlayerPos() {
 <body>
 <div id="background">
 <div id="noticebox"><span>Town 2<span></div>
-	<div id="char"></div>
+	
 	<img src="images/npcs/oldwoman.png" id="old-woman">
 	<img src="images/npcs/char1.png" id="char1">
 	<img src="images/npcs/char4.png" id="char4">
+	<div id="char"></div>
 		<div id="talkbutton"><span>Chat</span></div>
 		<div id="textbox">
 			<span id='span1'></span>

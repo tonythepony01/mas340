@@ -49,23 +49,38 @@ $(document).on('keydown keyup', function(e) {
 						case 0:
 							$('#nextbutton, #textbox ').show();
 							character = 'Townsperson';
-							dialogue = "I heard a rumour that a Queen in some kingdom was looking for a necklace that she lost when she was a child.";
+							dialogue = "I heard a rumour that some Queen was going around with her armies looking for a necklace that she lost when she was a child.";
 							break;
 						case 1:
-						character = 'Townsperson';
-							dialogue = "Apparently it can be found in the forest near here."
+							character = 'Max';
+							dialogue = "So I've heard.";
 							break;
 						case 2:
-						character = 'Townsperson';
-							dialogue = "HASHTAG #PLOTFLAG"
+							character = 'Townsperson';
+							dialogue = "Somebody needs to stop them. They're going around destroying small villages for it.";
 							break;
 						case 3:
-						character = 'This guy';
-							dialogue = "No spoilers plz."
+							character = 'Max';
+							dialogue = "Any idea where I could find this necklace?";
+							break;
+						case 4:
+							character = 'Townsperson';
+							dialogue = "Apparently it can be found in the forest near here.";
+							break;
+						case 5:
+							character = 'Townsperson';
+							dialogue = "HASHTAG #PLOTFLAG";
+							break;
+						case 6:
+							character = 'Max';
+							dialogue = "Convenient.";
+							break;	
+						case 7:
+							character = 'Max';
+							dialogue = "and no spoilers plz.";
 							break;		
-						case 4:		
-
-						$('#nextbutton, #textbox ').hide();	
+						case 8:		
+							$('#nextbutton, #textbox ').hide();	
 							break;
 					}					
 						progress++;  
@@ -81,15 +96,15 @@ $(document).on('keydown keyup', function(e) {
 							break;
 						case 1:
 						character = 'Priest';
-							dialogue = "Please bless this young one with full marks."
+							dialogue = "Please bless this young one with full marks.";
 							break;
 						case 2:
-						character = 'This guy';
-							dialogue = "...Sorry what was that?"
+						character = 'Max';
+							dialogue = "...Sorry what was that?";
 							break;
 						case 3:
 						character = 'Priest';
-							dialogue = "(Wily smile)"
+							dialogue = "(Wily smile)";
 							break;		
 						case 4:
 							$('#nextbutton, #textbox ').hide();			
@@ -108,7 +123,7 @@ $(document).on('keydown keyup', function(e) {
 							break;
 						case 1:
 							character = 'Guard';
-							dialogue = "Oh, by the way. Our Duke is very picky. If you're going to see him, he might get you to do things during strange hours of the day."
+							dialogue = "Oh, by the way. Our Duke is very picky. If you're going to see him, he'll only let you do things during strange hours of the day.";
 							break;
 						case 2:
 							character = 'Max';

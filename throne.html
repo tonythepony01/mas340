@@ -14,17 +14,17 @@ $('#nextbutton, #textbox').fadeOut(0);
 	QuestMemory();
 	$('#char-2').css({left: -300, top: 175});
 	$('#background').addClass('bg5');
-								 $('#background').css({
-								'filter':'brightness(0)',
-								'webkitFilter':'brightness(0)',
-								'transition':'all 0s ease-out',
-								'-webkit-transition':'all 0s ease-out',
-							});
+	$('#background').css({
+		'filter':'brightness(0)',
+		'webkitFilter':'brightness(0)',
+		'transition':'all 0s ease-out',
+		'-webkit-transition':'all 0s ease-out',
+	});
 	$('#talkbutton').show().css({left: 850, top: 150});
 	// setup
 	$('#char-2').animate({left: -100, top: 175},750);
 	$('#talkbutton').hide();
-		if (localStorage.getItem('DialogueProgress') != "undefined" && localStorage.getItem('DialogueProgress') != null && localStorage.getItem('DialogueProgress') != 0) {
+	if (localStorage.getItem('DialogueProgress') != "undefined" && localStorage.getItem('DialogueProgress') != null && localStorage.getItem('DialogueProgress') != 0) {
 		var progress = localStorage.getItem('DialogueProgress') /*Dialogue progress saver*/
 		progress -= 1;
 		eventHandler();	

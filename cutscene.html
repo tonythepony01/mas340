@@ -15,7 +15,7 @@
 		'filter':'brightness(0)',
 		'webkitFilter':'brightness(0)',
 	});
-	$('#Scene2, #prop4, #Scene3').fadeOut(0);
+	$('#Scene2, #prop4, #Scene3, #prop1').fadeOut(0);
 		if (localStorage.getItem('DialogueProgress') != "undefined" && localStorage.getItem('DialogueProgress') != null && localStorage.getItem('DialogueProgress') != 0) {
 		var progress = localStorage.getItem('DialogueProgress') /*Dialogue progress saver*/
 		progress -= 1;
@@ -41,7 +41,7 @@
 							dialogue = "...";
 							break;
 						case 1:
-						$('#prop1').css({
+						$('#prop1').fadeIn().css({
 							'filter':'brightness(1)',
 							'webkitFilter':'brightness(1)',
 							'transition':'all 0.7s ease-out',
