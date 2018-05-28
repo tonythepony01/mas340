@@ -569,6 +569,7 @@ function CheckLoc() {
 		CurrentLoc = localStorage.getItem("SavedLoc");
 		CurrentLoc2 = localStorage.getItem("SavedLoc");
 		$( "#char" ).css({left: LocExtractorX(LocKeyGet(CurrentLoc)),top: LocExtractorY(LocKeyGet(CurrentLoc))}, 0, function() {});
+		EnterCheck(CurrentLoc,LocExtractorX(LocKeyGet(CurrentLoc)),LocExtractorY(LocKeyGet(CurrentLoc)));
 	} else {
 		CurrentLoc = 'A';
 		CurrentLoc2 = 'A';

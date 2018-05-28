@@ -15,7 +15,7 @@
 		'filter':'brightness(0)',
 		'webkitFilter':'brightness(0)',
 	});
-	$('#Scene2, #prop4, #Scene3, #prop1').fadeOut(0);
+	$('#Scene2, #prop4, #Scene3, #prop1, #prop2, #prop3').fadeOut(0);
 		if (localStorage.getItem('DialogueProgress') != "undefined" && localStorage.getItem('DialogueProgress') != null && localStorage.getItem('DialogueProgress') != 0) {
 		var progress = localStorage.getItem('DialogueProgress') /*Dialogue progress saver*/
 		progress -= 1;
@@ -79,7 +79,7 @@
 							dialogue = "...";
 							break;	
 						case 7:
-							$('#prop2, #prop3').css({
+							$('#prop2, #prop3').fadeIn().css({
 							'filter':'brightness(1)',
 							'webkitFilter':'brightness(1)',
 							'transition':'all 1s ease-out',
@@ -189,8 +189,8 @@
 								'webkitFilter':'brightness(0)',
 								'transition':'all 1s ease-out',
 								'-webkit-transition':'all 1s ease-out',
-							});
-							$('#prop3').css({left:'150px'});
+							}).fadeOut(0);
+							$('#prop3').css({left:'150px'}).fadeOut(0);
 							$('#nextbutton, #textbox ').fadeOut(0).delay(4000).fadeIn(0);
 							character = 'Max';
 							dialogue = "Come back!";
