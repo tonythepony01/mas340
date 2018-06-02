@@ -15,6 +15,7 @@ $(document).ready(function(){
 	checkInventory();
 	QuestMemory();
 	QuestCompletionMemory();
+	var bag = document.getElementById('audio9');
 	$("#noticebox").slideDown('400').delay(2200).slideUp('400');
 	if (CheckTownTime(0,0) == true) {
 		$('#Sunflower').attr("src","images/items/night/sunflowernight.png");
@@ -98,6 +99,7 @@ $(document).ready(function(){
 		$(this).fadeOut('fast');
 		var itemName = $(this).attr('id');
 		localStorage.setItem(itemName, 'true');	
+		bag.play();
 		checkInventory();
 	});
 });
@@ -107,6 +109,7 @@ $(document).ready(function(){
 </head>
 <body>
 <div id="background">
+<audio id="audio9" src="sounds/bag.wav" preload="auto"></audio>
 <div id="noticebox"><span>Kruhm Woodland<span></div>
 <div id="itemGet"></div>
 			<img src="images/items/sunflower.png" id="Sunflower" class="clickable">

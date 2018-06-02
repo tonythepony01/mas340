@@ -15,6 +15,7 @@ $(document).ready(function(){
 		checkInventory();
 			QuestMemory();
 	QuestCompletionMemory();
+	var bag = document.getElementById('audio9');
 	$("#noticebox").slideDown('400').delay(2200).slideUp('400');
 	if (localStorage.getItem("coords") != "undefined" && localStorage.getItem("coords") != null) {
 		var coords = (JSON.parse("[" + localStorage.getItem("coords") + "]"));
@@ -79,6 +80,7 @@ $(document).ready(function(){
 		$(this).fadeOut('fast');
 		var itemName = $(this).attr('id');
 		localStorage.setItem(itemName, 'true');	
+		bag.play();
 		checkInventory();
 	});
 $(document).on('keydown keyup', function(e) {
@@ -117,7 +119,7 @@ function updatePlayerPos() {
 
 <div id="background">
 <div id="noticebox"><span>Kruhm Woodland<span></div>
-		
+		<audio id="audio9" src="sounds/bag.wav" preload="auto"></audio>
 		<div id="itemGet"></div>
 			<img src="images/items/butterfly.png" id="Butterfly" class="clickable">
 			<img src="images/items/magicmushroom.png" id="Magicmushroom" class="clickable">

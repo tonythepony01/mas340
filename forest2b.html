@@ -15,6 +15,7 @@ $(document).ready(function(){
 	QuestMemory();
 	QuestCompletionMemory();
 	$("#noticebox").slideDown('400').delay(2200).slideUp('400');
+	var bag = document.getElementById('audio9');
 	$('#Beans').css({left: 465, top: 0});
     K = {}; // keys: {37:0||1, 38:0||1, ...}
 	if (localStorage.getItem("coords2") != "undefined" && localStorage.getItem("coords2") != null) {
@@ -79,6 +80,7 @@ $(document).ready(function(){
 		$(this).fadeOut('fast');
 		var itemName = $(this).attr('id');
 		localStorage.setItem(itemName, 'true');	
+		bag.play();
 		checkInventory();
 	});
 $(document).on('keydown keyup', function(e) {
@@ -115,6 +117,7 @@ function updatePlayerPos() {
 <body>
 <div id="background">
 <div id="noticebox"><span>Spotted Frog Forest<span></div>
+<audio id="audio9" src="sounds/bag.wav" preload="auto"></audio>
 	<div id="char"></div>
 	<div id="itemGet"></div>
 	<img src="images/items/weed.png" id="Weed" class="clickable">

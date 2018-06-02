@@ -15,6 +15,7 @@ checkInventory();
 	QuestMemory();
 	QuestCompletionMemory();
 	$("#noticebox").slideDown('400').delay(2200).slideUp('400');
+	var bag = document.getElementById('audio9');
 	if (localStorage.getItem("coords") != "undefined" && localStorage.getItem("coords") != null) {
 		var coords = (JSON.parse("[" + localStorage.getItem("coords") + "]"));
 		console.log(coords);
@@ -62,6 +63,7 @@ checkInventory();
 		var itemName = $(this).attr('id');
 		localStorage.setItem(itemName, 'true');	
 		checkInventory();
+		bag.play();
 	});
 	
 	$(document).on('keydown keyup', function(e) {
@@ -99,6 +101,7 @@ function updatePlayerPos() {
 </head>
 <body>
 <div id="background">
+<audio id="audio9" src="sounds/bag.wav" preload="auto"></audio>
 <div id="char"></div>
 	<div id="noticebox"><span>Procyt Wood<span></div>
 	<div id="itemGet"></div>
