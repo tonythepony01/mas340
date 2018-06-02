@@ -484,17 +484,17 @@ z-index: 10;
 
 #QuestButton {
 	top: 50px;
-	font-size: 0.95em;
 }
-#QuestButton {
+#QuestButton a span{
 	font-size: 0.95em;
+	top: 50px;
 }
 
 #inventorybutton:hover, #QuestButton:hover,#QuestButton2:hover, #nextbutton:hover, #talkbutton:hover  {
 	background-color: #e54444;
 }
 
-span { display:inline-block !important; vertical-align:top !important; }
+span { display:inline-block !important; vertical-align:bottom !important; }
 
 #EnterButton {
 	position: absolute;

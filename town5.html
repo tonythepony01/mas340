@@ -14,6 +14,7 @@ $(document).ready(function(){
 	QuestCompletionMemory();
 	CheckTownTime('bg23','bg22');
 	$("#noticebox").slideDown('400').delay(2200).slideUp('400');
+	var click = document.getElementById('audio6');
 	if (localStorage.getItem("coords") != "undefined" && localStorage.getItem("coords") != null) {
 		var coords = (JSON.parse("[" + localStorage.getItem("coords") + "]"));
 		console.log(coords);
@@ -63,7 +64,8 @@ $(document).on('keydown keyup', function(e) {
 					progress++;  
 					localStorage.setItem("DialogueProgress", progress);
 					$('#textbox #span2').html(dialogue);	
-					$('#textbox #span1').html(character);			
+					$('#textbox #span1').html(character);
+click.play();					
 					} else if (p.left < 550 && p.left > 450) {
 					switch (progress) {
 						case 0:
@@ -92,6 +94,7 @@ $(document).on('keydown keyup', function(e) {
 						localStorage.setItem("DialogueProgress", progress);
 						$('#textbox #span2').html(dialogue);	
 						$('#textbox #span1').html(character);	
+						click.play();
 				} else if (p.left < 955 && p.left > 835) {		
 				if (localStorage.getItem('Necklace') == 'true') {					
 						switch (progress) {					
@@ -129,6 +132,7 @@ $(document).on('keydown keyup', function(e) {
 						localStorage.setItem("DialogueProgress", progress);
 						$('#textbox #span2').html(dialogue);	
 						$('#textbox #span1').html(character); 
+						click.play();
 					} else if (localStorage.getItem('Necklace') == 'false') {		
 						switch (progress) {					
 							case 0:
@@ -165,6 +169,7 @@ $(document).on('keydown keyup', function(e) {
 						localStorage.setItem("DialogueProgress", progress);
 						$('#textbox #span2').html(dialogue);	
 						$('#textbox #span1').html(character);
+						click.play();
 					}				
 			
 					}
@@ -214,6 +219,7 @@ function updatePlayerPos() {
 </head>
 <body>
 <div id="background">
+<audio id="audio6" src="sounds/click.wav" preload="auto"></audio>
 <div id="noticebox"><span>Xynnar<span></div>
 	
 	<img src="images/npcs/char5.png" id="char5">

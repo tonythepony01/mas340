@@ -19,6 +19,7 @@ $(document).ready(function(){
 	checkInventory();
 	// setup
 	$('#char-3').animate({left: 0, top: 50},750);
+	var click = document.getElementById('audio6');
 	$('#talkbutton').click(function() {
 		$('#talkbutton').hide();
 		var progress = 0;
@@ -159,6 +160,7 @@ $(document).ready(function(){
 							break;	
 					}
 					progress++;  
+					click.play();
 					localStorage.setItem("DialogueProgress", progress);
 						$('#textbox #span2').html(dialogue);	
 						$('#textbox #span1').html(character);		
@@ -174,6 +176,7 @@ $(document).ready(function(){
 <body>
 
 <div id="background">
+<audio id="audio6" src="sounds/click.wav" preload="auto"></audio>
 	<button onclick="goBack()">Go Back</button>
 	<div id='char-3'></div>
 		<div id="talkbutton"><span>Chat</span></div>

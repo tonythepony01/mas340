@@ -18,6 +18,7 @@ QuestMemory();
 $('#char-3').css({left: -250, top: 50});
 	// setup
 	$('#char-3').animate({left: 0, top: 50},750);
+	var click = document.getElementById('audio6');
 	$('#talkbutton').click(function() {
 		$('#talkbutton').hide();
 		var progress = 0;
@@ -45,8 +46,6 @@ $('#char-3').css({left: -250, top: 50});
 							dialogue = "As promised, I will now attend your King's birthday celebration. Be grateful for my presence";
 							break;
 						case 3:
-							character = 'This guy';
-							dialogue = "k thanks bye"
 							if (QuestComp[0] == false) {
 								QuestToggler(0, true);
 								if ($('#QuestButton2').hasClass('jiggle') == true) {
@@ -147,6 +146,7 @@ $('#char-3').css({left: -250, top: 50});
 							break;		
 					}
 					progress++;  
+					click.play();
 					localStorage.setItem("DialogueProgress", progress);
 											$('#textbox #span2').html(dialogue);	
 						$('#textbox #span1').html(character);			
@@ -161,6 +161,7 @@ $('#char-3').css({left: -250, top: 50});
 </head>
 <body>
 <div id="background">
+<audio id="audio6" src="sounds/click.wav" preload="auto"></audio>
 	<button onclick="goBack()">Go Back</button>
 	<div id="char-3"></div>
 		<div id="talkbutton"><span>Chat</span></div>

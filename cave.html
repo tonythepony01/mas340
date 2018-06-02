@@ -11,6 +11,7 @@
 <script>
 $(document).ready(function(){
 $('#background').addClass('bg19');
+var click = document.getElementById('audio6');
 	QuestMemory();
 	QuestCompletionMemory();
 	CheckLoc();
@@ -44,19 +45,19 @@ $('#background').addClass('bg19');
 							break;
 						case 1:
 							character = 'Max';
-							dialogue = "Are you okay? I have some medicine for you from someone."
+							dialogue = "Are you okay? I have some medicine for you from someone.";
 							break;
 						case 2:
 							character = 'Sick-looking person';
-							dialogue = "(Cough cough) Was it from my mother in town?"
+							dialogue = "(Cough cough) Was it from my mother in town?";
 							break;
 						case 3:
 							character = 'Max';
-							dialogue = "Yes, I helped her to gather the ingredients for this."
+							dialogue = "Yes, I helped her to gather the ingredients for this.";
 							break;		
 						case 4:
 							character = 'Sick-looking person';
-							dialogue = "Really? Thank you so much."
+							dialogue = "Really? Thank you so much.";
 							if (QuestComp[1] == false) {
 								QuestToggler(1, true);
 							}
@@ -66,6 +67,7 @@ $('#background').addClass('bg19');
 							break;	
 				}				
 						progress++;  
+						click.play();
 						localStorage.setItem("DialogueProgress", progress);
 						$('#textbox #span2').html(dialogue);	
 						$('#textbox #span1').html(character); 
@@ -105,6 +107,7 @@ $('#background').addClass('bg19');
 							break;	
 				}				
 						progress++;  
+						click.play();
 						localStorage.setItem("DialogueProgress", progress);
 						$('#textbox #span2').html(dialogue);	
 						$('#textbox #span1').html(character); 
@@ -122,6 +125,7 @@ $('#background').addClass('bg19');
 <div id="background">
 	<div id="noticebox"><span>Cave<span></div>
 	<button onclick="goBack()">Go Back</button>
+	<audio id="audio6" src="sounds/click.wav" preload="auto"></audio>
 	<div id="inventorybutton"><a class="htmllink" href="inventory.html"><span>Inventory</span></a></div>
 	<a id ='ButtonLink' href="tunnelpuzzle.html"><div id='EnterButton'>Enter</div></a>
 	<img src="images/npcs/char1-2.png" id="char1">

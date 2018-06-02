@@ -19,6 +19,7 @@ $(document).ready(function(){
 	$('#talkbutton').show().css({left: 850, top: 150});
 	QuestMemory();
 	QuestCompletionMemory();
+	var click = document.getElementById('audio6');
 	if (localStorage.getItem('DialogueProgress') != "undefined" && localStorage.getItem('DialogueProgress') != null && localStorage.getItem('DialogueProgress') != 0) {
 		var progress = localStorage.getItem('DialogueProgress') /*Dialogue progress saver*/
 		progress -= 1;
@@ -100,7 +101,8 @@ $(document).ready(function(){
 					$('#talkbutton').show();
 					break;	
 			}
-			progress++;  
+			progress++;
+click.play();			
 			localStorage.setItem("DialogueProgress", progress);
 			$('#textbox #span2').html(dialogue);	
 			$('#textbox #span1').html(character);
@@ -113,6 +115,7 @@ $(document).ready(function(){
 </head>
 <body>
 <div id="background">
+<audio id="audio6" src="sounds/click.wav" preload="auto"></audio>
 		<div id="textbox">
 			<span id='span1'></span>
 			<span id='span2'></span>

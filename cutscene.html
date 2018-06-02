@@ -32,6 +32,7 @@
 		var grassSteps = document.getElementById('audio3');
 		var fallOver = document.getElementById('audio4');
 		var gallop = document.getElementById('audio5');
+		var click = document.getElementById('audio6');
 		$('#nextbutton').fadeIn();
 			function eventHandler() {		
 					switch (progress) {
@@ -48,19 +49,20 @@
 							'-webkit-transition':'all 0.7s ease-out',
 						});
 						character = 'Captain';
-							dialogue = "Did you find them?"
+							dialogue = "Did you find them?";
+							console.log(dialogue[1])
 							break;
 						case 2:
 						character = 'Soldier';
-							dialogue = "No sir, they must be hiding somewhere in the vicinity."
+							dialogue = "No sir, they must be hiding somewhere in the vicinity.";
 							break;
 						case 3:
 						character = 'Captain';
-							dialogue = "Find them!"
+							dialogue = "Find them!";
 							break;		
 						case 4:
 							character = '';
-							dialogue = "Yes sir!"	
+							dialogue = "Yes sir!";	
 							break;	
 						case 5:
 							character = 'Captain';
@@ -315,8 +317,9 @@
 							break;
 					}
 					progress++;  
+					click.play();
 					localStorage.setItem("DialogueProgress", progress);
-					$('#textbox #span2').html(dialogue);	
+					$('#textbox #span2').html(dialogue);
 					$('#textbox #span1').html(character);			
 					};
 		$('#nextbutton').finish().click(eventHandler);	
@@ -340,6 +343,7 @@
 <audio id="audio3" src="sounds/grasssteps.wav" preload="auto"></audio>
 <audio id="audio4" src="sounds/fallover.wav" preload="auto"></audio>
 <audio id="audio5" src="sounds/galloping.wav" preload="auto"></audio>
+<audio id="audio6" src="sounds/click.wav" preload="auto"></audio>
 
 		<div id="talkbutton"><span>Chat</span></div>
 		<div id="textbox">

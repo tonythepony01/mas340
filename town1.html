@@ -15,6 +15,7 @@ $(document).ready(function(){
 CheckTownTime('bg6','bg4');
 checkInventory();
 $("#noticebox").slideDown('400').delay(2200).slideUp('400');
+var click = document.getElementById('audio6');
 	$('#background').addClass('bg4');
     K = {}; // keys: {37:0||1, 38:0||1, ...}
 	if (localStorage.getItem("coords") != "undefined" && localStorage.getItem("coords") != null) {
@@ -73,7 +74,8 @@ $(document).on('keydown keyup', function(e) {
 						progress++;  
 						localStorage.setItem("DialogueProgress", progress);
 						$('#textbox #span2').html(dialogue);	
-						$('#textbox #span1').html(character);						
+						$('#textbox #span1').html(character);	
+click.play();						
 				} else if (p.left < 650 && p.left > 550) {			
 					switch (progress) {
 						case 0:
@@ -104,7 +106,8 @@ $(document).on('keydown keyup', function(e) {
 						progress++;  
 						localStorage.setItem("DialogueProgress", progress);
 						$('#textbox #span2').html(dialogue);	
-						$('#textbox #span1').html(character);				
+						$('#textbox #span1').html(character);	
+click.play();						
 					} else if (p.left < 750 && p.left > 650) {			
 					switch (progress) {
 						case 0:
@@ -131,8 +134,9 @@ $(document).on('keydown keyup', function(e) {
 					}
 					progress++;  
 					localStorage.setItem("DialogueProgress", progress);
-											$('#textbox #span2').html(dialogue);	
-						$('#textbox #span1').html(character);			
+					$('#textbox #span2').html(dialogue);	
+					$('#textbox #span1').html(character);	
+click.play();					
 					}
 			}
 			$('#nextbutton').click(eventHandler);				
@@ -168,6 +172,7 @@ function updatePlayerPos() {
 </head>
 <body>
 <div id="background">
+<audio id="audio6" src="sounds/click.wav" preload="auto"></audio>
 <div id="noticebox"><span>Windermere<span></div>
 <img src="images/npcs/char1.png" id="char1">
 <img src="images/npcs/char2.png" id="char8">

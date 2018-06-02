@@ -16,6 +16,7 @@
 	QuestCompletionMemory();
 	var ItemCompletion = [[localStorage.getItem('Beans'),'Beans'],[localStorage.getItem('Magicmushroom'),'Magicmushroom'],[localStorage.getItem('Sunflower'),'Sunflower']];
 	var QuestCompletion = [[QuestComp[0], 'prop6'],[QuestComp[2], 'prop7'],[QuestComp[3], 'prop8']];
+	var click = document.getElementById('audio6');
 	$('#Scene6, #Scene7').css({
 		'filter':'brightness(0)',
 		'webkitFilter':'brightness(0)',
@@ -69,15 +70,15 @@
 				dialogue = "Just Max, your majesty.";
 				break;
 			case 3:
-				character = 'King'
+				character = 'King';
 				dialogue = "Max, right.";
 				break;
 			case 4:
-				character = 'King'
+				character = 'King';
 				dialogue = "Let us begin the celebrations for my 80th birthday before our guests arrive.";
 				break;
 			case 5:
-				character = 'Max'
+				character = 'Max';
 				dialogue = "Yes your majesty.";
 				break;		
 			case 6:
@@ -116,7 +117,8 @@
 				break;
 			
 		}
-		progress++;  
+		progress++;
+		click.play();		
 		localStorage.setItem("DialogueProgress", progress);
 		$('#textbox #span2').html(dialogue);	
 		$('#textbox #span1').html(character);			
@@ -131,6 +133,7 @@
 <body>
 
 <div id="background">
+<audio id="audio6" src="sounds/click.wav" preload="auto"></audio>
 <div id="char-2"></div>
 		<div id="talkbutton"><span>Chat</span></div>
 		<div id="textbox">

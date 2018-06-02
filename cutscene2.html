@@ -40,6 +40,7 @@
 		var character;
 		var knocking = document.getElementById('audio6');		
 		var blanketlift = document.getElementById('audio7');	
+		var click = document.getElementById('audio8');
 					function eventHandler() {		
 					switch (progress) {
 						case 0:
@@ -100,6 +101,7 @@
 							break;
 					}
 					progress++;  
+					click.play();
 					localStorage.setItem("DialogueProgress", progress);
 					$('#textbox #span2').html(dialogue);	
 					$('#textbox #span1').html(character);			
@@ -117,6 +119,7 @@
 <img id='Scene4' src='images/cutscenes/bedroom.jpg'>
 <audio id="audio6" src="sounds/knocking.wav" preload="auto"></audio>
 <audio id="audio7" src="sounds/blanketlift.wav" preload="auto"></audio>
+<audio id="audio8" src="sounds/click.wav" preload="auto"></audio>
 
 		<div id="talkbutton"><span>Chat</span></div>
 		<div id="textbox">

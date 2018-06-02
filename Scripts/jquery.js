@@ -5,7 +5,7 @@ var hours = [];
 var hours2 = [];
 var EnterToggle = true;
 var degrees = 0;
-var DivList = ['#p1','#p2','#p3','#p4','#p5','#p6','#p7','#p8','#p9','#p10','#p11','#p12','#p13','#p14','#p15','#p16'];
+var DivList = ['#p1','#p2','#p3','#p4','#p5','#p6','#p7','#p8','#p9','#p10','#p11','#p12','#p13','#p14','#p15'];
 var isNightTime = true;
 	var NTval = [[3,14],[27,38],[51,62],[75,86],[99,110],[123,134],[147,158],[171,182],[195,206],[219,230]];
 var QuestDict = [['Q1', false],['Q2', false],['Q3', false],['Q4', false],['Q5', true],['Q6', false]]; // default value
@@ -282,10 +282,6 @@ function drawDayLines() {
 	ctx.moveTo(locationp11.left,locationp11.top);
 	ctx.lineTo(locationp12.left,locationp12.top);
 	ctx.stroke();
-		ctx.beginPath();
-	ctx.moveTo(locationp11.left,locationp11.top);
-	ctx.lineTo(locationp16.left,locationp16.top);
-	ctx.stroke();
 				ctx.beginPath();
 	ctx.moveTo(locationp14.left,locationp14.top);
 	ctx.lineTo(locationp15.left,locationp15.top);
@@ -366,10 +362,6 @@ function drawNightLines() {
 			ctx.beginPath();
 	ctx.moveTo(locationp11.left,locationp11.top);
 	ctx.lineTo(locationp12.left,locationp12.top);
-	ctx.stroke();
-		ctx.beginPath();
-	ctx.moveTo(locationp11.left,locationp11.top);
-	ctx.lineTo(locationp16.left,locationp16.top);
 	ctx.stroke();
 				ctx.beginPath();
 	ctx.moveTo(locationp14.left,locationp14.top);
@@ -453,10 +445,6 @@ function drawNoonLines() {
 	ctx.moveTo(locationp11.left,locationp11.top);
 	ctx.lineTo(locationp12.left,locationp12.top);
 	ctx.stroke();
-		ctx.beginPath();
-	ctx.moveTo(locationp11.left,locationp11.top);
-	ctx.lineTo(locationp16.left,locationp16.top);
-	ctx.stroke();
 			ctx.beginPath();
 	ctx.moveTo(locationp14.left,locationp14.top);
 	ctx.lineTo(locationp15.left,locationp15.top);
@@ -500,7 +488,7 @@ function CheckEnter() {
 			
 		}).show();
 		Save = localStorage.getItem('SavedLoc');
-		document.getElementById('ButtonLink').setAttribute('href',LocKeyGet(Save,0,0)[4])
+		document.getElementById('ButtonLink').setAttribute('href',LocKeyGet(Save,0,0)[4]);
 	} else {
 		$('#EnterButton').hide();
 	}
@@ -583,12 +571,12 @@ function CheckLoc() {
 		return
 	}
 	function HoverColor() {
-		var LocName = {p1:'Windermere',p3:'Garmsby',p4:'Procyt Wood',p5:'Bridge',p7:'Spalding',p9:'Spotted Frog Forest',p10:'Bridge',p12:'Kruhm Woodland',p13:'Wealdstone',p14:'Cave',p15:'Xynnar',p16:'Random Hut'};
+		var LocName = {p1:'Windermere',p3:'Garmsby',p4:'Procyt Wood',p5:'Bridge',p7:'Spalding',p9:'Spotted Frog Forest',p10:'Bridge',p12:'Kruhm Woodland',p13:'Wealdstone',p14:'Cave',p15:'Xynnar'};
 		var PointerLoc;
-		var PathList2 = [['A','B'],['B','A','C','E'],['C','D','B'],['D','C'],['E','F','B','J'],['F','E','G'],['G','F','H','I'],['H','G','I'],['I','H','G'],['J','K','L','N','E'],['K','J','L','M','P'],['L','K','J'],['M','K'],['N','J'],['O','N'],['P','K']];
-		var PathNum2 = {A:0,B:1,C:2,D:3,E:4,F:5,G:6,H:7,I:8,J:9,K:10,L:11,M:12,N:13,O:14,P:15}; 
-		var LocDict2 = {p1:'A',p2:'B',p3:'C',p4:'D',p5:'E',p6:'F',p7:'G',p8:'H',p9:'I',p10:'J',p11:'K',p12:'L',p13:'M',p14:'N',p15:'O',p16:'P'}; 
-		$("#inventorybutton, #p1,#p2,#p3,#p4,#p5,#p6,#p7,#p8,#p9,#p10,#p11,#p12,#p13,#p14,#p15,#p16, #QuestButton,#talkbutton, #nextbutton, #startButton, #instructionsButton").hover(function(){
+		var PathList2 = [['A','B'],['B','A','C','E'],['C','D','B'],['D','C'],['E','F','B','J'],['F','E','G'],['G','F','H','I'],['H','G','I'],['I','H','G'],['J','K','L','N','E'],['K','J','L','M'],['L','K','J'],['M','K'],['N','J'],['O','N']];
+		var PathNum2 = {A:0,B:1,C:2,D:3,E:4,F:5,G:6,H:7,I:8,J:9,K:10,L:11,M:12,N:13,O:14}; 
+		var LocDict2 = {p1:'A',p2:'B',p3:'C',p4:'D',p5:'E',p6:'F',p7:'G',p8:'H',p9:'I',p10:'J',p11:'K',p12:'L',p13:'M',p14:'N',p15:'O'}; 
+		$("#inventorybutton, #p1,#p2,#p3,#p4,#p5,#p6,#p7,#p8,#p9,#p10,#p11,#p12,#p13,#p14,#p15, #QuestButton,#talkbutton, #nextbutton, #startButton, #instructionsButton").hover(function(){
 			console.log('ysi')
 			PointerLoc = String($(this).attr('id'));
 			if (CurrentLoc == LocDict2[PointerLoc]) {

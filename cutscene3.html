@@ -25,6 +25,7 @@
 		var progress = 0;
 	}		
 		var blanketlift = document.getElementById('audio7');
+		var click = document.getElementById('audio6');
 		var dialogue;
 		var character;
 				$('#nextbutton').fadeIn().css({
@@ -163,6 +164,7 @@
 							break;
 					}
 					progress++;  
+					click.play();
 					localStorage.setItem("DialogueProgress", progress);
 					$('#textbox #span2').html(dialogue);	
 					$('#textbox #span1').html(character);			
@@ -179,6 +181,7 @@
 <div id="background">
 <img id='Scene4' src='images/cutscenes/bedroom.jpg'>
 <img id='Scene5' src='images/cutscenes/hallway.jpg'>
+<audio id="audio6" src="sounds/click.wav" preload="auto"></audio>
 <img id='prop5' src='images/cutscenes/chef.png'>
 <audio id="audio7" src="sounds/blanketlift.wav" preload="auto"></audio>
 		<div id="talkbutton"><span>Chat</span></div>

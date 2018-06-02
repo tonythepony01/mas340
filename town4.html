@@ -13,6 +13,7 @@ $(document).ready(function(){
 QuestMemory();
 QuestCompletionMemory();
 	CheckTownTime('bg21','bg20');
+	var click = document.getElementById('audio6');
 	$("#noticebox").slideDown('400').delay(2200).slideUp('400');
 	if (localStorage.getItem("coords") != "undefined" && localStorage.getItem("coords") != null) {
 		var coords = (JSON.parse("[" + localStorage.getItem("coords") + "]"));
@@ -87,6 +88,7 @@ $(document).on('keydown keyup', function(e) {
 						localStorage.setItem("DialogueProgress", progress);
 						$('#textbox #span2').html(dialogue);	
 						$('#textbox #span1').html(character);	
+						click.play();
 				} else if (p.left < 680 && p.left > 580) {			
 					switch (progress) {
 						case 0:
@@ -113,7 +115,8 @@ $(document).on('keydown keyup', function(e) {
 					progress++;  
 					localStorage.setItem("DialogueProgress", progress);
 										$('#textbox #span2').html(dialogue);	
-						$('#textbox #span1').html(character);				
+						$('#textbox #span1').html(character);		
+click.play();						
 					} else if (p.left < 955 && p.left > 835) {			
 					switch (progress) {
 						case 0:
@@ -136,7 +139,8 @@ $(document).on('keydown keyup', function(e) {
 						progress++;  
 						localStorage.setItem("DialogueProgress", progress);
 						$('#textbox #span2').html(dialogue);	
-						$('#textbox #span1').html(character);	 			
+						$('#textbox #span1').html(character);	
+click.play();						
 					}
 			}
 			$('#nextbutton').click(eventHandler);				
@@ -172,6 +176,7 @@ function updatePlayerPos() {
 </head>
 <body>
 <div id="background">
+<audio id="audio6" src="sounds/click.wav" preload="auto"></audio>
 <div id="noticebox"><span>Wealdstone<span></div>
 	<img src="images/npcs/char7.png" id="char7">
 	<img src="images/npcs/char8.png" id="char8">

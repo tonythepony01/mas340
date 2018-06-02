@@ -14,6 +14,7 @@ QuestMemory();
 QuestCompletionMemory();
 CheckTownTime('bg8','bg7');
 checkInventory();
+var click = document.getElementById('audio6');
 $("#noticebox").slideDown('400').delay(2200).slideUp('400');
 	if (localStorage.getItem("coords") != "undefined" && localStorage.getItem("coords") != null) {
 		var coords = (JSON.parse("[" + localStorage.getItem("coords") + "]"));
@@ -92,6 +93,7 @@ $(document).on('keydown keyup', function(e) {
 						localStorage.setItem("DialogueProgress", progress);
 						$('#textbox #span2').html(dialogue);	
 						$('#textbox #span1').html(character);	
+						click.play();
 				} else if (localStorage.getItem('Medicine') == 'true') {
 					switch (progress) {
 						case 0:
@@ -109,6 +111,7 @@ $(document).on('keydown keyup', function(e) {
 						localStorage.setItem("DialogueProgress", progress);
 						$('#textbox #span2').html(dialogue);	
 						$('#textbox #span1').html(character);	
+						click.play();
 				} else {					
 					switch (progress) {
 						case 0:
@@ -164,7 +167,8 @@ $(document).on('keydown keyup', function(e) {
 						progress++;  
 						localStorage.setItem("DialogueProgress", progress);
 						$('#textbox #span2').html(dialogue);	
-						$('#textbox #span1').html(character);			
+						$('#textbox #span1').html(character);	
+click.play();						
 					};
 				} else if (p.left < 775 && p.left > 675) {			
 					switch (progress) {
@@ -225,7 +229,8 @@ $(document).on('keydown keyup', function(e) {
 						progress++;  
 						localStorage.setItem("DialogueProgress", progress);
 						$('#textbox #span2').html(dialogue);	
-						$('#textbox #span1').html(character);		
+						$('#textbox #span1').html(character);
+click.play();						
 					} else if (p.left < 955 && p.left > 835) {			
 						switch (progress) {
 							case 0:
@@ -245,7 +250,8 @@ $(document).on('keydown keyup', function(e) {
 					progress++;  
 					localStorage.setItem("DialogueProgress", progress);
 						$('#textbox #span2').html(dialogue);	
-						$('#textbox #span1').html(character);			
+						$('#textbox #span1').html(character);
+click.play();						
 					}
 			}
 			$('#nextbutton').click(eventHandler);				
@@ -282,6 +288,7 @@ function updatePlayerPos() {
 </head>
 <body>
 <div id="background">
+<audio id="audio6" src="sounds/click.wav" preload="auto"></audio>
 <div id="noticebox"><span>Garmsby<span></div>
 	
 	<img src="images/npcs/oldwoman.png" id="old-woman">
