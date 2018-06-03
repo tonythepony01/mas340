@@ -10,21 +10,22 @@
 <script src="Scripts/jquery-ui.js"></script>
 <script>
 $(document).ready(function(){
-	$('#background').addClass('bg27').css({
+	$('#Scene8').css({
 		'filter':'brightness(0)',
 		'webkitFilter':'brightness(0)',
 		'transition':'all 0s ease-out',
 		'-webkit-transition':'all 0s ease-out',
 	});
+	$('#Scene9').fadeOut(0);
 	$('#talkbutton').show().css({left: 850, top: 150});
 	QuestMemory();
 	QuestCompletionMemory();
 	var click = document.getElementById('audio6');
+	var doorclose = document.getElementById('audio9');
 	if (localStorage.getItem('DialogueProgress') != "undefined" && localStorage.getItem('DialogueProgress') != null && localStorage.getItem('DialogueProgress') != 0) {
 		var progress = localStorage.getItem('DialogueProgress') /*Dialogue progress saver*/
 		progress -= 1;
 		eventHandler();	
-		console.log('yey'+ progress)
 	} else {
 		var progress = 0;
 		eventHandler();	
@@ -35,7 +36,7 @@ $(document).ready(function(){
 			switch (progress) {
 				case 0:
 					$('#nextbutton, #textbox ').show();
-					$('#background').css({
+					$('#Scene8').css({
 						'filter':'brightness(1)',
 						'webkitFilter':'brightness(1)',
 						'transition':'all 2s ease-out',
@@ -68,41 +69,74 @@ $(document).ready(function(){
 					character = 'Max';
 					dialogue = 'Why have you destroyed towns in the nearby lands in search of this necklace?';
 					break;					
-				case 10:
-					character = 'Alice';
+				case 7:
+					character = '???';
 					dialogue = 'That necklace is from my mother.';
 					break;
-				case 11:
-					character = 'Alice';
+				case 8:
+					character = '???';
 					dialogue = 'I have been searching for it ever since I lost it during my escape from this dreaded place.';
 					break;	
-				case 12:
-					character = 'Alice';
-					dialogue = 'They dragged me back here.';
+				case 9:
+					character = '???';
+					dialogue = 'They caught me, and dragged me back here.';
 					break;
-				case 13:
-					character = 'Alice';
-					dialogue = 'and they made me the queen of this rotting kingdom.';
-					break;	
-				case 14:
+				case 10:
 					character = 'Max';
 					dialogue = 'Sounds like you need a break.';
 					break;	
-				case 15:
+				case 11:
 					character = 'Max';
-					dialogue = 'Here, have a kit-kat';
+					dialogue = 'Here, have the necklace back.';
 					break;	
+				case 12:
+					character = '???';
+					dialogue = "You have my gratitude.";
+					break;
+				case 13:
+					character = 'Lucia';
+					dialogue = "I am Lucia, Queen of this dreaded land. Tell me your name.";
+					break;
+				case 14:
+					character = 'Max';
+					dialogue = "My name is Max.";
+					break;
+				case 15:
+					character = 'Lucia';
+					dialogue = "...Max?";
+					break;		
 				case 16:
-					character = 'Alice';
-					dialogue = "Ooooh thanks. I needed that. They don't sell that stuff here.";
-					break;						
+					character = 'Max';
+					dialogue = "(grins)";
+					break;
 				case 17:
+					character = 'Lucia';
+					dialogue = "Guards! Capture this man immediately!";
+					break;	
+				case 18:
+					character = 'Max';
+					dialogue = "Wha-, waaaaaaaaaaaaaiit!";
+					doorclose.play();
+					$('#Scene8').css({
+							'filter':'brightness(0)',
+							'webkitFilter':'brightness(0)',
+							'transition':'all 1s ease-out',
+							'-webkit-transition':'all 1s ease-out',
+					});
+					break;	
+				case 19:
+					character = 'Lucia';
+					dialogue = "...No one will leave this country...";
+					$('#Scene9').delay(3000).fadeIn(2000);
+					break;						
+				case 20:
 					$('#nextbutton, #textbox ').hide();	
 					$('#talkbutton').show();
+					setTimeout(function() {window.location = 'index.html'}, 10000);
 					break;	
 			}
 			progress++;
-click.play();			
+			click.play();			
 			localStorage.setItem("DialogueProgress", progress);
 			$('#textbox #span2').html(dialogue);	
 			$('#textbox #span1').html(character);
@@ -115,7 +149,10 @@ click.play();
 </head>
 <body>
 <div id="background">
+<img id='Scene8' src='images/cutscenes/throne5.jpg'>
+<img id='Scene9' src='images/cutscenes/end.jpg'>
 <audio id="audio6" src="sounds/click.wav" preload="auto"></audio>
+<audio id="audio9" src="sounds/prisondoorclose.wav" preload="auto"></audio>
 		<div id="textbox">
 			<span id='span1'></span>
 			<span id='span2'></span>

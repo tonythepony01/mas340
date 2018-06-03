@@ -24,6 +24,7 @@
 	$('#cake,#Beans, #Magicmushroom, #Sunflower').css({left:300, top: 0});
 	$('#cake, #Beans, #Magicmushroom, #Sunflower').css('transform', 'scale('+0.6+')');
 	$('#char-2').css({left: -300, top: 175});
+	$('#Scene9').fadeOut(0);
 	if (localStorage.getItem('DialogueProgress') != "undefined" && localStorage.getItem('DialogueProgress') != null && localStorage.getItem('DialogueProgress') != 0) {
 		var progress = localStorage.getItem('DialogueProgress') //Dialogue progress saver
 		progress -= 1;
@@ -113,6 +114,13 @@
 					'transition':'all 1s ease-out',
 					'-webkit-transition':'all 1s ease-out',
 				});
+				break;
+			case 8:
+				$('#cake').fadeOut(1000);
+				$('#Scene7').fadeOut(0);
+				$('#Scene6').fadeOut(1000)
+				$('#Scene9').delay(3000).fadeIn(2000);
+				setTimeout(function() {window.location = 'index.html'}, 10000);
 				progress = 0;
 				break;
 			
@@ -134,6 +142,7 @@
 
 <div id="background">
 <audio id="audio6" src="sounds/click.wav" preload="auto"></audio>
+<img id='Scene9' src='images/cutscenes/end.jpg'>
 <div id="char-2"></div>
 		<div id="talkbutton"><span>Chat</span></div>
 		<div id="textbox">
