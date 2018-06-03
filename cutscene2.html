@@ -36,77 +36,76 @@
 		});
 
 	}
-		var dialogue;
-		var character;
-		var knocking = document.getElementById('audio6');		
-		var blanketlift = document.getElementById('audio7');	
-		var click = document.getElementById('audio8');
-				function eventHandler() {		
-					switch (progress) {
-						case 0:
-							 $('#Scene4').css({
-								'filter':'brightness(1)',
-								'webkitFilter':'brightness(1)',
-								'transition':'all 1s ease-out',
-								'-webkit-transition':'all 1s ease-out',
-							});
-							break;
-						case 1:
-							character = '???';
-							dialogue = '(knocking)';
-							knocking.play();
-							break;
-						case 2:
-							character = 'Max';
-							dialogue = 'Who is it?';
-							blanketlift.play();
-							break;
-						case 3:
-							character = 'Messenger';
-							dialogue = 'Sir, the King requests your presence immediately.';
-							break;
-						case 4:
-							character = 'Max';
-							dialogue = 'What does he want?';
-							break;
-						case 5:
-							character = 'Messenger';
-							dialogue = 'He has an errand for you.';
-							break;
-						case 6:
-							character = 'Max';
-							dialogue = "I will head over to the palace and greet his majesty. You may leave now.";
-							break;
-						case 7:
-							character = 'Messenger';
-							dialogue = "Understood.";
-							break;
-						case 8:
-							character = "";
-							dialogue = "";
-							$('#Scene4').css({
-								'filter':'brightness(0)',
-								'webkitFilter':'brightness(0)',
-								'transition':'all 1s ease-out',
-								'-webkit-transition':'all 1s ease-out',
-							});
-							$('#nextbutton, #textbox').css({
-								'filter':'brightness(0)',
-								'webkitFilter':'brightness(0)',
-								'transition':'all 1s ease-out',
-								'-webkit-transition':'all 1s ease-out',
-							}).fadeOut();
-							setTimeout(function() {window.location = 'throne.html'}, 3000);
-							progress = 0;
-							break;
-					}
-					progress++;  
-					
-					localStorage.setItem("DialogueProgress", progress);
-					$('#textbox #span2').html(dialogue);	
-					$('#textbox #span1').html(character);			
-					};
-		$('#nextbutton').click(eventHandler);	
+	var dialogue;
+	var character;
+	var knocking = document.getElementById('audio6');		
+	var blanketlift = document.getElementById('audio7');	
+	var click = document.getElementById('audio8');
+	function eventHandler() {		
+		switch (progress) {
+			case 0:
+				$('#Scene4').css({
+					'filter':'brightness(1)',
+					'webkitFilter':'brightness(1)',
+					'transition':'all 1s ease-out',
+					'-webkit-transition':'all 1s ease-out',
+				});
+				break;
+			case 1:
+				character = '???';
+				dialogue = '(knocking)';
+				knocking.play();
+				break;
+			case 2:
+				character = 'Max';
+				dialogue = 'Who is it?';
+				blanketlift.play();
+				break;
+			case 3:
+				character = 'Messenger';
+				dialogue = 'Sir, the King requests your presence immediately.';
+				break;
+			case 4:
+				character = 'Max';
+				dialogue = 'What does he want?';
+				break;
+			case 5:
+				character = 'Messenger';
+				dialogue = 'He has an errand for you.';
+				break;
+			case 6:
+				character = 'Max';
+				dialogue = "I will head over to the palace and greet his majesty. You may leave now.";
+				break;
+			case 7:
+				character = 'Messenger';
+				dialogue = "Understood.";
+				break;
+			case 8:
+				character = "";
+				dialogue = "";
+				$('#Scene4').css({
+					'filter':'brightness(0)',
+					'webkitFilter':'brightness(0)',
+					'transition':'all 1s ease-out',
+					'-webkit-transition':'all 1s ease-out',
+				});
+				$('#nextbutton, #textbox').css({
+					'filter':'brightness(0)',
+					'webkitFilter':'brightness(0)',
+					'transition':'all 1s ease-out',
+					'-webkit-transition':'all 1s ease-out',
+				}).fadeOut();
+				setTimeout(function() {window.location = 'throne.html'}, 3000);
+				progress = 0;
+				break;
+		}
+		progress++;  
+		localStorage.setItem("DialogueProgress", progress);
+		$('#textbox #span2').html(dialogue);	
+		$('#textbox #span1').html(character);			
+	};
+	$('#nextbutton').click(eventHandler);	
 
 });
 </script>
@@ -116,18 +115,16 @@
 <body>
 
 <div id="background">
-<img id='Scene4' src='images/cutscenes/bedroom.jpg'>
-<audio id="audio6" src="sounds/knocking.wav" preload="auto"></audio>
-<audio id="audio7" src="sounds/blanketlift.wav" preload="auto"></audio>
-<audio id="audio8" src="sounds/click.wav" preload="auto"></audio>
-
-		<div id="talkbutton"><span>Chat</span></div>
-		<div id="textbox">
-			<span id='span1'></span>
-			<span id='span2'></span>
-		</div>
-		<div id="nextbutton"><span>Continue</span></div>
-
+	<img id='Scene4' src='images/cutscenes/bedroom.jpg'>
+	<audio id="audio6" src="sounds/knocking.wav" preload="auto"></audio>
+	<audio id="audio7" src="sounds/blanketlift.wav" preload="auto"></audio>
+	<audio id="audio8" src="sounds/click.wav" preload="auto"></audio>
+	<div id="talkbutton"><span>Chat</span></div>
+	<div id="textbox">
+		<span id='span1'></span>
+		<span id='span2'></span>
+	</div>
+	<div id="nextbutton"><span>Continue</span></div>
 </div>
 </body>
 </html>
