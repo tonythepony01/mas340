@@ -1,196 +1,193 @@
 <!doctype html>
 <html>
-<head>
-<meta charset="utf-8">
-<title>MAS340</title>
-<script src="Scripts/jquery-3.3.1.js"></script>
-<script src="Scripts/jquery-3.3.1.js"></script>
-<link href="Scripts/styles.css" rel="stylesheet" />
-<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-	<script src="Scripts/jquery.js"></script>
-<script src="Scripts/jquery-ui.js"></script>
+  <head>
+    <meta charset="utf-8">
+    <title>MAS340</title>
+    <script src="Scripts/jquery-3.3.1.js"></script>
+    <script src="Scripts/jquery-3.3.1.js"></script>
+    <link href="Scripts/styles.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <script src="Scripts/jquery.js"></script>
+    <script src="Scripts/jquery-ui.js"></script>
+    <script>
+      $(document).ready(function() {
+        $('#Scene5, #Scene4').css({
+          'filter': 'brightness(0)',
+          'webkitFilter': 'brightness(0)',
+        });
+        $('#prop5').fadeOut(0);
+        if (localStorage.getItem('DialogueProgress') != "undefined" && localStorage.getItem('DialogueProgress') != null && localStorage.getItem('DialogueProgress') != 0) {
+          var progress = localStorage.getItem('DialogueProgress') /*Dialogue progress saver*/
+          progress -= 1;
+          eventHandler();
+        } else {
+          var progress = 0;
+        }
+        var blanketlift = document.getElementById('audio7');
+        var click = document.getElementById('audio6');
+        var dialogue;
+        var character;
+        $('#nextbutton').fadeIn().css({
+          'filter': 'brightness(1)',
+          'webkitFilter': 'brightness(1)',
+          'transition': 'all 0.7s ease-out',
+          '-webkit-transition': 'all 0.7s ease-out',
+        });
 
-<script>
-  $(document).ready(function () {
-  	$('#Scene5, #Scene4').css({
-		'filter':'brightness(0)',
-		'webkitFilter':'brightness(0)',
-	});
-	$('#prop5').fadeOut(0);
-		if (localStorage.getItem('DialogueProgress') != "undefined" && localStorage.getItem('DialogueProgress') != null && localStorage.getItem('DialogueProgress') != 0) {
-		var progress = localStorage.getItem('DialogueProgress') /*Dialogue progress saver*/
-		progress -= 1;
-		eventHandler();	
-	} else {
-		var progress = 0;
-	}		
-		var blanketlift = document.getElementById('audio7');
-		var click = document.getElementById('audio6');
-		var dialogue;
-		var character;
-				$('#nextbutton').fadeIn().css({
-			'filter':'brightness(1)',
-			'webkitFilter':'brightness(1)',
-			'transition':'all 0.7s ease-out',
-			'-webkit-transition':'all 0.7s ease-out',
-		});
-				function eventHandler() {					
-					switch (progress) {
-						case 0:
-							$('#textbox').fadeIn().css({
-								'filter':'brightness(1)',
-								'webkitFilter':'brightness(1)',
-								'transition':'all 0.7s ease-out',
-								'-webkit-transition':'all 0.7s ease-out',
-							});
-							 $('#Scene5').css({
-								'filter':'brightness(1)',
-								'webkitFilter':'brightness(1)',
-								'transition':'all 1s ease-out',
-								'-webkit-transition':'all 1s ease-out',
-							});
-							break;
-						case 1:
-							character = 'Max';
-							dialogue = 'Jamie, were you looking for me?';
-							break;
-						case 2:
-							character = 'Chef Jamie';
-							dialogue = "Oh it's you Max.";
-							break;
-						case 3:
-							$('#prop5').fadeIn();
-							character = 'Chef Jamie';
-							dialogue = 'Yes, I was actually going to have you run around and find me some exotic ingredients.';
-							break;
-						case 4:
-							character = 'Max';
-							dialogue = "Ingredients?";
-							break;
-						case 5:
-							character = 'Chef Jamie';
-							dialogue = 'Yes. As you may already know, the King is having a birthday feast and it is my job to prepare the food.';
-							break;
-						case 6:
-							character = 'Chef Jamie';
-							dialogue = "This time I wanted to surprise the King by making it more special through the use of some rare ingredients that I want you to find while you were on your journey.";
-							break;
-						case 7:
-							character = 'Max';
-							dialogue = "I see. So what are these so called 'exotic ingredients'?";
-							break;
-						case 8:
-							character = "Chef Jamie";
-							dialogue = "Let's see here...";
-							break;
-						case 9:
-							character = "Chef Jamie";
-							dialogue = "I need you to find some magic beans, magic mushrooms and a sunflower.";
-							break;
-						case 10:
-							character = "Max";
-							dialogue = "A sunflower you say? What's so exotic about a sunflower?";
-							break;
-						case 11:
-							character = "Chef Jamie";
-							dialogue = "Nothing. The secret lies in how you use it. (wink)";
-							break;
-						case 12:
-							character = "Max";
-							dialogue = "And where exactly can I find these ingredients?";
-							break;
-						case 13:
-							character = "Chef Jamie";
-							dialogue = "No idea. Or else I wouldn't have gotten you to do it. You could probably find them growing in some forest.";
-							break;
-						case 14:
-							character = "Max";
-							dialogue = "Helpful.";
-							break;
-						case 15:
-							character = "Chef Jamie";
-							dialogue = "Very. Any other questions?";
-							break;
-						case 16:
-							character = "Max";
-							dialogue = "No. I'll be leaving now.";
-							break;
-						case 17:
-							character = "Chef Jamie";
-							dialogue = "Good Luck!";
-							break;
-						case 18:
-							$('#Scene5').css({
-								'filter':'brightness(0)',
-								'webkitFilter':'brightness(0)',
-								'transition':'all 1s ease-out',
-								'-webkit-transition':'all 1s ease-out',
-							});
-							$('#prop5').fadeOut(0);
-							$('#nextbutton').fadeOut(0).delay(3000).fadeIn(0);
-							$('#textbox ').fadeOut(0);
-							character = "";
-							dialogue = "";
-							break;
-						case 19:	
-							$('#textbox ').fadeIn(0);
-							$('#Scene5').hide();						
-							$('#Scene4').css({
-								'filter':'brightness(1)',
-								'webkitFilter':'brightness(1)',
-								'transition':'all 1s ease-out',
-								'-webkit-transition':'all 1s ease-out',
-							});
-							character = "Max";
-							dialogue = "...";
-							blanketlift.play();
-							break;
-						case 20:
-							character = "Max";
-							dialogue = "It's time to leave...";
-							break;
-						case 21:
-							$('#Scene4').css({
-								'filter':'brightness()',
-								'webkitFilter':'brightness(0)',
-								'transition':'all 1s ease-out',
-								'-webkit-transition':'all 1s ease-out',
-							});
-							$('#nextbutton, #textbox ').fadeOut(0)
-							character = "";
-							dialogue = "";
-							setTimeout(function() {window.location = 'town1.html'}, 3000);
-							progress = 0;
-							break;
-					}
-					progress++;  
-					
-					localStorage.setItem("DialogueProgress", progress);
-					$('#textbox #span2').html(dialogue);	
-					$('#textbox #span1').html(character);			
-					};
-		$('#nextbutton').finish().click(eventHandler);	
+        function eventHandler() {
+          switch (progress) {
+            case 0:
+              $('#textbox').fadeIn().css({
+                'filter': 'brightness(1)',
+                'webkitFilter': 'brightness(1)',
+                'transition': 'all 0.7s ease-out',
+                '-webkit-transition': 'all 0.7s ease-out',
+              });
+              $('#Scene5').css({
+                'filter': 'brightness(1)',
+                'webkitFilter': 'brightness(1)',
+                'transition': 'all 1s ease-out',
+                '-webkit-transition': 'all 1s ease-out',
+              });
+              break;
+            case 1:
+              character = 'Max';
+              dialogue = 'Jamie, were you looking for me?';
+              break;
+            case 2:
+              character = 'Chef Jamie';
+              dialogue = "Oh it's you Max.";
+              break;
+            case 3:
+              $('#prop5').fadeIn();
+              character = 'Chef Jamie';
+              dialogue = 'Yes, I was actually going to have you run around and find me some exotic ingredients.';
+              break;
+            case 4:
+              character = 'Max';
+              dialogue = "Ingredients?";
+              break;
+            case 5:
+              character = 'Chef Jamie';
+              dialogue = 'Yes. As you may already know, the King is having a birthday feast and it is my job to prepare the food.';
+              break;
+            case 6:
+              character = 'Chef Jamie';
+              dialogue = "This time I wanted to surprise the King by making it more special through the use of some rare ingredients that I want you to find while you were on your journey.";
+              break;
+            case 7:
+              character = 'Max';
+              dialogue = "I see. So what are these so called 'exotic ingredients'?";
+              break;
+            case 8:
+              character = "Chef Jamie";
+              dialogue = "Let's see here...";
+              break;
+            case 9:
+              character = "Chef Jamie";
+              dialogue = "I need you to find some magic beans, magic mushrooms and a sunflower.";
+              break;
+            case 10:
+              character = "Max";
+              dialogue = "A sunflower you say? What's so exotic about a sunflower?";
+              break;
+            case 11:
+              character = "Chef Jamie";
+              dialogue = "Nothing. The secret lies in how you use it. (wink)";
+              break;
+            case 12:
+              character = "Max";
+              dialogue = "And where exactly can I find these ingredients?";
+              break;
+            case 13:
+              character = "Chef Jamie";
+              dialogue = "No idea. Or else I wouldn't have gotten you to do it. You could probably find them growing in some forest.";
+              break;
+            case 14:
+              character = "Max";
+              dialogue = "Helpful.";
+              break;
+            case 15:
+              character = "Chef Jamie";
+              dialogue = "Very. Any other questions?";
+              break;
+            case 16:
+              character = "Max";
+              dialogue = "No. I'll be leaving now.";
+              break;
+            case 17:
+              character = "Chef Jamie";
+              dialogue = "Good Luck!";
+              break;
+            case 18:
+              $('#Scene5').css({
+                'filter': 'brightness(0)',
+                'webkitFilter': 'brightness(0)',
+                'transition': 'all 1s ease-out',
+                '-webkit-transition': 'all 1s ease-out',
+              });
+              $('#prop5').fadeOut(0);
+              $('#nextbutton').fadeOut(0).delay(3000).fadeIn(0);
+              $('#textbox ').fadeOut(0);
+              character = "";
+              dialogue = "";
+              break;
+            case 19:
+              $('#textbox ').fadeIn(0);
+              $('#Scene5').hide();
+              $('#Scene4').css({
+                'filter': 'brightness(1)',
+                'webkitFilter': 'brightness(1)',
+                'transition': 'all 1s ease-out',
+                '-webkit-transition': 'all 1s ease-out',
+              });
+              character = "Max";
+              dialogue = "...";
+              blanketlift.play();
+              break;
+            case 20:
+              character = "Max";
+              dialogue = "It's time to leave...";
+              break;
+            case 21:
+              $('#Scene4').css({
+                'filter': 'brightness()',
+                'webkitFilter': 'brightness(0)',
+                'transition': 'all 1s ease-out',
+                '-webkit-transition': 'all 1s ease-out',
+              });
+              $('#nextbutton, #textbox ').fadeOut(0)
+              character = "";
+              dialogue = "";
+              setTimeout(function() {
+                window.location = 'town1.html'
+              }, 3000);
+              progress = 0;
+              break;
+          }
+          progress++;
+          localStorage.setItem("DialogueProgress", progress);
+          $('#textbox #span2').html(dialogue);
+          $('#textbox #span1').html(character);
+        };
+        $('#nextbutton').finish().click(eventHandler);
 
-});
-</script>
-
-
-</head>
-<body>
-
-<div id="background">
-<img id='Scene4' src='images/cutscenes/bedroom.jpg'>
-<img id='Scene5' src='images/cutscenes/hallway.jpg'>
-<audio id="audio6" src="sounds/click.wav" preload="auto"></audio>
-<img id='prop5' src='images/cutscenes/chef.png'>
-<audio id="audio7" src="sounds/blanketlift.wav" preload="auto"></audio>
-		<div id="talkbutton"><span>Chat</span></div>
-		<div id="textbox">
-			<span id='span1'></span>
-			<span id='span2'></span>
-		</div>
-		<div id="nextbutton"><span>Continue</span></div>
-
-</div>
-</body>
+      });
+    </script>
+  </head>
+  <body>
+    <div id="background">
+      <img id='Scene4' src='images/cutscenes/bedroom.jpg'>
+      <img id='Scene5' src='images/cutscenes/hallway.jpg'>
+      <audio id="audio6" src="sounds/click.wav" preload="auto"></audio>
+      <img id='prop5' src='images/cutscenes/chef.png'>
+      <audio id="audio7" src="sounds/blanketlift.wav" preload="auto"></audio>
+      <div id="talkbutton"><span>Chat</span></div>
+      <div id="textbox">
+        <span id='span1'></span>
+        <span id='span2'></span>
+      </div>
+      <div id="nextbutton"><span>Continue</span></div>
+    </div>
+  </body>
 </html>

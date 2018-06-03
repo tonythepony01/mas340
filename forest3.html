@@ -1,130 +1,151 @@
 <!doctype html>
 <html>
-<head>
-<meta charset="utf-8">
-<title>MAS340</title>
-<script src="Scripts/jquery-3.3.1.js"></script>
-<link href="Scripts/styles.css" rel="stylesheet" />
-<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-	<script src="Scripts/jquery.js"></script>
-<script src="Scripts/jquery-ui.js"></script>
-<script>
-$(document).ready(function(){
-	$('#char').css('transform','scale(1.8)');
-	CheckTownTime('bg14','bg13');
-		checkInventory();
-			QuestMemory();
-	QuestCompletionMemory();
-	var bag = document.getElementById('audio9');
-	$("#noticebox").slideDown('400').delay(2200).slideUp('400');
-	if (localStorage.getItem("coords") != "undefined" && localStorage.getItem("coords") != null) {
-		var coords = (JSON.parse("[" + localStorage.getItem("coords") + "]"));
-		console.log(coords);
-		if (coords[0] < 50) {
-			var Pl = {el:$('#char'), x:coords[0]+65, y:coords[1], speed:coords[2]};
-		} else if (coords[0] > 950) {
-			var Pl = {el:$('#char'), x:coords[0]-65, y:coords[1], speed:coords[2]};
-		} else {
-			var Pl = {el:$('#char'), x:coords[0], y:coords[1], speed:coords[2]};
-		};
-	} else {
-		var Pl = {el:$('#char'), x:100, y:560, speed:5};
-	};	
-    K = {}; // keys: {37:0||1, 38:0||1, ...}
-	if (CheckTownTime(0,0) == true) {
-		console.log('true');
-		$('#Butterfly').attr("src","images/items/night/butterflynight.png");
-		$('#Magicmushroom').attr("src","images/items/night/magicmushroomnight.png");
-	} else {
-		console.log('false');
-		$('#Butterfly').attr("src","images/items/butterfly.png");
-		$('#Magicmushroom').attr("src","images/items/magicmushroom.png");
-	};
-	$('#Butterfly').hover(function() {
-		if(CheckTownTime(0,0) == true) {
-			$(this).attr("src","images/items/night/hoverbutterflynight.png");
-		} else {
-			$(this).attr("src","images/items/hoverbutterfly.png");
-		}
-	}, function() {
-		if (CheckTownTime(0,0) == true) {
-			$(this).attr("src","images/items/night/butterflynight.png");
-		} else {
-			$(this).attr("src","images/items/butterfly.png");
-		}
-	});
-	$('#Magicmushroom').hover(function() {
-		if(CheckTownTime(0,0) == true) {
-			$(this).attr("src","images/items/night/hovermushroomnight.png");
-		} else {
-			$(this).attr("src","images/items/hovermushroom.png");
-		}
-	}, function() {
-		if(CheckTownTime(0,0) == true) {
-			$(this).attr("src","images/items/night/magicmushroomnight.png");
-		} else {
-			$(this).attr("src","images/items/magicmushroom.png");
-		}
-	});
-	$('.clickable').mousedown(function() {
-		if ($('#inventorybutton').hasClass('jiggle') == true) {
-			$('#inventorybutton').removeClass('jiggle');
-			$('#itemGet').removeAttr('style');
-		}		
-	}).mouseup(function() {
-		if ($('#inventorybutton').hasClass('jiggle') == false) {
-			$('#inventorybutton').addClass('jiggle');
-		}
-		$('#itemGet').html($(this).attr('id')); 
-		$('#itemGet').show().animate({top: '40px'}, 150).fadeOut(200);
-		$(this).fadeOut('fast');
-		var itemName = $(this).attr('id');
-		localStorage.setItem(itemName, 'true');	
-		bag.play();
-		checkInventory();
-	});
-$(document).on('keydown keyup', function(e) {
-	var kN = e.which; // key Number
-	if(kN>36||kN<41) K[kN]= e.type==="keydown";
-});
+  <head>
+    <meta charset="utf-8">
+    <title>MAS340</title>
+    <script src="Scripts/jquery-3.3.1.js"></script>
+    <link href="Scripts/styles.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <script src="Scripts/jquery.js"></script>
+    <script src="Scripts/jquery-ui.js"></script>
+    <script>
+      $(document).ready(function() {
+        $('#char').css('transform', 'scale(1.8)');
+        CheckTownTime('bg14', 'bg13');
+        checkInventory();
+        QuestMemory();
+        QuestCompletionMemory();
+        var bag = document.getElementById('audio9');
+        $("#noticebox").slideDown('400').delay(2200).slideUp('400');
+        if (localStorage.getItem("coords") != "undefined" && localStorage.getItem("coords") != null) {
+          var coords = (JSON.parse("[" + localStorage.getItem("coords") + "]"));
+          console.log(coords);
+          if (coords[0] < 50) {
+            var Pl = {
+              el: $('#char'),
+              x: coords[0] + 65,
+              y: coords[1],
+              speed: coords[2]
+            };
+          } else if (coords[0] > 950) {
+            var Pl = {
+              el: $('#char'),
+              x: coords[0] - 65,
+              y: coords[1],
+              speed: coords[2]
+            };
+          } else {
+            var Pl = {
+              el: $('#char'),
+              x: coords[0],
+              y: coords[1],
+              speed: coords[2]
+            };
+          };
+        } else {
+          var Pl = {
+            el: $('#char'),
+            x: 100,
+            y: 560,
+            speed: 5
+          };
+        };
+        K = {};
+        if (CheckTownTime(0, 0) == true) {
+          console.log('true');
+          $('#Butterfly').attr("src", "images/items/night/butterflynight.png");
+          $('#Magicmushroom').attr("src", "images/items/night/magicmushroomnight.png");
+        } else {
+          console.log('false');
+          $('#Butterfly').attr("src", "images/items/butterfly.png");
+          $('#Magicmushroom').attr("src", "images/items/magicmushroom.png");
+        };
+        $('#Butterfly').hover(function() {
+          if (CheckTownTime(0, 0) == true) {
+            $(this).attr("src", "images/items/night/hoverbutterflynight.png");
+          } else {
+            $(this).attr("src", "images/items/hoverbutterfly.png");
+          }
+        }, function() {
+          if (CheckTownTime(0, 0) == true) {
+            $(this).attr("src", "images/items/night/butterflynight.png");
+          } else {
+            $(this).attr("src", "images/items/butterfly.png");
+          }
+        });
+        $('#Magicmushroom').hover(function() {
+          if (CheckTownTime(0, 0) == true) {
+            $(this).attr("src", "images/items/night/hovermushroomnight.png");
+          } else {
+            $(this).attr("src", "images/items/hovermushroom.png");
+          }
+        }, function() {
+          if (CheckTownTime(0, 0) == true) {
+            $(this).attr("src", "images/items/night/magicmushroomnight.png");
+          } else {
+            $(this).attr("src", "images/items/magicmushroom.png");
+          }
+        });
+        $('.clickable').mousedown(function() {
+          if ($('#inventorybutton').hasClass('jiggle') == true) {
+            $('#inventorybutton').removeClass('jiggle');
+            $('#itemGet').removeAttr('style');
+          }
+        }).mouseup(function() {
+          if ($('#inventorybutton').hasClass('jiggle') == false) {
+            $('#inventorybutton').addClass('jiggle');
+          }
+          $('#itemGet').html($(this).attr('id'));
+          $('#itemGet').show().animate({
+            top: '40px'
+          }, 150).fadeOut(200);
+          $(this).fadeOut('fast');
+          var itemName = $(this).attr('id');
+          localStorage.setItem(itemName, 'true');
+          bag.play();
+          checkInventory();
+        });
+        $(document).on('keydown keyup', function(e) {
+          var kN = e.which; // key Number
+          if (kN > 36 || kN < 41) K[kN] = e.type === "keydown";
+        });
 
-function updatePlayerPos() {
-  var dist = K[38]&&(K[37]||K[39]) || K[40]&&(K[37]||K[39]) ? 0.707 : 1; 
-  dist *= Pl.speed;
-  if(K[37]) Pl.x -= dist;
-  if(K[39]) Pl.x += dist;
-  Pl.el.css({transform:"translate3D("+ Pl.x +"px, "+ Pl.y +"px, 0)"});
-  		p = $('#char').position();
-			localStorage.setItem('coords', [Pl.x,Pl.y,Pl.speed])
-		  if (Pl.x < 40)   {
-	Pl.x = 40;
-	window.location = "map.html";
-  } else if ((Pl.x > 950)) {
-    Pl.x = 950;
-	window.location = "forest3b.html";
-  }
-}
+        function updatePlayerPos() {
+          var dist = K[38] && (K[37] || K[39]) || K[40] && (K[37] || K[39]) ? 0.707 : 1;
+          dist *= Pl.speed;
+          if (K[37]) Pl.x -= dist;
+          if (K[39]) Pl.x += dist;
+          Pl.el.css({
+            transform: "translate3D(" + Pl.x + "px, " + Pl.y + "px, 0)"
+          });
+          p = $('#char').position();
+          localStorage.setItem('coords', [Pl.x, Pl.y, Pl.speed])
+          if (Pl.x < 40) {
+            Pl.x = 40;
+            window.location = "map.html";
+          } else if ((Pl.x > 950)) {
+            Pl.x = 950;
+            window.location = "forest3b.html";
+          }
+        }
 
-(function engine() {
-  updatePlayerPos();
-  window.requestAnimationFrame( engine );
+        (function engine() {
+          updatePlayerPos();
+          window.requestAnimationFrame(engine);
 
-}());
-});
-
-</script>
-
-</head>
-<body>
-
-<div id="background">
-<div id="noticebox"><span>Kruhm Woodland<span></div>
-		<audio id="audio9" src="sounds/bag.wav" preload="auto"></audio>
-		<div id="itemGet"></div>
-			<img src="images/items/butterfly.png" id="Butterfly" class="clickable">
-			<img src="images/items/magicmushroom.png" id="Magicmushroom" class="clickable">
-			<div id="char"></div>
-	<div id="inventorybutton"><a class="htmllink" href="inventory.html"><span>Inventory</span></a></div>		
-</div>
-</body>
+        }());
+      });
+    </script>
+  </head>
+  <body>
+    <div id="background">
+      <div id="noticebox"><span>Kruhm Woodland<span></div>
+      <audio id="audio9" src="sounds/bag.wav" preload="auto"></audio>
+      <div id="itemGet"></div>
+      <img src="images/items/butterfly.png" id="Butterfly" class="clickable">
+      <img src="images/items/magicmushroom.png" id="Magicmushroom" class="clickable">
+      <div id="char"></div>
+      <div id="inventorybutton"><a class="htmllink" href="inventory.html"><span>Inventory</span></a></div>
+    </div>
+  </body>
 </html>

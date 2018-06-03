@@ -1,121 +1,123 @@
 <!doctype html>
 <html>
-<head>
-<meta charset="utf-8">
-<title>MAS340</title>
-<script src="Scripts/jquery-3.3.1.js"></script>
-<link href="Scripts/styles.css" rel="stylesheet" />
-<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-	<script src="Scripts/jquery.js"></script>
-<script src="Scripts/jquery-ui.js"></script>
-<script>
-$(document).ready(function(){
-	$('#char').css('transform','scale(1.8)');
-	CheckTownTime('bg18','bg17');
-	checkInventory();
-	QuestMemory();
-	QuestCompletionMemory();
-	var bag = document.getElementById('audio9');
-	$("#noticebox").slideDown('400').delay(2200).slideUp('400');
-	if (CheckTownTime(0,0) == true) {
-		$('#Sunflower').attr("src","images/items/night/sunflowernight.png");
-		$('#Acorns').attr("src","images/items/night/acornsnight.png");
-		$('#Necklace').attr("src","images/items/night/necklacenight.png");
-	} else {
-		$('#Sunflower').attr("src","images/items/sunflower.png");
-		$('#Acorns').attr("src","images/items/acorns.png");
-		$('#Necklace').attr("src","images/items/night/necklace.png");
-	};
-	if (QuestComp[0,3] == true && CheckTownTime(0,0) == true && QuestDict[5][1] != true) {
-		console.log('yes')
-		$('#Necklace').show();
-	} else {
-		$('#Necklace').hide();
-	}
-	$('#Necklace').click(function() {
-		if (QuestDict[5][1] == false) {
-			QuestToggler('Q6', true);
-											if ($('#QuestButton').hasClass('jiggle') == true) {
-									$('#QuestButton').removeClass('jiggle');
-								}
-								$('#QuestButton').addClass('jiggle');
-		} else {
-		}
-	
-	});
-	$('#Sunflower').hover(function() {
-		if(CheckTownTime(0,0) == true) {
-			$(this).attr("src","images/items/night/hoversunflowernight.png");
-		} else {
-			$(this).attr("src","images/items/hoversunflower.png");
-		}
-	}, function() {
-		if (CheckTownTime(0,0) == true) {
-			$(this).attr("src","images/items/night/sunflowernight.png");
-		} else {
-			$(this).attr("src","images/items/sunflower.png");
-		}
-	});
-	$('#Acorns').hover(function() {
-		if(CheckTownTime(0,0) == true) {
-			$(this).attr("src","images/items/night/hoveracornsnight.png");
-		} else {
-			$(this).attr("src","images/items/hoveracorns.png");
-		}
-	}, function() {
-		if(CheckTownTime(0,0) == true) {
-			$(this).attr("src","images/items/night/acornsnight.png");
-		} else {
-			$(this).attr("src","images/items/acorns.png");
-		}
-	});
-	
-	$('#Necklace').hover(function() {
-		if(CheckTownTime(0,0) == true) {
-			$(this).attr("src","images/items/night/hovernecklacenight.png");
-		} else {
-			$(this).attr("src","images/items/hovernecklace.png");
-		}
-	}, function() {
-		if(CheckTownTime(0,0) == true) {
-			$(this).attr("src","images/items/night/necklacenight.png");
-		} else {
-			$(this).attr("src","images/items/necklace.png");
-		}
-	});
-	
-	
-	$('.clickable').mousedown(function() {
-	if ($('#inventorybutton').hasClass('jiggle') == true) {
-		$('#inventorybutton').removeClass('jiggle');
-		$('#itemGet').removeAttr('style');
-	}		
-	}).mouseup(function() {
-		if ($('#inventorybutton').hasClass('jiggle') == false) {
-			$('#inventorybutton').addClass('jiggle');
-		}
-		$('#itemGet').html($(this).attr('id')); 
-		$('#itemGet').show().animate({top: '40px'}, 150).fadeOut(200);
-		$(this).fadeOut('fast');
-		var itemName = $(this).attr('id');
-		localStorage.setItem(itemName, 'true');	
-		bag.play();
-		checkInventory();
-	});
-});
+  <head>
+    <meta charset="utf-8">
+    <title>MAS340</title>
+    <script src="Scripts/jquery-3.3.1.js"></script>
+    <link href="Scripts/styles.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <script src="Scripts/jquery.js"></script>
+    <script src="Scripts/jquery-ui.js"></script>
+    <script>
+      $(document).ready(function() {
+        $('#char').css('transform', 'scale(1.8)');
+        CheckTownTime('bg18', 'bg17');
+        checkInventory();
+        QuestMemory();
+        QuestCompletionMemory();
+        var bag = document.getElementById('audio9');
+        $("#noticebox").slideDown('400').delay(2200).slideUp('400');
+        if (CheckTownTime(0, 0) == true) {
+          $('#Sunflower').attr("src", "images/items/night/sunflowernight.png");
+          $('#Acorns').attr("src", "images/items/night/acornsnight.png");
+          $('#Necklace').attr("src", "images/items/night/necklacenight.png");
+        } else {
+          $('#Sunflower').attr("src", "images/items/sunflower.png");
+          $('#Acorns').attr("src", "images/items/acorns.png");
+          $('#Necklace').attr("src", "images/items/night/necklace.png");
+        };
+        if (QuestComp[0, 3] == true && CheckTownTime(0, 0) == true && QuestDict[5][1] != true) {
+          console.log('yes')
+          $('#Necklace').show();
+        } else {
+          $('#Necklace').hide();
+        }
+        $('#Necklace').click(function() {
+          if (QuestDict[5][1] == false) {
+            QuestToggler('Q6', true);
+            if ($('#QuestButton').hasClass('jiggle') == true) {
+              $('#QuestButton').removeClass('jiggle');
+            }
+            $('#QuestButton').addClass('jiggle');
+          }
+        });
+        $('#Sunflower').hover(function() {
+          if (CheckTownTime(0, 0) == true) {
+            $(this).attr("src", "images/items/night/hoversunflowernight.png");
+          } else {
+            $(this).attr("src", "images/items/hoversunflower.png");
+          }
+        }, function() {
+          if (CheckTownTime(0, 0) == true) {
+            $(this).attr("src", "images/items/night/sunflowernight.png");
+          } else {
+            $(this).attr("src", "images/items/sunflower.png");
+          }
+        });
+        $('#Acorns').hover(function() {
+          if (CheckTownTime(0, 0) == true) {
+            $(this).attr("src", "images/items/night/hoveracornsnight.png");
+          } else {
+            $(this).attr("src", "images/items/hoveracorns.png");
+          }
+        }, function() {
+          if (CheckTownTime(0, 0) == true) {
+            $(this).attr("src", "images/items/night/acornsnight.png");
+          } else {
+            $(this).attr("src", "images/items/acorns.png");
+          }
+        });
 
-</script>
+        $('#Necklace').hover(function() {
+          if (CheckTownTime(0, 0) == true) {
+            $(this).attr("src", "images/items/night/hovernecklacenight.png");
+          } else {
+            $(this).attr("src", "images/items/hovernecklace.png");
+          }
+        }, function() {
+          if (CheckTownTime(0, 0) == true) {
+            $(this).attr("src", "images/items/night/necklacenight.png");
+          } else {
+            $(this).attr("src", "images/items/necklace.png");
+          }
+        });
 
-</head>
-<body>
-<div id="background">
-<audio id="audio9" src="sounds/bag.wav" preload="auto"></audio>
-<div id="noticebox"><span>Kruhm Woodland<span></div>
-<div id="itemGet"></div>
-			<img src="images/items/sunflower.png" id="Sunflower" class="clickable">
-			<img src="images/items/acorns.png" id="Acorns" class="clickable">
-			<img src="images/items/necklace.png" id="Necklace" class="clickable">
-			<div id="inventorybutton"><a class="htmllink" href="inventory.html"><span>Inventory</span></a></div>
-				<button onclick="goBack()">Go Back</button>
-</body>
+
+        $('.clickable').mousedown(function() {
+          if ($('#inventorybutton').hasClass('jiggle') == true) {
+            $('#inventorybutton').removeClass('jiggle');
+            $('#itemGet').removeAttr('style');
+          }
+        }).mouseup(function() {
+          if ($('#inventorybutton').hasClass('jiggle') == false) {
+            $('#inventorybutton').addClass('jiggle');
+          }
+          $('#itemGet').html($(this).attr('id'));
+          $('#itemGet').show().animate({
+            top: '40px'
+          }, 150).fadeOut(200);
+          $(this).fadeOut('fast');
+          var itemName = $(this).attr('id');
+          localStorage.setItem(itemName, 'true');
+          bag.play();
+          checkInventory();
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div id="background">
+      <audio id="audio9" src="sounds/bag.wav" preload="auto"></audio>
+      <div id="noticebox"><span>Kruhm Woodland<span></div>
+      <div id="itemGet"></div>
+      <img src="images/items/sunflower.png" id="Sunflower" class="clickable">
+      <img src="images/items/acorns.png" id="Acorns" class="clickable">
+      <img src="images/items/necklace.png" id="Necklace" class="clickable">
+      <div id="inventorybutton">
+        <a class="htmllink" href="inventory.html">
+        <span>Inventory</span></a>
+      </div>
+      <button onclick="goBack()">Go Back</button>
+    </div>
+  </body>
 </html>

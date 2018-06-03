@@ -1,762 +1,732 @@
 body {
-  -webkit-touch-callout: none; 
-    -webkit-user-select: none; 
-     -khtml-user-select: none; 
-       -moz-user-select: none; 
-        -ms-user-select: none; 
-            user-select: none;  
-			overflow: hidden;
+     -webkit-touch-callout: none;
+     -webkit-user-select: none;
+     -khtml-user-select: none;
+     -moz-user-select: none;
+     -ms-user-select: none;
+     user-select: none;
+     overflow: hidden;
 }
-
-#dockLeft, #dockRight {
-	position: absolute;
-	z-index: 13;
-	top: 83px;
-	left: 166.5px;
-	width: 667px;
-	height: 400px;
-	display: none;
+ #dockLeft, #dockRight {
+     position: absolute;
+     z-index: 13;
+     top: 83px;
+     left: 166.5px;
+     width: 667px;
+     height: 400px;
+     display: none;
 }
-
-#old-woman, #char1, #char4, #char3, #char6, #char7, #char8, #char2, #char5,#char5-2, #char5-3   {
-	position: absolute;
-	top: 510px;
-	left: 400px;
+ #old-woman, #char1, #char4, #char3, #char6, #char7, #char8, #char2, #char5,#char5-2, #char5-3 {
+     position: absolute;
+     top: 510px;
+     left: 400px;
 }
-
-#char1, #char4, #char3, #char2  {
-	top: 500px;
-	left: 700px;
+ #char1, #char4, #char3, #char2 {
+     top: 500px;
+     left: 700px;
 }
-#char4, #char3, #char2, #char5   {
-	left: 940px;
+ #char4, #char3, #char2, #char5 {
+     left: 940px;
 }
-#char5, #char5-2, #char5-3 {
-	top: 490px;
+ #char5, #char5-2, #char5-3 {
+     top: 490px;
 }
-
-#char5-2  {
-	left: 500px;
+ #char5-2 {
+     left: 500px;
 }
-#char5-3 {
-	left: 300px;
+ #char5-3 {
+     left: 300px;
 }
-#char6{
-	top: 490px;
-	left: 120px;
+ #char6{
+     top: 490px;
+     left: 120px;
 }
-
-#char7 {
-	top: 500px;
+ #char7 {
+     top: 500px;
 }
-
-#char8 {
-	top: 500px;
-	left: 600px;
+ #char8 {
+     top: 500px;
+     left: 600px;
 }
-#Flower,#Weed, #Beanstalk, #Butterfly, #Magicmushroom, #Sunflower, #Acorns, #Necklace    {
-	position: absolute;
-	top: 415px;
-	left: 807px;
+ #Flower,#Weed, #Beanstalk, #Butterfly, #Magicmushroom, #Sunflower, #Acorns, #Necklace {
+     position: absolute;
+     top: 415px;
+     left: 807px;
 }
-#Weed {
-	top: 375px;
-	left:119px;
+ #Weed {
+     top: 375px;
+     left:119px;
 }
-
-
-#Butterfly {
-	top: 370px;
-	left: 642px;
+ #Butterfly {
+     top: 370px;
+     left: 642px;
 }
-#Magicmushroom {
-	top: 495px;
-	left: 395px;
+ #Magicmushroom {
+     top: 495px;
+     left: 395px;
 }
-
-#DateTime {
-	background-color: black;
-	width: 80px;
-	height: 30px;
-	position: absolute;
-	display: block;
-	margin: 10px;
-	border-radius: 10px;
-	-webkit-border-radius: 10px;
+ #DateTime {
+     background-color: black;
+     width: 80px;
+     height: 30px;
+     position: absolute;
+     display: block;
+     margin: 10px;
+     border-radius: 10px;
+     -webkit-border-radius: 10px;
 }
-#Sunflower {
-	top: 500px;
-	left: 835px;
-	    -webkit-transform: scale(0.75, 0.75); /* Safari */
-    transform: scale(0.75, 0.75);
+ #Sunflower {
+     top: 500px;
+     left: 835px;
+     -webkit-transform: scale(0.75, 0.75);
+    /* Safari */
+     transform: scale(0.75, 0.75);
 }
-
-#Acorns {
-	top: 240px;
-	left: 310px;
-	-webkit-transform: scale(0.75, 0.75); /* Safari */
-    transform: scale(0.75, 0.75);
+ #Acorns {
+     top: 240px;
+     left: 310px;
+     -webkit-transform: scale(0.75, 0.75);
+    /* Safari */
+     transform: scale(0.75, 0.75);
 }
-
-#Necklace {
-	top: 325px;
-	left: 575px;
-	-webkit-transform: scale(0.20, 0.20); /* Safari */
-    transform: scale(0.20, 0.20);
-	display: none;
+ #Necklace {
+     top: 325px;
+     left: 575px;
+     -webkit-transform: scale(0.20, 0.20);
+    /* Safari */
+     transform: scale(0.20, 0.20);
+     display: none;
 }
-	
-#Day,#Time, #TimeDeduction {
-	position: absolute;
-	display: block;
-	font-size: 1em !important;
-	color: white !important;
-	list-style-type: none;
-	left: 0;
-	float: left;
-	padding: 5px;
-	padding-left: 5px;
+ #Day,#Time, #TimeDeduction {
+     position: absolute;
+     display: block;
+     font-size: 1em !important;
+     color: white !important;
+     list-style-type: none;
+     left: 0;
+     float: left;
+     padding: 5px;
+     padding-left: 5px;
 }
-
-#Time  {
-	padding-left:75px;
+ #Time {
+     padding-left:75px;
 }
-	
-#TimeDeduction {
-	padding-left:123px;
-	color: red !important;
-	
+ #TimeDeduction {
+     padding-left:123px;
+     color: red !important;
 }
-#p1,#p2,#p3,#p4, #p5,#p6,#p7, #p8,#p9,#p10,#p11,#p12,#p13,#p14,#p15, #p16 {
-	width:20px;
-	height: 20px;
-	position: absolute;
-	display: block;
-	background-color: #b40000;	
-	border-radius: 50%;
-	-webkit-border-radius: 50%;
-	margin:-10px;
+ #p1,#p2,#p3,#p4, #p5,#p6,#p7, #p8,#p9,#p10,#p11,#p12,#p13,#p14,#p15, #p16 {
+     width:20px;
+     height: 20px;
+     position: absolute;
+     display: block;
+     background-color: #b40000;
+     border-radius: 50%;
+     -webkit-border-radius: 50%;
+     margin:-10px;
 }
-
-#p1 {
-	top: 520px;
-	left: 70px;
+ #p1 {
+     top: 520px;
+     left: 70px;
 }
-#p2 {
-	top: 450px;
-	left: 190px;
+ #p2 {
+     top: 450px;
+     left: 190px;
 }
-#p3 {
-	top: 300px;
-	left: 200px;
+ #p3 {
+     top: 300px;
+     left: 200px;
 }
-
-#p4 {
-	top: 235px;
-	left: 60px;
+ #p4 {
+     top: 235px;
+     left: 60px;
 }
-
-#p5 {
-	top: 420px;
-	left: 400px;
+ #p5 {
+     top: 420px;
+     left: 400px;
 }
-#p6 {
-	top: 300px;
-	left: 325px;
+ #p6 {
+     top: 300px;
+     left: 325px;
 }
-#p7 {
-	top: 245px;
-	left: 265px;
+ #p7 {
+     top: 245px;
+     left: 265px;
 }
-
-#p8 {
-	top:190px;
-	left:360px;
+ #p8 {
+     top:190px;
+     left:360px;
 }
-#p9 {
-	top:230px;
-	left:430px;
+ #p9 {
+     top:230px;
+     left:430px;
 }
-#p10 {
-	top: 420px;
-	left: 570px;
+ #p10 {
+     top: 420px;
+     left: 570px;
 }
-#p11 {
-	top: 300px;
-	left: 690px;
+ #p11 {
+     top: 300px;
+     left: 690px;
 }
-#p12 {
-	top: 360px;
-	left: 810px;
+ #p12 {
+     top: 360px;
+     left: 810px;
 }
-#p13 {
-		top: 220px;
-	left: 850px;
+ #p13 {
+     top: 220px;
+     left: 850px;
 }
-#p14 {
-	top: 515px;
-	left: 730px;
+ #p14 {
+     top: 515px;
+     left: 730px;
 }
-
-#p15 {
-	top: 515px;
-	left: 905px;
+ #p15 {
+     top: 515px;
+     left: 905px;
 }
-
-#p16 {
-	top: 210px;
-	left: 565px;
+ #p16 {
+     top: 210px;
+     left: 565px;
 }
-
-
-
-#char, #char-2 {
-	width: 100px;
-	height: 100px;
-	position: absolute;
-	background-image: url('../images/icon.png');
-	background-repeat: no-repeat;
-	vertical-align: middle;
-	margin-top:-80px;
-	margin-left: -50px;
-	transform: scale(0.50,0.50);
-	-webkit-transform: scale(0.50,0.50);
-	z-index: 11;
+ #char, #char-2 {
+     width: 100px;
+     height: 100px;
+     position: absolute;
+     background-image: url('../images/icon.png');
+     background-repeat: no-repeat;
+     vertical-align: middle;
+     margin-top:-80px;
+     margin-left: -50px;
+     transform: scale(0.50,0.50);
+     -webkit-transform: scale(0.50,0.50);
+     z-index: 11;
 }
-#char-2 {
-		width: 800px;
-	height: 800px;
-	background-image: url('../images/cutscenes/char1.png');
-	z-index: 8;
+ #char-2 {
+     width: 800px;
+     height: 800px;
+     background-image: url('../images/cutscenes/char1.png');
+     z-index: 8;
 }
-
-#char-3 {
-	width: 700px;
-	height: 700px;
-	transform: scale(0.20,0.20);
-	-webkit-transform: scale(0.20,0.20);
-	background-image: url('../images/cutscenes/char.png');
-	background-repeat: no-repeat;
-	background-color: transparent;
-	z-index: 8;
-	position: absolute;
+ #char-3 {
+     width: 700px;
+     height: 700px;
+     transform: scale(0.20,0.20);
+     -webkit-transform: scale(0.20,0.20);
+     background-image: url('../images/cutscenes/char.png');
+     background-repeat: no-repeat;
+     background-color: transparent;
+     z-index: 8;
+     position: absolute;
 }
-
-#backbutton a, #inventorybutton a, #title,  #title0,a:visited, #itemGet, #EnterButton, #ButtonLink, #Day,#Time, button, #QuestList li, #QuestButton a, #noticebox span, #noticebox2 span, #talkbutton span, #textbox #span2, #textbox #span1, #nextbutton span, #TimeDeduction, #startButton a, #instructionsButton a, #QuestButton2 a, #descbox, #descbox span {
-	color: black;
-	font-size: 1.5em;
-	text-decoration: none;
-	font-family: 'Lato', sans-serif;
+ #backbutton a, #inventorybutton a, #title, #title0,a:visited, #itemGet, #EnterButton, #ButtonLink, #Day,#Time, button, #QuestList li, #QuestButton a, #noticebox span, #noticebox2 span, #talkbutton span, #textbox #span2, #textbox #span1, #nextbutton span, #TimeDeduction, #startButton a, #instructionsButton a, #QuestButton2 a, #descbox, #descbox span {
+     color: black;
+     font-size: 1.5em;
+     text-decoration: none;
+     font-family: 'Lato', sans-serif;
 }
-
-.player {
-    position: absolute;
-	top:170px;
-	left: 75px;
-	height: 55px;
-	width: 55px;
+ .player {
+     position: absolute;
+     top:170px;
+     left: 75px;
+     height: 55px;
+     width: 55px;
 }
-
-.fall {
-    -webkit-animation: bounce 1s ;
-    animation: bounce 1s ;
+ .fall {
+     -webkit-animation: bounce 1s ;
+     animation: bounce 1s ;
 }
-
-@-webkit-keyframes bounce {
-    from {
-        -webkit-animation-timing-function: cubic-bezier(.67,.02,.83,.67);
-		animation-timing-function: cubic-bezier(.67,.02,.83,.67);
+ @-webkit-keyframes bounce {
+     from {
+         -webkit-animation-timing-function: cubic-bezier(.67,.02,.83,.67);
+         animation-timing-function: cubic-bezier(.67,.02,.83,.67);
     }
-    50% {
-        top: 500px;
-        -webkit-animation-timing-function: cubic-bezier(0.310, 0.440, 0.445, 1);
-		animation-timing-function: cubic-bezier(0.310, 0.440, 0.445, 1);
+     50% {
+         top: 500px;
+         -webkit-animation-timing-function: cubic-bezier(0.310, 0.440, 0.445, 1);
+         animation-timing-function: cubic-bezier(0.310, 0.440, 0.445, 1);
     }
-    to {
-        top: 1080px;
+     to {
+         top: 1080px;
     }
-} 
-.jiggle {
-	-webkit-animation: jiggle 0.25s ;
-    animation: jiggle 0.25s ;
 }
-
-@-webkit-keyframes jiggle {
-    0% {
-		transform: rotate(0deg);
-		-webkit-transform: rotate(0deg);
-	}
-	5%	{transform: rotate(4deg);
-	-webkit-transform: rotate(4deg);}
-    10% {transform: rotate(-4deg);
-	-webkit-transform: rotate(-4deg);}
-	15%	{transform: rotate(4deg);
-	-webkit-transform: rotate(4deg);}
-	25% {transform: rotate(-4deg);
-	-webkit-transform: rotate(-4deg);}
-	40%	{transform: rotate(4deg);
-	-webkit-transform: rotate(4deg);}
-	60%	{transform: rotate(-4deg);
-	-webkit-transform: rotate(-4deg);}
-	80%	{transform: rotate(4deg);
-	-webkit-transform: rotate(4deg);}
-    100% {transform: rotate(0deg);
-	-webkit-transform: rotate(0deg);}
+ .jiggle {
+     -webkit-animation: jiggle 0.25s ;
+     animation: jiggle 0.25s ;
 }
-
-@-webkit-keyframes pulsate {
- 0% {-webkit-transform: scale(1, 1);
-transform: scale(1, 1);}
- 50% {-webkit-transform: scale(1.05, 1.05);
-transform: scale(1.05, 1.05);
- background-color: #ff7070;}
- 100% {-webkit-transform: scale(1, 1); 
-transform: scale(1, 1);
- background-color: #b40000; };
+ @-webkit-keyframes jiggle {
+     0% {
+         transform: rotate(0deg);
+         -webkit-transform: rotate(0deg);
+    }
+     5% {
+        transform: rotate(4deg);
+         -webkit-transform: rotate(4deg);
+    }
+     10% {
+        transform: rotate(-4deg);
+         -webkit-transform: rotate(-4deg);
+    }
+     15% {
+        transform: rotate(4deg);
+         -webkit-transform: rotate(4deg);
+    }
+     25% {
+        transform: rotate(-4deg);
+         -webkit-transform: rotate(-4deg);
+    }
+     40% {
+        transform: rotate(4deg);
+         -webkit-transform: rotate(4deg);
+    }
+     60% {
+        transform: rotate(-4deg);
+         -webkit-transform: rotate(-4deg);
+    }
+     80% {
+        transform: rotate(4deg);
+         -webkit-transform: rotate(4deg);
+    }
+     100% {
+        transform: rotate(0deg);
+         -webkit-transform: rotate(0deg);
+    }
 }
-
-@keyframes pulsate {
- 0% {transform: scale(1, 1);
- -webkit-transform: scale(1, 1);
- }
- 50% {transform: scale(1.05, 1.05);
--webkit-transform: scale(1.05, 1.05); background-color: #ff7070;
+ @-webkit-keyframes pulsate {
+     0% {
+        -webkit-transform: scale(1, 1);
+         transform: scale(1, 1);
+    }
+     50% {
+        -webkit-transform: scale(1.05, 1.05);
+         transform: scale(1.05, 1.05);
+         background-color: #ff7070;
+    }
+     100% {
+        -webkit-transform: scale(1, 1);
+         transform: scale(1, 1);
+         background-color: #b40000;
+    }
+    ;
 }
- 100% {transform: scale(1, 1);
--webkit-transform: scale(1, 1); background-color: #b40000;
-};
+ @keyframes pulsate {
+     0% {
+        transform: scale(1, 1);
+         -webkit-transform: scale(1, 1);
+    }
+     50% {
+        transform: scale(1.05, 1.05);
+         -webkit-transform: scale(1.05, 1.05);
+         background-color: #ff7070;
+    }
+     100% {
+        transform: scale(1, 1);
+         -webkit-transform: scale(1, 1);
+         background-color: #b40000;
+    }
+    ;
 }
-
-#background, #tunnelbackground, #map  {
-	background-color: white;
-	display: block;
-	position: relative;
-	margin: auto;
-	top: 150px;
-	width: 1000px;
-	height: 600px;
-	overflow: hidden;
+ #background, #tunnelbackground, #map {
+     background-color: white;
+     display: block;
+     position: relative;
+     margin: auto;
+     top: 150px;
+     width: 1000px;
+     height: 600px;
+     overflow: hidden;
 }
-
-#map {
-	position: absolute;
-	top: 0px;
+ #map {
+     position: absolute;
+     top: 0px;
 }
-
-#overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: black; opacity: 0;}
-
-.bg3,.bg4, .bg5, .bg6,.bg7, .bg8, .bg9, .bg10, .bg11, .bg12, .bg13, .bg14,.bg15, .bg16,.bg17,.bg18,.bg19, .bg20, .bg21, .bg22, .bg23 {
-	background-repeat: no-repeat;
+ #overlay {
+     position: absolute;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 100%;
+     background: black;
+     opacity: 0;
 }
-.bg3 {
-	background-image: url('../images/mapbackground2.jpg');
+ .bg3,.bg4, .bg5, .bg6,.bg7, .bg8, .bg9, .bg10, .bg11, .bg12, .bg13, .bg14,.bg15, .bg16,.bg17,.bg18,.bg19, .bg20, .bg21, .bg22, .bg23 {
+     background-repeat: no-repeat;
 }
-.bg4 {
-	background-image: url('../images/town.jpg');
+ .bg3 {
+     background-image: url('../images/mapbackground2.jpg');
 }
-.bg5 {
-	background-image: url('../images/throneroom2.jpg');
+ .bg4 {
+     background-image: url('../images/town.jpg');
 }
-.bg6 {
-background-image: url('../images/townnight.jpg');
+ .bg5 {
+     background-image: url('../images/throneroom2.jpg');
 }
-.bg7 {
-background-image: url('../images/town2day.jpg');
+ .bg6 {
+     background-image: url('../images/townnight.jpg');
 }
-.bg8 {
-background-image: url('../images/town2night.jpg');
+ .bg7 {
+     background-image: url('../images/town2day.jpg');
 }
-.bg9 {
-	background-image: url('../images/forest2a.jpg');
+ .bg8 {
+     background-image: url('../images/town2night.jpg');
 }
-.bg10 {
-	background-image: url('../images/forest2anight.jpg');
+ .bg9 {
+     background-image: url('../images/forest2a.jpg');
 }
-.bg11 {
-	background-image: url('../images/forest2b.jpg');
+ .bg10 {
+     background-image: url('../images/forest2anight.jpg');
 }
-.bg12 {
-	background-image: url('../images/forest2bnight.jpg');
+ .bg11 {
+     background-image: url('../images/forest2b.jpg');
 }
-.bg13 {
-	background-image: url('../images/forest3day.jpg');
+ .bg12 {
+     background-image: url('../images/forest2bnight.jpg');
 }
-.bg14 {
-	background-image: url('../images/forest3night.jpg');
+ .bg13 {
+     background-image: url('../images/forest3day.jpg');
 }
-.bg15 {
-	background-image: url('../images/forest1day.jpg');
+ .bg14 {
+     background-image: url('../images/forest3night.jpg');
 }
-.bg16 {
-	background-image: url('../images/forest1night.jpg');
+ .bg15 {
+     background-image: url('../images/forest1day.jpg');
 }
-.bg17 {
-	background-image: url('../images/forest3b.png');
+ .bg16 {
+     background-image: url('../images/forest1night.jpg');
 }
-.bg18 {
-	background-image: url('../images/forest3bnight.png');
+ .bg17 {
+     background-image: url('../images/forest3b.png');
 }
-.bg19 {
-	background-image: url('../images/caveentrance.jpg');
+ .bg18 {
+     background-image: url('../images/forest3bnight.png');
 }
-.bg20 {
-	background-image: url('../images/town4.jpg');
+ .bg19 {
+     background-image: url('../images/caveentrance.jpg');
 }
-
-.bg21 {
-		background-image: url('../images/town4night.jpg');
+ .bg20 {
+     background-image: url('../images/town4.jpg');
 }
-
-.bg22 {
-		background-image: url('../images/town5.jpg');
+ .bg21 {
+     background-image: url('../images/town4night.jpg');
 }
-.bg23 {
-		background-image: url('../images/town5night.jpg');
+ .bg22 {
+     background-image: url('../images/town5.jpg');
 }
-.bg24 {background-image: url('../images/cutscenes/k1throneroom.jpg');}
-.bg25 {background-image: url('../images/cutscenes/k2throneroom.jpg');}
-.bg26 {background-image: url('../images/cutscenes/k3throneroom.jpg');}
-#tunnelbackground {
-	background-color: transparent;
-	top: 0px;
+ .bg23 {
+     background-image: url('../images/town5night.jpg');
 }
-
-button {
-	position: absolute;
-left: 10px;
-top: 10px;
-height: 30px;
-	text-decoration: none;
-	display: inline-block;
-    padding: 0px 6px;
-	background-color: #b40000;
-    color: black;
-	border-width: 0px;
-	align-items: flex-start;
-	font-size: 1.5em !important;
-	border-radius: 10px;
-	-webkit-border-radius: 10px;
-	z-index: 5;
+ .bg24 {
+    background-image: url('../images/cutscenes/k1throneroom.jpg');
 }
-
-button:hover {
-	background-color: #e54444;
-	z-index: 5;
+ .bg25 {
+    background-image: url('../images/cutscenes/k2throneroom.jpg');
 }
-
-#inventorybutton, #QuestButton, #QuestButton2 {
-position: absolute;
-right: 10px;
-top: 10px;
-width: auto;
-height: 30px;
-border-radius: 10px;
--webkit-border-radius: 10px;
-padding-left: 5px;
-padding-right: 5px;
-background-color: #b40000;
-display: inline-block;
-
+ .bg26 {
+    background-image: url('../images/cutscenes/k3throneroom.jpg');
 }
-
-
-
-#startButton, #instructionsButton {
-position: absolute;
-width: auto;
-height: 30px;
-margin-left: 470px;
-top: 300px;
-border-radius: 10px;
--webkit-border-radius: 10px;
-padding-left: 5px;
-padding-right: 5px;
-background-color: #b40000;
-display: inline-block;
-z-index: 10;
-
+ #tunnelbackground {
+     background-color: transparent;
+     top: 0px;
 }
-#instructionsButton {
-	top: 350px;
-	left: -35px;
+ button {
+     position: absolute;
+     left: 10px;
+     top: 10px;
+     height: 30px;
+     text-decoration: none;
+     display: inline-block;
+     padding: 0px 6px;
+     background-color: #b40000;
+     color: black;
+     border-width: 0px;
+     align-items: flex-start;
+     font-size: 1.5em !important;
+     border-radius: 10px;
+     -webkit-border-radius: 10px;
+     z-index: 5;
 }
-
-#QuestButton {
-	top: 50px;
+ button:hover {
+     background-color: #e54444;
+     z-index: 5;
 }
-#QuestButton a span{
-	font-size: 0.95em;
-	top: 50px;
+ #inventorybutton, #QuestButton, #QuestButton2 {
+     position: absolute;
+     right: 10px;
+     top: 10px;
+     width: auto;
+     height: 30px;
+     border-radius: 10px;
+     -webkit-border-radius: 10px;
+     padding-left: 5px;
+     padding-right: 5px;
+     background-color: #b40000;
+     display: inline-block;
 }
-
-#inventorybutton:hover, #QuestButton:hover,#QuestButton2:hover, #nextbutton:hover, #talkbutton:hover  {
-	background-color: #e54444;
+ #startButton, #instructionsButton {
+     position: absolute;
+     width: auto;
+     height: 30px;
+     margin-left: 470px;
+     top: 300px;
+     border-radius: 10px;
+     -webkit-border-radius: 10px;
+     padding-left: 5px;
+     padding-right: 5px;
+     background-color: #b40000;
+     display: inline-block;
+     z-index: 10;
 }
-
-span { display:inline-block !important; vertical-align:bottom !important; }
-
-#EnterButton {
-	position: absolute;
-	left: -30px;
-	width: 50px;
-	height: 15px;
-	text-align: center;
-	vertical-align: text-top;
-	border-radius: 10px;
-	-webkit-border-radius: 10px;
-padding: 5px;
-background-color: #b40000;
+ #instructionsButton {
+     top: 350px;
+     left: -35px;
 }
-
-#ButtonLink {
-	position: absolute;
-	font-size: 0.7em;
-	padding: 0;
-	margin: 0;
+ #QuestButton {
+     top: 50px;
 }
-
-#itemGet {
-	position: absolute;
-	right: 20px;
-	top: 20px;
-	color: white;
-	z-index: 10;
+ #QuestButton a span{
+     font-size: 0.95em;
+     top: 50px;
 }
-
-#nextbutton {
-	z-index: 1;
-	position: absolute;
-	border-radius: 10px;
-	-webkit-border-radius: 10px;
-	right: 115px;
-	bottom: 40px;
-	width: auto;
-	height: 30px;
-	padding-left: 5px;
-padding-right: 5px;
-	background-color: #b40000;
-	display:none;
-	z-index: 12;
+ #inventorybutton:hover, #QuestButton:hover,#QuestButton2:hover, #nextbutton:hover, #talkbutton:hover {
+     background-color: #e54444;
 }
-
-
-#talkbutton {
-	position: absolute;
-left: 200px;
-top: 440px;
-width: 75px;
-height: 30px;
-background-color: #b40000;
-display: none;
-border-radius: 10px;
--webkit-border-radius: 10px;
+ span {
+     display:inline-block !important;
+     vertical-align:bottom !important;
 }
-
-
-#title, #title0 {
-	position: relative;
-	display: block;
-	top: 35px;
-	color: black;
-	width: 100px;
-	height: 100px;
-	margin: auto;
-	z-index: 10;
+ #EnterButton {
+     position: absolute;
+     left: -30px;
+     width: 50px;
+     height: 15px;
+     text-align: center;
+     vertical-align: text-top;
+     border-radius: 10px;
+     -webkit-border-radius: 10px;
+     padding: 5px;
+     background-color: #b40000;
+}
+ #ButtonLink {
+     position: absolute;
+     font-size: 0.7em;
+     padding: 0;
+     margin: 0;
+}
+ #itemGet {
+     position: absolute;
+     right: 20px;
+     top: 20px;
+     color: white;
+     z-index: 10;
+}
+ #nextbutton {
+     z-index: 1;
+     position: absolute;
+     border-radius: 10px;
+     -webkit-border-radius: 10px;
+     right: 115px;
+     bottom: 40px;
+     width: auto;
+     height: 30px;
+     padding-left: 5px;
+     padding-right: 5px;
+     background-color: #b40000;
+     display:none;
+     z-index: 12;
+}
+ #talkbutton {
+     position: absolute;
+     left: 200px;
+     top: 440px;
+     width: 75px;
+     height: 30px;
+     background-color: #b40000;
+     display: none;
+     border-radius: 10px;
+     -webkit-border-radius: 10px;
+}
+ #title, #title0 {
+     position: relative;
+     display: block;
+     top: 35px;
+     color: black;
+     width: 100px;
+     height: 100px;
+     margin: auto;
+     z-index: 10;
 }
  #title0 {
-	 left: -25px;
-	 top: 37px;
- }
-
-#textbox {
-background-color: rgba(194, 202, 214,0.85);
-border-color: #535456;
-  box-shadow: 0px 0px 0px 8px rgb(83,84,86,1);   
-	width: 800px;
-	height: 135px;
-	border-radius: 20px;
-	-webkit-border-radius: 20px;
-	position: absolute;
-	display: none;
-	bottom: 25px;
-	left: 100px;
-	padding: 0px;
-	z-index:12;
-	
-} 
-
-#textbox #span2, #textbox #span1, #talkbutton span, #nextbutton span{
-	position: relative;
-	font-size: 1.2em;
-	top: 3px;
+     left: -25px;
+     top: 37px;
 }
-
-#talkbutton span {
-	left: 16px;
+ #textbox {
+     background-color: rgba(194, 202, 214,0.85);
+     border-color: #535456;
+     box-shadow: 0px 0px 0px 8px rgb(83,84,86,1);
+     width: 800px;
+     height: 135px;
+     border-radius: 20px;
+     -webkit-border-radius: 20px;
+     position: absolute;
+     display: none;
+     bottom: 25px;
+     left: 100px;
+     padding: 0px;
+     z-index:12;
 }
-#textbox #span1 {
-		position: absolute !important;
-	margin-left: 20px;
-	margin-top: 10px;
-	color: #b40000;
-	font-size: 1.3em;
-		opacity: 1 !important;
+ #textbox #span2, #textbox #span1, #talkbutton span, #nextbutton span{
+     position: relative;
+     font-size: 1.2em;
+     top: 3px;
 }
-#textbox #span2 {
-	position: absolute !important;
-		margin-left: 20px;
-	margin-top: 50px;
-	opacity: 1 !important;
+ #talkbutton span {
+     left: 16px;
 }
-
-#noticebox {
-	background-color: #2196F3;	
-	width: 700px;
-	height: 30px;
-	position: absolute;
-	left: 150px;
-	top: 10px;
-	border-radius: 10px;
-	-webkit-border-radius: 20px;
-	text-align: center;
-	display: none;
-	z-index: 11;
+ #textbox #span1 {
+     position: absolute !important;
+     margin-left: 20px;
+     margin-top: 10px;
+     color: #b40000;
+     font-size: 1.3em;
+     opacity: 1 !important;
 }
-#noticebox span {
-	position: absolute;
-	margin: auto;
-	top: 5px;
-	left: 300px;
-	font-size: 1.15em;
+ #textbox #span2 {
+     position: absolute !important;
+     margin-left: 20px;
+     margin-top: 50px;
+     opacity: 1 !important;
 }
-#noticebox2 {
-	background-color: #2196F3;	
-	width: 700px;
-	height: 30px;
-	position: absolute;
-	left: 150px;
-	top: 10px;
-	border-radius: 10px;
-	-webkit-border-radius: 10px;
-	text-align: center;
-	display: none;
-	z-index: 11;
+ #noticebox {
+     background-color: #2196F3;
+     width: 700px;
+     height: 30px;
+     position: absolute;
+     left: 150px;
+     top: 10px;
+     border-radius: 10px;
+     -webkit-border-radius: 20px;
+     text-align: center;
+     display: none;
+     z-index: 11;
 }
-#noticebox2 span {
-	position: relative;
-	margin: auto;
-	top: 5px;
-	text-align: center;
-	font-size: 1.15em;
+ #noticebox span {
+     position: absolute;
+     margin: auto;
+     top: 5px;
+     left: 300px;
+     font-size: 1.15em;
 }
-#descbox {
-	background-color: rgba(0,0,0,0.35);
-	position: absolute;
-	margin: auto;
-	top: 414px;
-	left: 354px;
-	width: 446px;
-	height: 142px;
-	z-index: 10;
-	display: none;
+ #noticebox2 {
+     background-color: #2196F3;
+     width: 700px;
+     height: 30px;
+     position: absolute;
+     left: 150px;
+     top: 10px;
+     border-radius: 10px;
+     -webkit-border-radius: 10px;
+     text-align: center;
+     display: none;
+     z-index: 11;
 }
-
-#descbox span {
-	font-size: 0.8em;
-	color: white;
-	margin: 10px;
+ #noticebox2 span {
+     position: relative;
+     margin: auto;
+     top: 5px;
+     text-align: center;
+     font-size: 1.15em;
 }
-
-#itemgrid {
-	display: grid;
-	grid-template-columns: 140px 140px 140px 140px;
-	grid-template-rows: 140px 140px 140px 140px;
-	grid-gap: 10px;
-	position: relative;
-	padding: 10px;
-	padding-top: 110px;
-	width: 595px;
-	height: 446px;
-	margin: auto;
-	margin-top: -100px;
-	background-image: url('../images/inventorylayout.jpg');
+ #descbox {
+     background-color: rgba(0,0,0,0.35);
+     position: absolute;
+     margin: auto;
+     top: 414px;
+     left: 354px;
+     width: 446px;
+     height: 142px;
+     z-index: 10;
+     display: none;
 }
-
-#QuestScroll {
-	padding-top: 150px;
-	width: 550px;
-	height: 446px;
-	margin: auto;
-	margin-top: -105px;
-	background-image: url('../images/scroll.png');
-	background-repeat: no-repeat;
+ #descbox span {
+     font-size: 0.8em;
+     color: white;
+     margin: 10px;
 }
-
-#QuestList {
-	position: absolute;
-	margin-left: 80px;
-	margin-top: -20px;
-	width: 300px;
+ #itemgrid {
+     display: grid;
+     grid-template-columns: 140px 140px 140px 140px;
+     grid-template-rows: 140px 140px 140px 140px;
+     grid-gap: 10px;
+     position: relative;
+     padding: 10px;
+     padding-top: 110px;
+     width: 595px;
+     height: 446px;
+     margin: auto;
+     margin-top: -100px;
+     background-image: url('../images/inventorylayout.jpg');
 }
-
-#QuestList li {
-	padding-bottom: 10px;
-	font-size: 1.2em;
-	display: none;
+ #QuestScroll {
+     padding-top: 150px;
+     width: 550px;
+     height: 446px;
+     margin: auto;
+     margin-top: -105px;
+     background-image: url('../images/scroll.png');
+     background-repeat: no-repeat;
 }
-
-#itemgrid .items {
-	
-  background-color: transparent;
-  padding: 20px;
-  font-size: 30px;
-  text-align: center;
-  
+ #QuestList {
+     position: absolute;
+     margin-left: 80px;
+     margin-top: -20px;
+     width: 300px;
 }
-
-#itemgrid .items img {
-	display: none;
+ #QuestList li {
+     padding-bottom: 10px;
+     font-size: 1.2em;
+     display: none;
 }
-
-#Scene1, #Scene2, #prop4, #Scene3, #Scene4, #Scene5, #Scene6, #Scene7, #prop6,#prop7,#prop8, #Scene8, #Scene9 {
-	position: absolute;
-	width: 1000px;
-	height: auto;
+ #itemgrid .items {
+     background-color: transparent;
+     padding: 20px;
+     font-size: 30px;
+     text-align: center;
 }
-
-#prop1, #prop2, #prop3, #prop5 {
-	position: absolute;
-	z-index: 10;
-	top: 200px;
-	left: 800px;
+ #itemgrid .items img {
+     display: none;
 }
-
-#Scene9 {
-	
-	z-index: 20;
+ #Scene1, #Scene2, #prop4, #Scene3, #Scene4, #Scene5, #Scene6, #Scene7, #prop6,#prop7,#prop8, #Scene8, #Scene9 {
+     position: absolute;
+     width: 1000px;
+     height: auto;
 }
-
-#prop2 {
-	top: 275px;
-	left: 350px;
+ #prop1, #prop2, #prop3, #prop5 {
+     position: absolute;
+     z-index: 10;
+     top: 200px;
+     left: 800px;
 }
-#prop3 {
-	 	top: 275px;
-	 left: 400px;
- }
- 
-#prop5 {
-	left: 350px;
-	top: 0px;
+ #Scene9 {
+     z-index: 20;
 }
-
-#cake, #Beans, #Magicmushroom, #Sunflower {
-	z-index: 11;
-	position: absolute;
+ #prop2 {
+     top: 275px;
+     left: 350px;
 }
-
-#prop6,#prop7,#prop8 {
-	z-index: 11;
-	display: none;
+ #prop3 {
+     top: 275px;
+     left: 400px;
+}
+ #prop5 {
+     left: 350px;
+     top: 0px;
+}
+ #cake, #Beans, #Magicmushroom, #Sunflower {
+     z-index: 11;
+     position: absolute;
+}
+ #prop6,#prop7,#prop8 {
+     z-index: 11;
+     display: none;
 }
 

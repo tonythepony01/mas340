@@ -1,174 +1,186 @@
 <!doctype html>
 <html>
-<head>
-<meta charset="utf-8">
-<title>MAS340</title>
-<script src="Scripts/jquery-3.3.1.js"></script>
-<link href="Scripts/styles.css" rel="stylesheet" />
-<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-	<script src="Scripts/jquery.js"></script>
-<script src="Scripts/jquery-ui.js"></script>
-<script>
-$(document).ready(function(){
-$('#nextbutton, #textbox').fadeOut(0);
-	QuestMemory();
-	$('#char-2').css({left: -300, top: 175});
-	$('#background').addClass('bg5');
-	$('#background').css({
-		'filter':'brightness(0)',
-		'webkitFilter':'brightness(0)',
-		'transition':'all 0s ease-out',
-		'-webkit-transition':'all 0s ease-out',
-	});
-	$('#talkbutton').show().css({left: 850, top: 150});
-	// setup
-	$('#char-2').animate({left: -100, top: 175},750);
-	$('#talkbutton').hide();
-	var click = document.getElementById('audio6');
+  <head>
+    <meta charset="utf-8">
+    <title>MAS340</title>
+    <script src="Scripts/jquery-3.3.1.js"></script>
+    <link href="Scripts/styles.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <script src="Scripts/jquery.js"></script>
+    <script src="Scripts/jquery-ui.js"></script>
+    <script>
+      $(document).ready(function() {
+        $('#nextbutton, #textbox').fadeOut(0);
+        QuestMemory();
+        $('#char-2').css({
+          left: -300,
+          top: 175
+        });
+        $('#background').addClass('bg5');
+        $('#background').css({
+          'filter': 'brightness(0)',
+          'webkitFilter': 'brightness(0)',
+          'transition': 'all 0s ease-out',
+          '-webkit-transition': 'all 0s ease-out',
+        });
+        $('#talkbutton').show().css({
+          left: 850,
+          top: 150
+        });
+        // setup
+        $('#char-2').animate({
+          left: -100,
+          top: 175
+        }, 750);
+        $('#talkbutton').hide();
+        var click = document.getElementById('audio6');
 
-	if (localStorage.getItem('DialogueProgress') != "undefined" && localStorage.getItem('DialogueProgress') != null && localStorage.getItem('DialogueProgress') != 0) {
-		var progress = localStorage.getItem('DialogueProgress') /*Dialogue progress saver*/
-		progress -= 1;
-		eventHandler();	
-		console.log('yey'+ progress)
-	} else {
-		var progress = 0;
-		eventHandler();	
-	}
-		var dialogue;
-		var character;
-				$('#nextbutton').fadeIn().css({
-			'filter':'brightness(1)',
-			'webkitFilter':'brightness(1)',
-			'transition':'all 0.7s ease-out',
-			'-webkit-transition':'all 0.7s ease-out',
-		});
-		function eventHandler() {
-		click.play();
-			switch (progress) {
-			
-				case 0:
-						$('#textbox').fadeIn().css({
-			'filter':'brightness(1)',
-			'webkitFilter':'brightness(1)',
-			'transition':'all 0.7s ease-out',
-			'-webkit-transition':'all 0.7s ease-out',
-		});
-					$('#background').css({
-						'filter':'brightness(1)',
-						'webkitFilter':'brightness(1)',
-						'transition':'all 1s ease-out',
-						'-webkit-transition':'all 1s ease-out',
-					});
-					character = 'Max'
-					dialogue = "You summoned me, your majesty.";
-					break;
-				case 1:
-					character = 'King'
-					dialogue = "Ahh yes, young Max..ine?";
-					break;
-				case 2:
-					character = 'Max'
-					dialogue = "Just Max, your majesty.";
-					break;		
-				case 3:
-					character = 'King'
-					dialogue = "Max, right.";
-					break;	
-				case 4:
-					character = 'King'
-					dialogue = "Anyway, the reason I have called you here is because...what was it again?";
-					break;	
-				case 5:
-					character = 'Max'
-					dialogue = "An errand, your majesty.";
-					break;
-				case 6:
-					character = 'King'
-					dialogue = "Ah yes, right.";
-					break;
-				case 7:
-					character = 'King'
-					dialogue = "As you may know, it is my 80th birthday in 10 days, and I plan to hold a feast in my palace.";
-					break;
-				case 8:
-					character = 'King'
-					dialogue = "I would like to have the Dukes of the neighbouring lands to be here. But it turns out I forgot to send the invitations.";
-					break;
-				case 9:
-					character = 'Max'
-					dialogue = "Why don't you send the messenger?";
-					break;
-				case 10:
-					character = 'King'
-					dialogue = "He was eaten by a lion. So I thought this would be the perfect opportunity for you to go on your first mission.";
-					break;
-				case 11:
-					character = 'King'
-					dialogue = "We have been grooming you after all these years to become a fine diplomat, after we found you lying in the grass fields when you were a child.";
-					break;
-				case 12:
-					character = 'King'
-					dialogue = "I believe it is time to put your skills to the test.";
-					break;
-				case 13:
-					character = 'Max'
-					dialogue = "I see. ";
-					break;
-				case 14:
-					character = 'King'
-					dialogue = "You will leave at 9 in the morning tomorrow.";
-					break;
-				case 15:
-					character = 'King'
-					dialogue = "Ah yes, it seems the head chef Jamie has something for you to do as well.";
-					break;
-				case 16:
-					character = 'King'
-					dialogue = "You may leave me now.";
-					break;
-				case 17:
-					character = 'Max'
-					dialogue = "Understood. I will go see him right away.";
-					break;
-				case 18:
-					$('#nextbutton, #textbox ').fadeOut(0);
-					if ($('#QuestButton2').hasClass('jiggle') == true) {
-						$('#QuestButton2').removeClass('jiggle');
-					}
-					$('#QuestButton2').addClass('jiggle');
-					$('#char-2').animate({left: -600, top: 175},750);
-					$('#background').delay(1000).css({
-						'filter':'brightness()',
-						'webkitFilter':'brightness(0)',
-						'transition':'all 1s ease-out',
-						'-webkit-transition':'all 1s ease-out',
-					});
-					setTimeout(function() {window.location = 'cutscene3.html'}, 3000);
-					progress = 0;
-					break;
-			}
-			progress++;  
-			localStorage.setItem("DialogueProgress", progress);
-					$('#textbox #span2').html(dialogue);	
-					$('#textbox #span1').html(character);	
-		}
-		$('#nextbutton').click(eventHandler);		
-});
+        if (localStorage.getItem('DialogueProgress') != "undefined" && localStorage.getItem('DialogueProgress') != null && localStorage.getItem('DialogueProgress') != 0) {
+          var progress = localStorage.getItem('DialogueProgress') /*Dialogue progress saver*/
+          progress -= 1;
+          eventHandler();
+          console.log('yey' + progress)
+        } else {
+          var progress = 0;
+          eventHandler();
+        }
+        var dialogue;
+        var character;
+        $('#nextbutton').fadeIn().css({
+          'filter': 'brightness(1)',
+          'webkitFilter': 'brightness(1)',
+          'transition': 'all 0.7s ease-out',
+          '-webkit-transition': 'all 0.7s ease-out',
+        });
 
-</script>
+        function eventHandler() {
+          switch (progress) {
 
-</head>
-<body>
-<div id="background">
-<audio id="audio6" src="sounds/click.wav" preload="auto"></audio>
-	<div id="char-2"></div>
-		<div id="talkbutton"><span>Chat</span></div>
-		<div id="textbox">
-			<span id='span1'></span>
-			<span id='span2'></span>
-		</div>
-		<div id="nextbutton"><span>Continue</span></div>
-</div>
-</body>
+            case 0:
+              $('#textbox').fadeIn().css({
+                'filter': 'brightness(1)',
+                'webkitFilter': 'brightness(1)',
+                'transition': 'all 0.7s ease-out',
+                '-webkit-transition': 'all 0.7s ease-out',
+              });
+              $('#background').css({
+                'filter': 'brightness(1)',
+                'webkitFilter': 'brightness(1)',
+                'transition': 'all 1s ease-out',
+                '-webkit-transition': 'all 1s ease-out',
+              });
+              character = 'Max'
+              dialogue = "You summoned me, your majesty.";
+              break;
+            case 1:
+              character = 'King'
+              dialogue = "Ahh yes, young Max..ine?";
+              break;
+            case 2:
+              character = 'Max'
+              dialogue = "Just Max, your majesty.";
+              break;
+            case 3:
+              character = 'King'
+              dialogue = "Max, right.";
+              break;
+            case 4:
+              character = 'King'
+              dialogue = "Anyway, the reason I have called you here is because...what was it again?";
+              break;
+            case 5:
+              character = 'Max'
+              dialogue = "An errand, your majesty.";
+              break;
+            case 6:
+              character = 'King'
+              dialogue = "Ah yes, right.";
+              break;
+            case 7:
+              character = 'King'
+              dialogue = "As you may know, it is my 80th birthday in 10 days, and I plan to hold a feast in my palace.";
+              break;
+            case 8:
+              character = 'King'
+              dialogue = "I would like to have the Dukes of the neighbouring lands to be here. But it turns out I forgot to send the invitations.";
+              break;
+            case 9:
+              character = 'Max'
+              dialogue = "Why don't you send the messenger?";
+              break;
+            case 10:
+              character = 'King'
+              dialogue = "He was eaten by a lion. So I thought this would be the perfect opportunity for you to go on your first mission.";
+              break;
+            case 11:
+              character = 'King'
+              dialogue = "We have been grooming you after all these years to become a fine diplomat, after we found you lying in the grass fields when you were a child.";
+              break;
+            case 12:
+              character = 'King'
+              dialogue = "I believe it is time to put your skills to the test.";
+              break;
+            case 13:
+              character = 'Max'
+              dialogue = "I see. ";
+              break;
+            case 14:
+              character = 'King'
+              dialogue = "You will leave at 9 in the morning tomorrow.";
+              break;
+            case 15:
+              character = 'King'
+              dialogue = "Ah yes, it seems the head chef Jamie has something for you to do as well.";
+              break;
+            case 16:
+              character = 'King'
+              dialogue = "You may leave me now.";
+              break;
+            case 17:
+              character = 'Max'
+              dialogue = "Understood. I will go see him right away.";
+              break;
+            case 18:
+              $('#nextbutton, #textbox ').fadeOut(0);
+              if ($('#QuestButton2').hasClass('jiggle') == true) {
+                $('#QuestButton2').removeClass('jiggle');
+              }
+              $('#QuestButton2').addClass('jiggle');
+              $('#char-2').animate({
+                left: -600,
+                top: 175
+              }, 750);
+              $('#background').delay(1000).css({
+                'filter': 'brightness()',
+                'webkitFilter': 'brightness(0)',
+                'transition': 'all 1s ease-out',
+                '-webkit-transition': 'all 1s ease-out',
+              });
+              setTimeout(function() {
+                window.location = 'cutscene3.html'
+              }, 3000);
+              progress = 0;
+              break;
+          }
+          progress++;
+          localStorage.setItem("DialogueProgress", progress);
+          $('#textbox #span2').html(dialogue);
+          $('#textbox #span1').html(character);
+        }
+        $('#nextbutton').click(eventHandler);
+      });
+    </script>
+  </head>
+  <body>
+    <div id="background">
+      <audio id="audio6" src="sounds/click.wav" preload="auto"></audio>
+      <div id="char-2"></div>
+      <div id="talkbutton"><span>Chat</span></div>
+      <div id="textbox">
+        <span id='span1'></span>
+        <span id='span2'></span>
+      </div>
+      <div id="nextbutton"><span>Continue</span></div>
+    </div>
+  </body>
 </html>

@@ -1,194 +1,200 @@
 <!doctype html>
 <html>
-<head>
-<meta charset="utf-8">
-<title>MAS340</title>
-<script src="Scripts/jquery-3.3.1.js"></script>
-<link href="Scripts/styles.css" rel="stylesheet" />
-<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-	<script src="Scripts/jquery.js"></script>
-<script src="Scripts/jquery-ui.js"></script>
-<script>
-$(document).ready(function(){
-	QuestMemory();
-	QuestCompletionMemory();
-	CheckTownTime(0,0);
-	$('#char-3').css({left: -250, top: 50});
-	$('#background').addClass('bg25');
-	$('#talkbutton').show().css({left: 850, top: 150});
-	checkInventory();
-	// setup
-	$('#char-3').animate({left: 0, top: 50},750);
-	var click = document.getElementById('audio6');
-	$('#talkbutton').click(function() {
-		$('#talkbutton').hide();
-		var progress = 0;
-		var dialogue;
-		var character;
-		eventHandler();
-			function eventHandler() {
-				if (localStorage.getItem('Weed') == 'true') {
-					switch (progress) {					
-						case 0:
-							$('#nextbutton, #textbox ').show();
-							character = 'Duke';
-							dialogue = "Looks good there little one.";
-							break;
-						case 1:
-							character = 'Duke';
-							dialogue = "Now that you've completed the task, I will attend your king's party as originally promised.";
-							break;
-						case 2:
-							character = 'Max';
-							dialogue = "We will be waiting.";
-							break;
-						case 3:
-							character = '';
-							dialogue = "";
-							if (QuestComp[2] == false) {
-								QuestToggler(2, true);
-								if ($('#QuestButton2').hasClass('jiggle') == true) {
-									$('#QuestButton2').removeClass('jiggle');
-								}
-								$('#QuestButton2').addClass('jiggle');
-							}
-							$('#nextbutton, #textbox ').hide();	
-							break;		
-					}					
-						progress++;  
-						click.play();
-						localStorage.setItem("DialogueProgress", progress);
-						$('#textbox #span2').html(dialogue);	
-						$('#textbox #span1').html(character);		
-				} else if (CheckTownTime(0,0)== true) {
-					switch (progress) {
-						case 0:
-							$('#nextbutton, #textbox ').show();
-							character = 'Duke';
-							dialogue = "Hello there.";
-							break;
-						case 1:
-							character = 'Max';
-							dialogue = "I bring to you an invitation from the King of Windermere to attend his birthday celebration.";
-							break;
-						case 2:
-							character = 'Duke';
-							dialogue = "You want me to go to your king's party?"
-							break;
-						case 3:
-							character = 'Max';
-							dialogue = "I am certain he would be in joy if you could join us.";
-							break;
-						case 4:
-							character = 'Duke';
-							dialogue = "Hmm...";
-							break;	
-						case 5:
-							character = 'Max';
-							dialogue = "Is something bothering you sir?";
-							break;							
-						case 6:
-							character = 'Duke';
-							dialogue = "Actually yes. Recently we have been dealing with random attacks during the night. To add to that, somebody has been destroying the bridge that we use for trade.";
-							break;	
-						case 7:
-							character = 'Duke';
-							dialogue = "It is quite stressful having to think about dealing with these matters. So much till the point my skin is turning into a strange hue.";
-							break;			
-						case 8:
-							character = 'Duke';
-							dialogue = "Because of that, I have a request for you.";
-							break;	
-						case 9:
-							character = 'Max';
-							dialogue = "Did you want me to find out the roots of all these problems?";
-							break;		
-						case 10:
-							character = 'Duke';
-							dialogue = "No, I would like you to go to the nearby forest and fetch me some 'herbs'.";
-							break;
-						case 11:
-							character = 'Duke';
-							dialogue = "And as much as I would like that, these are our problems for us to deal with.";
-							break;
-						case 12:
-							character = 'Max';
-							dialogue = "I see. I will return with the goods.";
-							break;							
-						case 13:
-							character = '';
-							dialogue = "";
-							if (QuestDict[2][1] == false) {
-								QuestToggler('Q3', true);
-								if ($('#QuestButton2').hasClass('jiggle') == true) {
-									$('#QuestButton2').removeClass('jiggle');
-								}
-								$('#QuestButton2').addClass('jiggle');
-								console.log(QuestDict);
-							}
-							$('#nextbutton, #textbox ').hide();	
-							break;		
-					}
-					progress++; 
-click.play();					
-					localStorage.setItem("DialogueProgress", progress);
-						$('#textbox #span2').html(dialogue);	
-						$('#textbox #span1').html(character);			
-				} else {					
-					switch (progress) {
-						case 0:
-							$('#nextbutton, #textbox ').show();
-							character = 'Max';
-							dialogue = "Sir, I have an invit-";
-							break;
-						case 1:
-							character = 'Duke';
-							dialogue = "Sorry little one.";
-							break;
-						case 2:
-							character = 'Duke';
-							dialogue = "I am feeling a little tired right now.";
-							break;
-						case 3:
-							character = 'Duke';
-							dialogue = "You may come talk to me later during the night."
-							break;
-						case 4:
-							character = 'Max';
-							dialogue = "Understood.";
-							break;		
-						case 5:
-							$('#nextbutton, #textbox ').hide();			
-							break;	
-					}
-					progress++;  
-					click.play();
-					localStorage.setItem("DialogueProgress", progress);
-						$('#textbox #span2').html(dialogue);	
-						$('#textbox #span1').html(character);		
-					};
-			}
-		$('#nextbutton').click(eventHandler);		
-	});
-});
+  <head>
+    <meta charset="utf-8">
+    <title>MAS340</title>
+    <script src="Scripts/jquery-3.3.1.js"></script>
+    <link href="Scripts/styles.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <script src="Scripts/jquery.js"></script>
+    <script src="Scripts/jquery-ui.js"></script>
+    <script>
+      $(document).ready(function() {
+        QuestMemory();
+        QuestCompletionMemory();
+        CheckTownTime(0, 0);
+        $('#char-3').css({
+          left: -250,
+          top: 50
+        });
+        $('#background').addClass('bg25');
+        $('#talkbutton').show().css({
+          left: 850,
+          top: 150
+        });
+        checkInventory();
+        // setup
+        $('#char-3').animate({
+          left: 0,
+          top: 50
+        }, 750);
+        var click = document.getElementById('audio6');
+        $('#talkbutton').click(function() {
+          $('#talkbutton').hide();
+          var progress = 0;
+          var dialogue;
+          var character;
+          eventHandler();
 
-</script>
-
-</head>
-<body>
-
-<div id="background">
-<audio id="audio6" src="sounds/click.wav" preload="auto"></audio>
-	<button onclick="goBack()">Go Back</button>
-	<div id='char-3'></div>
-		<div id="talkbutton"><span>Chat</span></div>
-		<div id="textbox">
-			<span id='span1'></span>
-			<span id='span2'></span>
-		</div>
-		<div id="nextbutton"><span>Continue</span></div>
-				<div id="QuestButton2"><a class="htmllink" href="questList.html"><span>Quest List</span></a></div>
-</div>
-
-</body>
+          function eventHandler() {
+            if (localStorage.getItem('Weed') == 'true') {
+              switch (progress) {
+                case 0:
+                  $('#nextbutton, #textbox ').show();
+                  character = 'Duke';
+                  dialogue = "Looks good there little one.";
+                  break;
+                case 1:
+                  character = 'Duke';
+                  dialogue = "Now that you've completed the task, I will attend your king's party as originally promised.";
+                  break;
+                case 2:
+                  character = 'Max';
+                  dialogue = "We will be waiting.";
+                  break;
+                case 3:
+                  character = '';
+                  dialogue = "";
+                  if (QuestComp[2] == false) {
+                    QuestToggler(2, true);
+                    if ($('#QuestButton2').hasClass('jiggle') == true) {
+                      $('#QuestButton2').removeClass('jiggle');
+                    }
+                    $('#QuestButton2').addClass('jiggle');
+                  }
+                  $('#nextbutton, #textbox ').hide();
+                  break;
+              }
+              progress++;
+              click.play();
+              localStorage.setItem("DialogueProgress", progress);
+              $('#textbox #span2').html(dialogue);
+              $('#textbox #span1').html(character);
+            } else if (CheckTownTime(0, 0) == true) {
+              switch (progress) {
+                case 0:
+                  $('#nextbutton, #textbox ').show();
+                  character = 'Duke';
+                  dialogue = "Hello there.";
+                  break;
+                case 1:
+                  character = 'Max';
+                  dialogue = "I bring to you an invitation from the King of Windermere to attend his birthday celebration.";
+                  break;
+                case 2:
+                  character = 'Duke';
+                  dialogue = "You want me to go to your king's party?"
+                  break;
+                case 3:
+                  character = 'Max';
+                  dialogue = "I am certain he would be in joy if you could join us.";
+                  break;
+                case 4:
+                  character = 'Duke';
+                  dialogue = "Hmm...";
+                  break;
+                case 5:
+                  character = 'Max';
+                  dialogue = "Is something bothering you sir?";
+                  break;
+                case 6:
+                  character = 'Duke';
+                  dialogue = "Actually yes. Recently we have been dealing with random attacks during the night. To add to that, somebody has been destroying the bridge that we use for trade.";
+                  break;
+                case 7:
+                  character = 'Duke';
+                  dialogue = "It is quite stressful having to think about dealing with these matters. So much till the point my skin is turning into a strange hue.";
+                  break;
+                case 8:
+                  character = 'Duke';
+                  dialogue = "Because of that, I have a request for you.";
+                  break;
+                case 9:
+                  character = 'Max';
+                  dialogue = "Did you want me to find out the roots of all these problems?";
+                  break;
+                case 10:
+                  character = 'Duke';
+                  dialogue = "No, I would like you to go to the nearby forest and fetch me some 'herbs'.";
+                  break;
+                case 11:
+                  character = 'Duke';
+                  dialogue = "And as much as I would like that, these are our problems for us to deal with.";
+                  break;
+                case 12:
+                  character = 'Max';
+                  dialogue = "I see. I will return with the goods.";
+                  break;
+                case 13:
+                  character = '';
+                  dialogue = "";
+                  if (QuestDict[2][1] == false) {
+                    QuestToggler('Q3', true);
+                    if ($('#QuestButton2').hasClass('jiggle') == true) {
+                      $('#QuestButton2').removeClass('jiggle');
+                    }
+                    $('#QuestButton2').addClass('jiggle');
+                    console.log(QuestDict);
+                  }
+                  $('#nextbutton, #textbox ').hide();
+                  break;
+              }
+              progress++;
+              click.play();
+              localStorage.setItem("DialogueProgress", progress);
+              $('#textbox #span2').html(dialogue);
+              $('#textbox #span1').html(character);
+            } else {
+              switch (progress) {
+                case 0:
+                  $('#nextbutton, #textbox ').show();
+                  character = 'Max';
+                  dialogue = "Sir, I have an invit-";
+                  break;
+                case 1:
+                  character = 'Duke';
+                  dialogue = "Sorry little one.";
+                  break;
+                case 2:
+                  character = 'Duke';
+                  dialogue = "I am feeling a little tired right now.";
+                  break;
+                case 3:
+                  character = 'Duke';
+                  dialogue = "You may come talk to me later during the night."
+                  break;
+                case 4:
+                  character = 'Max';
+                  dialogue = "Understood.";
+                  break;
+                case 5:
+                  $('#nextbutton, #textbox ').hide();
+                  break;
+              }
+              progress++;
+              click.play();
+              localStorage.setItem("DialogueProgress", progress);
+              $('#textbox #span2').html(dialogue);
+              $('#textbox #span1').html(character);
+            };
+          }
+          $('#nextbutton').click(eventHandler);
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div id="background">
+      <audio id="audio6" src="sounds/click.wav" preload="auto"></audio>
+      <button onclick="goBack()">Go Back</button>
+      <div id='char-3'></div>
+      <div id="talkbutton"><span>Chat</span></div>
+      <div id="textbox">
+        <span id='span1'></span>
+        <span id='span2'></span>
+      </div>
+      <div id="nextbutton"><span>Continue</span></div>
+      <div id="QuestButton2"><a class="htmllink" href="questList.html"><span>Quest List</span></a></div>
+    </div>
+  </body>
 </html>
