@@ -34,7 +34,8 @@
 			'transition':'all 0.7s ease-out',
 			'-webkit-transition':'all 0.7s ease-out',
 		});
-					function eventHandler() {		
+					function eventHandler() {	
+click.play();					
 					switch (progress) {
 						case 0:
 							$('#textbox').fadeIn().css({
@@ -164,7 +165,7 @@
 							break;
 					}
 					progress++;  
-					click.play();
+					
 					localStorage.setItem("DialogueProgress", progress);
 					$('#textbox #span2').html(dialogue);	
 					$('#textbox #span1').html(character);			
