@@ -107,7 +107,7 @@
 						$('#'+QuestCompletion[x][1]).show();	
 					}
 				}
-				$('#Scene7, #cake, #Beans, #Magicmushroom, #Sunflower').fadeOut(0);
+				$('#Scene7').fadeOut(0);
 				$('#Scene6').show().css({
 					'filter':'brightness(1)',
 					'webkitFilter':'brightness(1)',
@@ -116,9 +116,8 @@
 				});
 				break;
 			case 8:
-				$('#cake').fadeOut(1000);
 				$('#Scene7').fadeOut(0);
-				$('#Scene6').fadeOut(1000)
+				$('#Scene6, #cake, #Beans, #Magicmushroom, #Sunflower, #prop6, #prop7, #prop8, #nextbutton').fadeOut(1000);
 				$('#Scene9').delay(3000).fadeIn(2000);
 				setTimeout(function() {window.location = 'index.html'}, 10000);
 				progress = 0;

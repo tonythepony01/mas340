@@ -731,6 +731,11 @@ border-color: #535456;
 	left: 800px;
 }
 
+#Scene9 {
+	
+	z-index: 20;
+}
+
 #prop2 {
 	top: 275px;
 	left: 350px;
