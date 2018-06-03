@@ -4,7 +4,6 @@ var time = [];
 var hours = [];
 var hours2 = [];
 var EnterToggle = true;
-var degrees = 0;
 var DivList = ['#p1', '#p2', '#p3', '#p4', '#p5', '#p6', '#p7', '#p8', '#p9', '#p10', '#p11', '#p12', '#p13', '#p14', '#p15'];
 var isNightTime = true;
 var NTval = [
@@ -18,7 +17,7 @@ var NTval = [
   [171, 182],
   [195, 206],
   [219, 230]
-];
+]; 
 var QuestDict = [
   ['Q1', false],
   ['Q2', false],
@@ -26,8 +25,8 @@ var QuestDict = [
   ['Q4', false],
   ['Q5', true],
   ['Q6', false]
-]; // default value
-var QuestComp = [false, false, false, false, false, false];
+]; // sets the default status of the whether or not the quests have been accepted
+var QuestComp = [false, false, false, false, false, false]; // defines whether or not the quests have been completed
 
 
 function QuestToggler(QNum, State) { // takes the quest number and true/false state and replaces the second value in each list in QuestDict.
@@ -49,7 +48,7 @@ function QuestToggler(QNum, State) { // takes the quest number and true/false st
 
 }
 
-function QuestCompletionMemory() {
+function QuestCompletionMemory() { // retrieves the quest completion status across pages. If object exists, then set as object, if not then set as default value.
   if (localStorage.getItem("QuestCompletion") != "undefined" && localStorage.getItem("QuestCompletion") != null) {
     QuestComp = JSON.parse("[" + localStorage.getItem("QuestCompletion") + "]");
     console.log('Memory check1: ' + QuestComp);
@@ -104,7 +103,7 @@ function QuestMemory() {
   };
 }
 
-function DayPhase() {
+function DayPhase() { // sets the map color shade based on time of day
   $('#map').css({
     'filter': 'brightness(1) saturate(100%) hue-rotate(0deg)',
     'webkitFilter': 'brightness(1) saturate(100%) hue-rotate(0deg)',
@@ -113,10 +112,10 @@ function DayPhase() {
   });
 }
 
-function conversationCheck(xAxis, yAxis) {
+function conversationCheck(xAxis, yAxis) { // toggles the conversation button based on town, and current player location
   var PageLocation = location.href.split("/").slice(-1);
-  if (PageLocation == 'town1.html') {
-    if ((xAxis < 450 && xAxis > 350) || (xAxis < 650 && xAxis > 550) || (xAxis < 750 && xAxis > 650)) {
+  if (PageLocation == 'town1.html') { // if player is in town 1
+    if ((xAxis < 450 && xAxis > 350) || (xAxis < 650 && xAxis > 550) || (xAxis < 750 && xAxis > 650)) { // e.g. if player is between 350-450 in x coordinates, then show talk button.
       $("#talkbutton").css({
         left: xAxis - 45,
         top: yAxis - 120
@@ -171,10 +170,9 @@ function conversationCheck(xAxis, yAxis) {
       return false
     }
   }
-
 }
 
-function NightPhase() {
+function NightPhase() { // sets the map color shade based on time of day
   $('#map').css({
     'filter': 'brightness(0.30) saturate(50%) hue-rotate(29deg)',
     'webkitFilter': 'brightness(0.30) saturate(50%) hue-rotate(29deg)',
@@ -183,8 +181,8 @@ function NightPhase() {
   });
 }
 
-function displayDateTime(TVal) {
-  var ClockTimes = [9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 0, 1, 2, 3, 4, 5, 6, 7, 8];
+function displayDateTime(TVal) { // function to display time
+  var ClockTimes = [9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 0, 1, 2, 3, 4, 5, 6, 7, 8]; // list that contains each hour of a 24 hour clock.
   var DayNTime = [
     ['Day 1', 216, 239],
     ['Day 2', 192, 215],
@@ -196,7 +194,7 @@ function displayDateTime(TVal) {
     ['Day 8', 48, 71],
     ['Day 9', 24, 47],
     ['Day 10', 0, 23]
-  ];
+  ]; // list that is used to display the time of the day
   var DayDisplayTimes = [
     ['Day 1', 225, 239],
     ['Day 2', 201, 224],
@@ -208,7 +206,7 @@ function displayDateTime(TVal) {
     ['Day 8', 57, 80],
     ['Day 9', 33, 56],
     ['Day 10', 9, 32]
-  ];
+  ]; // list that is used to display the day number. A seperate list is used because the day will start at 9AM, otherwise the clock will show 0:00 at the beginning. 
   for (var a in DayNTime) {
     range2(DayNTime[a][1], DayNTime[a][2]);
     range3(DayDisplayTimes[a][1], DayDisplayTimes[a][2]);
@@ -226,22 +224,21 @@ function displayDateTime(TVal) {
   }
 }
 
-function range(start, end) {
+function range(start, end) { // range function reserved for generating numbers for night time values
   for (let i = start; i <= end; i++) {
     time.push(i);
   }
   return
 }
 
-function range2(start, end) {
+function range2(start, end) { // range function reserved for generating numbers for clock time values
   for (let i = start; i <= end; i++) {
     hours.push(i);
-    hours2.push(i);
   }
   return
 }
 
-function range3(start, end) {
+function range3(start, end) {   // range function reserved for generating numbers for clock day number
   for (let i = start; i <= end; i++) {
     hours2.push(i);
   }
@@ -249,7 +246,7 @@ function range3(start, end) {
 }
 
 
-function timeDeduction(CurrentLoc2, DestLoc2) {
+function timeDeduction(CurrentLoc2, DestLoc2) { // creates a list the defines the number of hours to be deducted based on the current and destination location
   var pathTimes = [
     ['A', 'B', 3],
     ['B', 'C', 6],
@@ -270,14 +267,14 @@ function timeDeduction(CurrentLoc2, DestLoc2) {
     ['O', 'N', 6]
   ]
   for (var x in pathTimes) {
-    if ((CurrentLoc2 == pathTimes[x][0] && DestLoc2 == pathTimes[x][1]) || (CurrentLoc2 == pathTimes[x][1] && DestLoc2 == pathTimes[x][0])) {
+    if ((CurrentLoc2 == pathTimes[x][0] && DestLoc2 == pathTimes[x][1]) || (CurrentLoc2 == pathTimes[x][1] && DestLoc2 == pathTimes[x][0])) { // checks if the current location and destination location are valid, e.g. A & B and B & A
       Deduction = pathTimes[x][2]
       return Deduction
     }
   }
 }
 
-function drawDayLines() {
+function drawDayLines() { // function to draw all the daytime lines
   var c = document.getElementById("myCanvas");
   var ctx = c.getContext("2d");
   var locationp1 = $('#p1').position();
@@ -355,7 +352,7 @@ function drawDayLines() {
   ctx.stroke();
 }
 
-function drawNightLines() {
+function drawNightLines() { // function to draw all nighttime lines
   var c = document.getElementById("myCanvas");
   var ctx = c.getContext("2d");
   var locationp1 = $('#p1').position();
@@ -437,7 +434,7 @@ function drawNightLines() {
   ctx.stroke();
 }
 
-function drawNoonLines() {
+function drawNoonLines() { // function to draw noon lines
   var c = document.getElementById("myCanvas");
   var ctx = c.getContext("2d");
   var locationp1 = $('#p1').position();
@@ -519,7 +516,7 @@ function drawNoonLines() {
   ctx.stroke();
 }
 
-function EnterCheck(DestLoc, Xcoord, Ycoord) {
+function EnterCheck(DestLoc, Xcoord, Ycoord) { // function to check whether or not the destination location can be entered.
   Ycoord = Ycoord + 20;
   Xcoord = Xcoord - 30;
   if (LocKeyGet(DestLoc)[3] == true) {
@@ -542,9 +539,8 @@ function EnterCheck(DestLoc, Xcoord, Ycoord) {
   }
 }
 
-function CheckEnter() {
+function CheckEnter() {  // function to check whether or not the location can be entered using the saved location
   var coords = JSON.parse("[" + localStorage.getItem('Enter') + "]");
-  //console.log(coords);
   if (localStorage.getItem('Enter') != "undefined" && localStorage.getItem('Enter') != null && coords[0] == true) {
     $('#EnterButton').css({
       'left': coords[1],
@@ -562,19 +558,19 @@ function CheckEnter() {
   }
 }
 
-function CheckTownTime(Night, Day) {
+function CheckTownTime(Night, Day) { // a function that takes the day and night time backgrounds of a town and sets them according to the time
   for (let a = 0; a <= 9; a++) {
     time.push(range(NTval[a][0], NTval[a][1]));
   }
   if (localStorage.getItem("Time") != "undefined" && localStorage.getItem("Time") != null) {
     TVal = parseInt(localStorage.getItem("Time"));
-    if (typeof Night == 'string' && typeof Day == 'string') {
+    if (typeof Night == 'string' && typeof Day == 'string') { // if the data type is a string, then it is used to set the background in town
       if (isNightTime == time.includes(TVal)) {
         $('#background').addClass(Night);
       } else {
         $('#background').addClass(Day);
       }
-    } else {
+    } else { // if the data type is not a string (used in forests), then return true or false based on if it is night time
       if (isNightTime == time.includes(TVal)) {
         return true
       } else {
@@ -584,7 +580,7 @@ function CheckTownTime(Night, Day) {
   }
 }
 
-function CheckTime() {
+function CheckTime() { // check the time upon loading page and sets map background accordingly
   for (let a = 0; a <= 9; a++) {
     time.push(range(NTval[a][0], NTval[a][1]));
   }
@@ -598,7 +594,6 @@ function CheckTime() {
         '-webkit-transition': 'all 0.0s ease-out',
       });
       drawNightLines();
-      //console.log('includes T');
     } else {
       $('#map').css({
         'filter': 'brightness(1) saturate(100%) hue-rotate(0deg)',
@@ -607,12 +602,10 @@ function CheckTime() {
         '-webkit-transition': 'all 0.0s ease-out',
       });
       drawDayLines();
-      //console.log('does not include T'+TVal)
     }
   } else {
     drawDayLines();
     TVal = 239;
-    //console.log('false');
     $('#map').css({
       'filter': 'brightness(1) saturate(100%) hue-rotate(0deg)',
       'webkitFilter': 'brightness(1) saturate(100%) hue-rotate(0deg)',
@@ -622,7 +615,7 @@ function CheckTime() {
   }
 }
 
-function CheckLoc() {
+function CheckLoc() { // retrieves and saves the location the player is currently at for the map
   if (localStorage.getItem("SavedLoc") != "undefined" && localStorage.getItem("SavedLoc") != null) {
     CurrentLoc = localStorage.getItem("SavedLoc");
     CurrentLoc2 = localStorage.getItem("SavedLoc");
@@ -641,14 +634,14 @@ function CheckLoc() {
   }
 }
 
-function range(start, end) {
+function range(start, end) { // function to generate a range and places in a list 
   for (let i = start; i <= end; i++) {
     time.push(i);
   }
   return
 }
 
-function HoverColor() {
+function HoverColor() { // function to allow location markers on map to change color upon hovering
   var LocName = {
     p1: 'Windermere',
     p3: 'Garmsby',
@@ -661,7 +654,7 @@ function HoverColor() {
     p13: 'Wealdstone',
     p14: 'Cave',
     p15: 'Xynnar'
-  };
+  }; // contains location names for places
   var PointerLoc;
   var PathList2 = [
     ['A', 'B'],
@@ -715,19 +708,15 @@ function HoverColor() {
     p15: 'O'
   };
   $("#inventorybutton, #p1,#p2,#p3,#p4,#p5,#p6,#p7,#p8,#p9,#p10,#p11,#p12,#p13,#p14,#p15, #QuestButton,#talkbutton, #nextbutton, #startButton, #instructionsButton").hover(function() {
-    console.log('ysi')
     PointerLoc = String($(this).attr('id'));
-    if (CurrentLoc == LocDict2[PointerLoc]) {
+    if (CurrentLoc == LocDict2[PointerLoc]) { // shows the time to be deducted by hovering over a location
       $('#TimeDeduction').html('0');
     } else if (PathList2[PathNum2[CurrentLoc]].includes(LocDict2[PointerLoc])) {
       $('#TimeDeduction').html('-' + timeDeduction(CurrentLoc, LocDict2[PointerLoc]));
     }
-
-
     $(this).css('background-color', '#e54444');
     LocPoint = String($(this).attr('id'));
-
-    if (LocName[LocPoint] != "undefined" && LocName[LocPoint] != null) {
+    if (LocName[LocPoint] != "undefined" && LocName[LocPoint] != null) { // shows the location name of a place when hovered over.
       $('#noticebox2 span').html(LocName[LocPoint]);
       $("#noticebox2").stop().slideDown('100');
     }
@@ -738,7 +727,7 @@ function HoverColor() {
   });
 }
 
-function LocKeyGet(Location) {
+function LocKeyGet(Location) { // a function that contains the page file names for locations that can be entered, as well as x,y coordinates for enter button. list takes format of [LocationID, Location, X coordinate, Ycoordinate, Can Be Entered, Page file name]
   var LocDict2 = [
     ['p1', 'A', 70, 520, true, 'town1.html'],
     ['p2', 'B', 190, 450, false],
@@ -765,15 +754,15 @@ function LocKeyGet(Location) {
   }
 }
 
-function LocExtractorX(Location) {
+function LocExtractorX(Location) { // function to extract x coord
   return Location[1]
 }
 
-function LocExtractorY(Location) {
+function LocExtractorY(Location) { // function to extract y coord
   return Location[2]
 }
 
-function testColl() {
+function testColl() { // function to test collision
   function checkCollision() {
     var hit = $('.player').objectHitTest({
       "object": $('#tunnelbackground'),
@@ -788,7 +777,7 @@ function testColl() {
     }
   }
 
-  function resetPlayer() {
+  function resetPlayer() { // resets player when hit
     $('.player').css({
       top: 170,
       left: 50
@@ -798,7 +787,7 @@ function testColl() {
   var collisionTimer = setInterval(checkCollision, 200);
 }
 
-function goBack() {
+function goBack() { // function to go back to previous page
   window.history.back()
 }
 
@@ -819,7 +808,7 @@ function setupInventory() {
   localStorage.setItem('Necklace', 'false');
 }
 
-function checkInventory() {
+function checkInventory() { // function to check inventory
   if (localStorage.getItem('Flower') == 'true') {
     $('#itemgrid #inv-Flower').show();
     $('#Flower').hide();

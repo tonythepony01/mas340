@@ -10,13 +10,13 @@
     <script src="Scripts/jquery-ui.js"></script>
     <script>
       $(document).ready(function(){
-      	CheckTownTime('bg16','bg15');
-      	checkInventory();
-      	QuestMemory();
-      	QuestCompletionMemory();
+      	CheckTownTime('bg16','bg15'); // inserts day and night background classes and sets one of them based on time of day
+      	checkInventory(); // check inventory
+      	QuestMemory(); // retrieves quest status memory
+      	QuestCompletionMemory(); // checks if quests have been completed
       	$("#noticebox").slideDown('400').delay(2200).slideUp('400');
       	var bag = document.getElementById('audio9');
-      	if (localStorage.getItem("coords") != "undefined" && localStorage.getItem("coords") != null) {
+      	if (localStorage.getItem("coords") != "undefined" && localStorage.getItem("coords") != null) {  // retrieves current location of player if it has been saved
       		var coords = (JSON.parse("[" + localStorage.getItem("coords") + "]"));
       		console.log(coords);
       		if (coords[0] < 50) {
@@ -26,11 +26,11 @@
       		} else {
       			var Pl = {el:$('#char'), x:coords[0], y:coords[1], speed:coords[2]};
       		};
-      	} else {
+      	} else { // set default player location if not in memory
       		var Pl = {el:$('#char'), x:100, y:560, speed:5};
       	};	
           K = {};
-      	if (CheckTownTime(0,0) == true) {
+      	if (CheckTownTime(0,0) == true) { // check if it is night time and display version of image based on that value
       		$('#Flower').attr("src","images/items/night/flowernight.png");
       	} else {
       		$('#Flower').attr("src","images/items/flower.png");
@@ -48,7 +48,7 @@
       			$(this).attr("src","images/items/flower.png");
       		}
       	});
-      	$('.clickable').mousedown(function() {
+      	$('.clickable').mousedown(function() { // function to display item name when item is picked up
       		if ($('#inventorybutton').hasClass('jiggle') == true) {
       			$('#inventorybutton').removeClass('jiggle');
       			$('#itemGet').removeAttr('style');
@@ -66,7 +66,7 @@
       		bag.play();
       	});
       	
-      	$(document).on('keydown keyup', function(e) {
+      	$(document).on('keydown keyup', function(e) { // function to animate character when arrow keys are pressed
       		var kN = e.which; // key Number
       		if(kN>36||kN<41) K[kN]= e.type==="keydown";
       		$.each($("div"),function(){
@@ -75,7 +75,7 @@
       		});
       	});
       
-      	function updatePlayerPos() {
+      	function updatePlayerPos() { // function to animate character when arrow keys are pressed. Checks if the player has walked to one end of the map or not, as well as handles movement.
       	  var dist = K[38]&&(K[37]||K[39]) || K[40]&&(K[37]||K[39]) ? 0.707 : 1; 
       	  dist *= Pl.speed;
       	  if (Pl.x < 40)   {

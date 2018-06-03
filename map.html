@@ -30,7 +30,7 @@
           p13: 'M',
           p14: 'N',
           p15: 'O'
-        }; /*Location keys*/
+        }; // The resulting id that is converted to a string to used to retrieve a letter.
         var PathNum = {
           A: 0,
           B: 1,
@@ -47,7 +47,7 @@
           M: 12,
           N: 13,
           O: 14
-        }; /*Traverse index*/
+        }; // The letter retrieved from LocDict is used to retrieve an index number used to find the available locations that can be travelled to in PathList.
         var PathList = [
           ['A', 'B'],
           ['B', 'A', 'C', 'E'],
@@ -64,7 +64,7 @@
           ['M', 'K'],
           ['N'],
           ['O', 'N']
-        ]; /*Indicates the locations that can be travelled to from a certain point*/
+        ]; // Creates a list that contains sublists of locations that can be travelled to. The initial value of each sublist indicates the point that is to be travelled from, e.g. ['B', 'A', 'C', 'E'] refers to the places that can be travelled to from point B.
         var NTval = [
           [3, 14],
           [27, 38],
@@ -76,9 +76,9 @@
           [171, 182],
           [195, 206],
           [219, 230]
-        ];
-        var NoonTimes = [20, 44, 68, 92, 116, 140, 164, 188, 212, 236];
-        CheckLoc();
+        ]; // A list of numbers to be put through a range function to determine night time hours
+        var NoonTimes = [20, 44, 68, 92, 116, 140, 164, 188, 212, 236]; // A list of values that represent noon times (12PM)
+        CheckLoc(); 
         CheckTime();
         CheckEnter();
         HoverColor();
@@ -89,12 +89,12 @@
         var click = document.getElementById('audio6');
         $("#p1,#p2,#p3,#p4,#p5,#p6,#p7,#p8,#p9,#p10,#p11,#p12,#p13,#p14,#p15,#p16").click(function() {
           p = $(this);
-          defLoc = String($(this).attr('id'))
-          position = p.position();
-          DestLoc = LocDict[defLoc];
-          DestLoc2 = LocDict[defLoc];
-          if (CurrentLoc != DestLoc) {
-            if (CurrentLoc == 'E' && DestLoc == 'J' && time.includes(TVal) == false) {
+          defLoc = String($(this).attr('id')); // converts the element clicked on into a string. Works with variables LocDict, PathNum and PathList
+          position = p.position(); // gets location of position
+          DestLoc = LocDict[defLoc]; // sets destination location
+          DestLoc2 = LocDict[defLoc]; 
+          if (CurrentLoc != DestLoc) { // Checks if the destination location that is clicked on is the same as the current location.
+            if (CurrentLoc == 'E' && DestLoc == 'J' && time.includes(TVal) == false) { // Checks if the bridge can be travelled across based on position and time.
               $('#noticebox2 span').html('Seems like the bridge is broken. Try coming back later.');
               $('#dockLeft').show().delay(2000).fadeOut();
               $("#noticebox2").slideDown('100').delay(2900).slideUp('100');
@@ -103,12 +103,12 @@
               $('#dockRight').show().delay(2000).fadeOut();
               $("#noticebox2").slideDown('100').delay(2900).slideUp('100');
             } else if (PathList[PathNum[CurrentLoc]].includes(DestLoc) == true) {
-              CurrentLoc = DestLoc;
-              EnterCheck(DestLoc, position.left, position.top);
-              localStorage.setItem("SavedLoc", DestLoc);
-              TVal -= timeDeduction(CurrentLoc2, DestLoc2);
-              if (NoonTimes.includes(TVal)) {
-                if (timeDeduction(CurrentLoc2, DestLoc2) > TVal) {
+              CurrentLoc = DestLoc; // sets the current location to destination location
+              EnterCheck(DestLoc, position.left, position.top); 
+              localStorage.setItem("SavedLoc", DestLoc); // saves current location.
+              TVal -= timeDeduction(CurrentLoc2, DestLoc2); // deducts time based on path travelled.
+              if (NoonTimes.includes(TVal)) { // checks if it is currently noon
+                if (timeDeduction(CurrentLoc2, DestLoc2) > TVal) { // checks if there is enough time, if not then foward to final scene.
                   $('#background').css({
                     'filter': 'brightness(0)',
                     'webkitFilter': 'brightness(0)',
@@ -119,7 +119,7 @@
                   setTimeout(function() {
                     window.location = 'cutscene4.html'
                   }, 3000);
-                } else {
+                } else { // set paths that can be travelled to noon version. Redraws lines according to time and moves character, saves time value
                   PathList = [
                     ['A', 'B'],
                     ['B', 'A', 'C', 'E'],
@@ -139,20 +139,20 @@
                   ];
                   CurrentLoc = DestLoc;
                   EnterCheck(DestLoc, position.left, position.top);
-                  localStorage.setItem("SavedLoc", DestLoc);
+                  localStorage.setItem("SavedLoc", DestLoc); 
                   localStorage.setItem("Time", TVal);
                   displayDateTime(TVal);
                   CurrentLoc2 = DestLoc2;
                   drawNoonLines();
-                  DayPhase();
+                  DayPhase(); 
                   click.play();
                   $("#char").animate({
                     left: position.left,
                     top: position.top
                   }, 1000, 'swing', function() {});
                 }
-              } else if (isNightTime == time.includes(TVal)) {
-                if (timeDeduction(CurrentLoc2, DestLoc2) > TVal) {
+              } else if (isNightTime == time.includes(TVal)) { // checks if it is night time.
+                if (timeDeduction(CurrentLoc2, DestLoc2) > TVal) { // checks if there is enough time, if not then foward to final scene.
                   $('#background').css({
                     'filter': 'brightness(0)',
                     'webkitFilter': 'brightness(0)',
@@ -163,7 +163,7 @@
                   setTimeout(function() {
                     window.location = 'cutscene4.html'
                   }, 3000);
-                } else {
+                } else { // set paths that can be travelled to night version. Redraws lines according to time and moves character, saves time value
                   PathList = [
                     ['A', 'B'],
                     ['B', 'A', 'C', 'E'],
@@ -193,7 +193,7 @@
                     top: position.top
                   }, 1000, 'swing', function() {});
                 }
-              } else {
+              } else { // set paths that can be travelled to night version. Redraws lines according to time and moves character, saves time value
                 PathList = [
                   ['A', 'B'],
                   ['B', 'A', 'C', 'E'],
@@ -214,7 +214,7 @@
                 CurrentLoc = DestLoc;
                 EnterCheck(DestLoc, position.left, position.top);
                 localStorage.setItem("SavedLoc", DestLoc);
-                if (timeDeduction(CurrentLoc2, DestLoc2) > TVal) {
+                if (timeDeduction(CurrentLoc2, DestLoc2) > TVal) { // checks if there is enough time, if not then foward to final scene.
                   $('#background').css({
                     'filter': 'brightness(0)',
                     'webkitFilter': 'brightness(0)',
@@ -241,17 +241,16 @@
               }
 
             }
-          } else {
+          } else { // if the destination location clicked is the same as the current one, do nothing.
             console.log('No Time Remaining');
             console.log(TVal);
             console.log(CurrentLoc);
-
           }
         });
-        $('#ButtonLink,#inventorybutton').click(function() {
+        $('#ButtonLink,#inventorybutton').click(function() { // saves current location if inventory is pressed in map page.
           DestLoc = localStorage.getItem('SavedLoc');
           click.play();
-          if (EnterCheck(DestLoc, position.left, position.top)[0] == true) {
+          if (EnterCheck(DestLoc, position.left, position.top)[0] == true) { // sets the link of the button to enter towns based on location
             document.getElementById('ButtonLink').setAttribute('href', LocKeyGet(DestLoc, position.left, position.top)[4]);
           }
         });
