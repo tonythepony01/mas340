@@ -17,6 +17,12 @@
         CheckLoc(); // check current location
         HoverColor(); // 
         checkInventory();
+		if (localStorage.getItem("passcounter") != "undefined" && localStorage.getItem("passcounter") != null) {
+			passcounter = localStorage.getItem("passcounter");
+			console.log(passcounter);
+        } else {
+			passcounter = 0;
+        };
         $("#noticebox").slideDown('400').delay(2200).slideUp('400');
         $('#char1').css({
           'left': '250px',
@@ -38,17 +44,11 @@
         $('#talkbutton').click(function() {
           $('#talkbutton').hide();
           var progress = 0;
-		  var passcounter = 0;
           var dialogue;
           var character;
           eventHandler();
 
           function eventHandler() { // conversation function
-		  if (passcounter > 5) { 
-				window.location = "map.html";
-                DestLoc = 'O';
-                localStorage.setItem("SavedLoc", DestLoc);
-		  } else {
 		  if (localStorage.getItem('Medicine') == 'true' && QuestComp[1] == false) { // condition to determine if quest has been completed
               switch (progress) {
                 case 0:
@@ -76,6 +76,7 @@
                   }
                   break;
                 case 5:
+					passcounter++;
                   $('#nextbutton, #textbox ').hide();
                   break;
               }
@@ -117,18 +118,23 @@
                   break;
                 case 7:
                   $('#nextbutton, #textbox ').hide();
+				  passcounter++;
                   break;
               }
               progress++;
-			  passcounter++;
+			  localStorage.setItem("passcounter", passcounter);
+			  console.log(passcounter);
 			  if (passcounter >= 5) {
-			   passcounter = 0;
+				passcounter = 0;
+				window.location = "map.html";
+                DestLoc = 'O';
+                localStorage.setItem("SavedLoc", DestLoc);
 			  }
               click.play();
               localStorage.setItem("DialogueProgress", progress);
               $('#textbox #span2').html(dialogue);
               $('#textbox #span1').html(character);
-            }
+        
 		  }
             
           }
