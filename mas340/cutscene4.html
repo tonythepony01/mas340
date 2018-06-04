@@ -1,0 +1,149 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>MAS340</title>
+    <script src="Scripts/jquery-3.3.1.js"></script>
+    <script src="Scripts/jquery-3.3.1.js"></script>
+    <link href="Scripts/styles.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <script src="Scripts/jquery.js"></script>
+    <script src="Scripts/jquery-ui.js"></script>
+    <script>
+      $(document).ready(function () {	
+      QuestMemory();
+      QuestCompletionMemory();
+      var ItemCompletion = [[localStorage.getItem('Beans'),'Beans'],[localStorage.getItem('Magicmushroom'),'Magicmushroom'],[localStorage.getItem('Sunflower'),'Sunflower']];
+      var QuestCompletion = [[QuestComp[0], 'prop6'],[QuestComp[2], 'prop7'],[QuestComp[3], 'prop8']];
+      var click = document.getElementById('audio6');
+      $('#Scene6, #Scene7').css({
+      'filter':'brightness(0)',
+      'webkitFilter':'brightness(0)',
+      });
+      $('#cake,#Beans, #Magicmushroom, #Sunflower').css({left:300, top: 0});
+      $('#cake, #Beans, #Magicmushroom, #Sunflower').css('transform', 'scale('+0.6+')');
+      $('#char-2').css({left: -300, top: 175});
+      $('#Scene9').fadeOut(0);
+      var progress = 0;
+      var dialogue;
+      var character;
+      $('#nextbutton').fadeIn().css({
+      'filter':'brightness(1)',
+      'webkitFilter':'brightness(1)',
+      'transition':'all 1s ease-out',
+      '-webkit-transition':'all 1s ease-out',
+      });
+      $('#cake, #Beans, #Magicmushroom, #Sunflower').hide();
+      function eventHandler() {		
+      switch (progress) {
+      	case 0:
+      		$('#Scene7').css({
+      			'filter':'brightness(1)',
+      			'webkitFilter':'brightness(1)',
+      			'transition':'all 1s ease-out',
+      			'-webkit-transition':'all 1s ease-out',
+      		});
+      		$('#textbox').fadeIn().css({
+      			'filter':'brightness(1)',
+      			'webkitFilter':'brightness(1)',
+      			'transition':'all 1s ease-out',
+      			'-webkit-transition':'all 1s ease-out',
+      		});	
+      		$('#char-2').animate({left: -100, top: 175},750);
+      		character = 'Max';
+      		dialogue = "Your majesty. I have returned.";
+      		break;
+      	case 1:
+      		character = 'King';
+      		dialogue = "Ahh yes. Young Max...ine?";
+      		break;
+      	case 2:
+      		character = 'Max';
+      		dialogue = "Just Max, your majesty.";
+      		break;
+      	case 3:
+      		character = 'King';
+      		dialogue = "Max, right.";
+      		break;
+      	case 4:
+      		character = 'King';
+      		dialogue = "Let us begin the celebrations for my 80th birthday before our guests arrive.";
+      		break;
+      	case 5:
+      		character = 'Max';
+      		dialogue = "Yes your majesty.";
+      		break;		
+      	case 6:
+      		$('#Scene7').css({
+      			'filter':'brightness(0)',
+      			'webkitFilter':'brightness(0)',
+      			'transition':'all 1s ease-out',
+      			'-webkit-transition':'all 1s ease-out',
+      		});
+      		$('#textbox').fadeOut();
+      		$('#char-2').fadeOut();
+      		$('#nextbutton').fadeOut(0).delay(3000).fadeIn(0);
+      		break;
+      	case 7:
+      		$('#cake').show();
+      		for (x in ItemCompletion) {
+      			if (ItemCompletion[x][0] == 'true') {
+      				$('#'+ItemCompletion[x][1]).show();
+      			}
+      		}
+      		for (x in QuestCompletion) {
+      			if (QuestCompletion[x][0] == true) {
+      				$('#'+QuestCompletion[x][1]).show();	
+      			}
+      		}
+      		$('#Scene7').fadeOut(0);
+      		$('#Scene6').show().css({
+      			'filter':'brightness(1)',
+      			'webkitFilter':'brightness(1)',
+      			'transition':'all 1s ease-out',
+      			'-webkit-transition':'all 1s ease-out',
+      		});
+      		break;
+      	case 8:
+      		$('#Scene7').fadeOut(0);
+      		$('#Scene6, #cake, #Beans, #Magicmushroom, #Sunflower, #prop6, #prop7, #prop8, #nextbutton').fadeOut(1000);
+      		$('#Scene9').delay(3000).fadeIn(2000);
+      		setTimeout(function() {window.location = 'index.html'}, 10000);
+      		progress = 0;
+      		break;
+      }
+      progress++;	
+      localStorage.setItem("DialogueProgress", progress);
+      $('#textbox #span2').html(dialogue);	
+      $('#textbox #span1').html(character);			
+      };
+      $('#nextbutton').finish().click(eventHandler);	
+      
+      });
+    </script>
+  </head>
+  <body>
+    <div id="background">
+      <audio id="audio6" src="sounds/click.wav" preload="auto"></audio>
+      <img id='Scene9' src='images/cutscenes/end.jpg'>
+      <div id="char-2"></div>
+      <div id="talkbutton"><span>Chat</span></div>
+      <div id="textbox">
+        <span id='span1'></span>
+        <span id='span2'></span>
+      </div>
+      <div id="nextbutton">
+        <span>Continue</span>
+      </div>
+      <img src="images/cutscenes/k3.png" id="prop8">
+      <img src="images/cutscenes/k1.png" id="prop6">
+      <img src="images/cutscenes/k2.png" id="prop7">
+      <img src="images/cutscenes/cake.png" id="cake">
+      <img src="images/cutscenes/cakemushrooms.png" id="Magicmushroom">
+      <img src="images/cutscenes/cakebeans.png" id="Beans">
+      <img src="images/cutscenes/cakeflower.png" id="Sunflower">
+      <img src="images/cutscenes/finalscene.jpg" id="Scene6">
+      <img src="images/throneroom2.jpg" id="Scene7">
+    </div>
+  </body>
+</html>

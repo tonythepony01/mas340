@@ -1,0 +1,124 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>MAS340</title>
+    <script src="Scripts/jquery-3.3.1.js"></script>
+    <link href="Scripts/styles.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <script src="Scripts/jquery.js"></script>
+    <script src="Scripts/jquery-ui.js"></script>
+    <script>
+      $(document).ready(function(){
+      	CheckTownTime('bg12','bg11');
+      	checkInventory();
+      	QuestMemory();
+      	QuestCompletionMemory();
+      	$("#noticebox").slideDown('400').delay(2200).slideUp('400');
+      	var bag = document.getElementById('audio9');
+      	$('#Beans').css({left: 465, top: 0});
+          K = {};
+      	if (localStorage.getItem("coords2") != "undefined" && localStorage.getItem("coords2") != null) {
+      		var coords2 = (JSON.parse("[" + localStorage.getItem("coords2") + "]"));
+      		console.log(coords2);
+      		if (coords2[0] < 50) {
+      			var Pl = {el:$('#char'), x:coords2[0]+100, y:coords2[1], speed:coords2[2]};
+      		} else if (coords2[0] > 950) {
+      			var Pl = {el:$('#char'), x:coords2[0]-100, y:coords2[1], speed:coords2[2]};
+      		} else {
+      			var Pl = {el:$('#char'), x:coords2[0], y:coords2[1], speed:coords2[2]};
+      		};
+      	} else {
+      		var Pl = {el:$('#char'), x:100, y:560, speed:5};
+      	};	
+      	if (CheckTownTime(0,0) == true) {
+      		$('#Beans').attr("src","images/items/night/beanstalknight.png");
+      		$('#Weed').attr("src","images/items/night/weednight.png");
+      	} else {
+      		$('#Beans').attr("src","images/items/beanstalk.png");
+      		$('#Weed').attr("src","images/items/weed.png");
+      	};
+      	$('#Beans').hover(function() {
+      		if(CheckTownTime(0,0) == true) {
+      			$(this).attr("src","images/items/night/hoverbeanstalknight.png");
+      		} else {
+      			$(this).attr("src","images/items/hoverbeanstalk.png");
+      		}
+      	}, function() {
+      		if (CheckTownTime(0,0) == true) {
+      			$(this).attr("src","images/items/night/beanstalknight.png");
+      		} else {
+      			$(this).attr("src","images/items/beanstalk.png");
+      		}
+      	});
+      	$('#Weed').hover(function() {
+      		if(CheckTownTime(0,0) == true) {
+      			$(this).attr("src","images/items/night/hoverweednight.png");
+      		} else {
+      			$(this).attr("src","images/items/hoverweed.png");
+      		}
+      	}, function() {
+      		if(CheckTownTime(0,0) == true) {
+      			$(this).attr("src","images/items/night/weednight.png");
+      		} else {
+      			$(this).attr("src","images/items/weed.png");
+      		}
+      	});		
+      	$('.clickable').mousedown(function() {
+      		if ($('#inventorybutton').hasClass('jiggle') == true) {
+      			$('#inventorybutton').removeClass('jiggle');
+      			$('#itemGet').removeAttr('style');
+      		}		
+      	}).mouseup(function() {
+      		if ($('#inventorybutton').hasClass('jiggle') == false) {
+      			$('#inventorybutton').addClass('jiggle');
+      		}
+      		$('#itemGet').html($(this).attr('id')); 
+      		$('#itemGet').show().animate({top: '40px'}, 150).fadeOut(200);
+      		$(this).fadeOut('fast');
+      		var itemName = $(this).attr('id');
+      		localStorage.setItem(itemName, 'true');	
+      		bag.play();
+      		checkInventory();
+      	});
+      	$(document).on('keydown keyup', function(e) {
+      		var kN = e.which; // key Number
+      		if(kN>36||kN<41) K[kN]= e.type==="keydown";
+      	});
+      
+      	function updatePlayerPos() {
+      	  var dist = K[38]&&(K[37]||K[39]) || K[40]&&(K[37]||K[39]) ? 0.707 : 1; 
+      	  dist *= Pl.speed;
+      		if (Pl.x < 35)   {
+      		Pl.x = 35;
+      					window.location = "forest2.html";
+      	  } else if ((Pl.x > 950)) {
+      		Pl.x = 950;
+      	  }
+      	  p = $('#char').position();
+      		localStorage.setItem('coords2', [Pl.x,Pl.y,Pl.speed])
+      	  if(K[37]) Pl.x -= dist;
+      	  if(K[39]) Pl.x += dist;
+      	  Pl.el.css({transform:"translate3D("+ Pl.x +"px, "+ Pl.y +"px, 0)"});
+      	}
+      
+      	(function engine() {
+      	  updatePlayerPos();
+      	  window.requestAnimationFrame( engine );
+      	}());
+      });
+      
+    </script>
+  </head>
+  <body>
+    <div id="background">
+      <div id="noticebox"><span>Spotted Frog Forest<span></div>
+      <audio id="audio9" src="sounds/bag.wav" preload="auto"></audio>
+      <div id="char"></div>
+      <div id="itemGet"></div>
+      <img src="images/items/weed.png" id="Weed" class="clickable">
+      <img src="images/items/beanstalk.png" id="Beans" class="clickable">
+      <div id="inventorybutton"><a class="htmllink" href="inventory.html"><span>Inventory</span></a></div>
+    </div>
+  </body>
+</html>

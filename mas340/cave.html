@@ -1,0 +1,147 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>MAS340</title>
+    <script src="Scripts/jquery-3.3.1.js"></script>
+    <link href="Scripts/styles.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <script src="Scripts/jquery.js"></script>
+    <script src="Scripts/jquery-ui.js"></script>
+    <script>
+      $(document).ready(function() {
+        $('#background').addClass('bg19');
+        var click = document.getElementById('audio6');
+        QuestMemory(); // check quest status
+        QuestCompletionMemory(); // check quest completion
+        CheckLoc(); // check current location
+        HoverColor(); // 
+        checkInventory();
+        $("#noticebox").slideDown('400').delay(2200).slideUp('400');
+        $('#char1').css({
+          'left': '250px',
+          'top': '250px'
+        });
+        $('#talkbutton').css({
+          'left': '290px',
+          'top': '270px'
+        }).show();
+        $('#char1').css('transform', 'scale(' + 0.6 + ')');
+        $('#EnterButton').css({
+          'left': '650px',
+          'top': '375px',
+          'filter': 'brightness(1) saturate(100%)',
+          'webkitFilter': 'brightness(1) saturate(100%)',
+          'animation': 'pulsate 2s linear infinite',
+          '-webkit-animation': 'pulsate 2s linear infinite'
+        }).show();
+        $('#talkbutton').click(function() {
+          $('#talkbutton').hide();
+          var progress = 0;
+          var dialogue;
+          var character;
+          eventHandler();
+
+          function eventHandler() { // conversation function
+            if (localStorage.getItem('Medicine') == 'true' && QuestComp[1] == false) { // condition to determine if quest has been completed
+              switch (progress) {
+                case 0:
+                  $('#nextbutton, #textbox ').show();
+                  character = 'Sick-looking person';
+                  dialogue = "(Cough cough) Hello";
+                  break;
+                case 1:
+                  character = 'Max';
+                  dialogue = "Are you okay? I have some medicine for you from someone.";
+                  break;
+                case 2:
+                  character = 'Sick-looking person';
+                  dialogue = "(Cough cough) Was it from my mother in town?";
+                  break;
+                case 3:
+                  character = 'Max';
+                  dialogue = "Yes, I helped her to gather the ingredients for this.";
+                  break;
+                case 4:
+                  character = 'Sick-looking person';
+                  dialogue = "Really? Thank you so much.";
+                  if (QuestComp[1] == false) {
+                    QuestToggler(1, true);
+                  }
+                  break;
+                case 5:
+                  $('#nextbutton, #textbox ').hide();
+                  break;
+              }
+              progress++;
+              click.play();
+              localStorage.setItem("DialogueProgress", progress);
+              $('#textbox #span2').html(dialogue);
+              $('#textbox #span1').html(character);
+            } else {
+              switch (progress) {
+                case 0:
+                  $('#nextbutton, #textbox ').show();
+                  character = 'Sick-looking person';
+                  dialogue = "(Cough cough) Hello";
+                  break;
+                case 1:
+                  character = 'Max';
+                  dialogue = "Hi, what's beyond this cave here?";
+                  break;
+                case 2:
+                  character = 'Sick-looking person';
+                  dialogue = "No one knows. No one has ever managed to make it through and back.";
+                  break;
+                case 3:
+                  character = 'Sick-looking person';
+                  dialogue = "Oh and- (cough), if you ever wanted to try making your way thro-(cough) it ";
+                  break;
+                case 4:
+                  character = 'Sick-looking person';
+                  dialogue = "You'll need to use the left and right arrow ke-(cough)s and-";
+                  break;
+                case 5:
+                  character = 'Max';
+                  dialogue = "Say no more.";
+                  break;
+                case 6:
+                  character = 'Sick-looking person';
+                  dialogue = "(cough) mouse.";
+                  break;
+                case 7:
+                  $('#nextbutton, #textbox ').hide();
+                  break;
+              }
+              progress++;
+              click.play();
+              localStorage.setItem("DialogueProgress", progress);
+              $('#textbox #span2').html(dialogue);
+              $('#textbox #span1').html(character);
+            }
+          }
+          $('#nextbutton').click(eventHandler);
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div id="background">
+      <div id="noticebox"><span>Cave<span></div>
+      <button onclick="goBack()">Go Back</button>
+      <audio id="audio6" src="sounds/click.wav" preload="auto"></audio>
+      <div id="inventorybutton"><a class="htmllink" href="inventory.html"><span>Inventory</span></a></div>
+      <a id ='ButtonLink' href="tunnelpuzzle.html">
+        <div id='EnterButton'>Enter</div>
+      </a>
+      <img src="images/npcs/char1-2.png" id="char1">
+      <div id="talkbutton"><span>Chat</span></div>
+      <div id="talkbutton"><span>Chat</span></div>
+      <div id="textbox">
+        <span id='span1'></span>
+        <span id='span2'></span>
+      </div>
+      <div id="nextbutton"><span>Continue</span></div>
+    </div>
+  </body>
+</html>

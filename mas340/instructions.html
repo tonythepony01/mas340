@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>MAS340</title>
+    <script src="Scripts/jquery-3.3.1.js"></script>
+    <link href="Scripts/styles.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <script src="Scripts/jquery.js"></script>
+    <script src="Scripts/jquery-ui.js"></script>
+    <script>
+      $(document).ready(function() {
+        $('#Q1, #Q2, #Q3, #Q4').show();
+      });
+    </script>
+  </head>
+  <body>
+    <div id="background">
+      <button onclick="goBack()">Go Back</button>
+      <div id="title0">Instructions</div>
+      <div id='QuestScroll'>
+        <ul id='QuestList'>
+          <li id='Q1'>Do not navigate to pages using the URL bar or Back button in browser</li>
+          <li id='Q1'>Make sure to set the Google Chrome autoplay policy to not require user gestures.</li>
+          <li id='Q2'>Controls: Mouse, left and right arrow keys.</li>
+          <li id='Q4'>Let the audio finish before pressing the continue button.</li>
+          <li id='Q3'>Try not to collect items until you are told to do so.</li>
+          <li id='Q4'>Try not to refresh the page.</li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>MAS340</title>
+    <script src="Scripts/jquery-3.3.1.js"></script>
+    <link href="Scripts/styles.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <script src="Scripts/jquery.js"></script>
+    <script src="Scripts/jquery-ui.js"></script>
+    <script>
+      $(document).ready(function() {
+        checkInventory();
+        var itemDesc = {
+          "inv-Flower": "Flowers found in the Procyt Woods to be used for the memorials of the villagers. Return this to the Duke of Garmsby.",
+          "inv-Butterfly": 'A delicious-looking pink butterfly you caught in the Kruhm Woodland. Return this to the old woman in Garmsby',
+          "inv-Medicine": "Recieved from the old woman in Garmsby and made from the delicious-looking pink butterfly. Give this to her son.",
+          "inv-Weed": "'Herbs' found in the Spotted Frog Forest. Return this to the Duke of Spalding so that he may relax.",
+          "inv-Beans": "Ordinary-looking magic beans found in the Spotted Frog Forest.",
+          "inv-Magicmushroom": "Mushrooms required by the chef. Found in the Kruhm Woodland.",
+          "inv-Acorns": "To be used as rations for the troops of Wealdstone. Return this to the Duke of Wealdstone",
+          "inv-Sunflower": "An ordinary sunflower that was requested by the royal chef. I wonder how he's going to use this.",
+          "inv-Necklace": "Conveniently looks like the necklace that Lucia dropped years ago. I wonder where she is now."
+        }; // includes all item descriptions when item is hovered over
+        $("#inv-Flower, #inv-Butterfly,#inv-Medicine,#inv-Weed,#inv-Beans,#inv-Magicmushroom,#inv-Acorns,#inv-Sunflower,#inv-Necklace").hover(function() {
+          $("#descbox").show();
+          attr = String($(this).attr('id'))
+          description = itemDesc[attr]
+          $('#descbox span').html(description);
+        }, function() {
+          $("#descbox").hide();
+        });
+        $("#inv-Necklace").hover(function() {
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div id="background">
+      <button onclick="goBack()">Go Back</button>
+      <div id="title">Inventory</div>
+      <div id="itemgrid">
+        <div class="items"><img src="images/items/inventoryver/invflower.png" id="inv-Flower"></div>
+        <div class="items"><img src="images/items/inventoryver/invbutterfly.png" id="inv-Butterfly"></div>
+        <div class="items"><img src="images/items/inventoryver/invmedicine.png" id="inv-Medicine"></div>
+        <div class="items"><img src="images/items/inventoryver/invweed.png" id="inv-Weed"></div>
+        <div class="items"><img src="images/items/inventoryver/invbeans.png" id="inv-Beans"></div>
+        <div class="items"><img src="images/items/inventoryver/invmagicmushroom.png" id="inv-Magicmushroom"></div>
+        <div class="items"><img src="images/items/inventoryver/invacorns.png" id="inv-Acorns"></div>
+        <div class="items"><img src="images/items/inventoryver/invsunflower.png" id="inv-Sunflower"></div>
+        <div class="items"><img src="images/items/inventoryver/invnecklace.png" id="inv-Necklace"></div>
+      </div>
+      <div id="descbox"><span></span></div>
+    </div>
+    </div>
+  </body>
+</html>
