@@ -38,12 +38,18 @@
         $('#talkbutton').click(function() {
           $('#talkbutton').hide();
           var progress = 0;
+		  var passcounter = 0;
           var dialogue;
           var character;
           eventHandler();
 
           function eventHandler() { // conversation function
-            if (localStorage.getItem('Medicine') == 'true' && QuestComp[1] == false) { // condition to determine if quest has been completed
+		  if (passcounter > 5) { 
+				window.location = "map.html";
+                DestLoc = 'O';
+                localStorage.setItem("SavedLoc", DestLoc);
+		  } else {
+		  if (localStorage.getItem('Medicine') == 'true' && QuestComp[1] == false) { // condition to determine if quest has been completed
               switch (progress) {
                 case 0:
                   $('#nextbutton, #textbox ').show();
@@ -114,11 +120,17 @@
                   break;
               }
               progress++;
+			  passcounter++;
+			  if (passcounter >= 5) {
+			   passcounter = 0;
+			  }
               click.play();
               localStorage.setItem("DialogueProgress", progress);
               $('#textbox #span2').html(dialogue);
               $('#textbox #span1').html(character);
             }
+		  }
+            
           }
           $('#nextbutton').click(eventHandler);
         });
