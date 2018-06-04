@@ -768,9 +768,8 @@ function testColl() { // function to test collision
       "object": $('#tunnelbackground'),
       'transparency': true
     });
-    if (hit) {
+    if (hit) { // moves player back to cave entrace if hit.
       window.location = "cave.html";
-      console.log('yass')
       $('.player').hide();
       clearInterval(collisionTimer);
       setTimeout(resetPlayer, 1000);

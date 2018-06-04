@@ -14,7 +14,7 @@
         QuestCompletionMemory();
         $('#Q5').show();
         var liList = ['Q1', 'Q2', 'Q3', 'Q4', 'Q5', 'Q6'];
-        for (x in QuestDict) {
+        for (x in QuestDict) { // shows the tasks to be completed based on if it has been accepted or completed.
           if (QuestComp[x] == true) {
             $('#' + liList[x]).show().css('text-decoration', 'line-through');
           } else if (QuestDict[x][1] == true) {

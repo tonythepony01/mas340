@@ -16,7 +16,7 @@
         $("#noticebox").slideDown('400').delay(2200).slideUp('400');
         var click = document.getElementById('audio6');
         if (localStorage.getItem("coords") != "undefined" && localStorage.getItem("coords") != null) {
-          var coords = (JSON.parse("[" + localStorage.getItem("coords") + "]"));
+          var coords = (JSON.parse("[" + localStorage.getItem("coords") + "]")); // saves player location in town
           console.log(coords);
           if (coords[0] < 50) {
             var Pl = {
@@ -66,7 +66,7 @@
                 eventHandler();
 
                 function eventHandler() {
-                  if (p.left < 350 && p.left > 250) {
+                  if (p.left < 350 && p.left > 250) { // checks if player is in position to talk to townspeople
                     switch (progress) {
                       case 0:
                         $('#nextbutton, #textbox ').show();
@@ -205,7 +205,7 @@
         function updatePlayerPos() {
           var dist = K[38] && (K[37] || K[39]) || K[40] && (K[37] || K[39]) ? 0.707 : 1;
           dist *= Pl.speed;
-          if (localStorage.getItem('Necklace') == 'true') {
+          if (localStorage.getItem('Necklace') == 'true') { // checks if player has necklace. if not, do not allow them to pass.
             if (Pl.x < 35) {
               Pl.x = 35;
               window.location = "map.html";

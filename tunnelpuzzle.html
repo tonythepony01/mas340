@@ -32,7 +32,7 @@
           dist *= speed;
           if (K[37]) angle -= dist;
           if (K[39]) angle += dist;
-          $('.player').css({
+          $('.player').css({ // animation to rotate player 
             transform: "rotateZ(" + angle + "deg)"
           });
         }
@@ -41,7 +41,7 @@
           window.requestAnimationFrame(engine);
 
         }());
-        $('.player').mousedown(function() {
+        $('.player').mousedown(function() { // moves the player via dragging. if mouse click is off then the player will fall.
           $(this).removeClass("fall");
           $(this).draggable({
             revert: "valid",
@@ -59,7 +59,7 @@
               }
             }
           });
-        }).mouseup(function() {
+        }).mouseup(function() { // adds a css class with dropping animation 
           $(this).addClass("fall");
           testColl();
         });

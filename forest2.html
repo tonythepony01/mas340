@@ -16,7 +16,7 @@
       	QuestCompletionMemory();
       	$("#noticebox").slideDown('400').delay(2200).slideUp('400');
       	if (localStorage.getItem("coords") != "undefined" && localStorage.getItem("coords") != null) {
-      		var coords = (JSON.parse("[" + localStorage.getItem("coords") + "]"));
+      		var coords = (JSON.parse("[" + localStorage.getItem("coords") + "]")); // saves player location when page is refreshed
       		console.log(coords);
       		if (coords[0] < 50) {
       			var Pl = {el:$('#char'), x:coords[0]+100, y:coords[1], speed:coords[2]};
@@ -35,7 +35,7 @@
       		$.each($("div"),function(){
       		});
       	});
-      	function updatePlayerPos() {
+      	function updatePlayerPos() { 
       	  var dist = K[38]&&(K[37]||K[39]) || K[40]&&(K[37]||K[39]) ? 0.707 : 1; 
       	  dist *= Pl.speed;
       	  if(K[37]) Pl.x -= dist;

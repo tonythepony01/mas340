@@ -20,7 +20,7 @@
         K = {}; // keys: {37:0||1, 38:0||1, ...}
         if (localStorage.getItem("coords") != "undefined" && localStorage.getItem("coords") != null) {
           var coords = (JSON.parse("[" + localStorage.getItem("coords") + "]"));
-          console.log(coords);
+          console.log(coords); // saves player location in town
           if (coords[0] < 50) {
             var Pl = {
               el: $('#char'),
@@ -66,9 +66,8 @@
                 var dialogue;
                 var character;
                 eventHandler();
-
-                function eventHandler() {
-                  if (p.left < 450 && p.left > 350) {
+                function eventHandler() { 
+                  if (p.left < 450 && p.left > 350) { // checks player is in position to talk to townspeople
                     switch (progress) {
                       case 0:
                         $('#nextbutton, #textbox ').show();
@@ -170,10 +169,10 @@
           var dist = K[38] && (K[37] || K[39]) || K[40] && (K[37] || K[39]) ? 0.707 : 1;
           dist *= Pl.speed;
           if (Pl.x < 40) {
-            Pl.x = 40;
+            Pl.x = 40; // prevents player from moving off screen. moves player back to map
             window.location = "map.html";
           } else if ((Pl.x > 950)) {
-            Pl.x = 950;
+            Pl.x = 950; // prevents player from moving off screen.
           }
           if (K[37]) Pl.x -= dist;
           if (K[39]) Pl.x += dist;

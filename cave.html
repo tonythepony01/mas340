@@ -12,10 +12,10 @@
       $(document).ready(function() {
         $('#background').addClass('bg19');
         var click = document.getElementById('audio6');
-        QuestMemory();
-        QuestCompletionMemory();
-        CheckLoc();
-        HoverColor();
+        QuestMemory(); // check quest status
+        QuestCompletionMemory(); // check quest completion
+        CheckLoc(); // check current location
+        HoverColor(); // 
         checkInventory();
         $("#noticebox").slideDown('400').delay(2200).slideUp('400');
         $('#char1').css({
@@ -42,8 +42,8 @@
           var character;
           eventHandler();
 
-          function eventHandler() {
-            if (localStorage.getItem('Medicine') == 'true' && QuestComp[1] == false) {
+          function eventHandler() { // conversation function
+            if (localStorage.getItem('Medicine') == 'true' && QuestComp[1] == false) { // condition to determine if quest has been completed
               switch (progress) {
                 case 0:
                   $('#nextbutton, #textbox ').show();

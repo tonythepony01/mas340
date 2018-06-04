@@ -17,7 +17,7 @@
       	$("#noticebox").slideDown('400').delay(2200).slideUp('400');
       	var bag = document.getElementById('audio9');
       	if (localStorage.getItem("coords") != "undefined" && localStorage.getItem("coords") != null) {  // retrieves current location of player if it has been saved
-      		var coords = (JSON.parse("[" + localStorage.getItem("coords") + "]"));
+      		var coords = (JSON.parse("[" + localStorage.getItem("coords") + "]")); // function to save position when page is refreshed
       		console.log(coords);
       		if (coords[0] < 50) {
       			var Pl = {el:$('#char'), x:coords[0]+100, y:coords[1], speed:coords[2]};
@@ -35,7 +35,7 @@
       	} else {
       		$('#Flower').attr("src","images/items/flower.png");
       	};
-      	$('#Flower').hover(function() {
+      	$('#Flower').hover(function() { // display hover on/off and day/night versions of item
       		if(CheckTownTime(0,0) == true) {
       			$(this).attr("src","images/items/night/hoverflowernight.png");
       		} else {
@@ -78,17 +78,17 @@
       	function updatePlayerPos() { // function to animate character when arrow keys are pressed. Checks if the player has walked to one end of the map or not, as well as handles movement.
       	  var dist = K[38]&&(K[37]||K[39]) || K[40]&&(K[37]||K[39]) ? 0.707 : 1; 
       	  dist *= Pl.speed;
-      	  if (Pl.x < 40)   {
-      		Pl.x = 40;
+      	  if (Pl.x < 40)   { // move player back to map when it moves out of page.
+      		Pl.x = 40; // prevent player from going off screen
       		window.location = "map.html";
       	  } else if ((Pl.x > 950)) {
-      		Pl.x = 950;
+      		Pl.x = 950; // prevent player from going off screen
       	  }
-      	  if(K[37]) Pl.x -= dist;
+      	  if(K[37]) Pl.x -= dist; 
       	  if(K[39]) Pl.x += dist;
       	  Pl.el.css({transform:"translate3D("+ Pl.x +"px, "+ Pl.y +"px, 0)"});
       	}
-      	(function engine() {
+      	(function engine() { //rerequest animation frame to create smooth movement
       		updatePlayerPos();
       		window.requestAnimationFrame( engine );
       	}());

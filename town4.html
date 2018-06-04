@@ -16,7 +16,7 @@
         var click = document.getElementById('audio6');
         $("#noticebox").slideDown('400').delay(2200).slideUp('400');
         if (localStorage.getItem("coords") != "undefined" && localStorage.getItem("coords") != null) {
-          var coords = (JSON.parse("[" + localStorage.getItem("coords") + "]"));
+          var coords = (JSON.parse("[" + localStorage.getItem("coords") + "]")); // saves player location in town
           console.log(coords);
           if (coords[0] < 50) {
             var Pl = {
@@ -64,7 +64,7 @@
                 var character;
                 eventHandler();
                 function eventHandler() {
-                  if (p.left < 470 && p.left > 370) {
+                  if (p.left < 470 && p.left > 370) { // checks if player is in position to talk to townspeople
                     switch (progress) {
                       case 0:
                         $('#nextbutton, #textbox ').show();
@@ -172,11 +172,11 @@
           var dist = K[38] && (K[37] || K[39]) || K[40] && (K[37] || K[39]) ? 0.707 : 1;
           dist *= Pl.speed;
           if (Pl.x < 35) {
-            Pl.x = 35;
-            window.location = "map.html";
+            Pl.x = 35; // prevents player from moving off screen
+            window.location = "map.html"; // moves player  back to map
           } else if ((Pl.x > 950)) {
-            Pl.x = 950;
-            window.location = "throne4.html";
+            Pl.x = 950;// prevents player from moving off screen
+            window.location = "throne4.html"; // moves player to throne
           }
           if (K[37]) Pl.x -= dist;
           if (K[39]) Pl.x += dist;

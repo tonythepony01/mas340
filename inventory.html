@@ -21,7 +21,7 @@
           "inv-Acorns": "To be used as rations for the troops of Wealdstone. Return this to the Duke of Wealdstone",
           "inv-Sunflower": "An ordinary sunflower that was requested by the royal chef. I wonder how he's going to use this.",
           "inv-Necklace": "Conveniently looks like the necklace that Lucia dropped years ago. I wonder where she is now."
-        };
+        }; // includes all item descriptions when item is hovered over
         $("#inv-Flower, #inv-Butterfly,#inv-Medicine,#inv-Weed,#inv-Beans,#inv-Magicmushroom,#inv-Acorns,#inv-Sunflower,#inv-Necklace").hover(function() {
           $("#descbox").show();
           attr = String($(this).attr('id'))
@@ -31,7 +31,6 @@
           $("#descbox").hide();
         });
         $("#inv-Necklace").hover(function() {
-          console.log('true');
         });
       });
     </script>
